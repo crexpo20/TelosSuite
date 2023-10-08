@@ -1,10 +1,7 @@
-
 import React, {Component} from 'react';
 import { Link, Outlet } from 'react-router-dom';
-class Navbar extends Component{
+class NavbarCli extends Component{
     render(){
-     
-      
       return(
         <>
         <header>
@@ -12,21 +9,18 @@ class Navbar extends Component{
                
                 <Link id="TelosSuite" to='/'>TelosSuite</Link>
                 <br/>
-                 <Link to='/login'>categoria1</Link>
-                 <Link to='/login'>categoria2</Link>
-                 <Link to='/register'>categoria3</Link>
-                 <Link to='/login'>categoria4</Link>
-                 <Link to='/register'>categoria5</Link>
+                
             </h1>
             <nav>
-            <Link to='/cliente'>Login</Link>
-            <Link to='/register'>Registrarse</Link>
+            <a> modo anfrition</a>
+            <Link to='/cliente'>Registrar espacio</Link>
+            
+            <Link to='/register'>Cerrar sesion</Link>
             </nav>
 
             
         </header>
         <body>
-
         </body>
         <Outlet />
         </>
@@ -34,4 +28,4 @@ class Navbar extends Component{
       );
     }
   }
-  export default Navbar;
+  export default NavbarCli;

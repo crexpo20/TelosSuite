@@ -1,21 +1,26 @@
 import React, {Component} from 'react';
-import {Link, Outlet } from 'react-router-dom';
-class ActualizarInm extends Component{
-    render(){
-     
+import {Link, Outlet, useParams } from 'react-router-dom';
+import { sitios } from '../sitios';
+const ActualizarInm = () =>{
+   
+        let { espaciosID } = useParams ()
+
+        let espacioSeleccionado = sitios.find( site => site.id === espaciosID)
+        console.log(espaciosID)
+        console.log(espacioSeleccionado)
         return(
-          <>
-          
+        
           <body>
-                <section id="pantalla-dividida">
-                    <div class="izquierda">
+            <section id="pantalla-dividida">
+                
+            <div class="izquierda">
                         <div class='infInmueble'>
                             <img class='inmueble_fot' src="https://picsum.photos/280/280"></img>
-                            <h3 class='inmueble_name'>Apartamento en La Paz</h3>
+                            <h3 class='inmueble_name'>{espacioSeleccionado.nombre}</h3>
                             <div class='inmueble_info'>
-                                <p class='inmDet'>Hermoso departamento centrico</p>
-                                <p class='inmCamas'>2 Camas</p>
-                                <p class='inmPrecio'>$34 USD noche</p>
+                                <p class='inmDet'>{espacioSeleccionado.desc}</p>
+                                <p class='inmCamas'>{espacioSeleccionado.camas}</p>
+                                <p class='inmPrecio'>{espacioSeleccionado.precio}</p>
                             </div>
                             <button class="eliminar-btn" >Eliminar</button>
                         </div>
@@ -127,7 +132,7 @@ class ActualizarInm extends Component{
                             </div>
                             <div class='Grid3'>
                                 <label htmlFor='ubicacion'>UBICACION:</label>
-                                <button id='ubicacion' type='button' onClick={this.onClick}>SUBIR</button>
+                                <button id='ubicacion' type='button' onClick={this?.onClick}>SUBIR</button>
                                 <br></br>
                                 <label htmlFor='descripcion'>DESCRIPCIÓN:</label>
                                 <input type='text' id='descripcion' name='descripcion'></input>
@@ -135,18 +140,19 @@ class ActualizarInm extends Component{
                             
                             <br></br>
                             <div class="guardarcambios">
-                                 <button id='guardar' type='button' onClick={this.onClick}>GUARDAR CAMBIOS</button>
+                                 <button id='guardar' type='button' onClick={this?.onClick}>GUARDAR CAMBIOS</button>
                             </div>
 
                         </form>
                     </div>
-                </section>
+            </section>
+            
+               
           </body>
           
-          <Outlet />
-          </>
-          
-        );
-      }
+       
+         
+        )
+      
   }
   export default ActualizarInm;

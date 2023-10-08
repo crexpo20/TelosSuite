@@ -23,6 +23,7 @@ class EspaciosModAnf extends Component{
                                 <p class='inmPrecio'>{sitio.precio}</p>
                             </div>
                             <button class="eliminar-btn" >Eliminar</button>
+                            <Link to={`/cliente/${sitio.id}`}>editar</Link>
                         </div>
                         </div>
                     )
