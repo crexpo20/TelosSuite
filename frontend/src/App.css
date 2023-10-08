@@ -76,14 +76,100 @@ a{
 /* Rectangle 53 */
 body{/* Rectangle 53 */
 
-
-
 background: #E8DAE1;
 }
 
+/* Actualizar Inmueble */
 
+.izquierda{
+  background: rgba(218, 20, 103, 0.85);
+  height: 100vh;
+  width: 25%;
 
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100vh; 
+}
 
+.derecha{
+  background: #E8DAE1;
+  height: 100vh;
+  width: 75%;
+}
+#pantalla-dividida{
+  display: flex;
+}
+
+form{
+  margin-left: 25px;
+  margin-top: 30px;
+  
+  font-family: 'JejuMyeongjo';
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 40px;
+  color: black;
+
+}
+
+.Grid2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  grid-column-gap: 10px; 
+}
+
+.Colum1 {
+  margin-bottom: 10px; 
+  
+}
+.Colum2 {
+  margin-bottom: 10px; 
+}
+
+label{
+  margin-left: 50px;
+  justify-self: end;
+}
+.guardarcambios{
+  text-align: center;
+}
+
+.infInmueble{
+  border: 1px solid #000; 
+  background-color: #f0f0f0; 
+  padding: 10px; 
+  width: 300px; 
+  margin-top: 40px;
+}
+
+.eliminar-btn {
+  margin-left: 220px;
+  bottom: 10px;
+  right: 10px;
+}
+
+.InmueblesHost{
+  border: 1px solid #000; 
+  background-color: #f0f0f0; 
+  padding: 10px; 
+  width: 300px; 
+  margin-left: 40px;
+}
+
+h4{
+  font-family: 'JejuMyeongjo';
+  font-weight: 400;
+  font-size: 25px;
+  margin-left: 40px;
+  line-height: 60px;
+  color: rgba(218, 20, 103, 0.85);
+}
+.verinm{
+  display: inline-block; 
+  margin-right: 11px; 
+  max-width: 300px;
+}
 /* Rectangle 64 */
 
 
