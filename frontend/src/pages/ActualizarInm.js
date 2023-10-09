@@ -29,7 +29,8 @@ const ActualizarInm = () =>{
                         <form>
                             <div class='Grid1'>
                                 <label htmlFor='tipodeinmueble'>TIPO DE INMUEBLE:</label>
-                                <select name='tipodeinmueble'>
+                                <select name='tipodeinmueble' placeholder={`espacioSeleccionado.precio`}>
+
                                     <option value=''></option>
                                     <option value='casa'>CASA</option>
                                     <option value='habitacion'>HABITACION</option>

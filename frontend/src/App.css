@@ -3,42 +3,75 @@
   padding: 0;
   box-sizing: border-box;
 }
+ul{
+  position: absolute;
+  top:15%;
+  left: 2%;
+  background: #fff;
+  margin: 0;
+  padding: 5px 0;
+  border-radius: 10px;
+  display: flex;
+}
+ul li{
+  list-style: none;
+  text-align: center;
+  display: block;
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+#arriba{
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+
+ul li a{
+  text-decoration: none;
+  padding: 0 25px;
+  display: block;
+}
 
 header{
-  display: flex;
+  display: block;
   justify-content: space-between;
-  align-items: center;
-  padding: 15px;
-  height: 150PX;
+  
+  
+  
+  height: 230px;
   background-color: #ffffff;;
 }
 /* TelosSuite */
-h1,
-#TelosSuite{
-
-  width: 422px;
-  height: 60px;
-  left: 207px;
-  top: 10px;
+h1{
   
-  font-family: 'JejuMyeongjo';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 40px;
-  line-height: 40px;
-  text-decoration: none;
+  
+    position:relative;
+    top:0;
+    left: 5%;
+    padding-right: 5%;
+    margin: 0;
+    padding: 5px 0;
+    border-radius: 10px;
+    display: flex;
+    
+ 
+
   color: rgba(218, 20, 103, 0.85);
+  
   }
 
-/*LOGO TELOSSUITE https://iconos8.es/icon/yPK5jE9e0UVd/casa*/
-#casaLogo{
-  /* image 32 */
+/**/
 
-position: absolute;
+ 
+
+/*LOGO TELOSSUITE https://iconos8.es/icon/yPK5jE9e0UVd/casa*/
+#iconoprincipal
+{
+  /* image 32 */
+margin-top: 200px;
+position:relative;
 width: 81px;
 height: 75px;
 
-background: url(https://iconos8.es/icon/yPK5jE9e0UVd/casa*/);
 
 }
 
@@ -63,7 +96,6 @@ a{
   text-align: center;
   cursor: pointer;
   padding: 10px;
-  
   font-family: 'JejuMyeongjo';
   font-style: normal;
   font-weight: 100;
@@ -172,4 +204,56 @@ h4{
 }
 /* Rectangle 64 */
 
+/*division nav*/
+#buscador{
+  padding-top: 1%;
+  padding-left: 5%;
+  width: 33%;
+  display: flex;
+ 
+}
 
+
+
+#buscador li{
+  
+  padding: 0 70px;
+  list-style: none;
+  box-shadow: #000;
+  }
+
+#TelosSuite{
+  font-family: 'JejuMyeongjo';
+  font-size: 40px;
+  color: rgba(13, 10, 11, 0.85);
+  }
+#head{
+  padding-top: 1%;
+  display: flex;
+  height: 35%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.09);
+}
+#head-izq{
+  width: 33%;
+  padding-left: 5%;
+
+}
+#logo-principal{
+  font-size: 40px;
+  padding-top: 10px;
+  color: rgba(218, 20, 103, 0.85);
+}
+#logo-nav{
+  font-size: 35px;
+}
+#head-der{
+    justify-content: end;
+    width: 33%;
+    padding-left: 15%;
+}
+
+#nav{
+  height: 180px;
+}
+
+/*-------------*/

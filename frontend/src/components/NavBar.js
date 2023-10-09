@@ -1,6 +1,7 @@
 
 import React, {Component} from 'react';
 import { Link, Outlet } from 'react-router-dom';
+import {RiHomeSmileLine} from "react-icons/ri"
 class Navbar extends Component{
     render(){
      
@@ -8,21 +9,82 @@ class Navbar extends Component{
       return(
         <>
         <header>
-            <h1>
+            <div id='head'>
+               <div id='head-izq'>
+                  
+                    
+                    <i id='logo-principal'><RiHomeSmileLine/></i>
+                    <Link id="TelosSuite" to='/'>TelosSuite</Link>
+                    
+                    
+                  
+               </div>
+               <div id='buscador'>
+                  
+                    <li>
+                     Lugar
+                    </li>
+                    <li>
+                      Fechas
+                    </li>
+                    <li>
+                       cuantos?
+                    </li>
+                  
+               </div>
                
-                <Link id="TelosSuite" to='/'>TelosSuite</Link>
-                <br/>
-                 <Link to='/login'>categoria1</Link>
-                 <Link to='/login'>categoria2</Link>
-                 <Link to='/register'>categoria3</Link>
-                 <Link to='/login'>categoria4</Link>
-                 <Link to='/register'>categoria5</Link>
-            </h1>
-            <nav>
-            <Link to='/cliente'>Login</Link>
+               <div id='head-der'>
+                  <nav>
+                  <Link to='/cliente'>Iniciar sesion</Link>
             <Link to='/register'>Registrarse</Link>
-            </nav>
+                  </nav>
+                </div>
+            </div>
+            <div id='nav'>
+            <ul>
+                <li>
+                  <a href='#'>
+                    <div class="icon">
+                    <i id='logo-nav'>  <RiHomeSmileLine/> </i>
+                    </div>
+                    <Link to='/register'>Casa</Link>
 
+                  </a>
+                </li>
+                <li>
+                  <a href='#'>
+                    <div class="icon">
+                    <i id='logo-nav'> <RiHomeSmileLine/> </i>
+                    </div>
+                    <Link to='/register'>Lugar Historico</Link>
+                  </a>
+                </li>
+                <li>
+                  <a href='#'>
+                    <div class="icon">
+                    <i id='logo-nav'> <RiHomeSmileLine/> </i>
+                    </div>
+                    <Link to='/register'>Casa Rural</Link>
+                  </a>
+                </li>
+                <li>
+                  <a href='#'>
+                    <div class="icon">
+                    <i id='logo-nav' > <RiHomeSmileLine/> </i>
+                    </div>
+                    <Link to='/register'>Departamento</Link>
+                  </a>
+                </li>
+                <li>
+                  <a href='#'>
+                    <div class="icon">
+                      <i id='logo-nav'> <RiHomeSmileLine/> </i>
+                    </div>
+                    <Link to='/register'> Mansion</Link>
+                  </a>
+                </li>
+              </ul>
+            </div>
             
         </header>
         <body>
