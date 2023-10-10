@@ -2,7 +2,23 @@
 import React, {Component} from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import {RiHomeSmileLine} from "react-icons/ri"
+import PriceFilter from '../pages/PriceFilter'; 
+import { HiArrowsRightLeft } from 'react-icons/hi2';
+
 class Navbar extends Component{
+  constructor(props) {
+    super(props);
+    this.state = {
+      showFilterPopup: false, // Estado para controlar si se muestra el cuadro emergente del filtro
+    };
+  }
+
+  // Función para mostrar/ocultar el cuadro emergente del filtro
+  toggleFilterPopup = () => {
+    this.setState((prevState) => ({
+      showFilterPopup: !prevState.showFilterPopup,
+    }));
+  };
     render(){
      
       
@@ -37,6 +53,10 @@ class Navbar extends Component{
                   <nav>
                   <Link to='/cliente'>Iniciar sesion</Link>
             <Link to='/register'>Registrarse</Link>
+            <button className="filtro-button" onClick={this.toggleFilterPopup}>
+              <HiArrowsRightLeft /> Filtro
+            </button>  
+                  
                   </nav>
                 </div>
             </div>
@@ -88,7 +108,8 @@ class Navbar extends Component{
             
         </header>
         <body>
-
+          {/* Renderiza el componente PriceFilter si showFilterPopup es verdadero */}
+          {this.state.showFilterPopup && <PriceFilter />}
         </body>
         <Outlet />
         </>
