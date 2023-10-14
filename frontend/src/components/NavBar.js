@@ -27,13 +27,15 @@ class Navbar extends Component{
         <header>
             <div id='head'>
                <div id='head-izq'>
-                  
+                  <div id = "logoT">
+                  <i id='logoP'><RiHomeSmileLine/></i>
+                  </div>
                     
-                    <i id='logo-principal'><RiHomeSmileLine/></i>
-                    <Link id="TelosSuite" to='/'>TelosSuite</Link>
+                  <div id = 'logoL'>
+                  <a id="TelosSuite">TelosSuite</a>
+                  </div>
                     
-                    
-                  
+            
                </div>
                <div id='buscador'>
                   
