@@ -3,7 +3,7 @@ import {Link, Outlet } from 'react-router-dom';
 import { sitios } from '../sitios';
 class EspaciosModAnf extends Component{
     render(){
-     
+        
         return(
           <>
           
@@ -22,14 +22,29 @@ class EspaciosModAnf extends Component{
                                 <p class='inmCamas'>{sitio.camas}</p>
                                 <p class='inmPrecio'>{sitio.precio}</p>
                             </div>
-                            <button class="eliminar-btn" >Eliminar</button>
-                            <Link to={`/cliente/${sitio.id}`}>editar</Link>
+                            <div class='BotonesEditEli'>
+                                <div class='BotonEditar'>
+                                    <Link to={`/cliente/${sitio.id}`}>editar</Link>
+                                </div>
+                                <button className="eliminar-btn" onClick={() => this.handleEliminarClick(sitio)}>Eliminar</button>
+                            </div>
                         </div>
                         </div>
                     )
                     )
 
                     }
+                        {/* Modal de confirmación */}
+                            {this.state.modalAbierto && (
+                            <div className="modalEliminar">
+                                <div className="modal-contenido">
+                                <p>¿Estás seguro que deseas eliminar {this.state.sitioSeleccionado ? this.state.sitioSeleccionado.nombre : ''}?</p>
+                                <br></br>
+                                <button onClick={this.confirmarEliminacion}>Eliminar</button>
+                                <button onClick={this.confirmarElimi}>Cancelar</button>
+                                </div>
+                            </div>
+                        )}
                 </div>
                     
           </body>
@@ -39,5 +54,21 @@ class EspaciosModAnf extends Component{
           
         );
       }
+      state = {
+        modalAbierto: false,
+        sitioSeleccionado: null,
+      };
+    
+      handleEliminarClick = (sitio) => {
+        this.setState({ sitioSeleccionado: sitio, modalAbierto: true });
+      };
+    
+      confirmarEliminacion = () => {
+        this.setState({ modalAbierto: false });
+      };
+
+      confirmarElimi = () => {
+        this.setState({ modalAbierto: false });
+      };
   }
   export default EspaciosModAnf;
