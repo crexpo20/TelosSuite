@@ -20,20 +20,21 @@ class AppRouter extends Component{
       <Route path= "/" element={<Navbar />}>
           <Route index element={<HomePage />} />
           <Route path='login' element={<LoginPage />} />
-          <Route path='register' element={<RegisterPage />} />
           <Route path='dashboard' element={<DashboardPage />} />
           <Route path='*' element={<Navigate TO ="/"/>}/> 
           
-        </Route>
-        <Route path= "/cliente" element={<NavbarCli />}>
-        <Route index element={<EspaciosModAnf />} />
-          <Route path= "/cliente/:espaciosID" element ={<ActualizarInm  />}/>
-          <Route path='inm' element={<ActualizarInm />} />
-          
-          <Route path='dashboard' element={<DashboardPage />} />
-          <Route path='*' element={<Navigate TO ="/"/>}/> 
-       
-        </Route>
+      </Route>
+      <Route path= "/cliente" element={<NavbarCli />}>
+            <Route index element={<EspaciosModAnf />} />
+            <Route path= "/cliente/:espaciosID" element ={<ActualizarInm  />}/>
+            <Route path='inm' element={<ActualizarInm />} />
+            
+            <Route path='dashboard' element={<DashboardPage />} />
+            <Route path='*' element={<Navigate TO ="/"/>}/> 
+      </Route>
+      <Route>
+      <Route path='register' element={<RegisterPage />} />
+      </Route>
         
 
 

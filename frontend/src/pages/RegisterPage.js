@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import { Outlet } from 'react-router-dom';
+import {RiHomeSmileLine} from "react-icons/ri"
+import { Link, Outlet } from 'react-router-dom';
 class RegisterPage extends Component{
   constructor(props) {
     super(props);
@@ -21,15 +22,35 @@ class RegisterPage extends Component{
     e.preventDefault();
     console.log('Datos de registro:', this.state);
   }
-
+ 
   
     render(){
-     
+      
       
       return(
-        <>
-        <div class='RegistroUsuario'>
+        
+       <html id='body-registro'>
+         <div id='head-izq'>
+                  <div id = "logoT">
+                  <i id='logoP'><RiHomeSmileLine/></i>
+                  </div>
+                    
+                  <div id = 'logoL'>
+                  <a id="TelosSuite">TelosSuite</a>
+                  </div>
+                  
+            
+               </div>
+          <div class='RegistroUsuario'>
         <h2>Registrarme</h2>
+        
+        <a href='/'>
+        <button className="close-button">
+            X
+          </button>
+ 
+</a> 
+        
         <form onSubmit={this.handleSubmit}>
           <div>
             <label>Username:</label>
@@ -78,12 +99,12 @@ class RegisterPage extends Component{
           </div>
           <br></br>
           <h5>Al seleccionar Aceptar y continuar, acepto los Términos de servicio, los Términos de pago del servicio 
-            y la Política contra la discriminación de Airbnb. También reconozco la Política de privacidad.</h5>
+            y la Política contra la discriminación de TelosSuite. También reconozco la Política de privacidad.</h5>
             <br></br>
           <button type="submit">Aceptar</button>
         </form>
       </div>
-        </>
+       </html>
         
       );
     }

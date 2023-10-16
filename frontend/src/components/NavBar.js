@@ -39,14 +39,14 @@ class Navbar extends Component{
                </div>
                <div id='buscador'>
                   
-                    <li>
-                     Lugar
+                    <li id='prim'>
+                    ¿Dónde?
+                    </li>
+                    <li id ='prim'>
+                    ¿Cuando?
                     </li>
                     <li>
-                      Fechas
-                    </li>
-                    <li>
-                       cuantos?
+                    ¿Cuantos?
                     </li>
                   
                </div>
