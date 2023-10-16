@@ -55,59 +55,66 @@ class Navbar extends Component{
                   <nav>
                   <Link to='/cliente'>Iniciar sesion</Link>
             <Link to='/register'>Registrarse</Link>
-            <button className="filtro-button" onClick={this.toggleFilterPopup}>
-              <HiArrowsRightLeft /> Filtro
-            </button>  
+            
                   
                   </nav>
                 </div>
             </div>
-            <div id='nav'>
-            <ul>
-                <li>
-                  <a href='#'>
-                    <div class="icon">
-                    <i id='logo-nav'>  <RiHomeSmileLine/> </i>
-                    </div>
-                    <Link to='/register'>Casa</Link>
+           <div id = 'navAbajo'>
+              <div id = 'nav'>
+              <ul>
+                      <li>
+                        <a href='#'>
+                          <div class="icon">
+                          <i id='logo-nav'>  <RiHomeSmileLine/> </i>
+                          </div>
+                          <Link to='/register'>Casa</Link>
 
-                  </a>
-                </li>
-                <li>
-                  <a href='#'>
-                    <div class="icon">
-                    <i id='logo-nav'> <RiHomeSmileLine/> </i>
-                    </div>
-                    <Link to='/register'>Lugar Historico</Link>
-                  </a>
-                </li>
-                <li>
-                  <a href='#'>
-                    <div class="icon">
-                    <i id='logo-nav'> <RiHomeSmileLine/> </i>
-                    </div>
-                    <Link to='/register'>Casa Rural</Link>
-                  </a>
-                </li>
-                <li>
-                  <a href='#'>
-                    <div class="icon">
-                    <i id='logo-nav' > <RiHomeSmileLine/> </i>
-                    </div>
-                    <Link to='/register'>Departamento</Link>
-                  </a>
-                </li>
-                <li>
-                  <a href='#'>
-                    <div class="icon">
-                      <i id='logo-nav'> <RiHomeSmileLine/> </i>
-                    </div>
-                    <Link to='/register'> Mansion</Link>
-                  </a>
-                </li>
-              </ul>
-            </div>
-            
+                        </a>
+                      </li>
+                      <li>
+                        <a href='#'>
+                          <div class="icon">
+                          <i id='logo-nav'> <RiHomeSmileLine/> </i>
+                          </div>
+                          <Link to='/register'>Lugar Historico</Link>
+                        </a>
+                      </li>
+                      <li>
+                        <a href='#'>
+                          <div class="icon">
+                          <i id='logo-nav'> <RiHomeSmileLine/> </i>
+                          </div>
+                          <Link to='/register'>Casa Rural</Link>
+                        </a>
+                      </li>
+                      <li>
+                        <a href='#'>
+                          <div class="icon">
+                          <i id='logo-nav' > <RiHomeSmileLine/> </i>
+                          </div>
+                          <Link to='/register'>Departamento</Link>
+                        </a>
+                      </li>
+                      <li>
+                        <a href='#'>
+                          <div class="icon">
+                            <i id='logo-nav'> <RiHomeSmileLine/> </i>
+                          </div>
+                          <Link to='/register'> Mansion</Link>
+                        </a>
+                      </li>
+                      
+                    </ul>
+                  
+              </div>
+              <div id='opciones'>
+                    
+                  <button className="filtro-button" onClick={this.toggleFilterPopup}>
+                    <HiArrowsRightLeft /> Filtro
+                  </button>   
+              </div>
+           </div>
         </header>
         <body>
           {/* Renderiza el componente PriceFilter si showFilterPopup es verdadero */}

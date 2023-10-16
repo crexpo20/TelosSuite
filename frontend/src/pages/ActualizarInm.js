@@ -25,7 +25,7 @@ const ActualizarInm = () =>{
         console.log(espaciosID)
         console.log(espacioSeleccionado)
         return(
-        
+          
           <body>
             <section id="pantalla-dividida">
                 

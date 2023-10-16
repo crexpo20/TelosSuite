@@ -4,12 +4,11 @@
   box-sizing: border-box;
 }
 ul{
-  position: absolute;
   top:10%;
   left: 2%;
   background: #fff;
   margin: 0;
-  padding: 0px 0;
+  margin-left: 3%;
   border-radius: 10px;
   display: flex;
 }
@@ -32,12 +31,13 @@ ul li a{
 }
 
 header{
+  position: fixed;
+  top: 0;
+  width: 100%;
   display: block;
-  justify-content: space-between;
-  
-  
-  
+  justify-content: space-between; 
   height: 165px;
+  
   background-color: #ffffff;;
 }
 /* TelosSuite */
@@ -107,13 +107,14 @@ a{
 
 /* Rectangle 53 */
 body{/* Rectangle 53 */
-
-background: #E8DAE1;
+  background: #E8DAE1;
+margin-top: 165px;
 }
 
 /* Actualizar Inmueble */
 
 .izquierda{
+  position: fixed;
   background: rgba(218, 20, 103, 0.85);
   height: 100vh;
   width: 25%;
@@ -128,6 +129,7 @@ background: #E8DAE1;
   background: #E8DAE1;
   height: 100vh;
   width: 75%;
+  margin-left: 25%;
 }
 #pantalla-dividida{
   display: flex;
@@ -338,7 +340,6 @@ h4{
   padding-left: 5%;
   width: 55%;
   display: flex;
-  background-color: #000;
   color: #d2086d;
  
 }
@@ -348,7 +349,6 @@ h4{
   
   padding: 0 70px;
   list-style: none;
-  box-shadow: #000;
   }
 /*letras logo*/
 #TelosSuite{
@@ -379,12 +379,19 @@ h4{
 #head-der{
     justify-content: end;
     width: 33%;
-    padding-left: 15%;
-    background-color: aqua;
+    padding-left: 10%;
 }
-
+#navAbajo{
+  margin-top: 0.5%;
+  display: flex;
+}
 #nav{
-  height: 180px;
+  
+  width: 70%;
+}
+#opciones{
+  padding-left: 16%;
+  padding-top: 1.5%;
 }
 
 /*-------------*/

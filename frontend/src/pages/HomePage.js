@@ -5,7 +5,7 @@ class HomePage extends Component{
       
       return(
         <body>
-            <h1>HomePage</h1>
+            <h1>HomePagesss</h1>
         </body>
       );
     }

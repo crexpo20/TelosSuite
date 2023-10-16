@@ -30,5 +30,100 @@ export const sitios = [
         desc: "Hermoso departamento centrico",
         camas: " 44 camas",
         precio: 34
+    },
+    {
+        id:"4",
+        idPropietario:"3",
+        nombre:"Apartamento en Oruro",
+        desc: "Hermoso departamento centrico",
+        camas: " 44 camas",
+        precio: 34
+    },
+    {
+        id:"4",
+        idPropietario:"3",
+        nombre:"Apartamento en Oruro",
+        desc: "Hermoso departamento centrico",
+        camas: " 44 camas",
+        precio: 34
+    },
+    {
+        id:"4",
+        idPropietario:"3",
+        nombre:"Apartamento en Oruro",
+        desc: "Hermoso departamento centrico",
+        camas: " 44 camas",
+        precio: 34
+    },
+    {
+        id:"4",
+        idPropietario:"3",
+        nombre:"Apartamento en Oruro",
+        desc: "Hermoso departamento centrico",
+        camas: " 44 camas",
+        precio: 34
+    },
+    {
+        id:"4",
+        idPropietario:"3",
+        nombre:"Apartamento en Oruro",
+        desc: "Hermoso departamento centrico",
+        camas: " 44 camas",
+        precio: 34
+    },
+    {
+        id:"4",
+        idPropietario:"3",
+        nombre:"Apartamento en Oruro",
+        desc: "Hermoso departamento centrico",
+        camas: " 44 camas",
+        precio: 34
+    },
+    {
+        id:"4",
+        idPropietario:"3",
+        nombre:"Apartamento en Oruro",
+        desc: "Hermoso departamento centrico",
+        camas: " 44 camas",
+        precio: 34
+    },
+    {
+        id:"4",
+        idPropietario:"3",
+        nombre:"Apartamento en Oruro",
+        desc: "Hermoso departamento centrico",
+        camas: " 44 camas",
+        precio: 34
+    },
+    {
+        id:"4",
+        idPropietario:"3",
+        nombre:"Apartamento en Oruro",
+        desc: "Hermoso departamento centrico",
+        camas: " 44 camas",
+        precio: 34
+    },
+    {
+        id:"4",
+        idPropietario:"3",
+        nombre:"Apartamento en Oruro",
+        desc: "Hermoso departamento centrico",
+        camas: " 44 camas",
+        precio: 34
+    }, {
+        id:"4",
+        idPropietario:"3",
+        nombre:"Apartamento en Oruro",
+        desc: "Hermoso departamento centrico",
+        camas: " 44 camas",
+        precio: 34
+    }
+    , {
+        id:"4",
+        idPropietario:"3",
+        nombre:"Apartamento en Oruro",
+        desc: "Hermoso departamento centrico",
+        camas: " 44 camas",
+        precio: 34
     }
 ]
