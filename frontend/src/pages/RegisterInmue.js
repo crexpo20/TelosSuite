@@ -7,6 +7,7 @@ import habitacionImage from '../iconos/habitacion.png';
 import departamentoImage from '../iconos/departamento.png';
 import cabanaImage from '../iconos/cabana.png';
 import wifiImage from '../iconos/wifi.png';
+import privadoImage from '../iconos/privado.png';
 class RegisterInmue extends Component {
   constructor(props) {
     super(props);
@@ -26,7 +27,7 @@ class RegisterInmue extends Component {
       {
         question: '¿Qué tipo de alojamiento ofreces?',
         options: [
-          { value: 'Privado', imageSrc: './privado.png' },
+          { value: 'Privado', imageSrc: privadoImage },
           { value: 'Compartido', imageSrc: 'compartido.png' },
         ],
         selectedOption: null,
