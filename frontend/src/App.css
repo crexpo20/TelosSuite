@@ -645,3 +645,113 @@ h5{
 	}
 }
 /*---------------------------*/
+/*Registro Inmuble*/
+
+
+.carousel-container {
+  max-width: 800px; /* Ancho máximo del carrusel */
+  margin: 0 auto; /* Centrar el carrusel en la página */
+  padding: 20px; /* Espaciado interno del carrusel */
+  background-color: #ffffff;
+  padding: 20px;
+  margin-top: 200px;
+  border-radius: 10px; 
+}
+
+/* Estilo para las preguntas */
+.carousel-question {
+  font-size: 20px; /* Tamaño de fuente para las preguntas */
+  margin-bottom: 20px; /* Espaciado inferior entre preguntas y opciones */
+  color: rgba(218, 20, 103, 0.85);
+  text-align: center;
+}
+h5 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: rgba(218, 20, 103, 0.85);
+  text-align: center; /* Centrar horizontalmente */
+  position:relative;
+  
+  
+ 
+}
+/* Estilo para los botones de opciones */
+.custom-button {
+  font-size: 16px; /* Tamaño de fuente para los botones de opciones */
+  padding: 10px 20px; /* Espaciado interno de los botones */
+  margin-right: 10px; /* Espaciado derecho entre botones */
+  border: 1px solid transparent;; /* Borde del botón */
+  background-color: transparent; /* Color de fondo del botón */
+  color: rgba(218, 20, 103, 0.85); /* Color del texto del botón */
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Transición de color de fondo al pasar el ratón */
+}
+
+
+
+.custom-button:hover {
+  background-color: rgba(218, 20, 103, 0.5); /* Cambia el color de fondo al acercar el ratón */
+  color: #fff; /* Cambia el color del texto al acercar el ratón */
+}
+
+/* Estilo para el botón al hacer clic */
+.custom-button:active {
+  background-color: rgba(218, 20, 103, 0.8); /* Cambia el color de fondo al hacer clic */
+  color: #fff; /* Cambia el color del texto al hacer clic */
+}
+
+.slick-dots {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.slick-dots li {
+  display: inline-block;
+  margin: 0 5px;
+}
+
+.slick-dots {
+  position: absolute;
+  top: 300px; /* Ajusta esta propiedad para controlar la distancia desde la parte superior */
+  right: 10px; /* Ajusta esta propiedad para controlar la distancia desde la derecha */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.slick-dots li {
+  display: inline-block;
+  margin-right: 5px; /* Espaciado entre los puntos (dots) */
+}
+
+.slick-dots li button {
+  font-size: 16px;
+  padding: 8px 16px;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+.slick-dots li.slick-active button {
+  background-color: #e0198a; /* Cambia el color de fondo para el botón activo */
+}
+.elemento-por-encima {
+  z-index: 2;
+}
+
+.elemento-detras {
+  z-index: 1;
+}
+.elemento {
+  position: relative; /* Otra opción: absolute, fixed, etc. */
+}
+.wifi-image {
+  width: 40px; /* Tamaño personalizado */
+  height: 40px; /* Tamaño personalizado */
+ 
+}
+.custom-button {
+  display: flex;
+  align-items: center; /* Alinea verticalmente el texto y la imagen */
+}
