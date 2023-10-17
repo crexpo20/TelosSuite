@@ -24,6 +24,7 @@ class NavbarCli extends Component{
                <div id='head-der'>
                   <nav>
                       <Link to='/cliente'>Modo Anfitrion</Link>
+                      <Link to='/cliente/registerinmue'>Agregar Espacio</Link>
                       <Link to='/'>Cerrar sesión</Link>
                   </nav>
                 </div>
