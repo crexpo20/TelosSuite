@@ -7,7 +7,7 @@ class NavbarCli extends Component{
         <>
          <header>
             <div id='head'>
-            <div id='head-izq'>
+               <div id='head-izq'>
                   <div id = "logoT">
                   <i id='logoP'><RiHomeSmileLine/></i>
                   </div>

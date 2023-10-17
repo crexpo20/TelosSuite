@@ -40,7 +40,9 @@ class Navbar extends Component{
                <div id='buscador'>
                   
                     <li id='prim'>
-                    ¿Dónde?
+                    <button onClick={this.toggleFilterPopup} style={{background:'none'}}>
+                     ¿Dónde?
+                  </button> 
                     </li>
                     <li id ='prim'>
                     ¿Cuando?
