@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Pago;
 use Illuminate\Http\Request;
 
 class pagoController extends Controller

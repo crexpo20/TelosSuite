@@ -15,12 +15,12 @@ return new class extends Migration
     {
         Schema::create('huesped', function (Blueprint $table) {
             $table->id('idhuesped');
-            $table->string('username')->unique();
-            $table->string('nombre')->nullable();
-            $table->string('apellido')->nullable();
-            $table->string('correo')->nullable();
-            $table->integer('telefono')->nullable();
-            $table->string('contraseña')->nullable();
+            $table->string('username');
+            $table->string('nombre');
+            $table->string('apellido');
+            $table->string('correo');
+            $table->integer('telefono');
+            $table->string('contraseña');
             $table->timestamps();
         });
     }

@@ -1,17 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Huesped;
 use Illuminate\Http\Request;
 
 class huespedController extends Controller
 {
     public function index()
     {
-         // Obtener todos los productos de la base de datos
+      
          $huesped = huesped::all();
 
-         // Retornar los productos como respuesta
          return $huesped;
     }
     /**

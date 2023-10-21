@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Anfitrion;
 use Illuminate\Http\Request;
 
 class anfitrionController extends Controller
