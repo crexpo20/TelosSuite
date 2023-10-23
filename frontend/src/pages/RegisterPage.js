@@ -10,6 +10,13 @@ class RegisterPage extends Component{
       lastName: '',
       email: '',
       phone: '',
+      errors: {
+        username: '',
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+      },
     };
   }
 
@@ -18,14 +25,58 @@ class RegisterPage extends Component{
     this.setState({ [name]: value });
   }
 
+  validateForm = () => {
+    const { username, firstName, lastName, email, phone } = this.state;
+    const errors = {
+      username: '',
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
+    };
+
+    let valid = true;
+
+    if (username.trim() === '') {
+      errors.username = 'El campo username es obligatorio.';
+      valid = false;
+    }
+
+    if (firstName.trim() === '') {
+      errors.firstName = 'El campo nombre es obligatorio.';
+      valid = false;
+    }
+
+    if (lastName.trim() === '') {
+      errors.lastName = 'El campo apellido es obligatorio.';
+      valid = false;
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      errors.email = 'Correo electrónico no válido.';
+      valid = false;
+    }
+
+    if (!/^[0-9]+$/.test(phone)) {
+      errors.phone = 'Teléfono no válido.';
+      valid = false;
+    }
+
+    this.setState({ errors });
+
+    return valid;
+  };
+
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Datos de registro:', this.state);
-  }
- 
-  
-    render(){
-      
+
+    if (this.validateForm()) {
+      // Si la validación es exitosa, realiza la acción de envío, por ejemplo, enviando datos al servidor.
+      console.log('Datos de registro:', this.state);
+    }
+  };
+  render(){
+     
       
       return(
         
@@ -60,6 +111,7 @@ class RegisterPage extends Component{
               value={this.state.username}
               onChange={this.handleInputChange}
             />
+            <div className="error-message">{this.state.errors.username}</div>
           </div>
           <div>
             <label>Nombre:</label>
@@ -69,6 +121,7 @@ class RegisterPage extends Component{
               value={this.state.firstName}
               onChange={this.handleInputChange}
             />
+             <div className="error-message">{this.state.errors.firstName}</div>
           </div>
           <div>
             <label>Apellido:</label>
@@ -78,6 +131,7 @@ class RegisterPage extends Component{
               value={this.state.lastName}
               onChange={this.handleInputChange}
             />
+             <div className="error-message">{this.state.errors.lastName}</div>
           </div>
           <div>
             <label>Correo electrónico:</label>
@@ -87,6 +141,7 @@ class RegisterPage extends Component{
               value={this.state.email}
               onChange={this.handleInputChange}
             />
+            <div className="error-message">{this.state.errors.email}</div>
           </div>
           <div>
             <label>Teléfono:</label>
@@ -96,6 +151,7 @@ class RegisterPage extends Component{
               value={this.state.phone}
               onChange={this.handleInputChange}
             />
+            <div className="error-message">{this.state.errors.phone}</div>
           </div>
           <br></br>
           <h5>Al seleccionar Aceptar y continuar, acepto los Términos de servicio, los Términos de pago del servicio 
@@ -109,5 +165,4 @@ class RegisterPage extends Component{
       );
     }
   }
-  export default RegisterPage;
-
+  export default RegisterPage

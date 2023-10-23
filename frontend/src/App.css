@@ -37,7 +37,7 @@ header{
   display: block;
   justify-content: space-between; 
   height: 165px;
-  
+  padding-right: 20px;
   background-color: #ffffff;;
 }
 /* TelosSuite */
@@ -202,6 +202,14 @@ form{
   margin-bottom: 10px; 
   
 }
+.error-message {
+  color: red; /* Cambia el color del texto a rojo */
+  font-size: 14px; /* Cambia el tamaño de fuente */
+  margin-bottom: -50px;
+  margin-left: 330px;
+  line-height: 1.2;
+}
+
 .Colum2 {
   margin-bottom: 10px; 
 }
@@ -251,17 +259,18 @@ label{
 }
 
 .eliminar-btn {
-  margin-left: 70px;
-  bottom: 10px;
-  right: 10px;
-  border-radius: 350px; 
-  font-family: 'JejuMyeongjo';
-  font-style: normal;
-  font-weight: 100;
-  font-size: 20px;
-  color: black;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 150px;
 
 }
+.eliminar-btn img {
+  width: 34px;
+  height: 34px;
+}
+
 
 .btn-eliminar{
   margin-left: 170px;
@@ -336,6 +345,7 @@ h4{
 
 /*division nav*/
 #buscador{
+  
   padding-top: 0.5%;
   padding-bottom: 0.5%;
   padding-left: 5%;
@@ -347,13 +357,20 @@ h4{
  
 }
 
+#buscadorCliente{
+ 
+  width: 55%;
+  display: flex;
+ 
+}
+
 #buscador li{
-  padding: 0 70px;
+  padding: 0 10px;
   list-style: none;
 }
 #buscador #prim{
   border-right: 1px solid #000;
- 
+  
   }
 /*letras logo*/
 #TelosSuite{
@@ -365,8 +382,10 @@ h4{
   }
 #head{
   padding-top: 1%;
+  padding-bottom: 0.4%;
+  
   display: flex;
-  height: 35%;
+  height: 40%;
   border-bottom: 1px solid rgba(0, 0, 0, 0.09);
 }
 #head-izq{
@@ -384,7 +403,15 @@ h4{
 #head-der{
     justify-content: end;
     width: 33%;
-    padding-left: 10%;
+    padding-left: 2%;
+    
+}
+#navDer{
+  width: 85%;
+}
+#opt-nav{
+  display: flex;
+  justify-items: left;
 }
 #navAbajo{
   margin-top: 0.5%;
@@ -397,6 +424,7 @@ h4{
 #opciones{
   padding-left: 16%;
   padding-top: 1.5%;
+  display: flex;
 }
 
 /*-------------*/

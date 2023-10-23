@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Route, Routes, BrowserRouter, Navigate} from "react-router-dom";
+import {Route, Routes,Navigate} from "react-router-dom";
 import '../App.css';
 import Navbar from '../components/NavBar';
 import { default as HomePage } from '../pages/HomePage';
@@ -10,6 +10,7 @@ import { default as ActualizarInm } from '../pages/ActualizarInm';
 import { default as RegisterInmue } from '../pages/RegisterInmue';
 import { default as EspaciosModAnf } from '../pages/EspaciosModAnf';
 import NavbarCli from '../components/navBarCli';
+import Donde from '../pages/modalWhere';
 
 class AppRouter extends Component{
   render(){
@@ -22,6 +23,9 @@ class AppRouter extends Component{
           <Route index element={<HomePage />} />
           <Route path='login' element={<LoginPage />} />
           <Route path='dashboard' element={<DashboardPage />} />
+          <Route path='home' element={<HomePage />} />
+          <Route path='register' element={<RegisterPage />} />
+     
           <Route path='*' element={<Navigate TO ="/"/>}/> 
           
       </Route>
@@ -31,6 +35,7 @@ class AppRouter extends Component{
             <Route path='inm' element={<ActualizarInm />} />
             <Route path="/cliente/registerinmue" element={<RegisterInmue />} />
             <Route path='dashboard' element={<DashboardPage />} />
+            
             <Route path='*' element={<Navigate TO ="/"/>}/> 
       </Route>
       <Route>

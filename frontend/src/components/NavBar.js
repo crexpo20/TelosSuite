@@ -1,31 +1,59 @@
 
 import React, {Component} from 'react';
+import { useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import {RiHomeSmileLine} from "react-icons/ri"
 import PriceFilter from '../pages/PriceFilter'; 
 import { HiArrowsRightLeft } from 'react-icons/hi2';
+import {PiSwimmingPool} from 'react-icons/pi';
+import {RiHomeLine } from 'react-icons/ri'
+import {MdCabin} from 'react-icons/md'
+import{PiHouseLine} from 'react-icons/pi';
+import {FaMountainCity}  from 'react-icons/fa6';
+import Donde from '../pages/modalWhere';
+import modalAnf from './modalAnf';
+import ModalPrueba from './modalprueba';
+import {DatePicker} from 'antd'
+import moment from 'moment';
+import Fechas from './fechas';
+import LugarBoton from './lugares/lugarboton';
+import CuantosBoton from './cuantos/botoncuantos';
 
+const {RangePicker} = DatePicker;
 class Navbar extends Component{
   constructor(props) {
     super(props);
     this.state = {
       showFilterPopup: false, // Estado para controlar si se muestra el cuadro emergente del filtro
+      showModoAnfPopup: false,
+      
     };
+    
   }
-
   // Función para mostrar/ocultar el cuadro emergente del filtro
   toggleFilterPopup = () => {
     this.setState((prevState) => ({
       showFilterPopup: !prevState.showFilterPopup,
     }));
   };
-    render(){
-     
+
+  
+  toggleModoAnfPopup = () => {
+    this.setState((prevState) => ({
+      showModoAnfPopup: !prevState.showModoAnfPopup,
+    }));
+  };
+
+ 
+  render(){
       
       return(
         <>
         <header>
-            <div id='head'>
+           <div id='head'>
+               <script>
+                
+               </script>
                <div id='head-izq'>
                   <div id = "logoT">
                   <i id='logoP'><RiHomeSmileLine/></i>
@@ -34,31 +62,30 @@ class Navbar extends Component{
                   <div id = 'logoL'>
                   <a id="TelosSuite">TelosSuite</a>
                   </div>
+                  
                     
             
                </div>
                <div id='buscador'>
                   
                     <li id='prim'>
-                    <button onClick={this.toggleFilterPopup} style={{background:'none'}}>
-                     ¿Dónde?
-                  </button> 
-                    </li>
-                    <li id ='prim'>
-                    ¿Cuando?
-                    </li>
-                    <li>
-                    ¿Cuantos?
-                    </li>
+                      <LugarBoton/>
+                   </li>
+                   <li id='prim'>
+                      <Fechas/>
+                   </li>
+                   <li >
+                      <CuantosBoton/>
+                   </li>
+                  
                   
                </div>
                
                <div id='head-der'>
                   <nav>
                   <Link to='/cliente'>Iniciar sesion</Link>
-            <Link to='/register'>Registrarse</Link>
-            
-                  
+                  <Link to='/register'>Registrarse</Link>
+                
                   </nav>
                 </div>
             </div>
@@ -68,42 +95,42 @@ class Navbar extends Component{
                       <li>
                         <a href='#'>
                           <div class="icon">
-                          <i id='logo-nav'>  <RiHomeSmileLine/> </i>
+                          <i id='logo-nav'>  <RiHomeLine/> </i>
                           </div>
-                          <Link to='/register'>Casa</Link>
+                          <Link to='/dashboard'>Habitaciones</Link>
 
                         </a>
                       </li>
                       <li>
                         <a href='#'>
                           <div class="icon">
-                          <i id='logo-nav'> <RiHomeSmileLine/> </i>
+                          <i id='logo-nav'> <PiSwimmingPool/> </i>
                           </div>
-                          <Link to='/register'>Lugar Historico</Link>
+                          <Link to='/dashboard'>Piscinas</Link>
                         </a>
                       </li>
                       <li>
                         <a href='#'>
                           <div class="icon">
-                          <i id='logo-nav'> <RiHomeSmileLine/> </i>
+                          <i id='logo-nav'> <MdCabin/> </i>
                           </div>
-                          <Link to='/register'>Casa Rural</Link>
+                          <Link to='/dashboard'>Cabañas</Link>
                         </a>
                       </li>
                       <li>
                         <a href='#'>
                           <div class="icon">
-                          <i id='logo-nav' > <RiHomeSmileLine/> </i>
+                          <i id='logo-nav' > <FaMountainCity/> </i>
                           </div>
-                          <Link to='/register'>Departamento</Link>
+                          <Link to='/dashboard'>A la altura</Link>
                         </a>
                       </li>
                       <li>
                         <a href='#'>
                           <div class="icon">
-                            <i id='logo-nav'> <RiHomeSmileLine/> </i>
+                            <i id='logo-nav'> <PiHouseLine/> </i>
                           </div>
-                          <Link to='/register'> Mansion</Link>
+                          <Link to='/register'>Minicasas</Link>
                         </a>
                       </li>
                       
@@ -115,13 +142,18 @@ class Navbar extends Component{
                   <button className="filtro-button" onClick={this.toggleFilterPopup}>
                     <HiArrowsRightLeft /> Filtro
                   </button>   
+                  <ModalPrueba  />
+                  
               </div>
            </div>
         </header>
         <body>
           {/* Renderiza el componente PriceFilter si showFilterPopup es verdadero */}
           {this.state.showFilterPopup && <PriceFilter />}
-        </body>
+          {this.state.showModoAnfPopup && <modalAnf />}
+           </body>
+
+        
         <Outlet />
         </>
         
