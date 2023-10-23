@@ -23,7 +23,6 @@ import {default as lapaz } from "./imagenes/sucreModal.png"
          
         </ModalLugar.Body>
         <ModalLugar.Footer>
-            footer
         </ModalLugar.Footer>
         </ModalLugar>
         </>

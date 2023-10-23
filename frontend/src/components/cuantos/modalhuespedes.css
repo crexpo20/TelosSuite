@@ -18,14 +18,14 @@
     z-index: 1;
 }
 
-.react-modal-wrapper{
-    max-width: 500px;
+.react-modal-wrapperH{
+    max-width: 400px;
     margin: 2rem auto;
 }
 
 .react-modal-content{
     position: relative;
-    background-color: #fff;
+    background-color: #E9E9E9;
     border: 1px solid rgba(0,0,0,0.3)  ;
     border-radius: 1rem;
     display: flex;
@@ -60,6 +60,16 @@
     background: transparent;
 }
 
+.react-modal-body #body-huespedes #huesped-lista{
+    padding-left: 25%;
+    padding-top: 5%;
+    
+}
+
+.react-modal-body #body-huespedes #huesped-lista a{
+    font-family: 'JejuMyeongjo';
+    font-size: large;
+}
 #Lugar{
     color: rgba(11, 4, 44, 0.85);
     background: none;
@@ -69,3 +79,4 @@
     padding-bottom: 0.5%;
     padding-left: 0;
 }
+

@@ -5,6 +5,11 @@ import { Link, Outlet } from 'react-router-dom';
 import {RiHomeSmileLine} from "react-icons/ri"
 import PriceFilter from '../pages/PriceFilter'; 
 import { HiArrowsRightLeft } from 'react-icons/hi2';
+import {PiSwimmingPool} from 'react-icons/pi';
+import {RiHomeLine } from 'react-icons/ri'
+import {MdCabin} from 'react-icons/md'
+import{PiHouseLine} from 'react-icons/pi';
+import {FaMountainCity}  from 'react-icons/fa6';
 import Donde from '../pages/modalWhere';
 import modalAnf from './modalAnf';
 import ModalPrueba from './modalprueba';
@@ -70,7 +75,7 @@ class Navbar extends Component{
                       <Fechas/>
                    </li>
                    <li >
-                      Cuantos?
+                      <CuantosBoton/>
                    </li>
                   
                   
@@ -90,42 +95,42 @@ class Navbar extends Component{
                       <li>
                         <a href='#'>
                           <div class="icon">
-                          <i id='logo-nav'>  <RiHomeSmileLine/> </i>
+                          <i id='logo-nav'>  <RiHomeLine/> </i>
                           </div>
-                          <Link to='/dashboard'>Casa</Link>
+                          <Link to='/dashboard'>Habitaciones</Link>
 
                         </a>
                       </li>
                       <li>
                         <a href='#'>
                           <div class="icon">
-                          <i id='logo-nav'> <RiHomeSmileLine/> </i>
+                          <i id='logo-nav'> <PiSwimmingPool/> </i>
                           </div>
-                          <Link to='/dashboard'>Lugar Historico</Link>
+                          <Link to='/dashboard'>Piscinas</Link>
                         </a>
                       </li>
                       <li>
                         <a href='#'>
                           <div class="icon">
-                          <i id='logo-nav'> <RiHomeSmileLine/> </i>
+                          <i id='logo-nav'> <MdCabin/> </i>
                           </div>
-                          <Link to='/dashboard'>Casa Rural</Link>
+                          <Link to='/dashboard'>Cabañas</Link>
                         </a>
                       </li>
                       <li>
                         <a href='#'>
                           <div class="icon">
-                          <i id='logo-nav' > <RiHomeSmileLine/> </i>
+                          <i id='logo-nav' > <FaMountainCity/> </i>
                           </div>
-                          <Link to='/dashboard'>Departamento</Link>
+                          <Link to='/dashboard'>A la altura</Link>
                         </a>
                       </li>
                       <li>
                         <a href='#'>
                           <div class="icon">
-                            <i id='logo-nav'> <RiHomeSmileLine/> </i>
+                            <i id='logo-nav'> <PiHouseLine/> </i>
                           </div>
-                          <Link to='/register'> Mansion</Link>
+                          <Link to='/register'>Minicasas</Link>
                         </a>
                       </li>
                       
