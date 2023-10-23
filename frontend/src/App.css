@@ -650,6 +650,7 @@ h5{
 
 .carousel-container {
   max-width: 800px; /* Ancho máximo del carrusel */
+
   margin: 0 auto; /* Centrar el carrusel en la página */
   padding: 20px; /* Espaciado interno del carrusel */
   background-color: #ffffff;
@@ -664,6 +665,7 @@ h5{
   margin-bottom: 20px; /* Espaciado inferior entre preguntas y opciones */
   color: rgba(218, 20, 103, 0.85);
   text-align: center;
+  
 }
 h5 {
   font-size: 24px;
@@ -712,7 +714,7 @@ h5 {
 
 .slick-dots {
   position: absolute;
-  top: 300px; /* Ajusta esta propiedad para controlar la distancia desde la parte superior */
+  top: 450px; /* Ajusta esta propiedad para controlar la distancia desde la parte superior */
   right: 10px; /* Ajusta esta propiedad para controlar la distancia desde la derecha */
   list-style: none;
   padding: 0;
@@ -746,7 +748,7 @@ h5 {
 .elemento {
   position: relative; /* Otra opción: absolute, fixed, etc. */
 }
-.wifi-image {
+.iconos {
   width: 40px; /* Tamaño personalizado */
   height: 40px; /* Tamaño personalizado */
  
@@ -755,3 +757,62 @@ h5 {
   display: flex;
   align-items: center; /* Alinea verticalmente el texto y la imagen */
 }
+
+
+
+/* Agrega estos estilos CSS en un archivo .css o .scss */
+
+.custom-input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc; /* Borde personalizado */
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.2s;
+
+  /* Estilo al enfocar el input */
+  &:focus {
+    border-color: #e80980; /* Cambiar el color del borde al enfocar */
+  }
+}
+
+/* Estilos para los botones de opciones */
+.custom-button {
+  display: inline-block;
+  margin-right: 10px;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+
+  /* Estilo al hacer hover en el botón */
+  &:hover {
+    background-color: #dfa8d0;
+  }
+
+  
+}
+
+/* Estilos para el campo de archivo */
+.custom-file-input {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+
+  /* Estilo al hacer hover en el campo de archivo */
+  &:hover {
+    background-color: #ddd;
+  }
+}
+
+
+
+
+
