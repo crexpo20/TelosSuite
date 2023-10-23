@@ -202,6 +202,14 @@ form{
   margin-bottom: 10px; 
   
 }
+.error-message {
+  color: red; /* Cambia el color del texto a rojo */
+  font-size: 14px; /* Cambia el tamaño de fuente */
+  margin-bottom: -50px;
+  margin-left: 330px;
+  line-height: 1.2;
+}
+
 .Colum2 {
   margin-bottom: 10px; 
 }
@@ -251,17 +259,18 @@ label{
 }
 
 .eliminar-btn {
-  margin-left: 70px;
-  bottom: 10px;
-  right: 10px;
-  border-radius: 350px; 
-  font-family: 'JejuMyeongjo';
-  font-style: normal;
-  font-weight: 100;
-  font-size: 20px;
-  color: black;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 150px;
 
 }
+.eliminar-btn img {
+  width: 34px;
+  height: 34px;
+}
+
 
 .btn-eliminar{
   margin-left: 170px;

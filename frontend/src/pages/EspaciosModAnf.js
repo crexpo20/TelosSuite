@@ -1,7 +1,11 @@
 import React, {Component} from 'react';
 import {Link, Outlet } from 'react-router-dom';
 import { sitios } from '../sitios';
+import iconoEliminar from '../iconos/iconoEliminar.png';
 class EspaciosModAnf extends Component{
+  handleEliminarClick = (sitio) => {
+    // Lógica para eliminar el sitio
+  }
     render(){
         
         return(
@@ -26,7 +30,9 @@ class EspaciosModAnf extends Component{
                                 <div class='BotonEditar'>
                                     <Link to={`/cliente/${sitio.id}`}>editar</Link>
                                 </div>
-                                <button className="eliminar-btn" onClick={() => this.handleEliminarClick(sitio)}>Eliminar</button>
+                                <button className="eliminar-btn" onClick={() => this.handleEliminarClick(sitio)}>
+                                  <img src={iconoEliminar} alt="Eliminar" />
+                                </button>
                             </div>
                         </div>
                         </div>
