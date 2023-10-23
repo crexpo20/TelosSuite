@@ -18,18 +18,25 @@ class NavbarCli extends Component{
                     
             
                </div>
-               <div id='buscador'>
+               <div id='buscadorCliente'>
                </div>
 
                <div id='head-der'>
                   <nav>
                       <Link to='/cliente'>Modo Anfitrion</Link>
                       <Link to='/cliente/registerinmue'>Agregar Espacio</Link>
-                      <Link to='/'>Cerrar sesión</Link>
+                   
                   </nav>
                 </div>
             </div>
-            
+              <div id='navAbajo'>
+                  <div id='navDer'>
+                      
+                  </div>
+                  <div id='opt-nav'>
+                  <Link to='/'>Cerrar sesión</Link>
+                  </div>
+              </div>
            
         </header>
         <Outlet />
