@@ -3,19 +3,21 @@ import {Link, Outlet, useParams } from 'react-router-dom';
 import { sitios } from '../sitios';
 import Select from 'react-select';
 
-
 const ActualizarInm = () =>{
     const [selectedServices, setSelectedServices] = useState([]);
     const serviceOptions = [
-        { value: 'estacionamiento', label: 'Estacionamiento' },
         { value: 'piscina', label: 'Piscina' },
+        { value: 'wifi', label: 'Wifi' },
+        { value: 'estacionamiento', label: 'Estacionamiento' },
+        { value: 'parrilla', label: 'Parrillero' },
         { value: 'cocina', label: 'Cocina' },
-        { value: 'parrilla', label: 'Parrilla' },
-        { value: 'terraza', label: 'Terraza' },
+        { value: 'tv', label: 'TV' },
         { value: 'desayuno', label: 'Desayuno' },
-        { value: 'camara', label: 'Cámara' },
-        { value: 'llaveElectronica', label: 'Llave electrónica' },
-        { value: 'guardias', label: 'Guardias' },
+        { value: 'aireAcond', label: 'Aire Acondicionado' },
+        { value: 'mesaBillar', label: 'Mesa Billar' },
+        { value: 'camara', label: 'Cámara de seguridad' },
+        { value: 'llaveElectronica', label: 'Llaves electrónicas' },
+        { value: 'vigilancia', label: 'Vigilancia 24 hrs.' },
         { value: 'detectorHumo', label: 'Detector de humo' },
       ];
       const [isServicesOpen, setServicesOpen] = useState(false); 
@@ -24,6 +26,57 @@ const ActualizarInm = () =>{
         let espacioSeleccionado = sitios.find( site => site.id === espaciosID)
         console.log(espaciosID)
         console.log(espacioSeleccionado)
+        //Modalimagenes
+
+        // Validaciones
+        const [formErrors, setFormErrors] = useState({});
+
+        const handleInputChange = (event) => {
+            const { name, value } = event.target;
+            const updatedErrors = { ...formErrors };
+
+            if (name === 'idInmueble') {
+                if (value !== '' && !/^\d+$/.test(value)) {
+                    updatedErrors[name] = 'ID del inmueble debe ser un número entero.';
+                } else {
+                    delete updatedErrors[name];
+                }
+              } else if (name === 'precioNoche') {
+                // Validación para PRECIO NOCHE
+                if (value !== '' && !/^\d+$/.test(value)) {
+                  updatedErrors[name] = 'El precio debe ser un número entero.';
+                } else {
+                  delete updatedErrors[name];
+                }
+              } else if (name === 'capacidad') {
+                // Validación para CAPACIDAD
+                if (value !== '' && !/^\d+$/.test(value)) {
+                  updatedErrors[name] = 'La capacidad debe ser un número entero.';
+                } else {
+                  delete updatedErrors[name];
+                }
+              } else if (name === 'habitaciones' || name === 'baños' || name === 'camas') {
+                // Validación para HABITACIONES, BAÑOS y CAMAS
+                if (value !== '' && !/^\d+$/.test(value)) {
+                  updatedErrors[name] = 'Este campo debe ser un número entero.';
+                } else {
+                  delete updatedErrors[name];
+                }
+              }
+            setFormErrors(updatedErrors);
+        };
+
+        const handleSubmit = (event) => {
+            event.preventDefault();
+
+            // Realiza validaciones finales antes de enviar el formulario
+            const hasErrors = Object.keys(formErrors).length > 0;
+
+            if (!hasErrors) {
+            // Envía el formulario
+            }
+        };
+
         return(
           
           <body>
@@ -38,7 +91,7 @@ const ActualizarInm = () =>{
                                 <p class='inmCamas'>{espacioSeleccionado.camas}</p>
                                 <p class='inmPrecio'>{espacioSeleccionado.precio}</p>
                             </div>
-                            <button className="btn-eliminar"  >Eliminar</button>
+                            
                         </div>
 
                         
@@ -47,18 +100,22 @@ const ActualizarInm = () =>{
                         <form>
                             <div class='Grid1'>
                                 <label htmlFor='idInmueble'>ID DEL INMUEBLE:</label>
-                                <input type='int' id='idInmueble' name='idInmueble' step="1"></input>
+                                <input type='number' id='idInmueble' name='idInmueble' step="1" onChange={handleInputChange}></input>
+                                {formErrors.idInmueble && <div className="error-message">{formErrors.idInmueble}</div>}
                                 <br></br>
                                 <label htmlFor='TipoPropiedad'>TIPO DE PROPIEDAD:</label>
-                                <input type='string' id='TipoPropiedad' name='TipoPropiedad' step="1"></input>
+                                <input type='text' id='TipoPropiedad' name='TipoPropiedad' step="1"></input>
                                 <br></br>
                                 <label htmlFor='TituloAnuncio'>TÍTULO DEL ANUNCIO:</label>
-                                <input type='string' id='TituloAnuncio' name='TituloAnuncio' step="1"></input>
+                                <input type='text' id='TituloAnuncio' name='TituloAnuncio' step="1"></input>
                                 <br></br>
                                 <label htmlFor='descripcion'>DESCRIPCIÓN DETALLADA:</label>
-                                <textarea type='string' id='descripcion' name='descripcion'></textarea>
+                                <textarea type='text' id='descripcion' name='descripcion'></textarea>
                                 <br></br>
                                 <br></br>
+                                <br></br>
+                                <label htmlFor='Direccion'>DIRECCIÓN:</label>
+                                <input type='text' id='Direccion' name='Direccion' step="1"></input>
                                 <br></br>
                                 <label htmlFor='ubicacion'>UBICACIÓN:</label>
                                      <button id='ubicacion' type='button' onClick={this?.onClick}>SUBIR</button>
@@ -68,13 +125,16 @@ const ActualizarInm = () =>{
                             <div class='Grid2'>
                                 <div class='Colum1'>
                                     <label htmlFor='precioNoche'>PRECIO NOCHE:</label>
-                                    <input type='double' id='precioNoche' name='precioNoche' step="1"></input>
+                                    <input type='number' id='precioNoche' name='precioNoche' step="1" onChange={handleInputChange}></input>
+                                    {formErrors.precioNoche && <div className="error-message">{formErrors.precioNoche}</div>}
                                     <br></br>  
                                     <label htmlFor='habitaciones'>HABITACIONES:</label>
-                                    <input type='int' id='habitaciones' name='habitaciones' step="1"></input>
+                                    <input type='number' id='habitaciones' name='habitaciones' step="1" onChange={handleInputChange}></input>
+                                    {formErrors.habitaciones && <div className="error-message">{formErrors.habitaciones}</div>}
                                     <br></br>
                                     <label htmlFor='camas'>CAMAS:</label>
-                                    <input type='number' id='camas' name='camas' step="1"></input>
+                                    <input type='number' id='camas' name='camas' step="1" onChange={handleInputChange}></input>
+                                    {formErrors.camas && <div className="error-message">{formErrors.camas}</div>}
                                     <br></br>
                                     <label htmlFor='mascotas'>MASCOTAS:</label>
                                     <select name='mascotas'>
@@ -83,15 +143,23 @@ const ActualizarInm = () =>{
                                         <option value='no'>NO</option>
                                     </select>
                                     <br></br>
-                                    <label htmlFor='calendario'> DIAS DISPONIBLES:</label>
-                                     <button id='calendario' type='button' onClick={this?.onClick}>ELEGIR</button>
+
+                                    <label htmlFor='imagenes'>IMAGENES:</label>
+                                     <button id='imagenes' type='button' onClick={this?.onClick}>SUBIR</button>
+                                     
                                 </div>
                                 <div class='Colum2'>
+                                    <label htmlFor='precioqr'> PRECIO QR:</label>
+                                     <button id='precioqr' type='button' onClick={this?.onClick}>SUBIR</button>
+                                     <br></br>
                                     <label htmlFor='capacidad'>CAPACIDAD:</label>
-                                    <input type='int' id='capacidad' name='capacidad' step="1"></input>
+                                    <input type='number' id='capacidad' name='capacidad' step="1" onChange={handleInputChange}></input>
+                                    {formErrors.capacidad && <div className="error-message">{formErrors.capacidad}</div>}
                                     <br></br> 
                                     <label htmlFor='baños'>BAÑOS:</label>
-                                    <input type='number' id='baños' name='baños' step="1"></input>
+                                    <input type='number' id='baños' name='baños' step="1" onChange={handleInputChange}></input>
+                                    {formErrors.baños && <div className="error-message">{formErrors.baños}</div>}
+    
                                     <br></br>
                                     <label htmlFor='niños'>NIÑOS:</label>
                                     <select name='niños'>
@@ -110,10 +178,6 @@ const ActualizarInm = () =>{
                                                 onChange={setSelectedServices}
                                             />
                                             )}
-                                     <br></br>
-
-                                     <label htmlFor='imagenes'>IMAGENES:</label>
-                                     <button id='imagenes' type='button' onClick={this?.onClick}>SUBIR</button>
                                 </div>
                             </div>
                             <div class='Grid3'>
