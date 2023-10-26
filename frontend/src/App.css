@@ -183,13 +183,7 @@ form{
   margin-bottom: 10px; 
   
 }
-.error-message {
-  color: red; /* Cambia el color del texto a rojo */
-  font-size: 14px; /* Cambia el tamaño de fuente */
-  margin-bottom: -50px;
-  margin-left: 330px;
-  line-height: 1.2;
-}
+
 
 .Colum2 {
   margin-bottom: 10px; 
@@ -495,35 +489,35 @@ button:hover {
   font-family: 'JejuMyeongjo';
 }
 
+
+.error-message {
+  color: red; /* Cambia el color del texto a rojo */
+  font-size: 14px; /* Cambia el tamaño de fuente */
+  line-height: 1.2;
+  padding-left: 10%;
+  
+}
+
 .RegistroUsuario{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color:#fcceee;
+  
+  background-color:#ffffff;
   border: 1px;
-  padding: 40px;
   border-radius: 20px;
-  text-align: center;
   max-width: 500px;
   font-family: 'JejuMyeongjo';
   font-style: normal;
   font-size: 20px;
+  display: flex; /* Cambia a "flex" en lugar de "table-cell" */
+  flex-direction: column;
 }
-.RegistroUsuario label{
+.RegistroUsuario #label-registro{
   float: left;
+  margin-right: 10px; 
 }
-h5{
-  font-family: 'JejuMyeongjo';
-  font-style: normal;
-  font-size: 12px;
-  text-align: justify;
-  line-height: 1;
-  color: #736f6f;
-}
+
 #body-registro{
   background: linear-gradient(rgb(248, 205, 234), rgb(255, 120, 199));
-  position: fixed;
+  display: flex;
   top: 0;
   width: 100%;
   height: 100%;

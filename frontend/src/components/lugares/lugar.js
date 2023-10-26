@@ -10,7 +10,7 @@ import {default as potosi } from "./imagenes/potosi.png"
 import {default as oruro} from "./imagenes/oruro.png"
 import {default as tarija} from "./imagenes/tarija.png"
 import {default as lapaz } from "./imagenes/lp.png"
-
+import {default as RegisterPage} from '../../pages/RegisterPage.js'
 const ModalLugarContext = createContext()
 const cambia = (valor) => {
     // Aquí puedes hacer algo con el valor que recibes

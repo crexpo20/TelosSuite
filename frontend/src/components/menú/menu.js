@@ -2,6 +2,7 @@ import "./menuestilos.css"
 import { useEffect , useContext, createContext } from "react";
 import {useSpring, animated, useTransition} from "@react-spring/web";
 import React, { useState } from "react";
+import RegistroBoton from "../registro/botonRegistro";
 const ModalMenuContext = createContext()
 
 const ModalMenu = ({children, isOpen, onClose}) => {
@@ -50,10 +51,10 @@ const ModalMenuHeader = ({ children }) => {
             <div className="react-modalMenu-title" style={{display:""}}>{children}</div>
               <ul id="lista-menu">
                 <li id="menu-item">
-                    registro
+                    <RegistroBoton/>
                 </li>
                 <li id="menu-item">
-                    iniciar sesion
+                    
                 </li>
               </ul>
             </div>
@@ -69,7 +70,7 @@ const ModalMenuBody = ({ onValuesChange }) => {
         <div id="body-huespedes">
         <ul id="lista-menu">
                 <li id="menu-item">
-                    modo anfitrion
+                    Modo anfitrion
                 </li>
                 
               </ul>
