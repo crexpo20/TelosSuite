@@ -80,32 +80,13 @@ class RegisterPage extends Component{
       
       return(
         
-       <html id='body-registro'>
-         <div id='head-izq'>
-                  <div id = "logoT">
-                  <i id='logoP'><RiHomeSmileLine/></i>
-                  </div>
-                    
-                  <div id = 'logoL'>
-                  <a id="TelosSuite">TelosSuite</a>
-                  </div>
-                  
-            
-               </div>
-          <div class='RegistroUsuario'>
-        <h2>Registrarme</h2>
+       <>
+        <div class='RegistroUsuario'>
         
-        <a href='/'>
-        <button className="close-button">
-            X
-          </button>
- 
-</a> 
-        
-        <form onSubmit={this.handleSubmit}>
-          <div>
-            <label>Username:</label>
-            <input
+        <form  class="RegistroUsuario"onSubmit={this.handleSubmit}>
+          <div id='elemento-registro'>
+            <label id='label-registro'>Username:</label>
+            <input id='input-registro'
               type="text"
               name="username"
               value={this.state.username}
@@ -114,8 +95,8 @@ class RegisterPage extends Component{
             <div className="error-message">{this.state.errors.username}</div>
           </div>
           <div>
-            <label>Nombre:</label>
-            <input
+            <label id='label-registro'>Nombre:</label>
+            <input id='input-registro'
               type="text"
               name="firstName"
               value={this.state.firstName}
@@ -124,8 +105,8 @@ class RegisterPage extends Component{
              <div className="error-message">{this.state.errors.firstName}</div>
           </div>
           <div>
-            <label>Apellido:</label>
-            <input
+            <label id='label-registro'>Apellido:</label>
+            <input id='input-registro'
               type="text"
               name="lastName"
               value={this.state.lastName}
@@ -134,8 +115,8 @@ class RegisterPage extends Component{
              <div className="error-message">{this.state.errors.lastName}</div>
           </div>
           <div>
-            <label>Correo electrónico:</label>
-            <input
+            <label id='label-registro'>Correo electrónico:</label>
+            <input id='input-registro'
               type="email"
               name="email"
               value={this.state.email}
@@ -144,8 +125,8 @@ class RegisterPage extends Component{
             <div className="error-message">{this.state.errors.email}</div>
           </div>
           <div>
-            <label>Teléfono:</label>
-            <input
+            <label id='label-registro'>Teléfono:</label>
+            <input id='input-registro'
               type="number"
               name="phone"
               value={this.state.phone}
@@ -154,13 +135,15 @@ class RegisterPage extends Component{
             <div className="error-message">{this.state.errors.phone}</div>
           </div>
           <br></br>
-          <h5>Al seleccionar Aceptar y continuar, acepto los Términos de servicio, los Términos de pago del servicio 
-            y la Política contra la discriminación de TelosSuite. También reconozco la Política de privacidad.</h5>
-            <br></br>
+          <div id='texto'>
+            Al seleccionar Aceptar y continuar, acepto los Términos de servicio, los Términos de pago del servicio <br></br>
+              y la Política contra la discriminación de TelosSuite. También reconozco la Política de privacidad.
+          </div>
+          <br></br>
           <button type="submit">Aceptar</button>
         </form>
       </div>
-       </html>
+       </>
         
       );
     }

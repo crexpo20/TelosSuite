@@ -18,7 +18,8 @@ import moment from 'moment';
 import Fechas from './fechas';
 import LugarBoton from './lugares/lugarboton';
 import CuantosBoton from './cuantos/botoncuantos';
-
+import MenuBoton from './menú/botonMenu';
+import '../pages/css/nav.css'
 const {RangePicker} = DatePicker;
 class Navbar extends Component{
   constructor(props) {
@@ -82,17 +83,15 @@ class Navbar extends Component{
                </div>
                
                <div id='head-der'>
-                  <nav>
-                  <Link to='/cliente'>Iniciar sesion</Link>
-                  <Link to='/register'>Registrarse</Link>
-                
+                  <nav id='nav-menu'>
+                  <MenuBoton/>
                   </nav>
                 </div>
             </div>
            <div id = 'navAbajo'>
               <div id = 'nav'>
-              <ul>
-                      <li>
+              <ul id='listaCat'>
+                      <li id='cat'>
                         <a href='#'>
                           <div class="icon">
                           <i id='logo-nav'>  <RiHomeLine/> </i>
@@ -101,7 +100,7 @@ class Navbar extends Component{
 
                         </a>
                       </li>
-                      <li>
+                      <li id='cat'>
                         <a href='#'>
                           <div class="icon">
                           <i id='logo-nav'> <PiSwimmingPool/> </i>
@@ -109,7 +108,7 @@ class Navbar extends Component{
                           <Link to='/dashboard'>Piscinas</Link>
                         </a>
                       </li>
-                      <li>
+                      <li id='cat'>
                         <a href='#'>
                           <div class="icon">
                           <i id='logo-nav'> <MdCabin/> </i>
@@ -117,7 +116,7 @@ class Navbar extends Component{
                           <Link to='/dashboard'>Cabañas</Link>
                         </a>
                       </li>
-                      <li>
+                      <li id='cat'>
                         <a href='#'>
                           <div class="icon">
                           <i id='logo-nav' > <FaMountainCity/> </i>
@@ -125,12 +124,12 @@ class Navbar extends Component{
                           <Link to='/dashboard'>A la altura</Link>
                         </a>
                       </li>
-                      <li>
+                      <li id='cat'>
                         <a href='#'>
                           <div class="icon">
                             <i id='logo-nav'> <PiHouseLine/> </i>
                           </div>
-                          <Link to='/register'>Minicasas</Link>
+                          <Link to='/dashboard'>Minicasas</Link>
                         </a>
                       </li>
                       

@@ -10,7 +10,7 @@ import {default as potosi } from "./imagenes/potosi.png"
 import {default as oruro} from "./imagenes/oruro.png"
 import {default as tarija} from "./imagenes/tarija.png"
 import {default as lapaz } from "./imagenes/lp.png"
-
+import {default as RegisterPage} from '../../pages/RegisterPage.js'
 const ModalLugarContext = createContext()
 const cambia = (valor) => {
     // Aquí puedes hacer algo con el valor que recibes
@@ -39,7 +39,7 @@ const ModalLugar = ({children, isOpen, onClose}) => {
     return modalTransition( (styles,isOpen) => isOpen && (
         <animated.div style = {styles} className="react-modal-overlay" onClick={onClose}>
             <animated.div style={springs}className="react-modal-wrapper" onClick={e => e.stopPropagation()}>
-                <div className="react-modal-content">
+                <div className="react-modalLugar-content">
                     <ModalLugarContext.Provider value={{onClose}}>
                         {children}
                     </ModalLugarContext.Provider>
@@ -65,7 +65,7 @@ const DismissButton = ({ children, className}) => {
 const ModalLugarHeader = ({ children }) => {
     return (
         <div className="react-modal-header">
-            <div className="react-modal-title">{children}</div>
+            <div className="react-modalLugar-title">{children}</div>
             <DismissButton className="btn-closed">&times;</DismissButton>
         </div>
     )
@@ -77,7 +77,7 @@ const ModalLugarBody = ({children}) => {
         <div className="react-modal-body">
             {children}
             <div id="images">
-            <img
+            <img id="imagen"
                     src= {cbba}
                     width={150}
                     height={150}
@@ -87,7 +87,7 @@ const ModalLugarBody = ({children}) => {
                       }}
                 
             />
-            <img
+            <img    id="imagen"
                     src= {lapaz}
                     width={150}
                     height={150}
@@ -96,7 +96,7 @@ const ModalLugarBody = ({children}) => {
                         onClose();
                       }}
             />
-            <img
+            <img    id="imagen"
                     src= {sc}
                     width={150}
                     height={150}
@@ -105,7 +105,7 @@ const ModalLugarBody = ({children}) => {
                         onClose();
                       }}
             />
-            <img
+            <img    id="imagen"
                     src= {pando}
                     width={150}
                     height={150}
@@ -114,7 +114,7 @@ const ModalLugarBody = ({children}) => {
                         onClose();
                       }}
             />
-            <img
+            <img    id="imagen"
                     src= {beni}
                     width={150}
                     height={150}
@@ -123,7 +123,7 @@ const ModalLugarBody = ({children}) => {
                         onClose();
                       }}
             />
-            <img
+            <img    id="imagen"
                     src= {potosi}
                     width={150}
                     height={150}
@@ -132,7 +132,7 @@ const ModalLugarBody = ({children}) => {
                         onClose();
                       }}
             />
-            <img
+            <img    id="imagen"
                     src= {sucre}
                     width={150}
                     height={150}
@@ -141,7 +141,7 @@ const ModalLugarBody = ({children}) => {
                         onClose();
                       }}
             />
-            <img
+            <img    id="imagen"
                     src= {oruro}
                     width={150}
                     height={150}
@@ -150,7 +150,7 @@ const ModalLugarBody = ({children}) => {
                         onClose();
                       }}
             />
-            <img
+            <img    id="imagen"
                     src= {tarija}
                     width={150}
                     height={150}

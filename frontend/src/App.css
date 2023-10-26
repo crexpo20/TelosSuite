@@ -3,32 +3,13 @@
   padding: 0;
   box-sizing: border-box;
 }
-ul{
-  top:10%;
-  left: 2%;
-  background: #fff;
-  margin: 0;
-  margin-left: 3%;
-  border-radius: 10px;
-  display: flex;
-}
-ul li{
-  list-style: none;
-  text-align: center;
-  display: block;
-  border-right: 1px solid rgba(0, 0, 0, 0.2);
-}
 
 #arriba{
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 
-ul li a{
-  text-decoration: none;
-  padding: 0 25px;
-  display: block;
-}
+
 
 header{
   position: fixed;
@@ -202,13 +183,7 @@ form{
   margin-bottom: 10px; 
   
 }
-.error-message {
-  color: red; /* Cambia el color del texto a rojo */
-  font-size: 14px; /* Cambia el tamaño de fuente */
-  margin-bottom: -50px;
-  margin-left: 330px;
-  line-height: 1.2;
-}
+
 
 .Colum2 {
   margin-bottom: 10px; 
@@ -345,9 +320,8 @@ h4{
 
 /*division nav*/
 #buscador{
-  
-  padding-top: 0.5%;
-  padding-bottom: 0.5%;
+  padding-top: 10px;
+  padding-bottom: 10px;
   padding-left: 5%;
   width: 55%;
   display: flex;
@@ -382,7 +356,7 @@ h4{
   }
 #head{
   padding-top: 1%;
-  padding-bottom: 0.4%;
+  padding-bottom:5px;
   
   display: flex;
   height: 40%;
@@ -401,10 +375,14 @@ h4{
   font-size: 35px;
 }
 #head-der{
-    justify-content: end;
     width: 33%;
-    padding-left: 2%;
-    
+}
+
+#nav-menu{
+  text-align: right; /* Alinea el texto a la derecha */
+  white-space: nowrap; /* Evita el ajuste de línea automático */
+  overflow: hidden;
+  padding-right: 20px; 
 }
 #navDer{
   width: 85%;
@@ -511,35 +489,35 @@ button:hover {
   font-family: 'JejuMyeongjo';
 }
 
+
+.error-message {
+  color: red; /* Cambia el color del texto a rojo */
+  font-size: 14px; /* Cambia el tamaño de fuente */
+  line-height: 1.2;
+  padding-left: 10%;
+  
+}
+
 .RegistroUsuario{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color:#fcceee;
+  
+  background-color:#ffffff;
   border: 1px;
-  padding: 40px;
   border-radius: 20px;
-  text-align: center;
   max-width: 500px;
   font-family: 'JejuMyeongjo';
   font-style: normal;
   font-size: 20px;
+  display: flex; /* Cambia a "flex" en lugar de "table-cell" */
+  flex-direction: column;
 }
-.RegistroUsuario label{
+.RegistroUsuario #label-registro{
   float: left;
+  margin-right: 10px; 
 }
-h5{
-  font-family: 'JejuMyeongjo';
-  font-style: normal;
-  font-size: 12px;
-  text-align: justify;
-  line-height: 1;
-  color: #736f6f;
-}
+
 #body-registro{
   background: linear-gradient(rgb(248, 205, 234), rgb(255, 120, 199));
-  position: fixed;
+  display: flex;
   top: 0;
   width: 100%;
   height: 100%;

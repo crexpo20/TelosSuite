@@ -1,15 +1,7 @@
 import { useState } from "react";
 import ModalLugar from "./lugar";
 import "./lugarestilos.css"
-import {default as cbba } from "./imagenes/sucreModal.png"
-import {default as sc } from "./imagenes/sucreModal.png"
-import {default as sucre } from "./imagenes/sucreModal.png"
-import {default as pando } from "./imagenes/sucreModal.png"
-import {default as beni} from "./imagenes/sucreModal.png"
-import {default as potosi } from "./imagenes/sucreModal.png"
-import {default as oruro} from "./imagenes/sucreModal.png"
-import {default as tarija} from "./imagenes/sucreModal.png"
-import {default as lapaz } from "./imagenes/sucreModal.png"
+
  function LugarBoton(){
     const [openModal, setOpenModal] = useState(false)
     return(
