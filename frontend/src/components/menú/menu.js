@@ -2,6 +2,7 @@ import "./menuestilos.css"
 import { useEffect , useContext, createContext } from "react";
 import {useSpring, animated, useTransition} from "@react-spring/web";
 import React, { useState } from "react";
+import { Link, Outlet } from 'react-router-dom';
 import RegistroBoton from "../registro/botonRegistro";
 const ModalMenuContext = createContext()
 
@@ -70,7 +71,8 @@ const ModalMenuBody = ({ onValuesChange }) => {
         <div id="body-huespedes">
         <ul id="lista-menu">
                 <li id="menu-item">
-                    Modo anfitrion
+                <Link to='/cliente'>Modo Anfitrion</Link>
+
                 </li>
                 
               </ul>

@@ -9,15 +9,7 @@
     background-color: #ffffff;
 }
 
-h5{
-    font-family: 'JejuMyeongjo';
-    font-style: normal;
-    font-size: 12px;
-    text-align: justify;
-  
-    
-    color: #f89af3;
-  }
+
 .react-modal-overlay{
     position: fixed;
     top: 0;
@@ -44,6 +36,13 @@ h5{
     flex-direction: column;
 }
 
+#texto{
+    font-size: 12px;
+    max-width: auto;
+    line-height: 1.5;
+   
+   
+}
 .react-modal-header,
 .react-modal-body,
 .react-modal-footer{

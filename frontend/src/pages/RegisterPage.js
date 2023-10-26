@@ -135,9 +135,11 @@ class RegisterPage extends Component{
             <div className="error-message">{this.state.errors.phone}</div>
           </div>
           <br></br>
-          <h5>Al seleccionar Aceptar y continuar, acepto los Términos de servicio, los Términos de pago del servicio <br></br>
-            y la Política contra la discriminación de TelosSuite. También reconozco la Política de privacidad.</h5>
-            <br></br>
+          <div id='texto'>
+            Al seleccionar Aceptar y continuar, acepto los Términos de servicio, los Términos de pago del servicio <br></br>
+              y la Política contra la discriminación de TelosSuite. También reconozco la Política de privacidad.
+          </div>
+          <br></br>
           <button type="submit">Aceptar</button>
         </form>
       </div>
