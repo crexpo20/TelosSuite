@@ -5,6 +5,11 @@
     padding: 0;
     box-sizing: border-box;
 }
+#imagen:hover {
+    border-radius: 12px;
+    border: 2px solid #777474; /* Establece un borde de 2 píxeles de ancho de color negro cuando el puntero esté encima del div */
+  }
+  
 
 .react-modal-overlay{
     position: fixed;

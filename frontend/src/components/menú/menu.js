@@ -40,19 +40,22 @@ const DismissButton = ({ children, className}) => {
     return (
         <button type = "button"  className="btn-closed" onClick={onClose} >
             {children}
+            
+       
         </button>
       
     )
 }
 
 const ModalMenuHeader = ({ children }) => {
-    
+    const{onClose} = useContext(ModalMenuContext)
     return (
         <div className="react-modalMenu-header">
             <div className="react-modalMenu-title" style={{display:""}}>{children}</div>
               <ul id="lista-menu">
-                <li id="menu-item">
-                    <RegistroBoton/>
+                <li id="menu-item" >
+                   
+                <RegistroBoton/>
                 </li>
                 <li id="menu-item">
                     

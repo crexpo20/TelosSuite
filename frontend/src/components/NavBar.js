@@ -141,7 +141,6 @@ class Navbar extends Component{
                   <button className="filtro-button" onClick={this.toggleFilterPopup}>
                     <HiArrowsRightLeft /> Filtro
                   </button>   
-                  <ModalPrueba  />
                   
               </div>
            </div>

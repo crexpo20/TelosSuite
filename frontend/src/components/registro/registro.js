@@ -17,7 +17,7 @@ const ModalRegistro = ({children, isOpen, onClose}) => {
         enter: { opacity: 1},
         leave: {opacity: 1},
         config: {
-            duration:100
+            duration:400
         }
     })
     
@@ -25,7 +25,7 @@ const ModalRegistro = ({children, isOpen, onClose}) => {
         opacity: isOpen ? 1:0,
         transform: isOpen ? "translateY(0%)" : "translateY(-100%)",
         config: {
-            duration :100
+            duration: 400
         }
     })
     return modalTransition( (styles,isOpen) => isOpen && (

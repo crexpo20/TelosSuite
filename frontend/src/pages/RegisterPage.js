@@ -127,7 +127,7 @@ class RegisterPage extends Component{
           <div>
             <label id='label-registro'>Teléfono:</label>
             <input id='input-registro'
-              type="number"
+              type="text"
               name="phone"
               value={this.state.phone}
               onChange={this.handleInputChange}

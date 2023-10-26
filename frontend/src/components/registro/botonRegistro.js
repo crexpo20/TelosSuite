@@ -6,7 +6,7 @@ import "./registros.css"
     const [openModal, setOpenModal] = useState(false)
     return(
         <>
-         <button id="Registro" onClick={() => setOpenModal(!openModal)}>
+         <button id="Registro" onClick={() => setOpenModal(!openModal)} >
           Registrarse
         </button>
         <ModalRegistro isOpen={openModal} onClose={() => setOpenModal(false)}>

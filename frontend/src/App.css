@@ -513,6 +513,12 @@ button:hover {
 .RegistroUsuario #label-registro{
   float: left;
   margin-right: 10px; 
+  
+}
+.RegistroUsuario #input-registro{
+  border: none; /* Elimina el borde del input */
+  border-bottom: 1px solid #000; /* Agrega una línea de abajo con el color deseado */
+  outline: none;
 }
 
 #body-registro{

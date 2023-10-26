@@ -33,8 +33,8 @@ import {AiOutlineMenu} from 'react-icons/ai';
         
         
         <ModalMenu isOpen={openModal} onClose={() => setOpenModal(false)}>
-        <ModalMenu.Header></ModalMenu.Header>
-        <ModalMenu.Body onValuesChange={handleValuesChange}>
+        <ModalMenu.Header onClose={() => setOpenModal(false)}></ModalMenu.Header>
+        <ModalMenu.Body onClose={() => setOpenModal(false)} onValuesChange={handleValuesChange}>
         </ModalMenu.Body>
         <ModalMenu.Footer>
         </ModalMenu.Footer>
