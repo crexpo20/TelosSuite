@@ -3,32 +3,13 @@
   padding: 0;
   box-sizing: border-box;
 }
-ul{
-  top:10%;
-  left: 2%;
-  background: #fff;
-  margin: 0;
-  margin-left: 3%;
-  border-radius: 10px;
-  display: flex;
-}
-ul li{
-  list-style: none;
-  text-align: center;
-  display: block;
-  border-right: 1px solid rgba(0, 0, 0, 0.2);
-}
 
 #arriba{
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 
-ul li a{
-  text-decoration: none;
-  padding: 0 25px;
-  display: block;
-}
+
 
 header{
   position: fixed;
@@ -345,9 +326,8 @@ h4{
 
 /*division nav*/
 #buscador{
-  
-  padding-top: 0.5%;
-  padding-bottom: 0.5%;
+  padding-top: 10px;
+  padding-bottom: 10px;
   padding-left: 5%;
   width: 55%;
   display: flex;
@@ -382,7 +362,7 @@ h4{
   }
 #head{
   padding-top: 1%;
-  padding-bottom: 0.4%;
+  padding-bottom:5px;
   
   display: flex;
   height: 40%;
@@ -401,10 +381,14 @@ h4{
   font-size: 35px;
 }
 #head-der{
-    justify-content: end;
     width: 33%;
-    padding-left: 2%;
-    
+}
+
+#nav-menu{
+  text-align: right; /* Alinea el texto a la derecha */
+  white-space: nowrap; /* Evita el ajuste de línea automático */
+  overflow: hidden;
+  padding-right: 20px; 
 }
 #navDer{
   width: 85%;

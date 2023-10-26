@@ -23,9 +23,9 @@
     margin: 2rem auto;
 }
 
-.react-modal-content{
+.react-modalLugar-content{
     position: relative;
-    background-color: #fff;
+    background-color: #ffffff;
     border: 1px solid rgba(0,0,0,0.3)  ;
     border-radius: 1rem;
     display: flex;
@@ -42,14 +42,15 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid #dedede;
+    border-bottom: 1px solid #a32020;
 }
 
-.react-modal-title{
+.react-modalLugar-title{
     line-height: 1.5;
     font-size: 1.25rem;
+    border-radius: 16px;
+    background-color: #ffffff;
 }
-
 .btn-closed{
     border: none;
     font-size: 1rem;
@@ -68,4 +69,7 @@
     padding-top: 0.5%;
     padding-bottom: 0.5%;
     padding-left: 0;
+    white-space: nowrap; /* Evita que el texto se ajuste automáticamente a nuevas líneas */
+  overflow: hidden; /* Oculta cualquier contenido que se desborde del contenedor */
+  text-overflow: ellipsis; 
 }
