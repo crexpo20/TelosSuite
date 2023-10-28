@@ -1,82 +1,92 @@
 .price-filter-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'JejuMyeongjo';
-  }
-  
-  .price-filter-popup {
-    background-color: #F8E6F3;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    font-family: 'JejuMyeongjo';
-    position: relative;
-  }
-  
-  .price-filter-popup h2 {
-    margin-bottom: 10px;
-    color: #DA1467;
-    font-family: 'JejuMyeongjo';
-  }
-  
-  .price-inputs {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-  }
-  
-  .price-inputs label {
-    width: 30%;
-    text-align: right;
-    padding-right: 10px;
-  }
-  
-  .price-inputs input {
-    width: 65%;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    font-family: 'JejuMyeongjo';
-  }
-  .close-button {
-    position: absolute;
-    top: 10px; /* Ajusta la posición vertical según tus necesidades */
-    right: 10px; /* Ajusta la posición horizontal según tus necesidades */
-    background-color: transparent;
-    border: none;
-    font-size: 20px;
-    color: #DA1467;
-    cursor: pointer;
-  }
-  .close-button:hover {
-    color: #E8DAE1;
-  }
-  
-  button {
-    background-color: #ccc;
-    color: black;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 3px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #DA1467;
-  }
-  
-  .filtro-button {
-    background-color: #DA1467;
-    /* Color de fondo para el botón Filtro */
-    color: white;
-    font-family: 'JejuMyeongjo';
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'JejuMyeongjo';
+}
+
+.price-filter-popup {
+  background-color: #F8E6F3;
+  padding: 1.25rem;  /* 20px */
+  border: 1px solid #ccc;
+  border-radius: 0.3125rem;  /* 5px */
+  box-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.2);  /* 10px */
+  text-align: center;
+  font-family: 'JejuMyeongjo';
+  position: relative;
+}
+
+.price-filter-popup h2 {
+  margin-bottom: 0.625rem;  /* 10px */
+  color: #DA1467;
+  font-family: 'JejuMyeongjo';
+}
+
+.price-inputs {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;  /* 20px */
+}
+
+.price-inputs label {
+  width: 30%;
+  text-align: right;
+  padding-right: 0.625rem;  /* 10px */
+}
+
+.price-inputs input {
+  width: 65%;
+  padding: 0.3125rem;  /* 5px */
+  border: 1px solid #ccc;
+  border-radius: 0.1875rem;  /* 3px */
+  font-family: 'JejuMyeongjo';
+}
+.close-button {
+  position: absolute;
+  top: 0.625rem;  /* 10px */
+  right: 0.625rem;  /* 10px */
+  background-color: transparent;
+  border: none;
+  font-size: 1.25rem;  /* 20px */
+  color: #DA1467;
+  cursor: pointer;
+}
+.close-button:hover {
+  color: #E8DAE1;
+}
+
+button {
+  background-color: #ccc;
+  color: black;
+  border: none;
+  padding: 0.625rem 1.25rem;  /* 10px 20px */
+  border-radius: 0.1875rem;  /* 3px */
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #DA1467;
+}
+
+.filtro-button {
+  background-color: #DA1467;
+  color: white;
+  font-family: 'JejuMyeongjo';
+  height: 2.5rem; /* Ajusta este valor según necesites */
+  padding: 0.5rem 1rem; /* Ajusta el padding vertical para centrar el texto si es necesario */
+}
+
+.filtro-button:hover {
+  background-color: #E81D6F;
+}
+
+.filtro-button i { 
+  font-size: 1.125rem;  /* 18px */
+  margin-right: 0.3125rem;  /* 5px */
+}

@@ -41,6 +41,7 @@ function PriceFilter(props) {
           <button className="close-button" onClick={handleCloseClick}>
             X
           </button>
+          
           {/* Título del filtro */}
           <h2 className="jeju-font">Rango de Precios</h2>
           {/* Contenedor para los inputs de precio mínimo y máximo */}
