@@ -136,7 +136,7 @@ class RegisterPage extends Component{
           </div>
           <br></br>
           <div id='texto'>
-            Al seleccionar Aceptar y continuar, acepto los Términos de servicio, los Términos de pago del servicio <br></br>
+            Al seleccionar Aceptar y continuar, acepto los Términos de servicio, los Términos de pago del servicio
               y la Política contra la discriminación de TelosSuite. También reconozco la Política de privacidad.
           </div>
           <br></br>
