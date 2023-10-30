@@ -26,10 +26,17 @@ return new class extends Migration
             $table->integer('habitaciones');
             $table->integer('baños');
             $table->integer('camas');
-            $table->boolean('niños');
+            $table->integer('niños');
             $table->string('normas');
-            $table->boolean('mascotas');
+            $table->integer('mascotas');
             $table->string('qr');
+            $table->string('ciudad');
+            $table->integer('wifi');
+            $table->integer('parqueo');
+            $table->integer('cocina');
+            $table->integer('refrigerador');
+            $table->integer('lavaropa');
+            $table->integer('piscina');
             $table->timestamps();
         });
     }
