@@ -60,10 +60,7 @@ class RegisterInmue extends Component {
       this.setState(
         (prevState) => ({
           currentSlide: prevState.currentSlide + 1,
-        }),
-        () => {
-          console.log("Valores de formData:", this.state.formData);
-        }
+        })
       );
     }
   };
@@ -106,6 +103,55 @@ class RegisterInmue extends Component {
     });
   };
 
+
+  onSubmit = async () => {
+      // Crear un objeto con los datos del formulario
+      const lugar = {
+         idanfitrion :3,
+         tipopropiedad :this.state.formData.tipopropiedad,
+         tituloanuncio :this.state.formData.tituloanuncio,
+         descripcion :this.state.formData.descripcion,
+         ubicacion :"NOHAY",
+         precio :this.state.formData.precio,
+         capacidad :  this.state.formData.capacidad,
+         habitaciones :this.state.formData.habitaciones,
+         baños :this.state.formData.banos,
+         camas :this.state.formData.camas,
+         niños :this.state.formData.niños,
+         normas :this.state.formData.normas,
+         mascotas :this.state.formData.mascotas,
+         qr :"n hay",
+         ciudad: this.state.formData.cuidad,
+        wifi: this.state.formData.wifi,
+        parqueo: this.state.formData.parqueo,
+        cocina: this.state.formData.cocina,
+        refrigerador: this.state.formData.refrigerador,
+        lavaropa: this.state.formData.lavaropa,
+        piscina: this.state.formData.piscina,
+      };
+      const postProducto = async (url, lugar) => {
+        const response = await fetch(url, {
+                      
+          method: 'POST',
+          body: JSON.stringify(lugar),
+          headers: {
+                'Content-Type': 'application/json',
+          }
+          
+          
+        });
+        return response;
+      }
+      
+      const respuestaJson = await postProducto( "http://127.0.0.1:8000/api/postinmuebles", lugar);
+
+      console.log("Response:------> " + respuestaJson.status);
+      // Mostrar el objeto por consola
+      console.log('Datos de registro:', lugar);
+    
+  };
+  
+
   render() {
     const currentSlide = this.state.currentSlide;
     const { formData, propertyTypes, options, cities } = this.state;
@@ -132,6 +178,7 @@ class RegisterInmue extends Component {
                       value={property.type}
                       checked={formData.tipopropiedad === property.type}
                       onChange={() => this.handlePropertyTypeChange(property.type)}
+                       style={{ display: 'none' }}
                     />
                   </label>
                 ))}
@@ -153,6 +200,7 @@ class RegisterInmue extends Component {
                       name={option.key}
                       checked={formData[option.key] === 1}
                       onChange={() => this.handleOptionChange(option.key)}
+                      style={{ display: 'none' }}
                     />
                   </label>
                 ))}
@@ -257,6 +305,7 @@ class RegisterInmue extends Component {
                       value={city}
                       checked={formData.cuidad === city}
                       onChange={() => this.handleCityChange(city)}
+                      style={{ display: 'none' }}
                     />
                   </label>
                 ))}
@@ -276,6 +325,7 @@ class RegisterInmue extends Component {
                     name="wifi"
                     checked={formData.wifi === 1}
                     onChange={() => this.handleOptionChange('wifi')}
+                    style={{ display: 'none' }}
                   />
                 </label>
                 <label
@@ -289,6 +339,7 @@ class RegisterInmue extends Component {
                     name="parqueo"
                     checked={formData.parqueo === 1}
                     onChange={() => this.handleOptionChange('parqueo')}
+                    style={{ display: 'none' }}
                   />
                 </label>
                 <label
@@ -302,6 +353,7 @@ class RegisterInmue extends Component {
                     name="cocina"
                     checked={formData.cocina === 1}
                     onChange={() => this.handleOptionChange('cocina')}
+                    style={{ display: 'none' }}
                   />
                 </label>
                 <label
@@ -315,6 +367,7 @@ class RegisterInmue extends Component {
                     name="refrigerador"
                     checked={formData.refrigerador === 1}
                     onChange={() => this.handleOptionChange('refrigerador')}
+                    style={{ display: 'none' }}
                   />
                 </label>
                 <label
@@ -328,6 +381,7 @@ class RegisterInmue extends Component {
                     name="lavaropa"
                     checked={formData.lavaropa === 1}
                     onChange={() => this.handleOptionChange('lavaropa')}
+                    style={{ display: 'none' }}
                   />
                 </label>
                 <label
@@ -341,6 +395,7 @@ class RegisterInmue extends Component {
                     name="piscina"
                     checked={formData.piscina === 1}
                     onChange={() => this.handleOptionChange('piscina')}
+                    style={{ display: 'none' }}
                   />
                 </label>
               </div>
@@ -380,6 +435,11 @@ class RegisterInmue extends Component {
           {currentSlide < 8 && (
             <button className="next-button" onClick={this.handleNextSlide}>
               Siguiente
+            </button>
+          )}
+           {currentSlide === 8 && (
+             <button type="submit" onClick={this.onSubmit}>
+              Finalizar
             </button>
           )}
           
