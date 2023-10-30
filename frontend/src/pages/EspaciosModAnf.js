@@ -3,9 +3,67 @@ import {Link, Outlet } from 'react-router-dom';
 import { sitios } from '../sitios';
 import iconoEliminar from '../iconos/iconoEliminar.png';
 class EspaciosModAnf extends Component{
+  state = {
+    sitios: [], 
+    modalAbierto: false,
+    sitioSeleccionado: null,
+  };
+  eliminarSitio = (sitio) => {
+    // Filtra la lista de sitios para excluir el sitio que se va a eliminar
+    const nuevosSitios = this.state.sitios.filter((s) => s.id !== sitio.id);
+    // Actualiza el estado para reflejar la lista sin el sitio eliminado
+    this.setState({
+      sitios: nuevosSitios,
+      modalAbierto: false, // Cierra el modal después de eliminar
+      sitioSeleccionado: null, // Limpia el sitio seleccionado
+    });
+  };
+
   handleEliminarClick = (sitio) => {
-    // Lógica para eliminar el sitio
-  }
+    this.setState({ sitioSeleccionado: sitio, modalAbierto: true });
+  };
+
+  confirmarEliminacion = () => {
+    const sitioSeleccionado = this.state.sitioSeleccionado;
+    if (sitioSeleccionado) {
+      this.eliminarSitio(sitioSeleccionado);
+    }
+  };
+
+  confirmarElimi = () => {
+    this.setState({ modalAbierto: false });
+  };
+
+  //RUTAS
+
+         /*const onSubmit = async (e)=>{
+          e.preventDefault();
+          const newInmueble={
+            idinmueble: this.state.idinmueble,
+            tipopropiedad: this.state.tipopropiedad,
+            tituloanuncio: this.state.tituloanuncio,
+            descripcion: this.state.descripcion,
+            ubicacion: this.state.ubicacion,
+            precio: this.state.precio,
+            capacidad: this.state.capacidad,
+            habitaciones: this.state.habitaciones,
+            baños: this.state.baños,
+            camas: this.state.camas,
+            niños: this.state.niños,
+            normas: this.state.normas,
+            mascotas: this.state.mascotas,
+            qr: this.state.qr,
+          }
+          
+          try {
+            await Axios.post('/postinmuebles', newInmueble);
+            // Cualquier código que deba ejecutarse después de que la solicitud POST sea exitosa puede ir aquí.
+          } catch (error) {
+            // Maneja los errores aquí
+            console.error(error);
+          }
+        } */
+  
     render(){
         
         return(
@@ -40,7 +98,7 @@ class EspaciosModAnf extends Component{
                     )
 
                     }
-                        {/* Modal de confirmación */}
+                        {/* Modal de confirmación para el BOTON ELIMINAR */}
                             {this.state.modalAbierto && (
                             <div className="modalEliminar">
                                 <div className="modal-contenido">
@@ -60,21 +118,6 @@ class EspaciosModAnf extends Component{
           
         );
       }
-      state = {
-        modalAbierto: false,
-        sitioSeleccionado: null,
-      };
-    
-      handleEliminarClick = (sitio) => {
-        this.setState({ sitioSeleccionado: sitio, modalAbierto: true });
-      };
-    
-      confirmarEliminacion = () => {
-        this.setState({ modalAbierto: false });
-      };
-
-      confirmarElimi = () => {
-        this.setState({ modalAbierto: false });
-      };
+      
   }
   export default EspaciosModAnf;
