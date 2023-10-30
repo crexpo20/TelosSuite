@@ -13,7 +13,7 @@ use App\Http\Controllers\servicioController;
 
 //RUTAS PARA INGRESAR, MODIFICAR, ELIMINAR ANFITRION DESDE FORMULARIO
 Route::get('/getanfitrion', [anfitrionController::class,'index']);
-Route::post('/postanfitrion', [anfitrionsController::class,'store']);
+Route::post('/postanfitrion', [anfitrionController::class,'store']);
 Route::delete('/delanfitrion/{idanfitrion}', [anfitrionsController::class,'destroy']);
 Route::put('/putanfitrion/{idanfitrion}', [anfitrionsController::class,'update']);
 
@@ -27,9 +27,9 @@ Route::put('/puthuesped/{idhuesped}', [huespedController::class,'update']);
 
 //RUTAS PARA INGRESAR, MODIFICAR, ELIMINAR INMUEBLE DESDE FORMULAR
 
-Route::get('/getinmuebles', [inmuebleController::class,'index']);
-Route::post('/postinmuebles',  [inmuebleController::class,'create']);
-Route::delete('/delinmuebles/{id}',  [inmuebleController::class,'destroy']);
+Route::get('/getinmuebles',[inmuebleController::class,'index']);
+Route::post('/postinmuebles',[inmuebleController::class,'store']);
+Route::delete('/delinmuebles/{id}',[inmuebleController::class,'destroy']);
 Route::put('/putinmuebles/{id}',  [inmuebleController::class,'update']);
 
 
