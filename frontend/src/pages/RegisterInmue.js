@@ -1,318 +1,389 @@
 import React, { Component } from 'react';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import casaImage from '../iconos/casa.png';
-import habitacionImage from '../iconos/habitacion.png';
-import departamentoImage from '../iconos/departamento.png';
-import cabanaImage from '../iconos/cabana.png';
-import wifiImage from '../iconos/wifi.png';
-import privadoImage from '../iconos/privado.png';
-import compartidoImage from '../iconos/compartido.png';
-import aireconImage from '../iconos/aireacon.png';
-import batidoraImage from '../iconos/batidora.png';
-import billarImage from '../iconos/billar.png';
-import camaraImage from '../iconos/camara.png';
-import cocinaImage from '../iconos/cocina.png';
-import desayunoImage from '../iconos/desyuno.png';
-import DetectorhumoImage from '../iconos/Detectorhumo.png';
-import gymImage from '../iconos/gym.png';
-import jacuzziImage from '../iconos/jacuzzi.png';
-import lavavajillaImage from '../iconos/lavavajilla.png';
-import licuadoraImage from '../iconos/licuadora.png';
-import llaveImage from '../iconos/llave.png';
-import mascotaImage from '../iconos/mascota.png';
-import microondasImage from '../iconos/microondas.png';
-import niñoImage from '../iconos/niño.png';
-import parqueoImage from '../iconos/parqueo.png';
-import parrillaImage from '../iconos/parrilla.png';
-import piscinaImage from '../iconos/piscina.png';
-import refrigeradorImage from '../iconos/refrigerador.png';
-import terrazaImage from '../iconos/terraza.png';
-import tvImage from '../iconos/tv.png';
-import vigilanciaImage from '../iconos/vigilancia.png';
-
-import chimeneaImage from '../iconos/chimenea.png';
-import ciudadImage from '../iconos/CIUDAD.png';
-
-
+import { BsHouse } from 'react-icons/bs';
+import { MdApartment } from 'react-icons/md';
+import "./css/carrusel.css";
 
 class RegisterInmue extends Component {
   constructor(props) {
     super(props);
-
-    // Define las preguntas y opciones para cada parte del carrusel
-    this.slides = [
-      {
-        question: 'Ingrese el nombre del Inmueble',
-        inputType: 'text', // Campo de entrada de texto
-      },
-      {
-        question: '¿Cuál de estas opciones describe mejor tu espacio?',
-        options: [
-          { value: 'Casa', imageSrc: casaImage },
-          { value: 'Habitación', imageSrc: habitacionImage },
-          { value: 'Departamento', imageSrc: departamentoImage },
-          { value: 'Cabaña', imageSrc: cabanaImage },
-        ],
-        selectedOption: null,
-      },
-      {
-        question: '¿Qué tipo de alojamiento ofreces?',
-        options: [
-          { value: 'Privado', imageSrc: privadoImage },
-          { value: 'Compartido', imageSrc: compartidoImage },
-        ],
-        selectedOption: null,
-      },
-      {
-        question: 'Especificaciones básicas sobre el espacio y el precio',
-        fields: [
-          { label: 'Número de Habitaciones', inputType: 'number' },
-          { label: 'Número de Camas', inputType: 'number' },
-          { label: 'Número de Baños', inputType: 'number' },
-          { label: 'Número de Huéspedes', inputType: 'number' },
-        ],
-      },
-      {
-        question: '¿Tu inmueble permite ...... ?',
-        options: [
-          { value: 'Niños', imageSrc: niñoImage },
-          { value: 'Mascotas', imageSrc: mascotaImage },
-        ],
-        selectedOption: null,
-      },
-      {
-        question: 'Servicios',
-        options: [
-          { value: 'Piscina', imageSrc: piscinaImage },
-          { value: 'Wifi', imageSrc: wifiImage },
-          { value: 'Desayuno', imageSrc: desayunoImage },
-          { value: 'Estacionamiento', imageSrc: parqueoImage },
-          { value: 'TV', imageSrc:tvImage },
-          { value: 'Aire Acondicionado', imageSrc: aireconImage },
-        ],
-        selectedOption: null,
-      },
-      {
-        question: 'Servicios Destacados',
-        options: [
-          { value: 'Jacuzzi', imageSrc: jacuzziImage },
-          { value: 'Parrilero', imageSrc: parrillaImage },
-          { value: 'Terraza', imageSrc: terrazaImage },
-          { value: 'Chimenea Interior', imageSrc: chimeneaImage },
-          { value: 'Equipo de gym', imageSrc: gymImage },
-          { value: 'Mesa Billar', imageSrc: billarImage },
-        ],
-        selectedOption: null,
-      },
-      {
-        question: '¿Qué electrodomésticos ofreces?',
-        options: [
-          { value: 'Licuadora', imageSrc: licuadoraImage },
-          { value: 'Refrigerador', imageSrc: refrigeradorImage },
-          { value: 'Lavavajillas', imageSrc: lavavajillaImage },
-          { value: 'Batidora', imageSrc: batidoraImage },
-          { value: 'Cocina', imageSrc: cocinaImage },
-          { value: 'Microondas', imageSrc: microondasImage },
-        ],
-        selectedOption: null,
-      },
-      {
-        question: '¿Cuentas con alguno de estos elementos de seguridad?',
-        options: [
-          { value: 'Cámara de Seguridad', imageSrc: camaraImage },
-          { value: 'Llaves Electrónicas', imageSrc: llaveImage },
-          { value: 'Vigilancia 24 horas', imageSrc: vigilanciaImage },
-          { value: 'Detector de Humo', imageSrc: DetectorhumoImage },
-        ],
-        selectedOption: null,
-      },
-      {
-        question: 'Ingrese la ubicación exacta',
-        fields: [
-          { label: 'Link de Ubicación', inputType: 'text' },
-          { label: 'Dirección', inputType: 'text' },
-        ],
-      },
-      {
-        question: '¿En qué departamento se encuentra el inmueble ?',
-        options: [
-          { value: 'Cochabamba', imageSrc: ciudadImage },
-          { value: 'La Paz' , imageSrc: ciudadImage},
-          { value:'Santa Cruz' , imageSrc: ciudadImage},
-          {value: 'Sucre' , imageSrc: ciudadImage},
-          { value: 'Pando' , imageSrc: ciudadImage},
-          { value: 'Tarija', imageSrc: ciudadImage },
-          { value: 'Oruro' , imageSrc: ciudadImage},
-          { value: 'Potosi', imageSrc: ciudadImage },
-          { value: 'Beni' , imageSrc: ciudadImage},
-        ],
-        selectedOption: null,
-      },
-      {
-        question: 'Ingresar imágenes',
-        inputType: 'file',
-        uploadedImages: [
-          { image: null, description: '' }, // Objeto para la primera imagen
-        ],
-      },
-      {
-        question: 'Ingrese una breve descripción que sea atractiva para los huéspedes',
-        inputType: 'text', // Campo de entrada de texto
-      },
-      {
-        question: 'Ingrese el precio',
-        inputType: 'number', // Tipo de entrada para ingresar el precio (number para números)
-        pattern: '^[0-9,$]*$',
-      },
-      {
-        question: 'Creemos que los métodos de pago deben ser simples pero confiables, ingresa una imagen QR para que los huéspedes puedan verla',
-        inputType: 'file', // Campo de entrada de tipo archivo para la imagen
-        uploadedImage: null, // Imagen seleccionada
-      },
-      {
-        question: '¡Eso es todo! Ahora espera a que lleguen las solicitudes...',
-        button: {
-          text: 'Ir al inicio',
-        },
-      },
-    ];
-
     this.state = {
       currentSlide: 0,
-      dynamicInputs: [], 
+      formData: {
+        idanfitrion: 0,
+        tipopropiedad: '',
+        tituloanuncio: '',
+        descripcion: '',
+        ubicacion: '',
+        precio: 0,
+        capacidad: 0,
+        habitaciones: 0,
+        banos: 0,
+        camas: 0,
+        niños: 0,
+        normas: '',
+        mascotas: 0,
+        qr: '',
+        cuidad: '',
+        wifi: 0,
+        parqueo: 0,
+        cocina: 0,
+        refrigerador: 0,
+        lavaropa: 0,
+        piscina: 0,
+      },
+      propertyTypes: [
+        { type: 'Casa', icon: <BsHouse /> },
+        { type: 'Habitación', icon: <MdApartment /> },
+        { type: 'Departamento', icon: <MdApartment /> },
+        { type: 'Cabaña', icon: <MdApartment /> },
+      ],
+      options: [
+        { key: 'niños', label: 'Niños', icon: <BsHouse />, value: 0 },
+        { key: 'mascotas', label: 'Mascotas', icon: <MdApartment />, value: 0 },
+      ],
+      cities: [
+        'Cochabamba',
+        'Santa Cruz',
+        'La Paz',
+        'Oruro',
+        'Potosí',
+        'Sucre',
+        'Tarija',
+        'Beni',
+        'Pando',
+      ],
     };
   }
 
-  handleOptionSelect = (optionIndex) => {
-    const { currentSlide } = this.state;
-    const updatedSlides = [...this.slides];
-    updatedSlides[currentSlide].selectedOption = optionIndex;
-
-    if (currentSlide < this.slides.length - 1) {
-      this.slider.slickNext();
-      this.setState({ currentSlide: currentSlide + 1, slides: updatedSlides });
+  handleNextSlide = () => {
+    if (this.state.currentSlide < 14) {
+      this.setState(
+        (prevState) => ({
+          currentSlide: prevState.currentSlide + 1,
+        }),
+        () => {
+          console.log("Valores de formData:", this.state.formData);
+        }
+      );
     }
   };
 
-  handleInputChange = (event) => {
-    const { currentSlide } = this.state;
-    const inputValue = event.target.value;
-    const updatedSlides = [...this.slides];
-    updatedSlides[currentSlide].inputValue = inputValue;
-    this.setState({ slides: updatedSlides });
-  };
-
-  handleImageUpload = (event) => {
-    const { currentSlide } = this.state;
-    const image = event.target.files[0];
-
-    if (image) {
-      const uploadedImages = [...this.slides[currentSlide].uploadedImages];
-      uploadedImages[0] = { image, description: uploadedImages[0].description };
-      const updatedSlides = [...this.slides];
-      updatedSlides[currentSlide] = {
-        ...updatedSlides[currentSlide],
-        uploadedImages,
-      };
-
-      this.setState({
-        uploadedImage: image,
-        slides: updatedSlides,
-      });
+  handlePrevSlide = () => {
+    if (this.state.currentSlide > 0) {
+      this.setState((prevState) => ({
+        currentSlide: prevState.currentSlide - 1,
+      }));
     }
   };
 
-  handleDescriptionChange = (event, index) => {
-    const { uploadedImages } = this.state;
-    uploadedImages[index].description = event.target.value;
-    this.setState({ uploadedImages });
+  handlePropertyTypeChange = (type) => {
+    this.setState((prevState) => {
+      const formData = { ...prevState.formData, tipopropiedad: type };
+      return { formData };
+    });
   };
 
-  handleButtonClick = () => {
-    // Redirigir al usuario a la ruta especificada
-    const { route } = this.slides[this.slides.length - 1].button;
-    window.location.href = route;
+  handleInputChange = (field, value) => {
+    this.setState((prevState) => {
+      const formData = { ...prevState.formData };
+      formData[field] = value;
+      return { formData };
+    });
+  };
+
+  handleOptionChange = (key) => {
+    this.setState((prevState) => {
+      const formData = { ...prevState.formData };
+      formData[key] = formData[key] === 0 ? 1 : 0;
+      return { formData };
+    });
+  };
+
+  handleCityChange = (city) => {
+    this.setState((prevState) => {
+      const formData = { ...prevState.formData, cuidad: city };
+      return { formData };
+    });
   };
 
   render() {
-    const { currentSlide } = this.state;
-    const settings = {
-      dots: true,
-      infinite: false,
-      speed: 500,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      ref: (slider) => (this.slider = slider),
-    };
+    const currentSlide = this.state.currentSlide;
+    const { formData, propertyTypes, options, cities } = this.state;
 
     return (
       <div className="carousel-container">
-        <Slider {...settings}>
-          {this.slides.map((slide, index) => (
-            <div key={index}>
-              <div className="carousel-question">
-                <h5>{slide.question}</h5>
-                <div className="question-content">
-                  {slide.options ? (
-                    slide.options.map((option, optionIndex) => (
-                      <button
-                        key={optionIndex}
-                        className={`custom-button ${
-                          slide.selectedOption === optionIndex ? 'active' : ''
-                        }`}
-                        onClick={() => this.handleOptionSelect(optionIndex)}
-                      >
-                        <img src={option.imageSrc} alt={option.value} className="iconos" />
-                        {option.value}
-                      </button>
-                    ))
-                  ) : (
-                    <>
-                      {slide.fields ? (
-                        slide.fields.map((field, fieldIndex) => (
-                          <div key={fieldIndex} className="field-container">
-                            <label className="custom-label">{field.label}</label>
-                            <input
-                              type={field.inputType}
-                              value={slide.inputValue} // Ajusta el valor correcto si es necesario
-                              onChange={this.handleInputChange}
-                              placeholder={field.label}
-                              className="custom-input"
-                            />
-                          </div>
-                        ))
-                      ) : (
-                        <>
-                          {slide.inputType === 'file' ? (
-                            <div className="file-input-container">
-                              
-                              <input type="file" onChange={this.handleImageUpload} className="custom-file-input" />
-                            </div>
-                          ) : (
-                            <input
-                              type={slide.inputType}
-                              value={slide.inputValue}
-                              onChange={this.handleInputChange}
-                              placeholder={slide.question}
-                            />
-                          )}
-                        </>
-                      )}
-                    </>
-                  )}
-                </div>
+        <div className="carousel-slide">
+          <div className="slide">
+            
+            {currentSlide === 0 && (
+              <div className="property-type-selection">
+                <h3>Escoge el tipo de propiedad:</h3>
+                {propertyTypes.map((property, index) => (
+                  <label
+                    key={index}
+                    className={`property-type-label ${
+                      formData.tipopropiedad === property.type ? 'selected' : ''
+                    }`}
+                  >
+                    {property.icon} {property.type}
+                    <input
+                      type="radio"
+                      name="propertyType"
+                      value={property.type}
+                      checked={formData.tipopropiedad === property.type}
+                      onChange={() => this.handlePropertyTypeChange(property.type)}
+                    />
+                  </label>
+                ))}
               </div>
-            </div>
-          ))}
-        </Slider>
-
-        {currentSlide === this.slides.length - 1 && (
-          <button onClick={this.handleButtonClick}>
-            {this.slides[currentSlide].button.text}
-          </button>
-        )}
+            )}
+            {currentSlide === 1 && (
+              <div className="property-options">
+                <h3>Tu inmueble permite:</h3>
+                {options.map((option, index) => (
+                  <label
+                    key={index}
+                    className={`property-options-label ${
+                      formData[option.key] === 1 ? 'selected' : ''
+                    }`}
+                  >
+                    {option.icon} {option.label}
+                    <input
+                      type="checkbox"
+                      name={option.key}
+                      checked={formData[option.key] === 1}
+                      onChange={() => this.handleOptionChange(option.key)}
+                    />
+                  </label>
+                ))}
+              </div>
+            )}
+            {currentSlide === 2 && (
+              <div className="property-info">
+                <h3>Información básica sobre tu inmueble:</h3>
+                <label>
+                  Capacidad:
+                  <input
+                    type="number"
+                    name="capacidad"
+                    value={formData.capacidad}
+                    onChange={(e) =>
+                      this.handleInputChange("capacidad", e.target.value)
+                    }
+                  />
+                </label>
+                <label>
+                  Habitaciones:
+                  <input
+                    type="number"
+                    name="habitaciones"
+                    value={formData.habitaciones}
+                    onChange={(e) =>
+                      this.handleInputChange("habitaciones", e.target.value)
+                    }
+                  />
+                </label>
+                <label>
+                  Baños:
+                  <input
+                    type="number"
+                    name="banos"
+                    value={formData.banos}
+                    onChange={(e) =>
+                      this.handleInputChange("banos", e.target.value)
+                    }
+                  />
+                </label>
+                <label>
+                  Camas:
+                  <input
+                    type="number"
+                    name="camas"
+                    value={formData.camas}
+                    onChange={(e) =>
+                      this.handleInputChange("camas", e.target.value)
+                    }
+                  />
+                </label>
+              </div>
+            )}
+            {currentSlide === 3 && (
+              <div className="property-title-description">
+                <h3>Ingresa un título para tu anuncio:</h3>
+                <input
+                  type="text"
+                  name="tituloanuncio"
+                  value={formData.tituloanuncio}
+                  onChange={(e) =>
+                    this.handleInputChange("tituloanuncio", e.target.value)
+                  }
+                />
+                <h3>Ingresa una breve descripción sobre tu inmueble:</h3>
+                <textarea
+                  name="descripcion"
+                  value={formData.descripcion}
+                  onChange={(e) =>
+                    this.handleInputChange("descripcion", e.target.value)
+                  }
+                />
+              </div>
+            )}
+            {currentSlide === 4 && (
+              <div className="property-rules">
+                <h3>Por favor, ingresa las normas para tu inmueble:</h3>
+                <textarea
+                  name="normas"
+                  value={formData.normas}
+                  onChange={(e) =>
+                    this.handleInputChange("normas", e.target.value)
+                  }
+                />
+              </div>
+            )}
+            {currentSlide === 5 && (
+              <div className="property-location">
+                <h3>En qué ciudad se encuentra tu inmueble:</h3>
+                {cities.map((city, index) => (
+                  <label
+                    key={index}
+                    className={`property-type-label ${
+                      formData.cuidad === city ? 'selected' : ''
+                    }`}
+                  >
+                    {city}
+                    <input
+                      type="radio"
+                      name="city"
+                      value={city}
+                      checked={formData.cuidad === city}
+                      onChange={() => this.handleCityChange(city)}
+                    />
+                  </label>
+                ))}
+              </div>
+            )}
+            {currentSlide === 6 && (
+              <div className="property-services">
+                <h3>Servicios adicionales:</h3>
+                <label
+                  className={`property-options-label ${
+                    formData.wifi === 1 ? 'selected' : ''
+                  }`}
+                >
+                  <MdApartment /> Wifi
+                  <input
+                    type="checkbox"
+                    name="wifi"
+                    checked={formData.wifi === 1}
+                    onChange={() => this.handleOptionChange('wifi')}
+                  />
+                </label>
+                <label
+                  className={`property-options-label ${
+                    formData.parqueo === 1 ? 'selected' : ''
+                  }`}
+                >
+                  <MdApartment /> Parqueo
+                  <input
+                    type="checkbox"
+                    name="parqueo"
+                    checked={formData.parqueo === 1}
+                    onChange={() => this.handleOptionChange('parqueo')}
+                  />
+                </label>
+                <label
+                  className={`property-options-label ${
+                    formData.cocina === 1 ? 'selected' : ''
+                  }`}
+                >
+                  <MdApartment /> Cocina
+                  <input
+                    type="checkbox"
+                    name="cocina"
+                    checked={formData.cocina === 1}
+                    onChange={() => this.handleOptionChange('cocina')}
+                  />
+                </label>
+                <label
+                  className={`property-options-label ${
+                    formData.refrigerador === 1 ? 'selected' : ''
+                  }`}
+                >
+                  <MdApartment /> Refrigerador
+                  <input
+                    type="checkbox"
+                    name="refrigerador"
+                    checked={formData.refrigerador === 1}
+                    onChange={() => this.handleOptionChange('refrigerador')}
+                  />
+                </label>
+                <label
+                  className={`property-options-label ${
+                    formData.lavaropa === 1 ? 'selected' : ''
+                  }`}
+                >
+                  <MdApartment /> Lavaropa
+                  <input
+                    type="checkbox"
+                    name="lavaropa"
+                    checked={formData.lavaropa === 1}
+                    onChange={() => this.handleOptionChange('lavaropa')}
+                  />
+                </label>
+                <label
+                  className={`property-options-label ${
+                    formData.piscina === 1 ? 'selected' : ''
+                  }`}
+                >
+                  <MdApartment /> Piscina
+                  <input
+                    type="checkbox"
+                    name="piscina"
+                    checked={formData.piscina === 1}
+                    onChange={() => this.handleOptionChange('piscina')}
+                  />
+                </label>
+              </div>
+            )}
+            {currentSlide === 7 && (
+              <div className="property-price">
+                <h3>Es momento de poner un precio a tu inmueble:</h3>
+                <label>
+                  Precio:
+                  <input
+                    type="number"
+                    name="precio"
+                    value={formData.precio}
+                    onChange={(e) =>
+                      this.handleInputChange("precio", e.target.value)
+                    }
+                  />
+                </label>
+              </div>
+            )}
+            {currentSlide === 8 && (
+              <div className="property-done">
+                <h3>
+                  Eso es todo por ahora, tu inmueble ya es visible para los
+                  posibles huéspedes!
+                </h3>
+              </div>
+            )}
+          </div>
+        </div>
+        <div className="button-container-fixed">
+          {currentSlide > 0 && (
+            <button className="prev-button" onClick={this.handlePrevSlide}>
+              Anterior
+            </button>
+          )}
+          {currentSlide < 8 && (
+            <button className="next-button" onClick={this.handleNextSlide}>
+              Siguiente
+            </button>
+          )}
+          
+        </div>
       </div>
     );
   }

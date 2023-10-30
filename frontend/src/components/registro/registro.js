@@ -2,7 +2,7 @@ import "./registros.css"
 import { useEffect , useContext, createContext } from "react";
 import {useSpring, animated, useTransition} from "@react-spring/web";
 import RegisterPage from "../../pages/RegisterPage";
-
+import { AiOutlineCloseCircle } from 'react-icons/ai';
 const ModalRegistroContext = createContext()
 const cambia = (valor) => {
     // Aquí puedes hacer algo con el valor que recibes
@@ -58,7 +58,7 @@ const ModalRegistroHeader = ({ children }) => {
     return (
         <div className="react-modal-header">
             <div className="react-modalRegistro-title">{children} Inicia sesión o regístrate</div>
-            <DismissButton className="btn-closed">&times;</DismissButton>
+            <DismissButton className="btn-closed"><AiOutlineCloseCircle /></DismissButton>
         </div>
     )
 }

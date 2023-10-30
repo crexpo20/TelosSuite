@@ -1,0 +1,51 @@
+.carousel-slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Alinea los elementos al final y los separa */
+    height: 60vh; /* Asegura que el slide ocupe todo el espacio vertical */
+    
+    padding: 20px; /* Agrega espacio entre el contenido y los bordes del slide */
+  }
+  
+  .next-button {
+    align-self: flex-end; /* Alinea el botón al final del slide (derecha) */
+  }
+
+  .icon-option-label.selected {
+    border: 2px solid #007bff; /* Color del borde al seleccionar */
+    padding: 5px; /* Espacio interno para resaltar el borde */
+    border-radius: 5px; /* Bordes redondeados para resaltar */
+  }
+  
+  /* Estilos para el label no seleccionado */
+  .icon-option-label {
+    border: 1px solid #ccc; /* Color del borde predeterminado */
+    padding: 4px; /* Espacio interno predeterminado */
+    border-radius: 4px; /* Bordes redondeados predeterminados */
+    margin: 5px; /* Márgenes para separar los labels */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse para indicar que es interactivo */
+  }
+
+  .property-type-label.selected {
+    border: 2px solid black;
+  }
+
+
+
+  .property-options {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  
+  
+  .option-label.selected {
+    border-color: black; /* Cambiar el color del borde cuando está seleccionado */
+  }
+  
+  .property-options-label.selected {
+    border: 1px solid black; /* Agregar un borde negro */
+    background-color: black; /* Cambiar el fondo a negro */
+    color: white; /* Cambiar el color del texto a blanco */
+  }

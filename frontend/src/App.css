@@ -354,6 +354,25 @@ h4{
   padding-top: 10px;
   color: rgba(13, 10, 11, 0.85);
   }
+
+  #TS {
+    font-family: 'JejuMyeongjo';
+  
+  font-size: 30px;
+  padding-top: 3px;
+  color: rgba(13, 10, 11, 0.85);
+    display: none; /* Asegúrate de que el elemento "TS" esté oculto por defecto */
+  }
+  
+  @media (max-width: 768px) {
+    #TelosSuite {
+      display: none; /* Oculta el elemento de texto "TelosSuite" cuando la pantalla se minimiza a la mitad o menos */
+    }
+  
+    #TS {
+      display: block; /* Muestra el elemento "TS" cuando la pantalla se minimiza a la mitad o menos */
+    }
+  }
 #head{
   padding-top: 1%;
   padding-bottom:5px;

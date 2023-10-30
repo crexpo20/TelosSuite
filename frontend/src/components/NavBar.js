@@ -62,6 +62,7 @@ class Navbar extends Component{
                     
                   <div id = 'logoL'>
                   <a id="TelosSuite">TelosSuite</a>
+                  <a id="TS">TS</a>
                   </div>
                   
                     

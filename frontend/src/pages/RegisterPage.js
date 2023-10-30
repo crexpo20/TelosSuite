@@ -10,12 +10,14 @@ class RegisterPage extends Component{
       lastName: '',
       email: '',
       phone: '',
+      pass: '',
       errors: {
         username: '',
         firstName: '',
         lastName: '',
         email: '',
         phone: '',
+        pass: ''
       },
     };
   }
@@ -26,13 +28,14 @@ class RegisterPage extends Component{
   }
 
   validateForm = () => {
-    const { username, firstName, lastName, email, phone } = this.state;
+    const { username, firstName, lastName, email, phone , pass} = this.state;
     const errors = {
       username: '',
       firstName: '',
       lastName: '',
       email: '',
       phone: '',
+      pass:'',
     };
 
     let valid = true;
@@ -61,7 +64,11 @@ class RegisterPage extends Component{
       errors.phone = 'Teléfono no válido.';
       valid = false;
     }
-
+    
+    if (pass.trim() === '') {
+      errors.pass = 'El campo contraseña es obligatorio.';
+      valid = false;
+    }
     this.setState({ errors });
 
     return valid;
@@ -73,6 +80,38 @@ class RegisterPage extends Component{
     if (this.validateForm()) {
       // Si la validación es exitosa, realiza la acción de envío, por ejemplo, enviando datos al servidor.
       console.log('Datos de registro:', this.state);
+    }
+  };
+  onSubmit = async () => {
+    if (this.validateForm()) {
+      // Crear un objeto con los datos del formulario
+      const usuario = {
+        username: this.state.username,
+        nombre: this.state.firstName,
+        apellido: this.state.lastName,
+        correo: this.state.email,
+        telefono: this.state.phone,
+        contraseña: this.state.pass,
+      };
+      const postProducto = async (url, usuario) => {
+        const response = await fetch(url, {
+                      
+          method: 'POST',
+          body: JSON.stringify(usuario),
+          headers: {
+                'Content-Type': 'application/json',
+          }
+          
+          
+        });
+        return response;
+      }
+      
+      const respuestaJson = await postProducto( "http://127.0.0.1:8000/api/posthuesped", usuario);
+
+      console.log("Response:------> " + respuestaJson.status);
+      // Mostrar el objeto por consola
+      console.log('Datos de registro:', usuario);
     }
   };
   render(){
@@ -127,12 +166,22 @@ class RegisterPage extends Component{
           <div>
             <label id='label-registro'>Teléfono:</label>
             <input id='input-registro'
-              type="text"
+              type="number"
               name="phone"
               value={this.state.phone}
               onChange={this.handleInputChange}
             />
-            <div className="error-message">{this.state.errors.phone}</div>
+            <div className="error-message">{this.state.errors.pass}</div>
+          </div>
+          <div>
+            <label id='label-registro'>Contraseña</label>
+            <input id='input-registro'
+              type="text"
+              name="pass"
+              value={this.state.pass}
+              onChange={this.handleInputChange}
+            />
+            <div className="error-message">{this.state.errors.pass}</div>
           </div>
           <br></br>
           <div id='texto'>
@@ -140,7 +189,7 @@ class RegisterPage extends Component{
               y la Política contra la discriminación de TelosSuite. También reconozco la Política de privacidad.
           </div>
           <br></br>
-          <button type="submit">Aceptar</button>
+          <button type="submit" onClick={this.onSubmit}>Aceptar</button>
         </form>
       </div>
        </>
