@@ -199,15 +199,34 @@ label{
   border-radius: 350px;
 }
 .BotonesInf button {
-  margin: 0 10px; /* Agregar margen horizontal para separar los botones */
+  margin: 0 10px; 
 }
 .BotonCancelar{
   position: relative;
-  border-radius: 350px;
+  background-color: #ccc;
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-family: 'JejuMyeongjo';
+  font-style: normal;
+  font-size: 14px;
+}
+.BotonCancelar:hover {
+  background-color: #DA1467;
 }
 .guardarcambios{
-  position: relative;
-  border-radius: 350px;
+  font-family: 'JejuMyeongjo';
+  font-style: normal;
+  font-size: 14px;
+}
+.error_message {
+  color: red; 
+  font-size: 14px; 
+  margin-bottom: -50px;
+  margin-left: 330px;
+  line-height: 1.2; 
 }
 
 .infInmueble{
