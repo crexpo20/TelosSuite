@@ -3,21 +3,46 @@ import { Link, Outlet } from 'react-router-dom';
 import { sitios } from '../sitios';
 import '../CSS/cards.css';
 import { inmuebles } from '../components/inmuebles';
-
+import axios from "axios";
 class HomePage extends Component {
+  constructor(props){
+    super(props);
+    this.state={
+      inmueble:[]
+    }
+    this.getProductos = this.getProductos.bind(this);
+    
+}
+ 
+componentDidMount(){
+  this.getProductos();
+ 
+}
+
+getProductos=async()=>{
+  await axios.get('http://127.0.0.1:8000/api/getinmuebles')
+  .then(res=>{
+      this.setState({inmueble: res.data});
+      console.log(this.state.inmueble)
+  }).catch((error)=>{
+      console.log(error);
+  });
+}
+
   render() {
     return (
       <>
         <body>
           <div className="verinm">
-            {inmuebles.map((sitio, index) => {
+            {this.state.inmueble.map((sitio, index) => {
               if (
                 localStorage.getItem("mascotas") === "0" &&
                 localStorage.getItem("niños") === "0" &&
                 localStorage.getItem("huespedes") === "1" &&
                 localStorage.getItem("tipo") === "cualquiera" &&
-                localStorage.getItem("destino") === "Cualquier Lugar"
-              ) {
+                localStorage.getItem("destino") === "Beni" &&
+                localStorage.getItem("tipo")==="cualquiera"
+                ){
                 return (
                   <div className="InmueblesHost" key={sitio.id}>
                     <img
@@ -27,12 +52,14 @@ class HomePage extends Component {
                     />
                     <h3 className="inmueble_name">{sitio.tituloanuncio}</h3>
                     <div className="inmueble_info">
-                      <p className="inmDet">{sitio.descripcion}</p>
+                      <p className="inmDet">{sitio.ciudad}</p>
                       <p className="inmCamas">{sitio.camas}</p>
                       <p className="inmPrecio">{sitio.precio}</p>
                     </div>
                   </div>
                 );
+              }else{
+
               }
               return null;
             })}

@@ -2,13 +2,44 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between; /* Alinea los elementos al final y los separa */
-    height: 60vh; /* Asegura que el slide ocupe todo el espacio vertical */
+    height: 55vh; /* Asegura que el slide ocupe todo el espacio vertical */
     
     padding: 20px; /* Agrega espacio entre el contenido y los bordes del slide */
   }
+
+  .button-container{
+    position: relative; /* Importante para posicionar el botón dentro del contenedor */
+ 
+  }
   
-  .next-button {
-    align-self: flex-end; /* Alinea el botón al final del slide (derecha) */
+  .next {
+    position: absolute;
+    bottom: 10px; /* Ajusta la distancia desde la parte inferior según tus necesidades */
+    right: 10px; /* Ajusta la distancia desde la parte derecha según tus necesidades */
+    padding: 10px 20px;
+    background:none;
+    color:  #DA1467;
+    font-size: 40px;
+  }
+
+  .prev{
+    background:none;
+    color:  #DA1467;
+   font-size: 40px;
+   position: absolute;
+    bottom: 10px; /* Ajusta la distancia desde la parte inferior según tus necesidades */
+    left: 10px; /* Ajusta la distancia desde la parte derecha según tus necesidades */
+    padding: 10px 20px;
+    color:  #DA1467;
+    font-size: 40px;
+  }
+
+  .prev:hover{
+    background-color: unset;
+  }
+
+  .next:hover{
+    background-color: unset;
   }
 
   .icon-option-label.selected {
@@ -27,25 +58,114 @@
   }
 
   .property-type-label.selected {
-    border: 2px solid black;
+    border: 2px solid #DA1467;
+    border-radius: 6px;
   }
-
-
-
-  .property-options {
+  .property-type-label{
     display: flex;
+    font-size: 30px;
+    color: #DA1467;
+    font-family: 'JejuMyeongjo'
+  }
+  
+   
+  .property-options {
+   
     flex-direction: column;
     align-items: flex-start;
+    font-family: 'JejuMyeongjo';
+    color: #DA1467;
+    font-size: 30vh;
+
   }
   
+  h3{
+    color: #DA1467;
+    text-align: center;
+    font-size: 35px;
+    font-family: 'JejuMyeongjo';
   
-  
+  }
   .option-label.selected {
-    border-color: black; /* Cambiar el color del borde cuando está seleccionado */
-  }
+    border: 2px solid #DA1467;
+    border-radius: 6px;  }
   
   .property-options-label.selected {
-    border: 1px solid black; /* Agregar un borde negro */
-    background-color: black; /* Cambiar el fondo a negro */
-    color: white; /* Cambiar el color del texto a blanco */
+    border: 2px solid #DA1467;
+    border-radius: 6px;
+}
+
+.property-options-label{
+    display: flex;
+    margin-bottom: 10%;
+    align-items: flex-start;
+    font-family: 'JejuMyeongjo';
+    color: #DA1467;
+    font-size: 35px;
+    
+}
+#label-precio{
+    display: inline-block;
+    
+}
+#precioA{
+    font-family: 'JejuMyeongjo';
+    border: none;
+    font-size: 25vh;
+    width: 100%;
+   
+    display: flex;
+}
+#precioA:focus {
+    outline: none;
+  }
+
+
+  #precioA[type="number"]::-webkit-inner-spin-button,
+  #precioA[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0; /* Opcional: puedes ajustar el espaciado según tus preferencias */
+  }
+
+  #titulo h3{
+    text-align: center;
+  }
+  #cuerpo{
+    display: flex;
+    
+  }
+  #cuerpo-izq{
+    
+    width: 50%;
+    padding-top: 10%;
+   
+  }
+  #cuerpo-der{
+    padding-top: 10%;
+    
+    width: 50%;
+  }
+  .property-options-labelniños{
+    background-color: #007bff;
+  }
+
+  
+  .fin{
+    position: absolute;
+    bottom: 10px; 
+      right: 10px;
+        padding: 10px 20px;
+    color:  #DA1467;
+    font-size: 25px;
+  }
+  
+  .property-type-selection {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .property-type-label {
+    flex: 1 1 calc(50% - 10px); 
+     margin: 5px;
+     margin-top:10% ; 
   }

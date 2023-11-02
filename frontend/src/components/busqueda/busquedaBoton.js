@@ -1,6 +1,6 @@
 import { useState } from "react";
-import ModalCuantos from "./cuantos";
- function CuantosBoton(){
+import ModalBusqueda from "./busqueda.js";
+ function BusquedaBoton(){
 
     const [openModal, setOpenModal] = useState(false)
     let huespedes;
@@ -19,13 +19,12 @@ import ModalCuantos from "./cuantos";
         }
       }
 
-      const handleValuesChange = (adultos, infantes, mascotas,tipo) => {
+      const handleValuesChange = (adultos, infantes, mascotas) => {
         // Aquí puedes hacer lo que necesites con los valores
-        console.log("Valores cambiados: adultos:", adultos, "infantes:", infantes, "mascotas:", mascotas, "tipo", tipo);
+        console.log("Valores cambiados: adultos:", adultos, "infantes:", infantes, "mascotas:", mascotas);
         localStorage.setItem("huespedes",adultos)
         localStorage.setItem("niños", infantes)
         localStorage.setItem("mascotas",mascotas)
-        localStorage.setItem("tipo", tipo)
       };
    
     return(
@@ -33,15 +32,15 @@ import ModalCuantos from "./cuantos";
          <button  id="Lugar" onClick={() => setOpenModal(!openModal)}>
           {cambiar()}
         </button>
-        <ModalCuantos isOpen={openModal} onClose={() => setOpenModal(false)}>
-        <ModalCuantos.Header> Elije la cantidad de huespedes </ModalCuantos.Header>
-        <ModalCuantos.Body onValuesChange={handleValuesChange}>
-        </ModalCuantos.Body>
-        <ModalCuantos.Footer>
-        </ModalCuantos.Footer>
-        </ModalCuantos>
+        <ModalBusqueda isOpen={openModal} onClose={() => setOpenModal(false)}>
+        <ModalBusqueda.Header> Elije la cantidad de huespedes </ModalBusqueda.Header>
+        <ModalBusqueda.Body onValuesChange={handleValuesChange}>
+        </ModalBusqueda.Body>
+        <ModalBusqueda.Footer>
+        </ModalBusqueda.Footer>
+        </ModalBusqueda>
         </>
     )
  }
 
- export default CuantosBoton;
+ export default BusquedaBoton;

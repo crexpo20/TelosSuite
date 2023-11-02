@@ -1,10 +1,10 @@
-import "./modalhuespedes.css"
+import "./busqueda.css"
 import { useEffect , useContext, createContext } from "react";
 import {useSpring, animated, useTransition} from "@react-spring/web";
 import React, { useState } from "react";
-const ModalCuantosContext = createContext()
+const ModalBusquedaContext = createContext()
 
-const ModalCuantos = ({children, isOpen, onClose}) => {
+const ModalBusqueda = ({children, isOpen, onClose}) => {
      
    
     const modalTransition = useTransition(isOpen, {
@@ -27,9 +27,9 @@ const ModalCuantos = ({children, isOpen, onClose}) => {
         <animated.div style = {styles} className="react-modal-overlay" onClick={onClose}>
             <animated.div style={springs}className="react-modal-wrapperH" onClick={e => e.stopPropagation()}>
                 <div className="react-modal-content">
-                    <ModalCuantosContext.Provider value={{onClose}}>
+                    <ModalBusquedaContext.Provider value={{onClose}}>
                         {children}
-                    </ModalCuantosContext.Provider>
+                    </ModalBusquedaContext.Provider>
                    
                 </div>
             </animated.div>
@@ -40,7 +40,7 @@ const ModalCuantos = ({children, isOpen, onClose}) => {
 
 const DismissButton = ({ children, className}) => {
     
-    const{onClose} = useContext(ModalCuantosContext)
+    const{onClose} = useContext(ModalBusquedaContext)
     return (
         <button type = "button"  className="btn-closed" onClick={onClose} >
             {children}
@@ -49,7 +49,7 @@ const DismissButton = ({ children, className}) => {
     )
 }
 
-const ModalCuantosHeader = ({ children }) => {
+const ModalBusquedaHeader = ({ children }) => {
     
     return (
         <div className="react-modal-header">
@@ -60,12 +60,11 @@ const ModalCuantosHeader = ({ children }) => {
 }
 
 
-const ModalCuantosBody = ({ onValuesChange }) => {
-    const{onClose} = useContext(ModalCuantosContext)
+const ModalBusquedaBody = ({ onValuesChange }) => {
+    const{onClose} = useContext(ModalBusquedaContext)
     const [adultos, setAdultos] = useState(localStorage.getItem("huespedes") || "");
     const [infantes, setInfantes] = useState(localStorage.getItem("niños") || "");
     const [mascotas, setMascotas] = useState(localStorage.getItem("mascotas") || "");
-    const [tipo, setTipo] = useState(localStorage.getItem("tipo") || "");
   
     const handleAdultosChange = (event) => {
       const newValue = event.target.value;
@@ -84,16 +83,10 @@ const ModalCuantosBody = ({ onValuesChange }) => {
       setMascotas(newValue);
       console.log("Nuevo valor de mascotas:", newValue);
     };
-
-    const handleTipoChange = (event) => {
-      const newValue = event.target.value;
-      setTipo(newValue);
-      console.log("Nuevo valor de tipo:", newValue);
-    };
   
     const handleButtonClick = () => {
       // Llamar a la función onValuesChange y pasar los valores
-      onValuesChange(adultos, infantes, mascotas,tipo);
+      onValuesChange(adultos, infantes, mascotas);
     };
   
     return (
@@ -138,25 +131,13 @@ const ModalCuantosBody = ({ onValuesChange }) => {
               onChange={handleMascotasChange}
             />
           </div>
-          <div id="huesped-lista">
-            <a id="huesped-a"> tipo: </a>
-            <input
-              type="text"
-              placeholder={localStorage.getItem("tipo")}
-              id="tentacles"
-              name="tentacles"
-              
-              value={tipo}
-              onChange={handleTipoChange}
-            />
-          </div>
         </div>
         <button type = "button" onClick={()=>{handleButtonClick();onClose()}}>Aceptar</button>
       </div>
     );
   };
 
-const ModalCuantosFooter = ({children}) => {
+const ModalBusquedaFooter = ({children}) => {
     return(
         <div className="react-modal-footer">
             {children}
@@ -165,8 +146,8 @@ const ModalCuantosFooter = ({children}) => {
     )
 }
 
-ModalCuantos.Header = ModalCuantosHeader
-ModalCuantos.Body = ModalCuantosBody
-ModalCuantos.Footer = ModalCuantosFooter
-ModalCuantos.DismissButton = DismissButton
-export default ModalCuantos;
+ModalBusqueda.Header = ModalBusquedaHeader
+ModalBusqueda.Body = ModalBusquedaBody
+ModalBusqueda.Footer = ModalBusquedaFooter
+ModalBusqueda.DismissButton = DismissButton
+export default ModalBusqueda;
