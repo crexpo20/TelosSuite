@@ -511,8 +511,8 @@ button:hover {
 
 
 .error-message {
-  color: red; /* Cambia el color del texto a rojo */
-  font-size: 14px; /* Cambia el tamaño de fuente */
+  color: red; 
+  font-size: 14px; 
   line-height: 1.2;
   padding-left: 10%;
   
@@ -522,17 +522,17 @@ button:hover {
   
   background-color:#ffffff;
   border: 1px;
-  border-radius: 20px;
+  border-radius: 10px;
   max-width: 500px;
   font-family: 'JejuMyeongjo';
   font-style: normal;
   font-size: 20px;
-  display: flex; /* Cambia a "flex" en lugar de "table-cell" */
+  display: flex; 
   flex-direction: column;
 }
 .RegistroUsuario #label-registro{
   float: left;
-  margin-right: 10px; 
+  margin-right: 5px; 
   
 }
 .RegistroUsuario #input-registro{
@@ -550,6 +550,56 @@ button:hover {
 
 }
 
+.react-modalRegistro-content{
+  background-Color: #E8DAE1;
+}
+
+.registrocss input{
+  background-Color: #E8DAE1;
+}
+
+.registrocss label{
+  background-Color: #E8DAE1;
+  color: #DA1467;
+}
+.botonRegistro{
+  text-align: right;
+}
+.aceptar-button {
+  background-color: #DA1467;
+  border: 2px solid #DA1467;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px 2px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-right: 10px;
+}
+.aceptar-button:hover {
+  background-color:#b6004c; 
+}
+.facebook-button, .google-button {
+  background-color: white;
+  border: 2px solid #DA1467;
+  color: #DA1467;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px 2px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-right: 10px;
+}
+
+.facebook-button:hover, .google-button:hover {
+  background-color: #f5e9ee; 
+}
 
 /*----------select lugares-----------*/
 

@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import {RiHomeSmileLine} from "react-icons/ri"
 import { Link, Outlet } from 'react-router-dom';
+import FacebookLogin from '@greatsumini/react-facebook-login';
+import GoogleLogin from '@leecheuk/react-google-login';
+
 class RegisterPage extends Component{
   constructor(props) {
     super(props);
@@ -19,6 +22,10 @@ class RegisterPage extends Component{
         phone: '',
         pass: ''
       },
+      appId: '716745760340158', 
+      autoLoad: false,
+      fields: 'name,email,picture',
+      googleClienteId:'251068267756-o37go0l5ogvpcpfeiaetkbjgrt89bab8.apps.googleusercontent.com',
     };
   }
 
@@ -39,6 +46,26 @@ class RegisterPage extends Component{
     };
 
     let valid = true;
+    
+    // Validación para el NOMBRE
+    const specialCharactersRegex = /[!@#$%^&*()_+{}\[\]:-;<>,.?~\\|/]/;
+    if (specialCharactersRegex.test(firstName)) {
+      errors.firstName = 'No se admiten caracteres especiales en el nombre.';
+      valid = false;
+    }
+
+    // Validación para el APELLIDO
+    if (specialCharactersRegex.test(lastName)) {
+      errors.lastName = 'No se admiten caracteres especiales en el apellido.';
+      valid = false;
+    }
+
+    // Validación para el TELEFONO
+    const phoneRegex = /^[67]\d{7}$/;
+    if (!phoneRegex.test(phone)) {
+      errors.phone = 'Teléfono no válido. Debe tener 8 dígitos y comenzar con 6 o 7.';
+      valid = false;
+    }
 
     if (username.trim() === '') {
       errors.username = 'El campo username es obligatorio.';
@@ -60,8 +87,13 @@ class RegisterPage extends Component{
       valid = false;
     }
 
-    if (!/^[0-9]+$/.test(phone)) {
-      errors.phone = 'Teléfono no válido.';
+    if (email.trim() === '') {
+      errors.email = 'El campo correo electrónico es obligatorio.';
+      valid = false;
+    }
+
+    if (phone.trim() === '') {
+      errors.phone = 'El campo teléfono es obligatorio.';
       valid = false;
     }
     
@@ -114,18 +146,52 @@ class RegisterPage extends Component{
       console.log('Datos de registro:', usuario);
     }
   };
+
+      // MÉTODOS PARA LOS BOTONES DE INICIO DE SESION CON FACEBOOK Y GOOGLE
+      //FACEBOOK
+      handleFacebookResponse = (response) => {
+        if (response.status === 'connected') {
+          console.log('Usuario de Facebook:', response);
+        } else {
+          console.log('Inicio de sesión de Facebook cancelado o error.');
+        }
+      };
+
+      handleFacebookLogin = () => {
+        this.setState({
+          autoLoad: true,
+          errors: {  // Restablece los errores a un estado inicial o vacío
+            username: '',
+            firstName: '',
+            lastName: '',
+            email: '',
+            phone: '',
+            pass: ''
+          }
+        });
+      };
+
+      //GOOGLE
+      handleGoogleResponse = (response) => {
+        if (response.profileObj) {
+          console.log('Usuario de Google:', response.profileObj);
+        } else {
+          console.log('Inicio de sesión de Google cancelado o error.');
+        }
+      };
+
   render(){
      
       
       return(
         
        <>
-        <div class='RegistroUsuario'>
+        <div class='RegistroUsuario' style={{ overflowY: 'auto', overflowX: 'hidden', maxHeight: '600px', backgroundColor: '#E8DAE1'}}>
         
-        <form  class="RegistroUsuario"onSubmit={this.handleSubmit}>
-          <div id='elemento-registro'>
+        <form  class="RegistroUsuario" onSubmit={this.handleSubmit} style={{backgroundColor: '#E8DAE1'}}>
+          <div id='elemento-registro' className='registrocss' style={{backgroundColor: '#E8DAE1'}}>
             <label id='label-registro'>Username:</label>
-            <input id='input-registro'
+            <input id='input-registro' 
               type="text"
               name="username"
               value={this.state.username}
@@ -133,9 +199,9 @@ class RegisterPage extends Component{
             />
             <div className="error-message">{this.state.errors.username}</div>
           </div>
-          <div>
+          <div className='registrocss'>
             <label id='label-registro'>Nombre:</label>
-            <input id='input-registro'
+            <input id='input-registro' className='inputR'
               type="text"
               name="firstName"
               value={this.state.firstName}
@@ -143,9 +209,9 @@ class RegisterPage extends Component{
             />
              <div className="error-message">{this.state.errors.firstName}</div>
           </div>
-          <div>
+          <div className='registrocss'>
             <label id='label-registro'>Apellido:</label>
-            <input id='input-registro'
+            <input id='input-registro' className='inputR'
               type="text"
               name="lastName"
               value={this.state.lastName}
@@ -153,9 +219,9 @@ class RegisterPage extends Component{
             />
              <div className="error-message">{this.state.errors.lastName}</div>
           </div>
-          <div>
+          <div className='registrocss'>
             <label id='label-registro'>Correo electrónico:</label>
-            <input id='input-registro'
+            <input id='input-registro' className='inputR'
               type="email"
               name="email"
               value={this.state.email}
@@ -163,19 +229,19 @@ class RegisterPage extends Component{
             />
             <div className="error-message">{this.state.errors.email}</div>
           </div>
-          <div>
+          <div className='registrocss'>
             <label id='label-registro'>Teléfono:</label>
-            <input id='input-registro'
+            <input id='input-registro' className='inputR'
               type="number"
               name="phone"
               value={this.state.phone}
               onChange={this.handleInputChange}
             />
-            <div className="error-message">{this.state.errors.pass}</div>
+            <div className="error-message">{this.state.errors.phone}</div>
           </div>
-          <div>
-            <label id='label-registro'>Contraseña</label>
-            <input id='input-registro'
+          <div className='registrocss'>
+            <label id='label-registro'>Contraseña:</label>
+            <input id='input-registro' className='inputR'
               type="text"
               name="pass"
               value={this.state.pass}
@@ -189,7 +255,33 @@ class RegisterPage extends Component{
               y la Política contra la discriminación de TelosSuite. También reconozco la Política de privacidad.
           </div>
           <br></br>
-          <button type="submit" onClick={this.onSubmit}>Aceptar</button>
+          <div className='botonRegistro'>
+          <button type="submit" onClick={this.onSubmit} className='aceptar-button' style={{ width: '410px' }}>Aceptar y Continuar</button>
+          <p>------------------------------------o-------------------------------------</p>
+          <FacebookLogin
+            appId={this.state.appId}
+            autoLoad={this.state.autoLoad}
+            fields={this.state.fields}
+            callback={this.handleFacebookResponse}
+            render={(renderProps) => (
+              <button onClick={renderProps.onClick} className="facebook-button" style={{ width: '410px' }}>
+                Continúa con Facebook
+              </button>
+            )}
+          />
+          <br></br>
+            <GoogleLogin
+            clientId={this.state.googleClientId}
+            onSuccess={this.handleGoogleResponse}
+            onFailure={this.handleGoogleResponse}
+            cookiePolicy={'single_host_origin'}
+            render={(renderProps) => (
+              <button onClick={renderProps.onClick} className="google-button" style={{ width: '410px' }}>
+                Continúa con Google
+              </button>
+            )}
+            />
+          </div>
         </form>
       </div>
        </>
