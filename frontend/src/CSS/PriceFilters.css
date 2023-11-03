@@ -1,6 +1,6 @@
 .price-filter-popup { 
   background-color: #ffffff;
-  padding: 1.25rem;  /* 20px */
+  padding: 2rem;  /* 20px */
   border: 1px solid #ccc;
   border-radius: 1rem;  /* 5px */
   box-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.2);  /* 10px */
@@ -51,8 +51,8 @@
 }
 
 .price-filter-popup h2 {
-  margin-top: 0;
-  margin-bottom: 0.625rem;  /* 10px */
+  margin-top: 1rem;
+  margin-bottom: 1rem;  /* 10px */
   color: #DA1467;
   font-family: 'JejuMyeongjo';
 }
@@ -84,6 +84,8 @@
   border: none;
   padding: 0.625rem 1.25rem;  /* 10px 20px */
   cursor: pointer;
+  
+  
 }
 
 .submit-button:hover {
@@ -107,3 +109,52 @@
   font-size: 1.125rem;  /* 18px */
   margin-right: 0.3125rem;  /* 5px */
 }
+
+
+.price-filter-container {
+  padding: 20px;
+}
+
+.filter-section h2 {
+  font-size: 24px;
+  margin-bottom: 2.5rem;
+}
+
+.selector-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 1rem;
+}
+
+.selector-button {
+  background-color: #e6e6e6;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  color: #333;
+  font-size: 16px;
+  margin-right: 10px;  /* Añade espacio a la derecha de cada botón */
+    margin-bottom: 10px; /* Añade espacio debajo de cada botón */
+}
+
+.selector-button:hover {
+  background-color: #d1d1d1;
+}
+
+.selector-button.selected {
+  background-color: #000;
+  color: #fff;
+}
+label {
+  display: block;  /* Hace que el label se muestre como un bloque para ocupar toda la línea */
+  margin-bottom: 1.5rem;  /* Agrega espacio debajo */
+}
+

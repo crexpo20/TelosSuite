@@ -9,6 +9,10 @@ function PriceFilter(props) {
   const [minPrice, setMinPrice] = useState('');
   const [maxPrice, setMaxPrice] = useState('');
   const [showFilter, setShowFilter] = useState(true);
+  // Estados para manejar las selecciones de habitaciones, camas y baños
+  const [selectedRoom, setSelectedRoom] = useState('Cualquiera');
+  const [selectedBed, setSelectedBed] = useState('Cualquiera');
+  const [selectedBath, setSelectedBath] = useState('Cualquiera');
 
   // Efecto para cargar los precios guardados en el localStorage cuando el componente se monta
   useEffect(() => {
@@ -42,52 +46,103 @@ function PriceFilter(props) {
     // Por ejemplo: props.updateResults(minPrice, maxPrice)
     setShowFilter(false);
   };
+  // Funciones para manejar las selecciones de habitaciones, camas y baños
+  const handleRoomSelection = (room) => {
+    setSelectedRoom(room);
+  };
+
+  const handleBedSelection = (bed) => {
+    setSelectedBed(bed);
+  };
+
+  const handleBathSelection = (bath) => {
+    setSelectedBath(bath);
+  };
 
   // Renderizado condicional: Si showFilter es true, muestra el filtro de precios
   return (
     showFilter && (
       <div className="price-filter-container">
-        <div className="price-filter-popup">
+        <div className="price-filter-popup" style={{ overflowY: 'auto', maxHeight: '500px' }}>
           <div className="filter-header">
             <span className="filter-title">Filtro</span>
-            {/* Botón para cerrar el filtro de precios */}
             <button className="close-button" onClick={handleCloseClick}>
               <AiOutlineCloseCircle />
             </button>
           </div>
           <div className="line"></div>
           <h2>Rango de Precios</h2>
-          {/* Formulario para ingresar los precios mínimo y máximo */}
-          <form onSubmit={handleSubmit}>
-            <div className="price-inputs">
-              <div className="input-group">
-                <label htmlFor="minPrice">Mínimo:</label>
-                <input
-                  type="number"
-                  id="minPrice"
-                  value={minPrice}
-                  onChange={handleMinPriceChange}
-                  placeholder="Precio mínimo"
-                />
-              </div>
-              <div className="input-group">
-                <label htmlFor="maxPrice">Máximo:</label>
-                <input
-                  type="number"
-                  id="maxPrice"
-                  value={maxPrice}
-                  onChange={handleMaxPriceChange}
-                  placeholder="Precio máximo"
-                />
-              </div>
+          <div className="price-inputs">
+            <div className="input-group">
+              <label htmlFor="minPrice">Mínimo:</label>
+              <input
+                type="number"
+                id="minPrice"
+                value={minPrice}
+                onChange={handleMinPriceChange}
+                placeholder="Precio mínimo"
+              />
             </div>
+            <div className="input-group">
+              <label htmlFor="maxPrice">Máximo:</label>
+              <input
+                type="number"
+                id="maxPrice"
+                value={maxPrice}
+                onChange={handleMaxPriceChange}
+                placeholder="Precio máximo"
+              />
+            </div>
+          </div>
+          
+          <h2>Habitaciones y camas</h2>
+          <label>Habitaciones</label>
+          <div className="selector-group">
+            {['Cualquiera', '1', '2', '3', '4', '5', '6', '7', '8+'].map((room) => (
+              <button
+                key={room}
+                className={`selector-button ${selectedRoom === room ? 'selected' : ''}`}
+                onClick={() => handleRoomSelection(room)}
+              >
+                {room}
+              </button>
+            ))}
+          </div>
+  
+          <label>Camas</label>
+          <div className="selector-group">
+            {['Cualquiera', '1', '2', '3', '4', '5', '6', '7', '8+'].map((bed) => (
+              <button
+                key={bed}
+                className={`selector-button ${selectedBed === bed ? 'selected' : ''}`}
+                onClick={() => handleBedSelection(bed)}
+              >
+                {bed}
+              </button>
+            ))}
+          </div>
+  
+          <label>Baños</label>
+          <div className="selector-group">
+            {['Cualquiera', '1', '2', '3', '4', '5', '6', '7', '8+'].map((bath) => (
+              <button
+                key={bath}
+                className={`selector-button ${selectedBath === bath ? 'selected' : ''}`}
+                onClick={() => handleBathSelection(bath)}
+              >
+                {bath}
+              </button>
+            ))}
+          </div>
+
+          <form onSubmit={handleSubmit}>
             <button type="submit" className="submit-button">Aceptar</button>
           </form>
         </div>
       </div>
     )
-  );
-}
+);
 
+   }
 // Exportando el componente para poder usarlo en otros archivos
 export default PriceFilter;
