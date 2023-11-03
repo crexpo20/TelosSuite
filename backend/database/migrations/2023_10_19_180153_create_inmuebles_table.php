@@ -37,6 +37,10 @@ return new class extends Migration
             $table->integer('refrigerador');
             $table->integer('lavaropa');
             $table->integer('piscina');
+            $table->integer('privado');
+            $table->integer('compartido');
+            $table->integer('estado');
+            $table->integer('contacto');
             $table->timestamps();
         });
     }
