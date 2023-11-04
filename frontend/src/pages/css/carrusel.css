@@ -78,7 +78,16 @@
     font-size: 30vh;
 
   }
-  
+  .property-options #cuerpo{
+   
+    padding-top: 18%;
+
+  }
+  .property-options-label{
+  }
+  #borde{
+    padding-left: 50%;
+  }
   h3{
     color: #DA1467;
     text-align: center;

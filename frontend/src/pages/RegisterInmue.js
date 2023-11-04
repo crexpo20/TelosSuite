@@ -81,6 +81,19 @@ class RegisterInmue extends Component {
     }
   };
 
+  handleOptionPChange = (key) => {
+    this.setState((prevState) => {
+      const formData = { ...prevState.formData };
+      if (key === "compartido") {
+        formData.compartido = 1;
+        formData.privado = 0;
+      } else if (key === "privado") {
+        formData.compartido = 0;
+        formData.privado = 1;
+      }
+      return { formData };
+    });
+  };
   handlePropertyTypeChange = (type) => {
     this.setState((prevState) => {
       const formData = { ...prevState.formData, tipopropiedad: type };
@@ -209,6 +222,7 @@ class RegisterInmue extends Component {
                     <input
                       type="checkbox"
                       name={option.key}
+                      id='borde'
                       checked={formData[option.key] === 1}
                       onChange={() => this.handleOptionChange(option.key)}
                       style={{ display: 'none' }}
@@ -302,32 +316,34 @@ class RegisterInmue extends Component {
               </div>
             )}
              {currentSlide === 5 && (
-            <div className="property-options">
-            <div id='titulo'>
-                   <h3>Tu inmueble es:</h3>
+              <div className="property-options">
+              <div id='titulo'>
+                     <h3>Tu inmueble es:</h3>
+              </div>
+              <div id='cuerpo'>
+              {privacy.map((option, index) => (
+  <label
+    key={index}
+    className={`property-options-label ${
+      formData[option.key] === 1 ? 'selected' : ''
+    }`}
+  >
+    {option.icon} {option.label}
+    <input
+      type="radio"
+      name="privacy"
+      value={option.key}
+      checked={formData[option.key] === 1}
+      onChange={() => this.handleOptionPChange(option.key)}
+      style={{ display: 'none' }}
+    />
+  </label>
+))}
+
+              </div>
+             
             </div>
-            <div id='cuerpo'>
-            {privacy.map((option, index) => (
-              <label
-                key={index}
-                className={`property-options-label ${
-                  formData[option.key] === 1 ? 'selected' : ''
-                }`}
-              >
-                {option.icon} {option.label}
-                <input
-                  type="checkbox"
-                  name={option.key}
-                  checked={formData[option.key] === 1}
-                  onChange={() => this.handleOptionChange(option.key)}
-                  style={{ display: 'none' }}
-                />
-              </label>
-            ))}
-            </div>
-           
-          </div>
-    )}
+          )}
             {currentSlide === 6 && (
               <div className="property-location">
                 <h3>En qué ciudad se encuentra tu inmueble:</h3>
