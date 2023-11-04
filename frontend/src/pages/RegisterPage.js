@@ -22,10 +22,10 @@ class RegisterPage extends Component{
         phone: '',
         pass: ''
       },
-      appId: '716745760340158', 
       autoLoad: false,
       fields: 'name,email,picture',
-      googleClienteId:'251068267756-o37go0l5ogvpcpfeiaetkbjgrt89bab8.apps.googleusercontent.com',
+      showModal: false,
+      redirectToHome: false,
     };
   }
 
@@ -147,6 +147,24 @@ class RegisterPage extends Component{
     }
   };
 
+   //MODAL DESPUES DE ACEPTAR EL REGISTRO
+  handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (this.validateForm()) {
+      // Mostrar el modal de confirmación
+      this.setState({ showModal: true });
+    }
+  };
+
+  closeModal = () => {
+    // Cerrar el modal de confirmación
+    this.setState({ showModal: false });
+  
+    // Redirigir a la página principal
+    this.setState({ redirectToHome: true });
+  };
+
       // MÉTODOS PARA LOS BOTONES DE INICIO DE SESION CON FACEBOOK Y GOOGLE
       //FACEBOOK
       handleFacebookResponse = (response) => {
@@ -160,14 +178,6 @@ class RegisterPage extends Component{
       handleFacebookLogin = () => {
         this.setState({
           autoLoad: true,
-          errors: {  // Restablece los errores a un estado inicial o vacío
-            username: '',
-            firstName: '',
-            lastName: '',
-            email: '',
-            phone: '',
-            pass: ''
-          }
         });
       };
 
@@ -181,7 +191,10 @@ class RegisterPage extends Component{
       };
 
   render(){
-     
+    //Controla la redireccion del modal despues de Aceptar el registro y continuar
+    if (this.state.redirectToHome) {
+      return <link to="/cliente" />;
+    }
       
       return(
         
@@ -259,7 +272,7 @@ class RegisterPage extends Component{
           <button type="submit" onClick={this.onSubmit} className='aceptar-button' style={{ width: '410px' }}>Aceptar y Continuar</button>
           <p>------------------------------------o-------------------------------------</p>
           <FacebookLogin
-            appId={this.state.appId}
+            appId='716745760340158'
             autoLoad={this.state.autoLoad}
             fields={this.state.fields}
             callback={this.handleFacebookResponse}
@@ -271,7 +284,7 @@ class RegisterPage extends Component{
           />
           <br></br>
             <GoogleLogin
-            clientId={this.state.googleClientId}
+            clientId='1014685536289-ltpgstsq77mpl96r2be6jeu5bqj79gml.apps.googleusercontent.com'
             onSuccess={this.handleGoogleResponse}
             onFailure={this.handleGoogleResponse}
             cookiePolicy={'single_host_origin'}
@@ -283,6 +296,20 @@ class RegisterPage extends Component{
             />
           </div>
         </form>
+        {/* Modal de verificación despues de presionar el boton ACEPTAR Y CONTINUAR*/}
+        {this.state.showModal && (
+          <div className="modalAceptarRegistro">
+            <div className="modal-content-aceptar-registro">
+              <span className="close" onClick={this.closeModal}>&times;</span>
+              <p style={{ fontSize: '43px' }}>¡Registro exitoso!</p>
+              <br></br>
+              <br></br>
+                <div class="BotonAcept" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                 <Link to="/cliente" class='BotonAceptarR'  style={{ backgroundColor: '#e80980', fontSize: '18px' , border: 'black',color: 'white', borderRadius: '10px', width: '200px' }}>Aceptar</Link>
+                  </div>
+            </div>
+          </div>
+        )}
       </div>
        </>
         
