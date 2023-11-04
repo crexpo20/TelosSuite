@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('inmueble', function (Blueprint $table) {
             $table->id('idinmueble');
-            //$table->integer('idanfitrion');
-            $table->foreignId('idanfitrion')->references('idanfitrion')->on('anfitrion');
+            //$table->integer('idusuario');
+            $table->foreignId('idusuario')->references('idusuario')->on('usuario');
             $table->String('tipopropiedad');
             $table->String('tituloanuncio');
             $table->String('descripcion');

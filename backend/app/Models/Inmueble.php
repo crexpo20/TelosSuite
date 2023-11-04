@@ -10,11 +10,11 @@ class Inmueble extends Model
     use HasFactory;
     protected $table = 'inmueble';
     protected $primaryKey = 'idinmueble';
-    protected $fillable = ['tipopropiedad','idanfitrion','tituloanuncio','descripcion','ubicacion','precio','capacidad','habitaciones','baños','camas','niños','normas','mascotas','qr','ciudad','wifi','parqueo','cocina','refrigerador','lavaropa','piscina','privado','compartido','estado','contacto'];
+    protected $fillable = ['tipopropiedad','idusuario','tituloanuncio','descripcion','ubicacion','precio','capacidad','habitaciones','baños','camas','niños','normas','mascotas','qr','ciudad','wifi','parqueo','cocina','refrigerador','lavaropa','piscina','privado','compartido','estado','contacto'];
     public $timestamps = false;
 
-    public function Anfitrion(){
-        return $this->belongsTo(Anfitrion::class,'idanfitrion');
+    public function Usuario(){
+        return $this->belongsTo(usuario::class,'idusuario');
     }
 
     public function Comentario(){
