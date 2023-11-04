@@ -52,8 +52,8 @@ const DismissButton = ({ children, className}) => {
 const ModalInicioHeader = ({ children }) => {
     
     return (
-        <div className="react-modal-header">
-            <div className="react-modal-title">{children}</div>
+        <div className="react-modalInicio-header">
+            <div className="react-modalInicio-title">Iniciar sesión</div>
             <DismissButton className="btn-closed">&times;</DismissButton>
         </div>
     )
