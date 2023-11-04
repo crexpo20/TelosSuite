@@ -13,14 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('anfitrion', function (Blueprint $table) {
-            $table->id('idanfitrion');
+        Schema::create('usuario', function (Blueprint $table) {
+            $table->id('idusuario');
             $table->string('username');
             $table->string('nombre');
             $table->string('apellido');
             $table->string('correo');
             $table->integer('telefono');
             $table->string('contraseña');
+            $table->integer('anfitrion');
             $table->timestamps();
 	        });
         

@@ -5,15 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Anfitrion extends Model
+class Usuario extends Model
 {
     use HasFactory;
-    protected $table = 'anfitrion';
-    protected $primaryKey = 'idanfitrion';
+    protected $table = 'usuario';
+    protected $primaryKey = 'idusuario';
     protected $fillable = ['username','nombre','apellido','correo','telefono','contraseña'];
     public $timestamps = false;
 
     public function Inmueble(){
-        return $this->hasMany(Inmueble::class,'idanfitrion');
+        return $this->hasMany(Inmueble::class,'idusuario');
     }
 }

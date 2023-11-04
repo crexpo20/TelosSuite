@@ -1,28 +1,28 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Anfitrion;
+use App\Models\Usuario;
 use Illuminate\Http\Request;
 
 
-class anfitrionController extends Controller
+class usuarioController extends Controller
 {
     public function index()
     {
          // Obtener todos los productos de la base de datos
-         $anfitrion = anfitrion::all();
+         $usuario = usuario::all();
 
          // Retornar los productos como respuesta
-         return $anfitrion;
+         return $usuario;
     }
     /**
      * Store  
      */
     public function store(Request $request)
     {
-        $anfitrion = new anfitrion ($request->all());
-        $anfitrion->save();
-        return redirect()->action([anfitrionController::class, 'index']);
+        $usuario = new usuario ($request->all());
+        $usuario->save();
+        return redirect()->action([usuarioController::class, 'index']);
     }
 
 
@@ -31,8 +31,8 @@ class anfitrionController extends Controller
      */
     public function show(string $id)
     {
-        $anfitrion =  anfitrion::find($id);
-        return $anfitrion;
+        $usuario =  usuario::find($id);
+        return $usuario;
     }
 
     
@@ -51,17 +51,17 @@ class anfitrionController extends Controller
     public function destroy(string $id)
     {
         // Encuentra la categoría por su ID
-        $anfitrion = anfitrion::find($id);
+        $usuario = usuario::find($id);
          // Verifica si la categoría existe
-         if (!$anfitrion) {
-            return response()->json(['mensaje' => 'anfitrion no encontrada'], 404);
+         if (!$usuario) {
+            return response()->json(['mensaje' => 'usuario no encontrada'], 404);
         }
 
         // Realiza la eliminación
-        $anfitrion->delete();
+        $usuario->delete();
 
         // Retorna una respuesta
-        return response()->json(['mensaje' => 'anfitrion eliminada'], 200);
+        return response()->json(['mensaje' => 'usuario eliminada'], 200);
 
     }
 }
