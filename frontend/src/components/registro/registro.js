@@ -43,7 +43,7 @@ const ModalRegistro = ({children, isOpen, onClose}) => {
     )
 }
 
-const DismissButton = ({ children, className}) => {
+const DismissButtonRegistro = ({ children, className}) => {
     
     const{onClose} = useContext(ModalRegistroContext)
     return (
@@ -58,7 +58,7 @@ const ModalRegistroHeader = ({ children }) => {
     return (
         <div className="react-modal-header">
             <div className="react-modalRegistro-title">{children} Inicia sesión o regístrate</div>
-            <DismissButton className="btn-closed"><AiOutlineCloseCircle /></DismissButton>
+            <DismissButtonRegistro className="btn-closed"><AiOutlineCloseCircle /></DismissButtonRegistro>
         </div>
     )
 }
@@ -84,5 +84,5 @@ const ModalRegistroFooter = ({children}) => {
 ModalRegistro.Header = ModalRegistroHeader
 ModalRegistro.Body = ModalRegistroBody
 ModalRegistro.Footer = ModalRegistroFooter
-ModalRegistro.DismissButton = DismissButton
+ModalRegistro.DismissButton = DismissButtonRegistro
 export default ModalRegistro;

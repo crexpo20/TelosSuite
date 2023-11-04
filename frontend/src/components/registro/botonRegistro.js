@@ -2,7 +2,7 @@ import { useState } from "react";
 import ModalRegistro from "./registro";
 import "./registros.css"
 
- function RegistroBoton(){
+ function RegistroBoton({ onClose }) {
     const [openModal, setOpenModal] = useState(false)
     return(
         <>

@@ -3,6 +3,12 @@ import {RiHomeSmileLine} from "react-icons/ri"
 import { Link, Outlet } from 'react-router-dom';
 import FacebookLogin from '@greatsumini/react-facebook-login';
 import GoogleLogin from '@leecheuk/react-google-login';
+import ModalInicio from '../components/inicioSesion/inicio';
+import ModalRegistro from '../components/registro/registro';
+import InicioBoton from '../components/inicioSesion/botonInicio';
+import { AiOutlineCloseCircle } from 'react-icons/ai';
+import { Modal } from 'antd';
+
 
 class RegisterPage extends Component{
   constructor(props) {
@@ -26,8 +32,21 @@ class RegisterPage extends Component{
       fields: 'name,email,picture',
       showModal: false,
       redirectToHome: false,
+       showModalInicio: false, 
     };
   }
+  toggleModal = () => {
+    this.setState((prevState) => ({
+      showModalInicio: !prevState.showModalInicio,
+    }));
+  };
+
+  openModalInicio = () => {
+    this.setState((prevState) => ({
+      showModalInicio: !prevState.showModalInicio,
+    }));
+    console.log(this.state.showModalInicio)
+  };
 
   handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -165,6 +184,15 @@ class RegisterPage extends Component{
     this.setState({ redirectToHome: true });
   };
 
+  close = () => {
+    // Cerrar el modal de confirmación
+    this.setState({ showModal: false });
+
+  };
+  closeModalRegistro = () => {
+    this.setState({ showModal: false });
+  };
+
       // MÉTODOS PARA LOS BOTONES DE INICIO DE SESION CON FACEBOOK Y GOOGLE
       //FACEBOOK
       handleFacebookResponse = (response) => {
@@ -269,8 +297,28 @@ class RegisterPage extends Component{
           </div>
           <br></br>
           <div className='botonRegistro'>
-          <button type="submit" onClick={this.onSubmit} className='aceptar-button' style={{ width: '410px' }}>Aceptar y Continuar</button>
-          <p>------------------------------------o-------------------------------------</p>
+          <button type="submit" 
+          onClick={this.onSubmit}
+           className='aceptar-button' 
+           style={{ width: '410px' }}>
+            Aceptar y Continuar
+            </button>
+          <p>-----------------------------------  o  -----------------------------------</p>
+          <a>Ya tienes una cuenta?</a>
+          <button
+              type="button"
+              onClick={this.openModalInicio}
+              className="abrir-inicio-button"
+            >
+          </button>
+         {
+          this.state.showModalInicio === true && (
+            <ModalInicio></ModalInicio>
+          )
+         }
+
+      
+          <br></br>
           <FacebookLogin
             appId='716745760340158'
             autoLoad={this.state.autoLoad}

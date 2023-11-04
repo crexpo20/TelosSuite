@@ -396,7 +396,29 @@ h4{
 }
 #head-der{
     width: 33%;
+    display: inline-block;
+    position: relative;
+    padding-right: 2%;
+
 }
+#head-der2,#head-der3{
+  display: inline-block;
+  width: 50%;
+}
+#head-der3{
+  padding-left:13%;
+  margin-left: auto;
+
+}
+
+@media (max-width: 768px) {
+  #head-der2{
+      display: none;
+  }
+}
+
+
+
 
 #nav-menu{
   text-align: right; /* Alinea el texto a la derecha */
