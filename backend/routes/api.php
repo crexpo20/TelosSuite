@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\anfitrionController;
+use App\Http\Controllers\usuarioController;
 use App\Http\Controllers\huespedController;
 use App\Http\Controllers\imagenController;
 use App\Http\Controllers\inmuebleController;
@@ -11,11 +11,11 @@ use App\Http\Controllers\reservaController;
 use App\Http\Controllers\servicioController;
 
 
-//RUTAS PARA INGRESAR, MODIFICAR, ELIMINAR ANFITRION DESDE FORMULARIO
-Route::get('/getanfitrion', [anfitrionController::class,'index']);
-Route::post('/postanfitrion', [anfitrionController::class,'store']);
-Route::delete('/delanfitrion/{idanfitrion}', [anfitrionController::class,'destroy']);
-Route::put('/putanfitrion/{idanfitrion}', [anfitrionController::class,'update']);
+//RUTAS PARA INGRESAR, MODIFICAR, ELIMINAR usuario DESDE FORMULARIO
+Route::get('/getusuario', [usuarioController::class,'index']);
+Route::post('/postusuario', [usuarioController::class,'store']);
+Route::delete('/delusuario/{idusuario}', [usuarioController::class,'destroy']);
+Route::put('/putusuario/{idusuario}', [usuarioController::class,'update']);
 
 //RUTAS PARA INGRESAR, MODIFICAR, ELIMINAR HUESPED DESDE FORMULARIO
 Route::get('/gethuesped',[huespedController::class,'index']);

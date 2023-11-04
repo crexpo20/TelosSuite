@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('reserva', function (Blueprint $table) {
             $table->id('idreserva');
             $table->foreignId('idinmueble')->references('idinmueble')->on('inmueble');
-            $table->foreignId('idhuesped')->references('idhuesped')->on('huesped');
+            $table->foreignId('idusuario')->references('idusuario')->on('usuario');
             $table->integer('fechaini');
             $table->integer('fechafin');
             $table->integer('huespedes');
