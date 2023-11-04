@@ -32,6 +32,8 @@ class RegisterInmue extends Component {
         refrigerador: 0,
         lavaropa: 0,
         piscina: 0,
+        compartido: 0,
+        privado: 0,
       },
       propertyTypes: [
         { type: 'Casa', icon: <BsHouse /> },
@@ -42,6 +44,10 @@ class RegisterInmue extends Component {
       options: [
         { key: 'niños', label: 'Niños', icon: <BsHouse />, value: 0 },
         { key: 'mascotas', label: 'Mascotas', icon: <MdApartment />, value: 0 },
+      ],
+      privacy: [
+        { key: 'privado', label: 'Privado', icon: <BsHouse />, value: 0 },
+        { key: 'compartido', label: 'Compartido', icon: <MdApartment />, value: 0 },
       ],
       cities: [
         'Cochabamba',
@@ -156,7 +162,7 @@ class RegisterInmue extends Component {
 
   render() {
     const currentSlide = this.state.currentSlide;
-    const { formData, propertyTypes, options, cities } = this.state;
+    const { formData, propertyTypes, options,privacy, cities} = this.state;
 
     return (
       <div className="carousel-container">
@@ -295,7 +301,34 @@ class RegisterInmue extends Component {
                 />
               </div>
             )}
-            {currentSlide === 5 && (
+             {currentSlide === 5 && (
+            <div className="property-options">
+            <div id='titulo'>
+                   <h3>Tu inmueble es:</h3>
+            </div>
+            <div id='cuerpo'>
+            {privacy.map((option, index) => (
+              <label
+                key={index}
+                className={`property-options-label ${
+                  formData[option.key] === 1 ? 'selected' : ''
+                }`}
+              >
+                {option.icon} {option.label}
+                <input
+                  type="checkbox"
+                  name={option.key}
+                  checked={formData[option.key] === 1}
+                  onChange={() => this.handleOptionChange(option.key)}
+                  style={{ display: 'none' }}
+                />
+              </label>
+            ))}
+            </div>
+           
+          </div>
+    )}
+            {currentSlide === 6 && (
               <div className="property-location">
                 <h3>En qué ciudad se encuentra tu inmueble:</h3>
                 {cities.map((city, index) => (
@@ -318,7 +351,7 @@ class RegisterInmue extends Component {
                 ))}
               </div>
             )}
-            {currentSlide === 6 && (
+            {currentSlide === 7 && (
               <div className="property-services">
                 <div id='titulo'>
                      <h3>Servicios adicionales:</h3>
@@ -418,7 +451,7 @@ class RegisterInmue extends Component {
                
               </div>
             )}
-            {currentSlide === 7 && (
+            {currentSlide === 8 && (
               <div className="property-price">
                 <div id='titulo'>
                     <h3>Es momento de poner un precio a tu inmueble:</h3>
@@ -440,7 +473,7 @@ class RegisterInmue extends Component {
                </div>
               </div>
             )}
-            {currentSlide === 8 && (
+            {currentSlide === 9 && (
               <div className="property-done">
                 <h3>
                   Eso es todo por ahora, tu inmueble ya es visible para los
@@ -456,12 +489,12 @@ class RegisterInmue extends Component {
               <IoIosArrowDropleftCircle/>
             </button>
           )}
-          {currentSlide < 8 && (
+          {currentSlide < 9 && (
             <button className="next" onClick={this.handleNextSlide}>
               < IoIosArrowDroprightCircle />
             </button>
           )}
-           {currentSlide === 8 && (
+           {currentSlide === 9n && (
              <button className="fin"type="submit" onClick={this.onSubmit}>
               Finalizar
             </button>
