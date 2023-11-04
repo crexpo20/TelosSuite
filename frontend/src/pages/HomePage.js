@@ -35,34 +35,22 @@ getProductos=async()=>{
         <body>
           <div className="verinm">
             {this.state.inmueble.map((sitio, index) => {
-              if (
-                localStorage.getItem("mascotas") === "0" &&
-                localStorage.getItem("niños") === "0" &&
-                localStorage.getItem("huespedes") === "1" &&
-                localStorage.getItem("tipo") === "cualquiera" &&
-                localStorage.getItem("destino") === "Beni" &&
-                localStorage.getItem("tipo")==="cualquiera"
-                ){
-                return (
-                  <div className="InmueblesHost" key={sitio.id}>
-                    <img
-                      className="inmueble_fot"
-                      src="https://picsum.photos/280/280"
-                      alt="Inmueble"
-                    />
-                    <h3 className="inmueble_name">{sitio.tituloanuncio}</h3>
-                    <div className="inmueble_info">
-                      <p className="inmDet">{sitio.ciudad}</p>
-                      <p className="inmCamas">{sitio.camas}</p>
-                      <p className="inmPrecio">{sitio.precio}</p>
-                    </div>
+               return (
+                <div className="InmueblesHost" key={sitio.id}>
+                  <img
+                    className="inmueble_fot"
+                    src="https://picsum.photos/280/280"
+                    alt="Inmueble"
+                  />
+                  <h3 className="inmueble_name">{sitio.tituloanuncio}</h3>
+                  <div className="inmueble_info">
+                    <p className="inmDet">{sitio.ciudad}</p>
+                    <p className="inmCamas">{sitio.camas}</p>
+                    <p className="inmPrecio">{sitio.precio}</p>
                   </div>
-                );
-              }else{
-
-              }
-              return null;
-            })}
+                </div>
+              );
+               })}
           </div>
         </body>
         <Outlet />

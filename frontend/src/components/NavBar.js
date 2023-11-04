@@ -95,56 +95,71 @@ function Navbar() {
           <div className="verinm">
             <button onClick={handleReloadTarija}>BUSCAR</button>
           </div>
-          <div id="head-der">
-            <nav id="nav-menu">
-              <MenuBoton />
-            </nav>
-          </div>
-        </div>
+          {parseInt(localStorage.getItem("init") )=== 1 &&(
+                      <div id="head-der">
+                            <div id="head-der2">
+                                <Link to='/cliente'>Modo Anfitrion</Link>
+                            </div>
+                            <div id='head-der3'>
+                                <MenuBoton />
+                            </div>
+                      </div>
+                    ) 
+                    }
+            {parseInt(localStorage.getItem("init") )=== 0 &&(
+                                  <div id="head-der">
+                            
+                                  <nav id='nav-menu'>
+                                      <MenuBoton />
+                                  </nav>
+                            </div>
+                    ) 
+                    }
+
+            </div>
         <div id="navAbajo">
           <div id="nav">
             <ul id="listaCat">
             <li id="cat">
-  <Link to="/busqueda">
-    <div class="icon">
-      <i id="logo-nav">
-        <PiHouseLine />
-      </i>
-    </div>
-    Tu búsqueda
-  </Link>
-</li>
-<li id="cat">
-  <Link to="/Casa">
-    <div class="icon">
-      <i id="logo-nav">
-        <RiHomeLine />
-      </i>
-    </div>
-    Casa
-  </Link>
-</li>
-<li id="cat">
-  <Link to="/Departamento">
-    <div class="icon">
-      <i id="logo-nav">
-        <PiSwimmingPool />
-      </i>
-    </div>
-    Departamento
-  </Link>
-</li>
-<li id="cat">
-  <Link to="/Cabaña">
-    <div class="icon">
-      <i id="logo-nav">
-        <MdCabin />
-      </i>
-    </div>
-    Cabaña
-  </Link>
-</li>
-
+                  <Link to="/home">
+                    <div class="icon">
+                      <i id="logo-nav">
+                        <PiHouseLine />
+                      </i>
+                    </div>
+                    Tu búsqueda
+                  </Link>
+                </li>
+                <li id="cat">
+                  <Link to="/Casa">
+                    <div class="icon">
+                      <i id="logo-nav">
+                        <RiHomeLine />
+                      </i>
+                    </div>
+                    Casa
+                  </Link>
+                </li>
+                <li id="cat">
+                  <Link to="/Departamento">
+                    <div class="icon">
+                      <i id="logo-nav">
+                        <PiSwimmingPool />
+                      </i>
+                    </div>
+                    Departamento
+                  </Link>
+                </li>
+                <li id="cat">
+                  <Link to="/Cabaña">
+                    <div class="icon">
+                      <i id="logo-nav">
+                        <MdCabin />
+                      </i>
+                    </div>
+                    Cabaña
+                  </Link>
+                </li>
               <li id="cat">
                     <Link to="/Habitacion">
                       <div class="icon">

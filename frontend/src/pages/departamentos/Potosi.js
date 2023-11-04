@@ -34,7 +34,8 @@ getProductos=async()=>{
           <div className="verinm">
             {this.state.inmueble.map((sitio, index) => {
               if (sitio.ciudad === "Potosi"
-                ){ if(sitio.tipopropiedad === localStorage.getItem("tipo")){
+                ){ if(sitio.tipopropiedad === localStorage.getItem("tipo") && 
+                sitio.niños === localStorage.getItem("niños") ){
                     return (
                         <div className="InmueblesHost" key={sitio.id}>
                           <img

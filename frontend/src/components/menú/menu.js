@@ -47,31 +47,61 @@ const DismissButton = ({ children, className}) => {
     )
 }
 
-const ModalMenuHeader = ({ children }) => {
+const ModalMenuHeader = ({ children}) => {
     const{onClose} = useContext(ModalMenuContext)
     return (
         <div className="react-modalMenu-header">
             <div className="react-modalMenu-title" style={{display:""}}>{children}</div>
-              <ul id="lista-menu">
-                <li id="menu-item" >
-                   
-                <RegistroBoton/>
-                </li>
-                <li id="menu-item">
-                    
-                </li>
-              </ul>
+              
+                  
+                    {parseInt(localStorage.getItem("init") )=== 1 &&(
+                       <ul id="lista-menu">
+                            <li id="menu-item" >
+                                 Lista de Favoritos
+                            </li>
+                            <br></br>
+                            <li id="menu-item" >
+                                 Mis reservas
+                            </li>
+                            
+                        </ul>
+                    ) 
+                    }
+                
+                
+            
             </div>
     )
 }
 
 
-const ModalMenuBody = ({ onValuesChange }) => {
+const ModalMenuBody = ({props}) => {
    
-  
+    function cerrarSesion() {
+        // Establecer la variable localStorage
+        localStorage.setItem("init", "0");
+    
+        // Recargar la página
+        window.location.reload();
+    }
     return (
       <div className="react-modalMenu-body">
         <div id="body-huespedes">
+
+        {parseInt(localStorage.getItem("init") )=== 1 &&(
+                       <ul id="lista-menu">
+                            <li id="menu-item" >
+                                <button onClick={cerrarSesion}>Cerrar sesion</button>
+                            </li>
+                            
+                            <li id="menu-item">
+                                
+                <Link to='/cliente'>Modo Anfitrion</Link>
+
+                </li>
+                        </ul>
+                    ) 
+                    }
         <ul id="lista-menu">
                 <li id="menu-item">
                 <Link to='/cliente'>Modo Anfitrion</Link>

@@ -17,6 +17,16 @@ function App() {
     camas: 1,
     servicios: "ninguno",
     calificacion: 0,
+    baños:1,
+    habitaciones:1,
+    wifi:0,
+    parqueo:0,
+    cocina:0,
+    refrigerador:0,
+    lavaropa:0,
+    piscina:0,
+    privado:1,
+    compartido:1,
   });
 
   // Función para establecer valores iniciales en el localStorage si no existen
@@ -32,6 +42,17 @@ function App() {
     const fechaInicio = localStorage.getItem('fechaInicio');
     const fechaFin = localStorage.getItem('fechaFin');
     const extra = localStorage.getItem('extra');
+    const baños = localStorage.getItem('baños');
+    const habitaciones = localStorage.getItem('habitaciones');
+    const wifi = localStorage.getItem('wifi');
+    const parqueo = localStorage.getItem('parqueo');
+    const cocina = localStorage.getItem('cocina');
+    const refrigerador = localStorage.getItem('refrigerador');
+    const lavaropa = localStorage.getItem('lavaropa');
+    const piscina= localStorage.getItem('piscina');
+    const privado = localStorage.getItem('privado');
+    const compartido = localStorage.getItem('compartido');
+    const init = localStorage.getItem('init');
 
     // Si algún valor no existe en el localStorage, configura los valores iniciales
     if (destino === null) {
@@ -64,6 +85,41 @@ function App() {
     if (extra === null) {
       localStorage.setItem('extra', 'valorPorDefecto'); // Aquí puedes configurar el valor por defecto para "extra"
     }
+    if (baños === null) {
+      localStorage.setItem('baños', 0);
+    }
+    if (habitaciones === null) {
+      localStorage.setItem('habitaciones', 0);
+    }
+    if (wifi === null) {
+      localStorage.setItem('wifi', 0);
+    }
+    if (parqueo === null) {
+      localStorage.setItem('parqueo', 0);
+    }
+    if (cocina === null) {
+      localStorage.setItem('cocina', 0);
+    }
+    if (refrigerador === null) {
+      localStorage.setItem('refrigerador', 0);
+    }
+    if (lavaropa === null) {
+      localStorage.setItem('lavaropa', 0);
+    }
+    if (piscina === null) {
+      localStorage.setItem('piscina', 0);
+    }
+    if (privado === null) {
+      localStorage.setItem('privado', 0);
+    }
+    if (compartido === null) {
+      localStorage.setItem('compartido', 0);
+    }
+
+    if (init === null) {
+      localStorage.setItem('init', 0);
+    }
+    
   };
 
   // Restablecer valores del localStorage al cerrar la página
@@ -97,6 +153,17 @@ function App() {
       camas: parseInt(localStorage.getItem('camas')) || 1,
       servicios: localStorage.getItem('servicios') || "ninguno",
       calificacion: parseFloat(localStorage.getItem('calificacion')) || 0,
+      baños: parseInt(localStorage.getItem('baños')) || 0,
+      habitaciones: parseInt(localStorage.getItem('habitaciones')) || 0,
+      wifi: parseInt(localStorage.getItem('wifi')) || 0,
+      parqueo: parseInt(localStorage.getItem('parqueo')) || 0,
+      cocina: parseInt(localStorage.getItem('cocina')) || 0,
+      refrigerador: parseInt(localStorage.getItem('refrigerador')) || 0,
+      lavaropa: parseInt(localStorage.getItem('lavaropa')) || 0,
+      piscina: parseInt(localStorage.getItem('piscina')) || 0,
+      privado: parseInt(localStorage.getItem('privado')) || 0,
+      compartido: parseInt(localStorage.getItem('compartido')) || 0,
+      init: parseInt(localStorage.getItem('init')) || 0,
     };
     console.log("Valores en el localStorage:", storedData);
 
