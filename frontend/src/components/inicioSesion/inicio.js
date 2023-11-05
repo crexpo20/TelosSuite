@@ -1,6 +1,8 @@
 import React, { useContext, useState, createContext } from "react";
 import { useSpring, animated, useTransition } from "@react-spring/web";
 import './inicioestilo.css'
+
+import axios from "axios";
 const ModalInicioContext = createContext();
 
 const ModalInicio = ({ children, isOpen, onClose }) => {
@@ -56,17 +58,38 @@ const ModalInicioBody = ({ onValuesChange }) => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
+    console.log(formData.username)
+  
     try {
       const response = await fetch(`http://127.0.0.1:8000/api/getusername/${formData.username}`);
-
+  
       if (response.ok) {
-        const userData = await response.json();
-        if (userData.password === formData.contraseña) {
+        const userData = await axios.get(`http://127.0.0.1:8000/api/getusername/${formData.username}`);
+        console.log(userData.data[0])
+        if (userData.data[0].contraseña === formData.password) {
+          localStorage.setItem("init",1)
+          localStorage.setItem("userID", userData.data[0].idusuario)
+          localStorage.setItem("anfitrion", userData.data[0].anfitrion)
           // Inicio de sesión exitoso
-          onClose(); // Cierra el modal
-          // Puedes acceder a los valores del formulario y llamar a onValuesChange si es necesario
+          /*const user = {
+            idusuario: userData.idusuario,
+            username: userData.username,
+            nombre: userData.nombre,
+            apellido: userData.apellido,
+            correo: userData.correo,
+            telefono: userData.telefono,
+            anfitrion: userData.anfitrion,
+            // Puedes agregar más propiedades según tus necesidades
+          };*/
+         
+          console.log("exito"); // Aquí tienes el objeto con los datos del usuario
+  
+          // Puedes guardar el objeto del usuario en el estado o pasarlo a otra función
+          // para su posterior uso
+          // setStateUser(user);
           
+          onClose(); // Cierra el modal
+          window.location.reload();
         } else {
           setError("Nombre de usuario o contraseña incorrecta.");
         }
@@ -78,6 +101,7 @@ const ModalInicioBody = ({ onValuesChange }) => {
       setError("Hubo un error al iniciar sesión.");
     }
   };
+  
 
   const handleTogglePasswordVisibility = () => {
     setShowPassword(!showPassword);

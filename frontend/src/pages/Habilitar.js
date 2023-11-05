@@ -35,13 +35,30 @@ class Habilitar extends Component {
 
   handleAceptar = () => {
     const { userData } = this.state;
-    // Actualiza el campo "anfitrion" a 1.
-    userData.anfitrion = 1;
     
-    this.actualizarUsuario(userData);
-    localStorage.setItem("anfitrion", userData.anfitrion)
-    window.location.reload();
+    // Crear el objeto userUp con los cambios necesarios
+    const userUp = {
+      ...userData,
+      anfitrion: 1, // Cambia el campo "anfitrion" a 1
+    };
+    
+    // Actualiza el usuario en la API
+    const idusuario = localStorage.getItem('userID'); // ID del usuario que deseas actualizar
+    axios.put(`http://127.0.0.1:8000/api/putusuario/${idusuario}`, userUp)
+      .then((response) => {
+        if (response.status === 200) {
+          console.log('Usuario actualizado con éxito.');
+          localStorage.setItem("anfitrion", userUp.anfitrion);
+          window.location.reload();
+        } else {
+          console.error('Error al actualizar el usuario.');
+        }
+      })
+      .catch((error) => {
+        console.error('Error al actualizar el usuario:', error);
+      });
   };
+  
 
   componentDidMount() {
     const idusuario = localStorage.getItem('userID');
