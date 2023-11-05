@@ -30,9 +30,16 @@ class usuarioController extends Controller
 
     public function username(string $username)
     {
-        $usuario = DB::table('usuario')->where('name', $username)->get();
- 
-        return $usuario;
+
+        return DB::table('usuario')->where('username', $username)->get();
+        
+    }
+
+    public function correo(string $correo)
+    {
+
+        return DB::table('usuario')->where('correo', $correo)->get();
+        
     }
     public function show(string $id)
     {
