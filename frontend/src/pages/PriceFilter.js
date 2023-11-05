@@ -1,5 +1,3 @@
-
-
 // Importando el icono de cerrar de la librería React Icons y los hooks necesarios de React
 import { AiOutlineCloseCircle } from 'react-icons/ai';
 import React, { useState, useEffect } from 'react';
@@ -16,7 +14,16 @@ function PriceFilter(props) {
   const [selectedBed, setSelectedBed] = useState('Cualquiera');
   const [selectedBath, setSelectedBath] = useState('Cualquiera');
 
-  
+  // Agrega un nuevo estado para los servicios con un objeto que contenga cada servicio
+  const [services, setServices] = useState({
+    wifi: 0,
+    parqueo: 0,
+    cocina: 0,
+    refrigerador: 0,
+   lavadora: 0,
+    piscina: 0,
+  });
+
   // Efecto para cargar los precios guardados en el localStorage cuando el componente se monta
   useEffect(() => {
     const storedMinPrice = localStorage.getItem('minPrice');
@@ -61,7 +68,16 @@ function PriceFilter(props) {
   const handleBathSelection = (bath) => {
     setSelectedBath(bath);
   };
- 
+
+ // Función para manejar los cambios en las casillas de verificación de los servicios
+ const handleServiceChange = (service) => {
+    // Actualiza el estado del servicio conmutando entre 0 y 1
+    setServices((prevServices) => ({
+      ...prevServices,
+      [service]: prevServices[service] === 0 ? 1 : 0,
+    }));
+  };
+
 
 ;
   // Renderizado condicional: Si showFilter es true, muestra el filtro de precios
@@ -99,7 +115,7 @@ function PriceFilter(props) {
               />
             </div>
           </div>
-
+          
           <h2>Habitaciones y camas</h2>
           <label>Habitaciones</label>
           <div className="selector-group">
@@ -113,7 +129,7 @@ function PriceFilter(props) {
               </button>
             ))}
           </div>
-
+          
           <label>Camas</label>
           <div className="selector-group">
             {['Cualquiera', '1', '2', '3', '4', '5', '6', '7', '8+'].map((bed) => (
@@ -126,7 +142,7 @@ function PriceFilter(props) {
               </button>
             ))}
           </div>
-
+  
           <label>Baños</label>
           <div className="selector-group">
             {['Cualquiera', '1', '2', '3', '4', '5', '6', '7', '8+'].map((bath) => (
@@ -139,7 +155,21 @@ function PriceFilter(props) {
               </button>
             ))}
           </div>
-
+          
+          <h2>Servicios</h2>
+          <div className="service-inputs">
+            {Object.keys(services).map((serviceKey) => (
+              <label key={serviceKey} className="service-label">
+                <input
+                  type="checkbox"
+                  checked={services[serviceKey] === 1}
+                  onChange={() => handleServiceChange(serviceKey)}
+                />
+                {serviceKey.charAt(0).toUpperCase() + serviceKey.slice(1)}
+              </label>
+            ))}
+          </div>
+  
           <form onSubmit={handleSubmit}>
             <button type="submit" className="submit-button">Aceptar</button>
           </form>
@@ -147,7 +177,7 @@ function PriceFilter(props) {
       </div>
     )
   );
-
+  
 
 
    }
