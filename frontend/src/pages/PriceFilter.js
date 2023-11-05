@@ -23,7 +23,12 @@ function PriceFilter(props) {
    lavadora: 0,
     piscina: 0,
   });
-
+  //Estado para privado o compartido
+  const [tipoInmueble, setTipoInmueble] = useState({
+    privado: 0,
+    compartido: 0
+  });
+  
   // Efecto para cargar los precios guardados en el localStorage cuando el componente se monta
   useEffect(() => {
     const storedMinPrice = localStorage.getItem('minPrice');
@@ -78,6 +83,14 @@ function PriceFilter(props) {
     }));
   };
 
+  const handleTipoInmuebleChange = (tipo) => {
+    // Actualiza el estado de tipoInmueble dependiendo del tipo seleccionado
+    setTipoInmueble({
+      privado: tipo === 'privado' ? 1 : 0,
+      compartido: tipo === 'compartido' ? 1 : 0,
+    });
+  };
+  
 
 ;
   // Renderizado condicional: Si showFilter es true, muestra el filtro de precios
@@ -169,14 +182,34 @@ function PriceFilter(props) {
               </label>
             ))}
           </div>
-  
-          <form onSubmit={handleSubmit}>
-            <button type="submit" className="submit-button">Aceptar</button>
-          </form>
+              
+          <h2>Tipo de inmueble</h2>
+        <div className="tipo-inmueble-inputs">
+          <label className="tipo-inmueble-label">
+            <input
+              type="checkbox"
+              checked={tipoInmueble.privado === 1}
+              onChange={() => handleTipoInmuebleChange('privado')}
+            />
+            Privado
+          </label>
+          <label className="tipo-inmueble-label">
+            <input
+              type="checkbox"
+              checked={tipoInmueble.compartido === 1}
+              onChange={() => handleTipoInmuebleChange('compartido')}
+            />
+            Compartido
+          </label>
         </div>
+
+        <form onSubmit={handleSubmit}>
+          <button type="submit" className="submit-button">Aceptar</button>
+        </form>
       </div>
-    )
-  );
+    </div>
+  )
+);
   
 
 
