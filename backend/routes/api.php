@@ -17,7 +17,6 @@ Route::get('/getusuario/{idusuario}', [usuarioController::class,'show']);
 Route::post('/postusuario', [usuarioController::class,'store']);
 Route::delete('/delusuario/{idusuario}', [usuarioController::class,'destroy']);
 Route::put('/putusuario/{idusuario}', [usuarioController::class,'update']);
-Route::get('/getusuario/{idusuario}', [usuarioController::class,'show']);
 
 //RUTAS PARA INGRESAR, MODIFICAR, ELIMINAR HUESPED DESDE FORMULARIO
 Route::get('/gethuesped',[huespedController::class,'index']);
