@@ -27,6 +27,8 @@ function App() {
     piscina:0,
     privado:1,
     compartido:1,
+    anfitrion:0,
+    userID:0,
   });
 
   // Función para establecer valores iniciales en el localStorage si no existen
@@ -53,6 +55,8 @@ function App() {
     const privado = localStorage.getItem('privado');
     const compartido = localStorage.getItem('compartido');
     const init = localStorage.getItem('init');
+    const anfitrion = localStorage.getItem('anfitrion');
+    const userID = localStorage.getItem('userID');
 
     // Si algún valor no existe en el localStorage, configura los valores iniciales
     if (destino === null) {
@@ -119,6 +123,12 @@ function App() {
     if (init === null) {
       localStorage.setItem('init', 0);
     }
+    if (anfitrion === null) {
+      localStorage.setItem('anfitrion', 0);
+    }
+    if (userID === null) {
+      localStorage.setItem('userID', 0);
+    }
     
   };
 
@@ -164,6 +174,9 @@ function App() {
       privado: parseInt(localStorage.getItem('privado')) || 0,
       compartido: parseInt(localStorage.getItem('compartido')) || 0,
       init: parseInt(localStorage.getItem('init')) || 0,
+      anfitrion: parseInt(localStorage.getItem('anfitrion')) || 0,
+      userID: parseInt(localStorage.getItem('userID')) || 0,
+
     };
     console.log("Valores en el localStorage:", storedData);
 

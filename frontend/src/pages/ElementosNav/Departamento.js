@@ -6,7 +6,8 @@ class Departamento extends Component {
   constructor(props){
     super(props);
     this.state={
-      inmueble:[]
+      inmueble:[],
+      contador:0
     }
     this.getProductos = this.getProductos.bind(this);
     
@@ -35,6 +36,7 @@ getProductos=async()=>{
             {this.state.inmueble.map((sitio, index) => {
               if (sitio.ciudad === "Departamento"
                 ){ if(sitio.tipopropiedad === localStorage.getItem("tipo")){
+                    
                     return (
                         <div className="InmueblesHost" key={sitio.id}>
                           <img
@@ -52,6 +54,18 @@ getProductos=async()=>{
                       );
                 }
                
+              }
+              if(this.state.contador === 0){
+                return (
+                  <div className="InmueblesHost" >
+                    <img
+                      className="inmueble_fot"
+                      src="https://picsum.photos/280/280"
+                      alt="Inmueble"
+                    />
+                    
+                  </div>
+                );
               }
               return null;
             })}

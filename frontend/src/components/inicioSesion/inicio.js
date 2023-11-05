@@ -24,8 +24,8 @@ const ModalInicio = ({children, isOpen, onClose}) => {
         }
     })
     return modalTransition( (styles,isOpen) => isOpen && (
-        <animated.div style = {styles} className="react-modal-overlay" onClick={onClose}>
-            <animated.div style={springs}className="react-modal-wrapperH" onClick={e => e.stopPropagation()}>
+        <animated.div style = {styles} className="react-modalInicio-overlay" onClick={onClose}>
+            <animated.div style={springs}className="react-modalInicio-wrapper" onClick={e => e.stopPropagation()}>
                 <div className="react-modal-content">
                     <ModalInicioContext.Provider value={{onClose}}>
                         {children}
@@ -49,6 +49,69 @@ const DismissButton = ({ children, className}) => {
     )
 }
 
+const ModalInicioBody = ({ onValuesChange }) => {
+    const { onClose } = useContext(ModalInicioContext);
+    const [showPassword, setShowPassword] = useState(false);
+    const [password, setPassword] = useState('');
+  
+    function cerrarSesion() {
+        // Establecer la variable localStorage
+        localStorage.setItem("init", "1");
+    
+        // Recargar la página
+        window.location.reload();
+    }
+
+    const handleLogin = (e) => {
+      e.preventDefault();
+      // Aquí puedes realizar la lógica de inicio de sesión
+      // Puedes acceder a los valores del formulario y llamar a onValuesChange si es necesario
+      // También puedes cerrar el modal después de un inicio de sesión exitoso llamando a onClose
+      onClose(); // Cierra el modal
+    };
+   
+    const handleTogglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+      };
+      return (
+        <div className="react-modalInicio-content">
+          <form onSubmit={handleLogin}>
+            <div className="form-group">
+              <label htmlFor="username" id="valor">
+                Usuario o correo:
+              </label>
+              <input type="text" id="ingresar" name="username" />
+            </div>
+            <div className="form-group">
+              <label htmlFor="password" id="valor">
+                Contraseña:
+              </label>
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  id="ingresar"
+                  name="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+                <button
+                  type="button"
+                  className="toggle-password-button"
+                  onClick={handleTogglePasswordVisibility}
+                >
+                  {showPassword ? 'Ocultar' : 'Mostrar'}
+                </button>
+              
+            </div>
+            <button className="initbuton" onClick={cerrarSesion}> Iniciar Sesión</button>
+          </form>
+        </div>
+      );
+    };
+    
+    
+    
+    
+
 const ModalInicioHeader = ({ children }) => {
     
     return (
@@ -60,14 +123,7 @@ const ModalInicioHeader = ({ children }) => {
 }
 
 
-const ModalInicioBody = ({ onValuesChange }) => {
-    
-    return (
-      <div>
-        VA EL BODY
-      </div>
-    );
-  };
+
 
 const ModalInicioFooter = ({children}) => {
     return(

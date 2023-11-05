@@ -20,6 +20,7 @@ class RegisterPage extends Component{
       email: '',
       phone: '',
       pass: '',
+      showPassword: false,
       errors: {
         username: '',
         firstName: '',
@@ -39,6 +40,17 @@ class RegisterPage extends Component{
     this.setState((prevState) => ({
       showModalInicio: !prevState.showModalInicio,
     }));
+  };
+  
+  
+  togglePasswordVisibility = (e) => {
+    e.preventDefault(); // Prevenir el envío del formulario
+    this.setState((prevState) => ({
+      showPassword: !prevState.showPassword,
+    }));
+  };
+  handleInputChangePass = (e) => {
+    this.setState({ pass: e.target.value });
   };
 
   openModalInicio = () => {
@@ -143,6 +155,7 @@ class RegisterPage extends Component{
         correo: this.state.email,
         telefono: this.state.phone,
         contraseña: this.state.pass,
+        anfitrion:0
       };
       const postProducto = async (url, usuario) => {
         const response = await fetch(url, {
@@ -158,7 +171,7 @@ class RegisterPage extends Component{
         return response;
       }
       
-      const respuestaJson = await postProducto( "http://127.0.0.1:8000/api/posthuesped", usuario);
+      const respuestaJson = await postProducto( "http://127.0.0.1:8000/api/postusuario", usuario);
 
       console.log("Response:------> " + respuestaJson.status);
       // Mostrar el objeto por consola
@@ -219,6 +232,7 @@ class RegisterPage extends Component{
       };
 
   render(){
+    const { pass, showPassword } = this.state;
     //Controla la redireccion del modal despues de Aceptar el registro y continuar
     if (this.state.redirectToHome) {
       return <link to="/cliente" />;
@@ -280,16 +294,31 @@ class RegisterPage extends Component{
             />
             <div className="error-message">{this.state.errors.phone}</div>
           </div>
-          <div className='registrocss'>
-            <label id='label-registro'>Contraseña:</label>
-            <input id='input-registro' className='inputR'
-              type="text"
-              name="pass"
-              value={this.state.pass}
-              onChange={this.handleInputChange}
-            />
-            <div className="error-message">{this.state.errors.pass}</div>
-          </div>
+          
+
+          <div className="registrocss">
+        <label id="label-registro">Contraseña:</label>
+        <div className="password-input-container">
+          <input
+            id="input-registro"
+            className="inputR"
+            type={showPassword ? 'text' : 'password'}
+            name="pass"
+            value={pass}
+            onChange={this.handleInputChangePass}
+          />
+          <button
+            className="show-password-button"
+            onClick={this.togglePasswordVisibility}
+          >
+            {showPassword ? 'Ocultar' : 'Mostrar'}
+          </button>
+        </div>
+        <div className="error-message">{this.state.errors.pass}</div>
+      </div>
+
+
+
           <br></br>
           <div id='texto'>
             Al seleccionar Aceptar y continuar, acepto los Términos de servicio, los Términos de pago del servicio

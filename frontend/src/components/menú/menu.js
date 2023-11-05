@@ -87,28 +87,39 @@ const ModalMenuBody = ({props}) => {
     return (
       <div className="react-modalMenu-body">
         <div id="body-huespedes">
-
-        {parseInt(localStorage.getItem("init") )=== 1 &&(
+       
+        {parseInt(localStorage.getItem("init") )=== 1 &&
+         parseInt(localStorage.getItem("anfitrion") )=== 1  &&
+        (
                        <ul id="lista-menu">
                             <li id="menu-item" >
-                                <button onClick={cerrarSesion}>Cerrar sesion</button>
+                            <Link to='/cliente'>Modo Anfitrion</Link>
                             </li>
                             
                             <li id="menu-item">
-                                
-                <Link to='/cliente'>Modo Anfitrion</Link>
-
-                </li>
+                            <button onClick={cerrarSesion}>Cerrar sesion</button>
+                           
+                             </li>
                         </ul>
                     ) 
-                    }
-        <ul id="lista-menu">
-                <li id="menu-item">
-                <Link to='/cliente'>Modo Anfitrion</Link>
+         }
+         {parseInt(localStorage.getItem("init") )=== 1 &&
+         parseInt(localStorage.getItem("anfitrion") )=== 0 &&
+        (
+                       <ul id="lista-menu">
+                            
+                            <li id="menu-item">
+                                <Link to='/cliente'>Iniciar como anfitrion</Link>
+                             </li>
+                             <li id="menu-item">
+                            <button onClick={cerrarSesion}>Cerrar sesion</button>
+                           
+                             </li>
+                        </ul>
+                    ) 
+         }
 
-                </li>
-                
-              </ul>
+        
         </div>
           </div>
     );
