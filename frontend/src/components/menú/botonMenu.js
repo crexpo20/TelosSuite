@@ -10,14 +10,7 @@ function MenuBoton() {
     const [openInicioModal, setOpenInicioModal] = useState(false);
 
 
-    const handleValuesChange = (adultos, infantes, mascotas) => {
-        // Aquí puedes hacer lo que necesites con los valores
-        console.log("Valores cambiados: adultos:", adultos, "infantes:", infantes, "mascotas:", mascotas);
-        localStorage.setItem("huespedes", adultos);
-        localStorage.setItem("niños", infantes);
-        localStorage.setItem("mascotas", mascotas);
-    };
-
+   
     // Función para abrir el modal de registro y cerrar el modal de menú
     const openRegistroAndCloseMenu = () => {
         setOpenRegistroModal(true);
@@ -63,7 +56,7 @@ function MenuBoton() {
                     ) 
                     }
                  </ModalMenu.Header>
-                <ModalMenu.Body onClose={() => setOpenModal(false)} onValuesChange={handleValuesChange}>
+                <ModalMenu.Body onClose={() => setOpenModal(false)}>
                 
                 </ModalMenu.Body>
                 <ModalMenu.Footer>
@@ -83,7 +76,7 @@ function MenuBoton() {
             {openInicioModal && (
     <ModalInicio isOpen={openInicioModal} onClose={() => setOpenInicioModal(false)}>
         <ModalInicio.Header> </ModalInicio.Header>
-        <ModalInicio.Body onValuesChange={handleValuesChange} />
+        <ModalInicio.Body  />
         <ModalInicio.Footer />
     </ModalInicio>
 )}
