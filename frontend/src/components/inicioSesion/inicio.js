@@ -128,7 +128,7 @@ const ModalInicioHeader = ({ children }) => {
 const ModalInicioFooter = ({children}) => {
     return(
         <div className="react-modal-footer">
-            {children}
+            por ahora darle click en iniciar sesion sin llenar los campos
            
         </div>
     )

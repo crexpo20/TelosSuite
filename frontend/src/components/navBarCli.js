@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import {RiHomeSmileLine} from "react-icons/ri"
+import HabilitarBoton from './habilitar/botonhabilitar';
 class NavbarCli extends Component{
     render(){
       return(
@@ -23,7 +24,8 @@ class NavbarCli extends Component{
 
                <div id='head-der'>
                   <nav>
-                      <Link to='/cliente'>Modo Anfitrion</Link>
+                      
+                     <HabilitarBoton></HabilitarBoton>
                       <Link to='/registro'>Agregar Espacio</Link>
                    
                   </nav>

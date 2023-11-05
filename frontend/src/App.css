@@ -426,6 +426,10 @@ h4{
   white-space: nowrap;
   width: 50%;
 }
+#hab{
+  white-space: normal;
+}
+
 #head-der2 a{
   background-color: #000;
   white-space: nowrap;
@@ -553,7 +557,7 @@ button:hover {
 .filtro-button {
   background-color: #DA1467;
   /* Color de fondo para el botón Filtro */
-  color: white;
+  
   font-family: 'JejuMyeongjo';
 }
 

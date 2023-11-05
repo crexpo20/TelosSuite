@@ -21,6 +21,7 @@ import CuantosBoton from './cuantos/botoncuantos';
 import MenuBoton from './menú/botonMenu';
 import '../pages/css/nav.css';
 import BusquedaBoton from './busqueda/busquedaBoton';
+import HabilitarBoton from './habilitar/botonhabilitar';
 
 const { RangePicker } = DatePicker;
 
@@ -106,7 +107,7 @@ function Navbar() {
         (
           <div id="head-der">
           <div id="head-der2">
-              <Link to='/cliente'>Iniciar como Anfitrion</Link>
+              <HabilitarBoton></HabilitarBoton>
           </div>
           
     </div>

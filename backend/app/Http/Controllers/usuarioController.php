@@ -53,6 +53,7 @@ class usuarioController extends Controller
     $usuario->correo = $request->input('correo');
     $usuario->telefono = $request->input('telefono');
     $usuario->contraseña = $request->input('contraseña');
+    $usuario->anfitrion = $request->input('anfitrion');
    
     // Guardar los cambios en la base de datos
     $usuario->save();

@@ -24,6 +24,7 @@ import LaPaz from '../pages/departamentos/LaPaz';
 import Busqueda from '../pages/ElementosNav/Busqueda';
 import VistaDetalladaInm from '../pages/VistaDetalladaInm';
 import NavbarReg from '../components/navReg';
+import Habilitar from '../pages/Habilitar';
 
 class AppRouter extends Component{
   render(){
@@ -63,12 +64,14 @@ class AppRouter extends Component{
             <Route path='inm' element={<ActualizarInm />} />
             <Route path="/cliente/registerinmue" element={<RegisterInmue />} />
             <Route path='dashboard' element={<DashboardPage />} />
+            <Route path='hh' element={<Habilitar />} />
             
             <Route path='*' element={<Navigate TO ="/"/>}/> 
       </Route>
 
       <Route path= "/registro" element={<NavbarReg />}>
             <Route index element={<RegisterInmue />} />
+
             
              
             <Route path='*' element={<Navigate TO ="/"/>}/> 

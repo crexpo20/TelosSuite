@@ -45,23 +45,29 @@ function MenuBoton() {
                 {parseInt(localStorage.getItem("init") )=== 0 &&(
                        <ul id="lista-menu">
                              <li id="menu-item" >
-                             <button onClick={openInicioAndCloseMenu}>Iniciar Sesión</button>
+                             <button  id='ini-button' onClick={openInicioAndCloseMenu}>Iniciar Sesión</button>
         
                             </li>
-                            <li id="menu-item" ><button onClick={openRegistroAndCloseMenu}>Registro</button>
+                        
+                        </ul>
+                    ) 
+                    }
+                  {parseInt(localStorage.getItem("init") )=== 0 &&(
+                       <ul id="lista-menu">
+                        
+                            <li id="menu-item" >
+                                <button id="reg-button" onClick={openRegistroAndCloseMenu}>Registro</button>
            
                             </li>
                         </ul>
                     ) 
                     }
                  </ModalMenu.Header>
-                <ModalMenu.Body
-                    onClose={() => setOpenModal(false)}
-                    onValuesChange={handleValuesChange}
-                />
+                <ModalMenu.Body onClose={() => setOpenModal(false)} onValuesChange={handleValuesChange}>
+                
+                </ModalMenu.Body>
                 <ModalMenu.Footer>
-
-                         </ModalMenu.Footer>
+                </ModalMenu.Footer>
             </ModalMenu>
 
             {/* Renderiza el modal de registro con su estado correspondiente */}

@@ -4,6 +4,7 @@ import {useSpring, animated, useTransition} from "@react-spring/web";
 import React, { useState } from "react";
 import { Link, Outlet } from 'react-router-dom';
 import RegistroBoton from "../registro/botonRegistro";
+import HabilitarBoton from "../habilitar/botonhabilitar";
 const ModalMenuContext = createContext()
 
 const ModalMenu = ({children, isOpen, onClose}) => {
@@ -76,11 +77,13 @@ const ModalMenuHeader = ({ children}) => {
 
 
 const ModalMenuBody = ({props}) => {
-   
+   function redirige(){
+    <Link to="/cliente"></Link>
+   }
     function cerrarSesion() {
         // Establecer la variable localStorage
         localStorage.setItem("init", "0");
-    
+        localStorage.setItem("anfitrion",0)
         // Recargar la página
         window.location.reload();
     }
@@ -93,11 +96,15 @@ const ModalMenuBody = ({props}) => {
         (
                        <ul id="lista-menu">
                             <li id="menu-item" >
-                            <Link to='/cliente'>Modo Anfitrion</Link>
-                            </li>
+                            <Link to='/cliente'>
+                            <button  onClick={redirige}id='close-button' >
+                            Modo Anfitrion </button>
+                            </Link>
+                            
+                           </li>
                             
                             <li id="menu-item">
-                            <button onClick={cerrarSesion}>Cerrar sesion</button>
+                            <button id='close-button' onClick={cerrarSesion}>Cerrar sesion</button>
                            
                              </li>
                         </ul>
@@ -109,16 +116,16 @@ const ModalMenuBody = ({props}) => {
                        <ul id="lista-menu">
                             
                             <li id="menu-item">
-                                <Link to='/cliente'>Iniciar como anfitrion</Link>
+                            <HabilitarBoton></HabilitarBoton>
                              </li>
                              <li id="menu-item">
-                            <button onClick={cerrarSesion}>Cerrar sesion</button>
+                            <button id='close-button' onClick={cerrarSesion}>Cerrar sesion</button>
                            
                              </li>
                         </ul>
                     ) 
          }
-
+         
         
         </div>
           </div>
