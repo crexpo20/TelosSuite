@@ -14,6 +14,7 @@ use App\Http\Controllers\servicioController;
 //RUTAS PARA INGRESAR, MODIFICAR, ELIMINAR usuario DESDE FORMULARIO
 Route::get('/getusuario', [usuarioController::class,'index']);
 Route::get('/getusuario/{idusuario}', [usuarioController::class,'show']);
+Route::get('/getusuario/{username}', [usuarioController::class,'username']);
 Route::post('/postusuario', [usuarioController::class,'store']);
 Route::delete('/delusuario/{idusuario}', [usuarioController::class,'destroy']);
 Route::put('/putusuario/{idusuario}', [usuarioController::class,'update']);

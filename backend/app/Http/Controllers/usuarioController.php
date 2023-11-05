@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 
 class usuarioController extends Controller
@@ -27,10 +28,12 @@ class usuarioController extends Controller
         return redirect()->action([usuarioController::class, 'index']);
     }
 
-
-    /**
-     * Display 
-     */
+    public function username(string $username)
+    {
+        $usuario = DB::table('usuario')->where('name', $username)->get();
+ 
+        return $usuario;
+    }
     public function show(string $id)
     {
         $usuario =  usuario::find($id);
