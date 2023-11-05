@@ -9,12 +9,14 @@ class usuarioController extends Controller
 {
     public function index()
     {
-         // Obtener todos los productos de la base de datos
+         // Obtener todos los usuarios de la base de datos
          $usuario = usuario::all();
 
-         // Retornar los productos como respuesta
+         // Retornar los usuarios como respuesta
          return $usuario;
     }
+
+
     /**
      * Store  
      */
@@ -42,7 +44,21 @@ class usuarioController extends Controller
      */
     public function update(Request $request, string $id)
     {
-    
+        // Buscar el usuario existente en la base de datos por su ID
+    $usuario = usuario::findorfail($id);
+    // Actualizar los datos del usuario con los datos del formulario
+    $usuario->username = $request->input('username');
+    $usuario->nombre = $request->input('nombre');
+    $usuario->apellido = $request->input('apellido');
+    $usuario->correo = $request->input('correo');
+    $usuario->telefono = $request->input('telefono');
+    $usuario->contraseña = $request->input('contraseña');
+   
+    // Guardar los cambios en la base de datos
+    $usuario->save();
+
+    // Retornar una respuesta de éxito
+    return response()->json(['mensaje' => 'usuario actualizado con éxito'], 200);
     }
 
     /**
