@@ -10,7 +10,7 @@ class Usuario extends Model
     use HasFactory;
     protected $table = 'usuario';
     protected $primaryKey = 'idusuario';
-    protected $fillable = ['username','nombre','apellido','correo','telefono','contraseña'];
+    protected $fillable = ['username','nombre','apellido','correo','telefono','contraseña','anfitrion'];
     public $timestamps = false;
 
     public function Inmueble(){
