@@ -157,24 +157,10 @@ label {
   display: block;  /* Hace que el label se muestre como un bloque para ocupar toda la línea */
   margin-bottom: 1.5rem;  /* Agrega espacio debajo */
 }
-/* Tu CSS existente */
-/* ... */
+
 
 /* Agregando estilos específicos para la sección 'Tipo de propiedad' */
-.filter-section h2 {
-  font-size: 24px;
-  margin-bottom: 2.5rem;
-  color: #333;
-  font-family: 'JejuMyeongjo';
-}
 
-.selector-wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 10px; /* Espacio entre los botones */
-}
 
 .selector-button {
   flex-basis: calc(25% - 10px); /* Asegura que cuatro botones se ajusten en una fila con un espacio de 10px entre ellos */
@@ -198,11 +184,5 @@ label {
   border-color: #ff5a5f;
 }
 
-/* Estilos para los íconos */
-.selector-button svg {
-  margin-bottom: 4px;
-  font-size: 24px;
-  color: #333;
-  display: block;
-}
+
 
