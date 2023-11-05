@@ -76,7 +76,7 @@ function MenuBoton() {
             </ModalRegistro>
             {openInicioModal && (
     <ModalInicio isOpen={openInicioModal} onClose={() => setOpenInicioModal(false)}>
-        <ModalInicio.Header> Elije la cantidad de huespedes </ModalInicio.Header>
+        <ModalInicio.Header> </ModalInicio.Header>
         <ModalInicio.Body onValuesChange={handleValuesChange} />
         <ModalInicio.Footer />
     </ModalInicio>

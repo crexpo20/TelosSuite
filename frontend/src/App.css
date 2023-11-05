@@ -331,9 +331,25 @@ h4{
   background-color: #ffffff;border: 1px solid #ccc;
  
 }
-
+#reg{
+  font-size: 30px;
+}
 #buscadorCliente{
  
+  width: 55%;
+  display: flex;
+ 
+}
+#navRegs{
+  padding-top: 20px;
+  font-family: 'JejuMyeongjo';
+  padding-left: 42%;
+  color: rgba(13, 10, 11, 0.85);
+   width: 1000px;
+   display: flex;
+} 
+#navReg{
+ padding-left: 18%;
   width: 55%;
   display: flex;
  
@@ -401,9 +417,19 @@ h4{
     padding-right: 2%;
 
 }
-#head-der2,#head-der3{
+#head-der3{
   display: inline-block;
   width: 50%;
+}
+#head-der2{
+  display: inline-block;
+  white-space: nowrap;
+  width: 50%;
+}
+#head-der2 a{
+  background-color: #000;
+  white-space: nowrap;
+  width: 100%;
 }
 #head-der3{
   padding-left:13%;

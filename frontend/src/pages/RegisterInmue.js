@@ -34,7 +34,11 @@ class RegisterInmue extends Component {
         piscina: 0,
         compartido: 0,
         privado: 0,
+        titleCharacterCount: 0,
+        descriptionCharacterCount: 0,
+        normasCharacterCount: 0,
       },
+      
       propertyTypes: [
         { type: 'Casa', icon: <BsHouse /> },
         { type: 'Habitación', icon: <MdApartment /> },
@@ -60,6 +64,7 @@ class RegisterInmue extends Component {
         'Beni',
         'Pando',
       ],
+      
     };
   }
 
@@ -71,6 +76,46 @@ class RegisterInmue extends Component {
         })
       );
     }
+  };
+
+  handleTitulo = (field, value) => {
+    this.setState((prevState) => {
+      const formData = { ...prevState.formData };
+      formData[field] = value;
+  
+      if (field === "tituloanuncio") {
+        // Contar los caracteres del título y actualizar el estado
+        this.setState({ titleCharacterCount: value.length });
+      }
+  
+      return { formData };
+    });
+  };
+  handleNormas = (field, value) => {
+    this.setState((prevState) => {
+      const formData = { ...prevState.formData };
+      formData[field] = value;
+  
+      if (field === "normas") {
+        // Contar los caracteres del título y actualizar el estado
+        this.setState({ titleCharacterCount: value.length });
+      }
+  
+      return { formData };
+    });
+  };
+  handleDesc = (field, value) => {
+    this.setState((prevState) => {
+      const formData = { ...prevState.formData };
+      formData[field] = value;
+  
+      if (field === "tituloanuncio") {
+        // Contar los caracteres del título y actualizar el estado
+        this.setState({ descriptionCharacterCount: value.length });
+      }
+  
+      return { formData };
+    });
   };
 
   handlePrevSlide = () => {
@@ -184,8 +229,11 @@ class RegisterInmue extends Component {
             
             {currentSlide === 0 && (
               <div className="property-type-selection">
+                <div id='titulo'>
                 <h3>Elige el tipo de inmueble que deseas ofertar:</h3>
-                {propertyTypes.map((property, index) => (
+               
+                </div>
+                 {propertyTypes.map((property, index) => (
                   <label
                     key={index}
                     className={`property-type-label ${
@@ -234,84 +282,137 @@ class RegisterInmue extends Component {
               </div>
             )}
             {currentSlide === 2 && (
-              <div className="property-info">
-                <h3>Información básica sobre tu inmueble:</h3>
-                <label>
-                  Capacidad:
-                  <input
-                    type="number"
-                    name="capacidad"
-                    value={formData.capacidad}
-                    onChange={(e) =>
-                      this.handleInputChange("capacidad", e.target.value)
-                    }
-                  />
-                </label>
-                <label>
-                  Habitaciones:
-                  <input
-                    type="number"
-                    name="habitaciones"
-                    value={formData.habitaciones}
-                    onChange={(e) =>
-                      this.handleInputChange("habitaciones", e.target.value)
-                    }
-                  />
-                </label>
-                <label>
-                  Baños:
-                  <input
-                    type="number"
-                    name="banos"
-                    value={formData.banos}
-                    onChange={(e) =>
-                      this.handleInputChange("banos", e.target.value)
-                    }
-                  />
-                </label>
-                <label>
-                  Camas:
-                  <input
-                    type="number"
-                    name="camas"
-                    value={formData.camas}
-                    onChange={(e) =>
-                      this.handleInputChange("camas", e.target.value)
-                    }
-                  />
-                </label>
-              </div>
+              
+            <div>
+<div id='titulo'>
+                       <h3>Informacion basica sobre tu inmueble</h3>
+                </div>
+           <div className="property-info">
+        
+           <div className="left">
+           <label id="indotext">
+               Baños:
+               <input
+                 id="info2"
+                 type="number"
+                 name="banos"
+                 value={formData.banos}
+                 onChange={(e) =>
+                   this.handleInputChange("banos", e.target.value)
+                 }
+               />
+             </label>
+             <label id="indotext">
+               Camas:
+               <input
+                 id="info2"
+                 type="number"
+                 name="camas"
+                 value={formData.camas}
+                 onChange={(e) =>
+                   this.handleInputChange("camas", e.target.value)
+                 }
+               />
+             </label>
+           </div>
+           <div className="right">
+           <label id="indotext1">
+               Habitaciones:
+               <input
+                 id="info"
+                 type="number"
+                 name="habitaciones"
+                 value={formData.habitaciones}
+                 onChange={(e) =>
+                   this.handleInputChange("habitaciones", e.target.value)
+                 }
+               />
+             </label>
+             <label id="indotext1">
+               Capacidad:
+               <input
+                 id="info"
+                 type="number"
+                 name="capacidad"
+                 value={formData.capacidad}
+                 onChange={(e) =>
+                   this.handleInputChange("capacidad", e.target.value)
+                 }
+               />
+             </label>
+           </div>
+         </div>
+         </div>
             )}
             {currentSlide === 3 && (
-              <div className="property-title-description">
-                <h3>Ingresa un título para tu anuncio:</h3>
-                <input
-                  type="text"
-                  name="tituloanuncio"
-                  value={formData.tituloanuncio}
-                  onChange={(e) =>
-                    this.handleInputChange("tituloanuncio", e.target.value)
-                  }
-                />
-                <h3>Ingresa una breve descripción sobre tu inmueble:</h3>
+  <div className="property-title-description">
+    <h2>Ingresa un título para tu anuncio
+      <br></br>
+    <span className="character-count">
+        {formData.tituloanuncio.length} / 50
+      </span>
+    </h2>
+    <div className="title-counter">
+      <input
+        id='titulo'
+        type="text"
+        name="tituloanuncio"
+        value={formData.tituloanuncio}
+        onChange={(e) => {
+          const newValue = e.target.value;
+          if (newValue.length <= 50) {
+            this.handleTitulo("tituloanuncio", newValue);
+          }
+        }}
+      />
+      <br></br>
+      
+    </div>
+    <br></br>
+    <h2>Ingresa una breve descripción sobre tu inmueble
+      <br></br>
+    <span className="character-count">
+        {formData.descripcion.length} / 200
+      </span>
+    </h2>
+   
                 <textarea
+                 id="descripcion"
                   name="descripcion"
                   value={formData.descripcion}
-                  onChange={(e) =>
-                    this.handleInputChange("descripcion", e.target.value)
-                  }
+                  onChange={(e) => {
+                    const newValue = e.target.value;
+                    if (newValue.length <= 200) {
+                      this.handleDesc("descripcion", newValue);
+                    }
+                  }}
                 />
-              </div>
-            )}
+              
+  </div>
+)}
+
             {currentSlide === 4 && (
               <div className="property-rules">
+                <div id='titulo'> 
                 <h3>Por favor, ingresa las normas para tu inmueble:</h3>
-                <textarea
+                
+                </div>
+
+                <br></br>
+    <h2 className="character-count">
+        {formData.normas.length} / 250
+      </h2>
+                <br></br>
+                 <textarea
+                  id='normas'
                   name="normas"
                   value={formData.normas}
-                  onChange={(e) =>
-                    this.handleInputChange("normas", e.target.value)
-                  }
+                  onChange={(e) => {
+                    const newValue = e.target.value;
+                    if (newValue.length <= 250) {
+                      this.handleNormas("normas", newValue);
+                    }
+                  }}
                 />
               </div>
             )}
@@ -345,12 +446,15 @@ class RegisterInmue extends Component {
             </div>
           )}
             {currentSlide === 6 && (
-              <div className="property-location">
+              <div className="property-locations">
+                <div id='titulo'>
                 <h3>En qué ciudad se encuentra tu inmueble:</h3>
-                {cities.map((city, index) => (
+               
+                </div>
+              {cities.map((city, index) => (
                   <label
                     key={index}
-                    className={`property-type-label ${
+                    className={`property-type-labels ${
                       formData.cuidad === city ? 'selected' : ''
                     }`}
                   >
@@ -473,8 +577,12 @@ class RegisterInmue extends Component {
                     <h3>Es momento de poner un precio a tu inmueble:</h3>
                 </div>
                <div id='cuerpo'>
-               <label id='label-precio'>
-                  <div>BS.</div>
+                <div id='cuerpo-der'>
+                  Bs.
+                </div>
+                <div>
+                <label id='label-precio'>
+                  
                   <input
                    id='precioA'
                     type="number"
@@ -486,6 +594,8 @@ class RegisterInmue extends Component {
                     }
                   />
                 </label>
+                </div>
+               
                </div>
               </div>
             )}
@@ -510,8 +620,8 @@ class RegisterInmue extends Component {
               < IoIosArrowDroprightCircle />
             </button>
           )}
-           {currentSlide === 9n && (
-             <button className="fin"type="submit" onClick={this.onSubmit}>
+           {currentSlide === 9 && (
+             <button className="fin" type="submit" onClick={console.log(this.state.formData)}>
               Finalizar
             </button>
           )}

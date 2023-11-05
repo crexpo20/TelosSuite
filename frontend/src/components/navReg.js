@@ -1,40 +1,37 @@
 import React, {Component} from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import {RiHomeSmileLine} from "react-icons/ri"
-class NavbarCli extends Component{
+class NavbarReg extends Component{
     render(){
       return(
         <>
          <header>
             <div id='head'>
                <div id='head-izq'>
-                  <div id = "logoT">
+                </div>
+                    
+          
+               <div id='navReg'>
+               <div id = "logoT">
                   <i id='logoP'><RiHomeSmileLine/></i>
                   </div>
                     
                   <div id = 'logoL'>
                   <a id="TelosSuite">TelosSuite</a>
                   </div>
-                    
-            
-               </div>
-               <div id='buscadorCliente'>
                </div>
 
                <div id='head-der'>
-                  <nav>
-                      <Link to='/cliente'>Modo Anfitrion</Link>
-                      <Link to='/registro'>Agregar Espacio</Link>
-                   
-                  </nav>
                 </div>
+
             </div>
               <div id='navAbajo'>
-                  <div id='navDer'>
-                      
+              <div id='navRegs'>
+              <div id="reg">Registro de inmueble</div>
                   </div>
+                  
                   <div id='opt-nav'>
-                  <Link to='/'>Cerrar sesión</Link>
+                  <Link to='/cliente'>CANCELAR</Link>
                   </div>
               </div>
            
@@ -45,4 +42,4 @@ class NavbarCli extends Component{
       );
     }
   }
-  export default NavbarCli;
+  export default NavbarReg;

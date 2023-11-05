@@ -137,3 +137,8 @@
     border-radius: 5px;/* Quita el borde predeterminado al hacer clic */
     border: 2px solid rgba(218, 20, 103, 0.85); /* Color del borde inferior al estar seleccionado */
   }
+
+  .initbuton{
+    margin-right: 35%;
+    margin-bottom: 15px;
+  }

@@ -95,10 +95,35 @@ function Navbar() {
           <div className="verinm">
             <button onClick={handleReloadTarija}>BUSCAR</button>
           </div>
+
+         
           {parseInt(localStorage.getItem("init") )=== 1 &&(
                       <div id="head-der">
                             <div id="head-der2">
-                                <Link to='/cliente'>Modo Anfitrion</Link>
+                              
+          {
+         parseInt(localStorage.getItem("anfitrion") )=== 0 &&
+        (
+          <div id="head-der">
+          <div id="head-der2">
+              <Link to='/cliente'>Iniciar como Anfitrion</Link>
+          </div>
+          
+    </div>
+                    ) 
+         }
+         
+         {
+         parseInt(localStorage.getItem("anfitrion") )=== 1 &&
+        (
+          <div id="head-der">
+          <div id="head-der2">
+              <Link to='/cliente'>Modo anfitrion</Link>
+          </div>
+          
+    </div>
+                    ) 
+         }
                             </div>
                             <div id='head-der3'>
                                 <MenuBoton />

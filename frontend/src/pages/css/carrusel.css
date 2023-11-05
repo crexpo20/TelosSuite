@@ -81,6 +81,7 @@
   .property-options #cuerpo{
    
     padding-top: 18%;
+    padding-left: 18%;
 
   }
   .property-options-label{
@@ -178,3 +179,185 @@
      margin: 5px;
      margin-top:10% ; 
   }
+
+
+  .property-info {
+    padding-top: 2%;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .property-info .left {
+    flex-basis: 45%; /* Ajusta el ancho del lado izquierdo según tus necesidades */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .property-info .right {
+    flex-basis: 45%; /* Ajusta el ancho del lado derecho según tus necesidades */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .property-info label {
+    padding-top: 18%;
+    display: flex;
+    flex-direction: column;
+    
+  }
+  
+  .property-info input {
+    border: none;
+    border-bottom: 1px solid #000; /* Borde inferior */
+    outline: none;
+  }
+
+ 
+  input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  appearance: none;
+  margin: 0;
+}
+
+#info, #info2{
+  padding-left: 20%;
+
+}
+#indotext1{
+  margin-left: 0;
+  width: 300px;
+}
+.property-info .right label,
+.property-info .right input {
+  color:  #DA1467;
+  font-size:x-large;
+  font-family: 'JejuMyeongjo';
+  display: inline-block;
+  width: 50%;
+}
+
+.property-info .right label:last-child,
+.property-info .right input:last-child {
+  margin-right: 0; /* Elimina el margen derecho del último elemento */
+  
+}
+
+.property-info .left label,
+.property-info .left input {
+  color:  #DA1467;
+  font-size:x-large;
+  font-family: 'JejuMyeongjo';
+  display: inline-block;
+ width: 60%;
+}
+
+.property-info .left label:last-child,
+.property-info .left input:last-child {
+  margin-right: 0; /* Elimina el margen derecho del último elemento */
+}
+
+.property-info .right input {
+  border: none;
+  border-bottom: 2px solid #dddcdc; /* Borde inferior */
+  
+  transition: border-bottom 1s; }
+
+.property-info .right input:focus {
+  border-color: #DA1467; /* Color del borde al seleccionar el input */
+  outline: none; /* Elimina el contorno predeterminado de enfoque */
+}
+
+.property-info .left input {
+  border: none;
+  border-bottom: 2px solid #dddcdc; /* Borde inferior */
+  
+  transition: border-bottom 1s; }
+
+.property-info .left input:focus {
+  border-color: #DA1467; /* Color del borde al seleccionar el input */
+  outline: none; /* Elimina el contorno predeterminado de enfoque */
+}
+  
+.property-title-description h2, h2{
+  color:  #DA1467;
+  font-family: 'JejuMyeongjo';
+}
+
+#titulo{
+  
+  font-family: 'JejuMyeongjo';
+  padding: 8px;
+  border-radius:5px ;
+  font-size: larger;
+  border: none;
+  border-bottom: 2px solid #ccc; /* Borde inferior */
+  width: 100%;
+  transition: border-bottom 0.3s; 
+}
+#titulo:focus {
+  outline: none; 
+  border-radius: 5px;/* Quita el borde predeterminado al hacer clic */
+  border: 2px solid rgba(218, 20, 103, 0.85); /* Color del borde inferior al estar seleccionado */
+}
+
+#descripcion{
+  
+  font-family: 'JejuMyeongjo';
+  padding: 8px;
+  font-size: larger;
+  border-radius:5px ;
+
+  border: 2px solid #ccc; /* Borde inferior */
+  width: 100%;
+  height: 18vh;
+  transition: border-bottom 0.3s; 
+  resize: none;
+}
+
+#descripcion:focus {
+  outline: none; 
+  border-radius: 5px;/* Quita el borde predeterminado al hacer clic */
+  border: 2px solid rgba(218, 20, 103, 0.85); /* Color del borde inferior al estar seleccionado */
+}
+
+#normas{
+  
+  font-family: 'JejuMyeongjo';
+  padding: 8px;
+  font-size: larger;
+  border-radius:5px ;
+  border: 2px solid #ccc; /* Borde inferior */
+  width: 100%;
+  height: 20vh;
+  transition: border-bottom 0.3s; 
+  resize: none;
+}
+#normas:focus {
+  outline: none; 
+  border-radius: 5px;/* Quita el borde predeterminado al hacer clic */
+  border: 2px solid rgba(218, 20, 103, 0.85); /* Color del borde inferior al estar seleccionado */
+}
+
+.property-price #cuerpo{
+}
+.property-price #cuerpo #cuerpo-der{
+ padding-left: 28%;
+  margin-top: 9%;
+  font-size: 40px;
+}
+
+.property-type-labels {
+  flex: 1 1 calc(50% - 10px); 
+   margin: 5px; 
+}
+.property-type-labels.selected {
+  border: 2px solid #DA1467;
+  border-radius: 6px;
+}
+.property-type-labels{
+  display: flex;
+  padding-left: 45%;
+  font-size: 23px;
+  color: #DA1467;
+  font-family: 'JejuMyeongjo'
+}

@@ -22,6 +22,7 @@ import Oruro from '../pages/departamentos/Oruro';
 import Potosi from '../pages/departamentos/Potosi';
 import LaPaz from '../pages/departamentos/LaPaz';
 import Busqueda from '../pages/ElementosNav/Busqueda';
+import NavbarReg from '../components/navReg';
 
 class AppRouter extends Component{
   render(){
@@ -63,6 +64,15 @@ class AppRouter extends Component{
             
             <Route path='*' element={<Navigate TO ="/"/>}/> 
       </Route>
+
+      <Route path= "/registro" element={<NavbarReg />}>
+            <Route index element={<RegisterInmue />} />
+            
+             
+            <Route path='*' element={<Navigate TO ="/"/>}/> 
+      </Route>
+
+
       <Route>
       <Route path='register' element={<RegisterPage />} />
       </Route>
