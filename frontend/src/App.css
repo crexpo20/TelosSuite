@@ -12,7 +12,7 @@
 
 
 
-header{
+header {
   position: fixed;
   top: 0;
   width: 100%;
@@ -20,8 +20,17 @@ header{
   justify-content: space-between; 
   height: 165px;
   padding-right: 20px;
-  background-color: #ffffff;;
+  background-color: #ffffff;
+  z-index: 2; /* Establece un valor mayor que 1 para elevar el encabezado por encima del contenido */
 }
+
+body {
+  /* Rectangle 53 */
+  background: #E8DAE1;
+  margin-top: 165px;
+  z-index: 1; /* Establece un valor menor que 2 para que el contenido del cuerpo esté detrás del encabezado */
+}
+
 /* TelosSuite */
 h1{
   
@@ -88,10 +97,6 @@ a{
   }
 
 /* Rectangle 53 */
-body{/* Rectangle 53 */
-  background: #E8DAE1;
-margin-top: 165px;
-}
 
 /* Actualizar Inmueble */
 

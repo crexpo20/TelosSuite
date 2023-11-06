@@ -50,7 +50,7 @@ componentDidMount(){
 }
 
 getProductos=async()=>{
-  await axios.get('http://127.0.0.1:8000/api/getinmkuebles')
+  await axios.get('http://127.0.0.1:8000/api/getinmuebles')
   .then(res=>{
       this.setState({inmueble: res.data});
       console.log(this.state.inmueble)

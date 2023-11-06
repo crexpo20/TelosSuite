@@ -61,41 +61,39 @@ const ModalInicioBody = ({ onValuesChange }) => {
     console.log(formData.username)
   
     try {
-      const response = await fetch(`http://127.0.0.1:8000/api/getusername/${formData.username}`);
-  
-      if (response.ok) {
-        const userData = await axios.get(`http://127.0.0.1:8000/api/getusername/${formData.username}`);
-        console.log(userData.data[0])
-        if (userData.data[0].contraseña === formData.password) {
+      const userData1 = await axios.get(`http://127.0.0.1:8000/api/getusername/${formData.username}`);
+      const userData2 = await axios.get(`http://127.0.0.1:8000/api/getcorreo/${formData.username}`);
+       console.log(userData1.data.length)
+       console.log(userData2.data.length)
+      if (userData1.data.length > 0) {
+        
+        console.log(userData1.data[0])
+        if (userData1.data[0].contraseña === formData.password) {
           localStorage.setItem("init",1)
-          localStorage.setItem("userID", userData.data[0].idusuario)
-          localStorage.setItem("anfitrion", userData.data[0].anfitrion)
-          // Inicio de sesión exitoso
-          /*const user = {
-            idusuario: userData.idusuario,
-            username: userData.username,
-            nombre: userData.nombre,
-            apellido: userData.apellido,
-            correo: userData.correo,
-            telefono: userData.telefono,
-            anfitrion: userData.anfitrion,
-            // Puedes agregar más propiedades según tus necesidades
-          };*/
-         
-          console.log("exito"); // Aquí tienes el objeto con los datos del usuario
-  
-          // Puedes guardar el objeto del usuario en el estado o pasarlo a otra función
-          // para su posterior uso
-          // setStateUser(user);
-          
-          onClose(); // Cierra el modal
-          window.location.reload();
+          localStorage.setItem("userID", userData1.data[0].idusuario)
+          localStorage.setItem("anfitrion", userData1.data[0].anfitrion)
+           console.log("exito"); 
+          onClose(); 
         } else {
-          setError("Nombre de usuario o contraseña incorrecta.");
+          setError("Contraseña incorrecta.");
         }
       } else {
-        setError("Nombre de usuario no encontrado.");
-      }
+        if (userData2.data.length > 0) {
+        
+          console.log(userData2.data[0])
+          if (userData2.data[0].contraseña === formData.password) {
+            localStorage.setItem("init",1)
+            localStorage.setItem("userID", userData2.data[0].idusuario)
+            localStorage.setItem("anfitrion", userData2.data[0].anfitrion)
+             console.log("exito"); 
+            onClose(); 
+          } else {
+            setError("Contraseña incorrecta.");
+          }
+        } else {
+          setError("Nombre de usuario  o correo invalido.");
+        } 
+      } 
     } catch (error) {
       console.error("Error al iniciar sesión: ", error);
       setError("Hubo un error al iniciar sesión.");
