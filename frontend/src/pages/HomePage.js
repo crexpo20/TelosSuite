@@ -7,12 +7,14 @@ import iconocorazon1 from '../iconos/corazon1.png';
 import iconocorazon2 from '../iconos/corazon2.png';
 
 import axios from "axios";
+import ModalInicio from '../components/inicioSesion/inicio';
 class HomePage extends Component {
   constructor(props){
     super(props);
     this.state={
       inmueble:[],
       favorites: [],
+      showLoginModal: false,
     }
     this.getProductos = this.getProductos.bind(this);
     
@@ -20,21 +22,30 @@ class HomePage extends Component {
 
 /*añadir favoritos*/
 toggleFavorite = (sitio) => {
-  const { favorites } = this.state;
-  const sitioId = sitio.idinmueble;
-
-  if (favorites.includes(sitioId)) {
-    const updatedFavorites = favorites.filter((id) => id !== sitioId);
-    this.setState({ favorites: updatedFavorites }, () => {
-      console.log('Favoritos actualizados:', this.state.favorites);
-    });
-  } else {
-    this.setState(
-      { favorites: [...favorites, sitioId] },
-      () => {
+  if(parseInt(localStorage.getItem("init")) === 1){
+    const { favorites } = this.state;
+    const sitioId = sitio.idinmueble;
+  
+    if (favorites.includes(sitioId)) {
+      const updatedFavorites = favorites.filter((id) => id !== sitioId);
+      this.setState({ favorites: updatedFavorites }, () => {
         console.log('Favoritos actualizados:', this.state.favorites);
-      }
-    );
+      });
+    } else {
+      this.setState(
+        { favorites: [...favorites, sitioId] },
+        () => {
+          console.log('Favoritos actualizados:', this.state.favorites);
+        }
+      );
+  }
+  
+  }else{
+    console.log(
+      "immicia sesion"
+    )
+    this.setState({ showLoginModal: true });
+  
   }
 };
 
@@ -62,6 +73,7 @@ getProductos=async()=>{
 
   render() {
     const { favorites } = this.state;
+    const { showLoginModal } = this.state;
 
     const inmueblesFavoritos = this.state.inmueble.filter((sitio) =>
     favorites.includes(sitio.idinmueble)
@@ -106,8 +118,13 @@ getProductos=async()=>{
               return null;
             })}
           </div>
-         
-         
+          {showLoginModal && (
+  <ModalInicio isOpen={showLoginModal} onClose={() => this.setState({ showLoginModal: false })}>
+    <ModalInicio.Header> </ModalInicio.Header>
+    <ModalInicio.Body />
+    <ModalInicio.Footer />
+  </ModalInicio>
+)}     
 <div className="favorites-list">
             <h2>Favoritos:</h2>
             <ul>
