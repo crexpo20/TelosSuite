@@ -67,7 +67,7 @@ function Navbar() {
 
   return (
     <>
-      <header>
+      <header style={{position: 'fixed', top: 0, left: 0, right: 0, backgroundColor: '#fff', zIndex: 100,}}>
         <div id="head">
           <div id="head-izq">
             <div id="logoT">
