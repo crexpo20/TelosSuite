@@ -34,9 +34,12 @@ getProductos=async()=>{
         <body>
           <div className="verinm">
             {this.state.inmueble.map((sitio, index) => {
-              if (sitio.ciudad === "Departamento"
-                ){ if(sitio.tipopropiedad === localStorage.getItem("tipo")){
-                    
+              if(sitio.tipopropiedad === "Departamento" &&
+                 sitio.niños === parseInt(localStorage.getItem("niños")) &&
+                 sitio.mascotas === parseInt(localStorage.getItem("mascotas")) &&
+                 sitio.capacidad >= parseInt(localStorage.getItem("huespedes")) &&
+                 sitio.ciudad === localStorage.getItem("destino")
+              ){
                     return (
                         <div className="InmueblesHost" key={sitio.id}>
                           <img
@@ -44,29 +47,17 @@ getProductos=async()=>{
                             src="https://picsum.photos/280/280"
                             alt="Inmueble"
                           />
-                          <h3 className="inmueble_name">{sitio.tituloanuncio}</h3>
+                          <h3 className="inmueble_name">{sitio.tipopropiedad}</h3>
                           <div className="inmueble_info">
                             <p className="inmDet">{sitio.ciudad}</p>
-                            <p className="inmCamas">{sitio.camas}</p>
-                            <p className="inmPrecio">{sitio.precio}</p>
+                            <p className="inmCamas">{sitio.tituloanuncio}</p>
+                            <p className="inmPrecio">{sitio.capacidad}</p>
                           </div>
                         </div>
                       );
                 }
                
-              }
-              if(this.state.contador === 0){
-                return (
-                  <div className="InmueblesHost" >
-                    <img
-                      className="inmueble_fot"
-                      src="https://picsum.photos/280/280"
-                      alt="Inmueble"
-                    />
-                    
-                  </div>
-                );
-              }
+              
               return null;
             })}
           </div>

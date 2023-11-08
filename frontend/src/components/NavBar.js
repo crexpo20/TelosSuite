@@ -56,9 +56,8 @@ function Navbar() {
   };
 
   const handleReloadTarija = () => {
-    navigate(`/${destino}`);
+    navigate(`/busqueda`);
     console.log(localStorage.getItem("camas"))
-    window.location.reload();
   };
 
   const toggleModoAnfPopup = () => {
@@ -153,7 +152,17 @@ function Navbar() {
                         <PiHouseLine />
                       </i>
                     </div>
-                    Tu búsqueda
+                    Inicio
+                  </Link>
+                </li>
+                <li id="cat">
+                  <Link to="/busqueda">
+                    <div class="icon">
+                      <i id="logo-nav">
+                        <PiHouseLine />
+                      </i>
+                    </div>
+                    Tu busqueda
                   </Link>
                 </li>
                 <li id="cat">

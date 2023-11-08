@@ -170,10 +170,11 @@ class RegisterInmue extends Component {
   };
 
 
-  onSubmit = async () => {
+  onSubmit = async (e) => {
+    e.preventDefault();
       // Crear un objeto con los datos del formulario
       const lugar = {
-         idanfitrion :3,
+         idusuario : localStorage.getItem("userID"),
          tipopropiedad :this.state.formData.tipopropiedad,
          tituloanuncio :this.state.formData.tituloanuncio,
          descripcion :this.state.formData.descripcion,
@@ -194,6 +195,10 @@ class RegisterInmue extends Component {
         refrigerador: this.state.formData.refrigerador,
         lavaropa: this.state.formData.lavaropa,
         piscina: this.state.formData.piscina,
+        privado: this.state.formData.privado,
+        compartido: this.state.formData.compartido,
+        estado:0,
+        contacto:65307821
       };
       const postProducto = async (url, lugar) => {
         const response = await fetch(url, {
@@ -621,7 +626,7 @@ class RegisterInmue extends Component {
             </button>
           )}
            {currentSlide === 9 && (
-             <button className="fin" type="submit" onClick={console.log(this.state.formData)}>
+             <button className="fin" type="submit" onClick={this.onSubmit}>
               Finalizar
             </button>
           )}
