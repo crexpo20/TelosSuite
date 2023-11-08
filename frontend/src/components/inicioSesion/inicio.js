@@ -73,7 +73,8 @@ const ModalInicioBody = ({ onValuesChange }) => {
           localStorage.setItem("userID", userData1.data[0].idusuario)
           localStorage.setItem("anfitrion", userData1.data[0].anfitrion)
            console.log("exito"); 
-          onClose(); 
+           window.location.reload();
+          
         } else {
           setError("Contraseña incorrecta.");
         }
@@ -85,7 +86,8 @@ const ModalInicioBody = ({ onValuesChange }) => {
             localStorage.setItem("init",1)
             localStorage.setItem("userID", userData2.data[0].idusuario)
             localStorage.setItem("anfitrion", userData2.data[0].anfitrion)
-             console.log("exito"); 
+            console.log("exito"); 
+            window.location.reload();
             onClose(); 
           } else {
             setError("Contraseña incorrecta.");

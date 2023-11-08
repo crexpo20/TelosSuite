@@ -1,0 +1,40 @@
+.container {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente el contenido */
+    align-items: center; /* Centra verticalmente el contenido */
+    height: 70vh; /* Ocupa el 100% de la altura de la ventana */
+  }
+  
+  /* Estilos para el grid dentro del contenedor principal */
+  .pagoGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    border-radius: 5%;
+    width: 70%;
+    height: 70%;
+    background-color: rgb(252, 167, 181);
+    text-align: center;
+  }
+  .pagoGrid h1 {
+    font-size: 35px;
+    font-family: 'JejuMyeongjo';
+    margin-top: 30px; /* Espacio entre el h1 y el párrafo */
+    margin-left: 250px;
+  }
+  .pagoGrid p {
+    margin-left: 370px;
+  }
+  .pagoGrid button {
+    background-color: #b1b1b1;
+    font-size: 20px;
+    font-family: 'JejuMyeongjo';
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    margin: 15px; /* Espacio entre los botones */
+    cursor: pointer;
+  }
+  
+  .pagoGrid button:hover {
+    background-color: #DA1467;
+  }

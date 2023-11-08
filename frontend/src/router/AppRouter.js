@@ -25,6 +25,13 @@ import Busqueda from '../pages/ElementosNav/Busqueda';
 import VistaDetalladaInm from '../pages/VistaDetalladaInm';
 import NavbarReg from '../components/navReg';
 import Habilitar from '../pages/Habilitar';
+import Casa from '../pages/ElementosNav/Casa';
+import Habitacion from '../pages/ElementosNav/Habitacion';
+import Cabaña from '../pages/ElementosNav/Cabaña';
+import Departamento from '../pages/ElementosNav/Departamento';
+import ReservaInm from '../pages/ReservaInm';
+import PagoBanco from '../pages/PagoBanco';
+
 
 class AppRouter extends Component{
   render(){
@@ -50,12 +57,15 @@ class AppRouter extends Component{
           <Route path='La Paz' element={<LaPaz />} />
           <Route path='register' element={<RegisterPage />} />
           <Route path='busqueda' element={<Busqueda />} />
-          <Route path='Casa' element={<Busqueda />} />
-          <Route path='Departamento' element={<Busqueda />} />
-          <Route path='Cabaña' element={<Busqueda />} />
-          <Route path='Habitacion' element={<Busqueda />} />
+          <Route path='Casa' element={<Casa />} />
+          <Route path='Departamento' element={<Departamento />} />
+          <Route path='Cabaña' element={<Cabaña />} />
+          <Route path='Habitacion' element={<Habitacion />} />
           <Route path='*' element={<Navigate TO ="/"/>}/> 
           <Route path='vistaInm' element={<VistaDetalladaInm />} />
+          <Route path='Reserva' element={<ReservaInm />} />
+          <Route path='Pago' element={<PagoBanco />} />
+
           
       </Route>
       <Route path= "/cliente" element={<NavbarCli />}>

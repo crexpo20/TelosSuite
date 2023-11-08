@@ -114,6 +114,7 @@
 
 .price-filter-container {
   padding: 20px;
+  z-index: 1001;
 }
 
 .filter-section h2 {

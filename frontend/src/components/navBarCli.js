@@ -25,7 +25,6 @@ class NavbarCli extends Component{
                <div id='head-der'>
                   <nav>
                       
-                     <HabilitarBoton></HabilitarBoton>
                       <Link to='/registro'>Agregar Espacio</Link>
                    
                   </nav>
@@ -36,7 +35,7 @@ class NavbarCli extends Component{
                       
                   </div>
                   <div id='opt-nav'>
-                  <Link to='/'>Cerrar sesión</Link>
+                  <Link to='/'>Salir del Modo Anfitrion</Link>
                   </div>
               </div>
            
