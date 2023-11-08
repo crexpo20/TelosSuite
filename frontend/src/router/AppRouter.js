@@ -29,6 +29,9 @@ import Casa from '../pages/ElementosNav/Casa';
 import Habitacion from '../pages/ElementosNav/Habitacion';
 import Cabaña from '../pages/ElementosNav/Cabaña';
 import Departamento from '../pages/ElementosNav/Departamento';
+import ReservaInm from '../pages/ReservaInm';
+import PagoBanco from '../pages/PagoBanco';
+
 
 class AppRouter extends Component{
   render(){
@@ -60,6 +63,9 @@ class AppRouter extends Component{
           <Route path='Habitacion' element={<Habitacion />} />
           <Route path='*' element={<Navigate TO ="/"/>}/> 
           <Route path='vistaInm' element={<VistaDetalladaInm />} />
+          <Route path='Reserva' element={<ReservaInm />} />
+          <Route path='Pago' element={<PagoBanco />} />
+
           
       </Route>
       <Route path= "/cliente" element={<NavbarCli />}>
