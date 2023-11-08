@@ -41,6 +41,7 @@ return new class extends Migration
             $table->integer('compartido');
             $table->integer('estado');
             $table->integer('contacto');
+            $table->integer('favorito');
             $table->timestamps();
         });
     }

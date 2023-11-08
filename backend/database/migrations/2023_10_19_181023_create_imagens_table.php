@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id('idimagen');
             //$table->integer('idinmueble');
             $table->foreignId('idinmueble')->references('idinmueble')->on('inmueble');
-            $table->integer('url');
+            $table->string('url');
             $table->string('descripcion');
             $table->timestamps();
         });

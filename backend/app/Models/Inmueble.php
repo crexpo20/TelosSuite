@@ -10,7 +10,7 @@ class Inmueble extends Model
     use HasFactory;
     protected $table = 'inmueble';
     protected $primaryKey = 'idinmueble';
-    protected $fillable = ['tipopropiedad','idusuario','tituloanuncio','descripcion','ubicacion','precio','capacidad','habitaciones','baños','camas','niños','normas','mascotas','qr','ciudad','wifi','parqueo','cocina','refrigerador','lavaropa','piscina','privado','compartido','estado','contacto'];
+    protected $fillable = ['tipopropiedad','idusuario','tituloanuncio','descripcion','ubicacion','precio','capacidad','habitaciones','baños','camas','niños','normas','mascotas','qr','ciudad','wifi','parqueo','cocina','refrigerador','lavaropa','piscina','privado','compartido','estado','contacto','favorito'];
     public $timestamps = false;
 
     public function Usuario(){
