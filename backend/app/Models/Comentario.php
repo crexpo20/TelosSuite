@@ -10,7 +10,7 @@ class Comentario extends Model
     use HasFactory;
     protected $table = 'comentario';
     protected $primaryKey = 'idcomentario';
-    protected $fillable = ['descripcion','puntuacion'];
+    protected $fillable = ['idinmueble','idusuario','descripcion','puntuacion'];
     public $timestamps = false;
 
     public function Inmueble(){
