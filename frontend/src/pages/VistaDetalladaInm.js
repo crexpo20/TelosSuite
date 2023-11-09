@@ -59,6 +59,42 @@ class VistaDetalladaInm extends Component {
     const { currentImageIndex, images } = this.state;
     const isAtFirstImage = currentImageIndex === 0;
     const isAtLastImage = currentImageIndex === images.length - 1;
+
+    const comentariosColum1 = [
+      {
+        fotoUsuario1: 'https://picsum.photos/280/280',
+        nombreUsuario1: 'Usuario 1',
+        comentario1: 'El lugar es hermoso, pero tuvimos algunos problemas con la calefacción. El anfitrión fue receptivo y lo solucionó rápidamente. Aún así, disfrutamos de nuestra estancia.',
+      },
+      {
+        fotoUsuario1: 'https://picsum.photos/280/280',
+        nombreUsuario1: 'Usuario 2',
+        comentario1: 'Excelente lugar para relajarse. Las vistas son espectaculares y la atención es inigualable. ¡Volvería sin dudarlo!',
+      },
+      {
+        fotoUsuario1: 'https://picsum.photos/280/280',
+        nombreUsuario1: 'Usuario 3',
+        comentario1: 'La ubicación es perfecta, pero el mobiliario es un poco anticuado. En general, tuvimos una estancia agradable.',
+      },
+    ];
+
+    const comentariosColum2 = [
+      {
+        fotoUsuario2: 'https://picsum.photos/280/280',
+        nombreUsuario2: 'Usuario 4',
+        comentario2: 'Estuvimos encantados con la hospitalidad del anfitrión. El alojamiento es acogedor y bien mantenido. ¡Muy recomendado!',
+      },
+      {
+        fotoUsuario2: 'https://picsum.photos/280/280',
+        nombreUsuario2: 'Usuario 5',
+        comentario2: 'La piscina y el jardín eran perfectos. Pasamos días maravillosos aquí. ¡Muy recomendado!',
+      },
+      {
+        fotoUsuario2: 'https://picsum.photos/280/280',
+        nombreUsuario2: 'Usuario 6',
+        comentario2: 'Pasamos un tiempo maravilloso aquí. El anfitrión fue amable y servicial. Definitivamente volveremos.',
+      },
+    ];
     return (
       <>
         <body>
@@ -125,8 +161,6 @@ class VistaDetalladaInm extends Component {
                   </div>
                 </div>
                 <br></br>
-                <div className="divisor-plomo"></div>
-                <br></br>
             </div>
             <div className='Colum2'>
               <div className="InformacionReserva">
@@ -136,9 +170,13 @@ class VistaDetalladaInm extends Component {
                 <br></br>
                 <li><CuantosBoton /></li>
                 <br></br>
-                <button className="reserva-button">
-                  Reserva
-                </button>
+                <div>
+                  <Link to='/Reserva'>
+                      <button className="reserva-button">
+                      Reserva
+                      </button>
+                  </Link>
+                </div>
               </div>
 
             </div>
@@ -146,6 +184,31 @@ class VistaDetalladaInm extends Component {
         <div className='GridComentarios'>
             <div className="divisor-plomo"></div>
             <br></br>
+            <h className='title1'>Reseñas </h>
+        </div>
+        <div className='GridReseñas'>
+            <div className='ColumCom1'>
+                {comentariosColum1.map((comentario1, index) => (
+                  <div key={index} className='comentario1'>
+                    <div className="usuario-info1">
+                      <img src={comentario1.fotoUsuario1} alt='Usuario1' className='foto-usuario1' />
+                      <h9>{comentario1.nombreUsuario1}</h9>
+                    </div>
+                    <p>{comentario1.comentario1}</p>
+                  </div>
+                ))}
+            </div>
+            <div className='ColumCom2'>
+                {comentariosColum2.map((comentario2, index) => (
+                      <div key={index} className='comentario2'>
+                        <div className="usuario-info2">
+                          <img src={comentario2.fotoUsuario2} alt='Usuario2' className='foto-usuario2' />
+                          <h9>{comentario2.nombreUsuario2}</h9>
+                        </div>
+                        <p>{comentario2.comentario2}</p>
+                      </div>
+                    ))}
+            </div>
         </div>
         </body>
         <Outlet />

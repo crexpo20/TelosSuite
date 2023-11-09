@@ -99,12 +99,15 @@ function PriceFilter(props) {
       <div className="price-filter-container">
         <div className="price-filter-popup" style={{ overflowY: 'auto', maxHeight: '500px' }}>
           <div className="filter-header">
-            <span className="filter-title">Filtro</span>
-            <button className="close-button" onClick={handleCloseClick}>
-              <AiOutlineCloseCircle />
-            </button>
+          <div className="title-container">
+          <span className="filter-title">Filtro</span>
+        <button className="close-button" onClick={handleCloseClick}>
+          <AiOutlineCloseCircle />
+        </button>
+            </div>
+           
           </div>
-          <div className="line"></div>
+         
           <h2>Rango de Precios</h2>
           <div className="price-inputs">
             <div className="input-group">
@@ -203,9 +206,11 @@ function PriceFilter(props) {
           </label>
         </div>
 
-        <form onSubmit={handleSubmit}>
-          <button type="submit" className="submit-button">Aceptar</button>
-        </form>
+        <div className="accept-button-container">
+          <form onSubmit={handleSubmit}>
+            <button type="submit" className="submit-button">Aceptar</button>
+          </form>
+        </div>
       </div>
     </div>
   )

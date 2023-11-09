@@ -8,6 +8,7 @@ use App\Http\Controllers\imagenController;
 use App\Http\Controllers\inmuebleController;
 use App\Http\Controllers\pagoController;
 use App\Http\Controllers\reservaController;
+use App\Http\Controllers\favoritoController;
 use App\Http\Controllers\servicioController;
 
 
@@ -49,6 +50,12 @@ Route::post('/postreserva', [reservaController::class,'store']);
 Route::delete('/delreserva/{id}',[reservaController::class,'destroy']);
 Route::put('/putreserva/{id}', [reservaController::class,'update']);
 
+//RUTAS PARA AGREGAR FAVORITO
+
+Route::get('/getfavorito',[favoritoController::class,'index']);
+Route::post('/postfavorito', [favoritoController::class,'store']);
+Route::delete('/delfavorito/{id}',[favoritoController::class,'destroy']);
+Route::put('/putfavorito/{id}', [favoritoController::class,'update']);
 
 //RUTAS PARA AGREGAR SERVICIO   
 Route::get('/getservicio',[servicioController::class,'index']);

@@ -42,6 +42,16 @@ return new class extends Migration
             $table->integer('estado');
             $table->integer('contacto');
             $table->integer('favorito');
+            $table->string('imagen1');
+            $table->string('descripcion1');
+            $table->string('imagen2');
+            $table->string('descripcion2');
+            $table->string('imagen3');
+            $table->string('descripcion3');
+            $table->string('imagen4');
+            $table->string('descripcion4');
+            $table->string('imagen5');
+            $table->string('descripcion5');
             $table->timestamps();
         });
     }
