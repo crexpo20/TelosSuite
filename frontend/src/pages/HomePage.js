@@ -26,11 +26,13 @@ toggleFavorite = (sitio) => {
     const { favorites } = this.state;
     const sitioId = sitio.idinmueble;
   
-    if (favorites.includes(sitioId)) {
+    if (sitio.favorito === 0) {
       const updatedFavorites = favorites.filter((id) => id !== sitioId);
       this.setState({ favorites: updatedFavorites }, () => {
         console.log('Favoritos actualizados:', this.state.favorites);
-      });
+      }
+      );
+      console.log("no está")
     } else {
       this.setState(
         { favorites: [...favorites, sitioId] },
@@ -38,6 +40,7 @@ toggleFavorite = (sitio) => {
           console.log('Favoritos actualizados:', this.state.favorites);
         }
       );
+      console.log("ya está")
   }
   
   }else{

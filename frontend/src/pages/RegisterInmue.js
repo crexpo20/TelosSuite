@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import { BsHouse } from 'react-icons/bs';
 import { IoIosArrowDroprightCircle } from 'react-icons/io';
 import { IoIosArrowDropleftCircle } from 'react-icons/io';
 import { MdApartment } from 'react-icons/md';
 import "./css/carrusel.css";
+import {default as Subir} from './servicio-img';
 
 class RegisterInmue extends Component {
   constructor(props) {
@@ -37,6 +38,11 @@ class RegisterInmue extends Component {
         titleCharacterCount: 0,
         descriptionCharacterCount: 0,
         normasCharacterCount: 0,
+        descripcion1:"",
+        descripcion2:"",
+        descripcion3:"",
+        descripcion4:"",
+        descripcion5:"",
       },
       
       propertyTypes: [
@@ -69,7 +75,7 @@ class RegisterInmue extends Component {
   }
 
   handleNextSlide = () => {
-    if (this.state.currentSlide < 14) {
+    if (this.state.currentSlide < 20) {
       this.setState(
         (prevState) => ({
           currentSlide: prevState.currentSlide + 1,
@@ -169,6 +175,13 @@ class RegisterInmue extends Component {
     });
   };
 
+  handleImageChange = (image) => {
+    this.setState((prevState) => {
+      const formData = { ...prevState.formData, descripcion1: image };
+      return { formData };
+    });
+    console.log("Imagen cambiada:", image);
+  };
 
   onSubmit = async (e) => {
     e.preventDefault();
@@ -198,7 +211,12 @@ class RegisterInmue extends Component {
         privado: this.state.formData.privado,
         compartido: this.state.formData.compartido,
         estado:0,
-        contacto:65307821
+        contacto:65307821,
+        descripcion1:this.state.formData.descripcion1,
+        descripcion2:this.state.formData.descripcion2,
+        descripcion3:this.state.formData.descripcion3,
+        descripcion4:this.state.formData.descripcion4,
+        descripcion5:this.state.formData.descripcion5
       };
       const postProducto = async (url, lugar) => {
         const response = await fetch(url, {
@@ -232,7 +250,7 @@ class RegisterInmue extends Component {
         <div className="carousel-slide">
           <div className="slide">
             
-            {currentSlide === 0 && (
+            {currentSlide === 10 && (
               <div className="property-type-selection">
                 <div id='titulo'>
                 <h3>Elige el tipo de inmueble que deseas ofertar:</h3>
@@ -604,7 +622,158 @@ class RegisterInmue extends Component {
                </div>
               </div>
             )}
-            {currentSlide === 9 && (
+
+{currentSlide === 9 && (
+  <div className="property-images">
+      <br>
+      </br>
+      <br></br>
+      <br>
+      </br>
+      <br></br>
+      <h3>A continuación, ingresa 5 imágenes con una breve descripción.</h3>
+      <h3>Se paciente! es para atraer posibles huespedes!</h3>
+ 
+  </div>
+)}
+{currentSlide === 0 && (
+  <div className="property-images">
+    <div id='titulo'>
+      <h3>Ingresa la imagen 1 más su descripción</h3>
+      
+    </div>
+    
+    <Subir onImageChange={this.handleImageChange} />
+    <br></br>
+    <span className="character-count">
+        {formData.descripcion1.length} / 50
+      </span>
+    
+  
+    <textarea
+                 id="descripcion"
+                  name="descripcion"
+                  value={formData.descripcion1}
+                  onChange={(e) => {
+                    const newValue = e.target.value;
+                    if (newValue.length <= 50) {
+                      this.handleDesc("descripcion1", newValue);
+                    }
+                  }}
+                />
+  </div>
+)}
+{currentSlide === 11 && (
+  <div className="property-images">
+    <div id='titulo'>
+    <h3>Ingresa la imagen 2 más su descripción</h3>
+    </div>
+    <img src="https://res.cloudinary.com/dra6e6bat/image/upload/v1699510450/telosSuite2023/o4ut9wzqnusqkrtdwexl.jpg" style={{width: "100px"}}/>
+    <br>
+    </br>
+    <br>
+    </br>
+    <br>
+    </br>
+    <span className="character-count">
+        {formData.descripcion2.length} / 50
+      </span>
+    <textarea
+                 id="descripcion"
+                  name="descripcion"
+                  value={formData.descripcion2}
+                  onChange={(e) => {
+                    const newValue = e.target.value;
+                    if (newValue.length <= 50) {
+                      this.handleDesc("descripcion2", newValue);
+                    }
+                  }}
+                />
+  </div>
+)}
+{currentSlide === 12 && (
+  <div className="property-images">
+    <div id='titulo'>
+    <h3>Ingresa la imagen 3 más su descripción</h3>
+    </div>
+    <span className="character-count">
+        {formData.descripcion3.length} / 50
+      </span>
+    <textarea
+                 id="descripcion"
+                  name="descripcion"
+                  value={formData.descripcion3}
+                  onChange={(e) => {
+                    const newValue = e.target.value;
+                    if (newValue.length <= 50) {
+                      this.handleDesc("descripcion3", newValue);
+                    }
+                  }}
+                />
+  </div>
+)}
+{currentSlide === 13 && (
+  <div className="property-images">
+    <div id='titulo'>
+    <h3>Ingresa la imagen 4 más su descripción</h3>
+    </div>
+    <span className="character-count">
+        {formData.descripcion4.length} / 50
+      </span>
+    <textarea
+                 id="descripcion"
+                  name="descripcion"
+                  value={formData.descripcion4}
+                  onChange={(e) => {
+                    const newValue = e.target.value;
+                    if (newValue.length <= 50) {
+                      this.handleDesc("descripcion4", newValue);
+                    }
+                  }}
+                />
+  </div>
+)}
+{currentSlide === 14 && (
+  <div className="property-images">
+    <div id='titulo'>
+    <h3>Ingresa la imagen 5 más su descripción</h3>
+    </div>
+    <span className="character-count">
+        {formData.descripcion5.length} / 50
+      </span>
+    <textarea
+                 id="descripcion"
+                  name="descripcion"
+                  value={formData.descripcion5}
+                  onChange={(e) => {
+                    const newValue = e.target.value;
+                    if (newValue.length <= 50) {
+                      this.handleDesc("descripcion5", newValue);
+                    }
+                  }}
+                />
+  </div>
+)}
+
+
+
+
+{currentSlide === 15 && (
+  <div className="property-images">
+    <div id='titulo'>
+      <h3>Ingresa la ubicaion 1</h3>
+    </div>
+  </div>
+)}
+{currentSlide === 16 && (
+  <div className="property-images">
+    <div id='titulo'>
+    <h3>Ingresa la ubicaion 2</h3>
+    </div>
+  </div>
+)}
+
+            {currentSlide === 17 && (
               <div className="property-done">
                 <h3>
                   Eso es todo por ahora, tu inmueble ya es visible para los
@@ -620,12 +789,12 @@ class RegisterInmue extends Component {
               <IoIosArrowDropleftCircle/>
             </button>
           )}
-          {currentSlide < 9 && (
+          {currentSlide < 17 && (
             <button className="next" onClick={this.handleNextSlide}>
               < IoIosArrowDroprightCircle />
             </button>
           )}
-           {currentSlide === 9 && (
+           {currentSlide === 17 && (
              <button className="fin" type="submit" onClick={this.onSubmit}>
               Finalizar
             </button>
