@@ -3,7 +3,12 @@ import { Container, FormGroup, Input } from 'reactstrap';
 const Subir = ({ onImageChange }) => {
     const [image, setimage] = useState("");
     const [loading, setLoading] = useState(false);
-
+    const containerStyles = {
+        
+        
+       
+        height: '5%',
+      };
      const uploadImage = async (e) => {
         const files = e.target.files;
         const data = new FormData();
@@ -29,16 +34,16 @@ const Subir = ({ onImageChange }) => {
 
     return(
      <div>
-        <Container>
-          <h1>IMG</h1>
+        <Container style={containerStyles}>
           <FormGroup>
             <Input
              type='file'
              name='file'
+             className='input-img'
              placeholder="sube tu imagen"
              onChange={uploadImage}
             />
-           \ <img src={image} style={{width: "100px"}}/>
+         {loading ? (<span>..................SUBIENDO IMAGEN</span>) : ("")}
           </FormGroup>     
         </Container>
         

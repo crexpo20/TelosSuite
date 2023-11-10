@@ -30,7 +30,63 @@ body {
   margin-top: 165px;
   z-index: 1; /* Establece un valor menor que 2 para que el contenido del cuerpo esté detrás del encabezado */
 }
+.imagenes{
+  display: flex;
+}
+.div-izquierdo {
+  padding-top: 3%;
+  flex: 1; /* Hace que el primer div ocupe el 50% del ancho del contenedor */
+ }
 
+/* Estilo del segundo div */
+.div-derecho {
+  flex: 1; /* Hace que el segundo div ocupe el 50% del ancho del contenedor */
+}
+.input-img{
+  top: 0;
+}
+#footerimg{
+  width: 100%;
+  height: 10%;
+}
+
+
+#subirizq {
+  flex: 1; /* Hace que ocupe el espacio disponible */
+  display: flex;
+}
+
+
+
+#textoDesc {
+  flex: 1; /* Hace que ocupe el espacio disponible */
+  text-align: right; /* Alinea el contenido a la derecha */
+}
+
+#img {
+  width: 300px; /* Ajusta el ancho según tus necesidades */
+  height: 200px; /* Ajusta la altura según tus necesidades */
+  overflow: hidden; /* Para ocultar partes de la imagen que desbordan */
+  border: 2px solid #b7b6b6; 
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#subirimg{
+  width: 300px; /* Ajusta el ancho según tus necesidades */
+  height: 50px; /* Ajusta la altura según tus necesidades */
+  
+  display: flex;
+}
+
+/* Estilo de la imagen */
+#img img {
+  align-items: center;
+  width: 50%; /* La imagen ocupará el 100% del ancho del contenedor */
+  height: auto; /* Mantendrá la proporción original de la imagen */
+  display: block; /* Elimina el espacio extra debajo de la imagen */
+}
 /* TelosSuite */
 h1{
   

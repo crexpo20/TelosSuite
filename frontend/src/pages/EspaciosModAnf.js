@@ -57,7 +57,7 @@ confirmarElimi = () => {
                         <div className="InmueblesHost" key={sitio.id}>
                           <img
                             className="inmueble_fot"
-                            src="https://picsum.photos/280/280"
+                            src={sitio.imagen1}
                             alt="Inmueble"
                           />
                           <h3 className="inmueble_name">{sitio.tituloanuncio}</h3>
