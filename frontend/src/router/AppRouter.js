@@ -79,8 +79,8 @@ class AppRouter extends Component{
             <Route path='*' element={<Navigate TO ="/"/>}/> 
       </Route>
 
-      <Route path= "/registro" element={<NavbarReg />}>
-            <Route index element={<RegisterInmue />} />
+      <Route path= "/registro" element={<RegisterInmue/>}>
+           
 
             
              
