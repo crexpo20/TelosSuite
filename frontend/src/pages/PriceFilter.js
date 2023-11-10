@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 // Importando el archivo de estilos CSS
 import '../CSS/PriceFilters.css';
 
+
 function PriceFilter(props) {
   // Estados para manejar los precios mínimo y máximo, y para controlar la visibilidad del filtro
   const [minPrice, setMinPrice] = useState('');
@@ -13,7 +14,8 @@ function PriceFilter(props) {
   const [selectedRoom, setSelectedRoom] = useState('Cualquiera');
   const [selectedBed, setSelectedBed] = useState('Cualquiera');
   const [selectedBath, setSelectedBath] = useState('Cualquiera');
-
+  const [rating, setRating] = useState(0);
+  const [hoverAt, setHoverAt] = useState(null);
   // Agrega un nuevo estado para los servicios con un objeto que contenga cada servicio
   const [services, setServices] = useState({
     wifi: 0,
@@ -205,6 +207,22 @@ function PriceFilter(props) {
             Compartido
           </label>
         </div>
+
+        <div className="rating-container">
+        <h2 className="calificacion-title">Calificación:</h2>
+        {[...Array(5)].map((n, i) => (
+          <span 
+            key={i}
+            className={`star ${i < (hoverAt || rating) ? "selected" : ""}`}
+            onClick={() => setRating(i + 1)}
+            onMouseEnter={() => setHoverAt(i + 1)}
+            onMouseLeave={() => setHoverAt(null)}
+          >
+            &#9733;
+          </span>
+        ))}
+      </div>
+
 
         <div className="accept-button-container">
           <form onSubmit={handleSubmit}>
