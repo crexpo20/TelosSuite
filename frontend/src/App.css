@@ -320,10 +320,50 @@ label{
   font-size: 20px;
   color: black;
 }
+#btn-volver{
+  font-family: 'JejuMyeongjo';
+  font-size: larger;
+  background:  rgba(218, 20, 103, 0.85);
+  color: white;
+  border-radius: 25px;
+}
+#btn-volver:hover{
+  background: #df025e;
+}
+.custom-swal-content {
+  font-family: 'JejuMyeongjo';
+ }
+.custom-swal-content {
+  font-family: 'JejuMyeongjo';  
+}
+.swal-modal{
+  font-family: 'JejuMyeongjo';
+}
 
+
+.btn-cancelar-reg{
+  font-family: 'JejuMyeongjo';
+}
+.swal-button--cancel{
+  font-family: 'JejuMyeongjo';  
+  font-size: medium;
+}
+.btn-confirmar-reg {
+  font-family: 'JejuMyeongjo';  
+  font-size: medium;
+  background-color: rgba(214, 45, 116, 0.85); /* Cambia este valor al color que desees */
+  color: #ffffff; /* Cambia este valor al color que desees */
+  transition: background-color 0.3s;
+  }
+.btn-confirmar-reg:hover {
+  background-color: rgba(15, 8, 11, 0.85);;
+}
+.swal-button--danger:not([disabled]):hover {
+    background-color: rgba(177, 8, 79, 0.85);
+}
 .InmueblesHost{
   border: 1px solid #000; 
-  background-color: #f0f0f0; 
+  background-color: #ededed; 
   padding: 10px; 
   width: 300px; 
   margin-left: 40px;
@@ -521,6 +561,8 @@ h4{
   width: 85%;
 }
 #opt-nav{
+  margin-left: 25%;
+  margin-top: 15px;
   display: flex;
   justify-items: left;
 }

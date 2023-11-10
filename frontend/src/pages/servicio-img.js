@@ -43,7 +43,7 @@ const Subir = ({ onImageChange }) => {
              placeholder="sube tu imagen"
              onChange={uploadImage}
             />
-         {loading ? (<span>..................SUBIENDO IMAGEN</span>) : ("")}
+         {loading ? (<h3>SUBIENDO IMAGEN</h3>) : ("")}
           </FormGroup>     
         </Container>
         

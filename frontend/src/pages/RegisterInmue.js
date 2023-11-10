@@ -4,7 +4,11 @@ import { IoIosArrowDroprightCircle } from 'react-icons/io';
 import { IoIosArrowDropleftCircle } from 'react-icons/io';
 import { MdApartment } from 'react-icons/md';
 import "./css/carrusel.css";
+import {RiHomeSmileLine} from "react-icons/ri";
+import { Link, Outlet,useNavigate  } from 'react-router-dom';
 import {default as Subir} from './servicio-img';
+import Swal from 'sweetalert';
+import { withRouter } from 'react-router-dom';
 
 class RegisterInmue extends Component {
   constructor(props) {
@@ -102,6 +106,8 @@ class RegisterInmue extends Component {
       return { formData };
     });
   };
+
+  
   handleNormas = (field, value) => {
     this.setState((prevState) => {
       const formData = { ...prevState.formData };
@@ -288,7 +294,43 @@ class RegisterInmue extends Component {
       console.log("Response:------> " + respuestaJson.status);
       // Mostrar el objeto por consola
       console.log('Datos de registro:', lugar);
+      if (this.state.currentSlide < 20) {
+        this.setState(
+          (prevState) => ({
+            currentSlide: prevState.currentSlide + 1,
+          })
+        );
+      }
     
+  };
+
+  abrirModalSweetAlert = () => {
+    const { history } = this.props;
+    Swal({
+      title: 'Cancelar registro',
+      text: '¿Estás seguro de que deseas cancelar el registro?',
+      icon: 'warning',
+      buttons: {
+        cancel: 'Cancelar',
+        confirm: {
+          text: 'Confirmar',
+          className: 'btn-confirmar-reg', // Clase CSS personalizada para el botón de confirmación
+        },
+      },
+      dangerMode: true,
+      customClass: {
+        content: 'custom-swal-content',
+      },
+    }).then((confirmacion) => {
+      if (confirmacion) {
+        window.location.href = '/cliente';
+   
+                 
+      } else {
+        // Maneja la lógica si el usuario cancela la acción
+        console.log('Acción cancelada');
+      }
+    });
   };
   
 
@@ -297,6 +339,41 @@ class RegisterInmue extends Component {
     const { formData, propertyTypes, options,privacy, cities} = this.state;
 
     return (
+     <>
+      <header>
+            <div id='head'>
+               <div id='head-izq'>
+                </div>
+                    
+          
+               <div id='navReg'>
+               <div id = "logoT">
+                  <i id='logoP'><RiHomeSmileLine/></i>
+                  </div>
+                    
+                  <div id = 'logoL'>
+                  <a id="TelosSuite">TelosSuite</a>
+                  </div>
+               </div>
+
+               <div id='head-der'>
+                </div>
+
+            </div>
+              <div id='navAbajo'>
+              <div id='navRegs'>
+              <div id="reg">Registro de inmueble</div>
+                  </div>
+                  {currentSlide < 17 && 
+                   (
+                      <div  id='opt-nav'>
+                        <button id="btn-volver" onClick={this.abrirModalSweetAlert}>Volver</button>
+                      </div>
+                  )}
+             </div>
+           
+        </header>
+
       <div className="carousel-container">
         <div className="carousel-slide">
           <div className="slide">
@@ -358,7 +435,7 @@ class RegisterInmue extends Component {
             {currentSlide === 2 && (
               
             <div>
-<div id='titulo'>
+                 <div id='titulo'>
                        <h3>Informacion basica sobre tu inmueble</h3>
                 </div>
            <div className="property-info">
@@ -963,6 +1040,12 @@ class RegisterInmue extends Component {
 
             {currentSlide === 17 && (
               <div className="property-done">
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
                 <h3>
                   Eso es todo por ahora, tu inmueble ya es visible para los
                   posibles huéspedes!
@@ -972,16 +1055,144 @@ class RegisterInmue extends Component {
           </div>
         </div>
         <div className="button-container">
-          {currentSlide > 0 && (
+          {currentSlide > 0 && currentSlide < 17 &&(
             <button className="prev" onClick={this.handlePrevSlide}>
               <IoIosArrowDropleftCircle/>
             </button>
           )}
-          {currentSlide < 17 && (
+          {currentSlide === 0 && this.state.formData.tipopropiedad !== "" && (
             <button className="next" onClick={this.handleNextSlide}>
               < IoIosArrowDroprightCircle />
             </button>
           )}
+          {currentSlide === 1
+           && (
+            <button className="next" onClick={this.handleNextSlide}>
+              < IoIosArrowDroprightCircle />
+            </button>
+          )}
+          {currentSlide === 2 &&
+          (this.state.formData.banos >0) &&
+          (this.state.formData.habitaciones >0) &&
+          (this.state.formData.camas >0) &&
+          (this.state.formData.capacidad  >0)&&
+            (
+            <button className="next" onClick={this.handleNextSlide}>
+              < IoIosArrowDroprightCircle />
+            </button>
+          )}
+
+{currentSlide === 3 &&
+this.state.formData.tituloanuncio !== "" &&
+this.state.formData.descripcion !== "" &&
+(
+            <button className="next" onClick={this.handleNextSlide}>
+              < IoIosArrowDroprightCircle />
+            </button>
+          )} 
+          {currentSlide === 4 && 
+          this.state.formData.normas !== "" &&
+          (
+            <button className="next" onClick={this.handleNextSlide}>
+              < IoIosArrowDroprightCircle />
+            </button>
+          )}
+          {currentSlide === 5 &&
+          (this.state.formData.privado !== 0 || this.state.formData.compartido !== 0) &&
+          (
+            <button className="next" onClick={this.handleNextSlide}>
+              < IoIosArrowDroprightCircle />
+            </button>
+          )}
+          {currentSlide === 6 &&
+          this.state.formData.ciudad !== "" &&
+          (
+            <button className="next" onClick={this.handleNextSlide}>
+              < IoIosArrowDroprightCircle />
+            </button>
+          )}
+          {currentSlide ===  7 &&
+         
+          (
+            <button className="next" onClick={this.handleNextSlide}>
+              < IoIosArrowDroprightCircle />
+            </button>
+          )}
+          {currentSlide ===  8 &&
+          this.state.formData.precio > 0 && 
+         
+         (
+           <button className="next" onClick={this.handleNextSlide}>
+             < IoIosArrowDroprightCircle />
+           </button>
+         )}
+         {currentSlide ===  9 &&
+         
+         (
+           <button className="next" onClick={this.handleNextSlide}>
+             < IoIosArrowDroprightCircle />
+           </button>
+         )}
+         {currentSlide ===  10 &&
+         this.state.formData.imagen1 !== "" &&
+         this.state.formData.descripcion1 !== "" &&
+         (
+           <button className="next" onClick={this.handleNextSlide}>
+             < IoIosArrowDroprightCircle />
+           </button>
+         )}
+         {currentSlide ===  11 &&
+         this.state.formData.imagen2 !== "" &&
+         this.state.formData.descripcion2 !== "" &&
+         (
+           <button className="next" onClick={this.handleNextSlide}>
+             < IoIosArrowDroprightCircle />
+           </button>
+         )}
+         
+         {currentSlide ===  12 &&
+         this.state.formData.imagen3 !== "" &&
+         this.state.formData.descripcion3 !== "" &&
+         (
+           <button className="next" onClick={this.handleNextSlide}>
+             < IoIosArrowDroprightCircle />
+           </button>
+         )}
+         {currentSlide ===  13 &&
+         this.state.formData.imagen4 !== "" &&
+         this.state.formData.descripcion4 !== "" &&
+         (
+           <button className="next" onClick={this.handleNextSlide}>
+             < IoIosArrowDroprightCircle />
+           </button>
+         )}
+         {currentSlide ===  14 &&
+         this.state.formData.imagen5 !== "" &&
+         this.state.formData.descripcion5 !== "" &&
+         (
+           <button className="next" onClick={this.handleNextSlide}>
+             < IoIosArrowDroprightCircle />
+           </button>
+         )}
+         {currentSlide ===  15 &&
+         this.state.formData.imagen1 !== "" &&
+         this.state.formData.descripcion1 !== "" &&
+         (
+           <button className="next" onClick={this.handleNextSlide}>
+             < IoIosArrowDroprightCircle />
+           </button>
+         )}
+         
+         {currentSlide ===  16 &&
+         this.state.formData.imagen1 !== "" &&
+         this.state.formData.descripcion1 !== "" &&
+         (
+          <button className="fin" type="submit" onClick={this.onSubmit}>
+          Registrar
+        </button>
+         )}
+         
+          
            {currentSlide === 17 && (
              <button className="fin" type="submit" onClick={this.onSubmit}>
               Finalizar
@@ -990,6 +1201,7 @@ class RegisterInmue extends Component {
           
         </div>
       </div>
+      </>
     );
   }
 }
