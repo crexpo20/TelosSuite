@@ -10,7 +10,7 @@ class PagoBanco extends Component {
               <h1>CONFIRMACION DEL PAGO</h1>
               <p>El monto a cancelar es de Bs. 150</p>
               <div>
-                <Link to='/Reserva'>
+                <Link to='/Confirmar'>
                   <button>Confirmar</button>
                 </Link>
                 <Link to='/Reserva'>

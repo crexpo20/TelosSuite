@@ -9,6 +9,8 @@ import { Link, Outlet,useNavigate  } from 'react-router-dom';
 import {default as Subir} from './servicio-img';
 import Swal from 'sweetalert';
 import { withRouter } from 'react-router-dom';
+import MapaRegistro from '../pages/MapaRegistro.js';
+import credentials from '../pages/credentials.js';
 
 class RegisterInmue extends Component {
   constructor(props) {
@@ -332,6 +334,8 @@ class RegisterInmue extends Component {
   render() {
     const currentSlide = this.state.currentSlide;
     const { formData, propertyTypes, options,privacy, cities} = this.state;
+
+    const mapURL = `https://maps.googleapis.com/maps/api/js?v=3.exp&key=${credentials.mapsKey}`;
 
     return (
      <>
@@ -1019,9 +1023,21 @@ class RegisterInmue extends Component {
 
 
 {currentSlide === 15 && (
-  <div className="property-images">
+  <div className="property-ubi">
     <div id='titulo'>
-      <h3>Ingresa la ubicaion 1</h3>
+      <h3>Ingresa la ubicación 1</h3>
+      <div className='MapaRegisInm'>
+                <MapaRegistro 
+                  googleMapURL={mapURL}
+                  containerElement={<div style={{ height: '150%' }}></div>}
+                  mapElement={<div style={{ height: '100%' }}></div>}
+                  loadingElement={<p>Cargando..</p>}
+                  lat="-17.3852993"
+                  lng="-66.2010302"
+                  radio={0}
+                />
+
+              </div>
     </div>
   </div>
 )}

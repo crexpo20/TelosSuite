@@ -13,12 +13,12 @@ import piscina from '../iconos/piscina.png';
 import '../CSS/VistaDetaInmueble.css';
 import Fechas from '../components/fechas';
 import CuantosBoton from '../components/cuantos/botoncuantos';
-import {GoogleMap, withScriptjs, withGoogleMap, Marker} from '@react-google-maps/api';
 import Mapa from '../pages/Mapa.js';
 import credentials from '../pages/credentials.js';
 
 class VistaDetalladaInm extends Component {
 
+  //Controlamos el carrusel de Imagenes con su descripcion
   state = {
     currentImageIndex: 0,
     imageCarouselOpen: false,
@@ -64,6 +64,7 @@ class VistaDetalladaInm extends Component {
     const isAtFirstImage = currentImageIndex === 0;
     const isAtLastImage = currentImageIndex === images.length - 1;
 
+    //Const de los comentarios
     const comentariosColum1 = [
       {
         fotoUsuario1: 'https://picsum.photos/280/280',
@@ -100,12 +101,14 @@ class VistaDetalladaInm extends Component {
       },
     ];
 
+    //url de la API para mostrar la ubicacion que registro el host
     const mapURL = `https://maps.googleapis.com/maps/api/js?v=3.exp&key=${credentials.mapsKey}`;
 
     return (
       <>
         <body id='vista'>
           <h1 className='tituloVista'>INKA PACHA Cabaña con dos camas y baño privado</h1>
+          {/* GRID de las imagenes */}
           <div className='GridImagenes'>
             <div className='Columna1'>
                 <img src="https://picsum.photos/280/280" alt='Imagen 1' />
@@ -122,15 +125,17 @@ class VistaDetalladaInm extends Component {
               </div>
             </div>
         </div>
+        {/* GRID de la informacion, se divide en dos columnas, En la COLUMNA1 se encuentra la informacion y los servicios.
+        En la COLUMNA2 se encuentra la informacion del precio y el boton de la reserva*/}
         <div className='GridInformacion'>
             <div className='Colum1'>
                 <h2 className='title1'>Casa de huéspedes - Anfitrión: Martin</h2>
-                <h2 className='title2'>3 huéspedes - 1 habitación - 2 camas - 1 baño privado</h2>
+                <p className='title2'>3 huéspedes - 1 habitación - 2 camas - 1 baño privado</p>
                 <br></br>
                 <div className="divisor-plomo"></div>
                 <br></br>
                 <div className='informacionAdicional'>
-                <h2 className='title3'>Relájate en esta escapada única y tranquila. Somos una casa de Campo de la comunidad Yumani. Esta habitacion viene con baño privado y una vista increible al lago. Nuestro estilo es de origen Aymara, con objetos y pinturas de inspiración indígena ancestral. Disponemos de Servicio de Restaurante. Atendido por Martín y Justina, quienes te darán las mejores indicaciones para explorar la Isla sagrada.</h2>
+                <p className='title3'>Relájate en esta escapada única y tranquila. Somos una casa de Campo de la comunidad Yumani. Esta habitacion viene con baño privado y una vista increible al lago. Nuestro estilo es de origen Aymara, con objetos y pinturas de inspiración indígena ancestral. Disponemos de Servicio de Restaurante. Atendido por Martín y Justina, quienes te darán las mejores indicaciones para explorar la Isla sagrada.</p>
                 </div>
                 <br></br>
                 <div className="divisor-plomo"></div>
@@ -188,6 +193,7 @@ class VistaDetalladaInm extends Component {
 
             </div>
         </div>
+        {/* GRID de los comentarios */}
         <div className='GridComentarios'>
             <div className="divisor-plomo"></div>
             <br></br>
@@ -217,6 +223,7 @@ class VistaDetalladaInm extends Component {
                     ))}
             </div>
         </div>
+        {/* GRID del mapa */}
         <div className='GridMapa'>
               <div className="divisor-plomo"></div>
               <br></br>

@@ -1,15 +1,14 @@
 import React from 'react';
 import { GoogleMap, Circle as CircleGoogleMap, useJsApiLoader, Marker} from '@react-google-maps/api';
 
-const Mapa = ({ lat, lng, radio }) => {
+const Mapa = ({ lat, lng}) => {
     console.log(lat)
     console.log(lng)
-    console.log(lat)
     const [map, setMap] = React.useState(null)
     
     const onLoad = React.useCallback(function callback(map) {
         // Ajusta el nivel de zoom directamente con la posición central
-        map.setZoom(15); // Puedes ajustar este valor según tus necesidades
+        map.setZoom(15); 
         setMap(map);
       }, []);
 
@@ -38,6 +37,7 @@ const Mapa = ({ lat, lng, radio }) => {
       onLoad={onLoad}
       onUnmount={onUnmount}
     >
+      {/* Componente CircleGoogleMap que representa un círculo en el mapa. */}
       <CircleGoogleMap
         center={center}
         radius={600}
@@ -54,4 +54,4 @@ const Mapa = ({ lat, lng, radio }) => {
     </GoogleMap>) : null
 };
 
-export default React.memo(Mapa)
+export default Mapa;
