@@ -147,7 +147,7 @@ function Navbar() {
             <ul id="listaCat">
             <li id="cat">
                   <Link to="/home">
-                    <div class="icon">
+                    <div className="icon">
                       <i id="logo-nav">
                         <PiHouseLine />
                       </i>
@@ -156,9 +156,14 @@ function Navbar() {
                   </Link>
                 </li>
                 <li id="cat">
+<<<<<<< HEAD
 
                 <NavLink to="/busqueda"  activeClassName="active">
                 <div class="icon">
+=======
+                  <Link to="/busqueda">
+                    <div className="icon">
+>>>>>>> 4099d098c59a6a3a495fa4713485aff69ed8ddea
                       <i id="logo-nav">
                         <PiHouseLine />
                       </i>
@@ -176,8 +181,13 @@ function Navbar() {
                   
                 </li>
                 <li id="cat">
+<<<<<<< HEAD
                   <NavLink to="/Casa"  activeClassName="active">
                     <div class="icon">
+=======
+                  <Link to="/Casa">
+                    <div className="icon">
+>>>>>>> 4099d098c59a6a3a495fa4713485aff69ed8ddea
                       <i id="logo-nav">
                         <RiHomeLine />
                       </i>
@@ -186,8 +196,13 @@ function Navbar() {
                   </NavLink>
                 </li>
                 <li id="cat">
+<<<<<<< HEAD
                   <NavLink to="/Departamento"  activeClassName="active">
                     <div class="icon">
+=======
+                  <Link to="/Departamento">
+                    <div className="icon">
+>>>>>>> 4099d098c59a6a3a495fa4713485aff69ed8ddea
                       <i id="logo-nav">
                         <PiSwimmingPool />
                       </i>
@@ -196,8 +211,13 @@ function Navbar() {
                   </NavLink>
                 </li>
                 <li id="cat">
+<<<<<<< HEAD
                   <NavLink to="/Cabaña"  activeClassName="active">
                     <div class="icon">
+=======
+                  <Link to="/Cabaña">
+                    <div className="icon">
+>>>>>>> 4099d098c59a6a3a495fa4713485aff69ed8ddea
                       <i id="logo-nav">
                         <MdCabin />
                       </i>
@@ -206,8 +226,13 @@ function Navbar() {
                   </NavLink>
                 </li>
               <li id="cat">
+<<<<<<< HEAD
                     <NavLink to="/Habitacion"  activeClassName="active">
                       <div class="icon">
+=======
+                    <Link to="/Habitacion">
+                      <div className="icon">
+>>>>>>> 4099d098c59a6a3a495fa4713485aff69ed8ddea
                         <i id="logo-nav">
                           <FaMountainCity />
                         </i>

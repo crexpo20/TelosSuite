@@ -5,22 +5,20 @@ import { Link, Outlet } from 'react-router-dom';
 class PagoBanco extends Component {
   render() {
     return (
-      <body>
         <div className='container'>
           <div className="pagoGrid">
               <h1>CONFIRMACION DEL PAGO</h1>
-              <p>El monto a cancelar es de Bs. 100</p>
+              <p>El monto a cancelar es de Bs. 150</p>
               <div>
                 <Link to='/Reserva'>
-                  <button>Confirmar pago y volver</button>
+                  <button>Confirmar</button>
                 </Link>
                 <Link to='/Reserva'>
-                  <button>No confirmar pago y volver</button>
+                  <button>Cancelar</button>
                 </Link>
               </div>
             </div>
         </div>
-      </body>
     );
   }
 }

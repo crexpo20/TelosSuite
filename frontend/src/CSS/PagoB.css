@@ -1,11 +1,10 @@
 .container {
     display: flex;
-    justify-content: center; /* Centra horizontalmente el contenido */
-    align-items: center; /* Centra verticalmente el contenido */
-    height: 70vh; /* Ocupa el 100% de la altura de la ventana */
+    justify-content: center; 
+    align-items: center; 
+    height: 70vh; 
   }
   
-  /* Estilos para el grid dentro del contenedor principal */
   .pagoGrid {
     display: grid;
     grid-template-columns: 1fr;
@@ -18,7 +17,7 @@
   .pagoGrid h1 {
     font-size: 35px;
     font-family: 'JejuMyeongjo';
-    margin-top: 30px; /* Espacio entre el h1 y el párrafo */
+    margin-top: 30px; 
     margin-left: 250px;
   }
   .pagoGrid p {
@@ -31,7 +30,7 @@
     color: black;
     border: none;
     padding: 10px 20px;
-    margin: 15px; /* Espacio entre los botones */
+    margin: 15px; 
     cursor: pointer;
   }
   

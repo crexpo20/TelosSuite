@@ -242,3 +242,24 @@ label {
 .selector-button:last-child {
   margin-right: 25px; 
 }
+
+.star {
+  cursor: pointer; /* Esto muestra un cursor tipo "mano" que indica que el elemento es clickeable */
+  font-size: 25px; /* Ajusta esto según sea necesario */
+  color: #ccc; /* Color por defecto de las estrellas */
+  transition: color 0.2s; /* Esto es opcional, para una transición suave al cambiar el color */
+}
+
+.star.selected {
+  color: #DA1467; /* Color de las estrellas cuando están seleccionadas */
+}
+
+/* Estos estilos son opcionales para mejorar la interactividad visual */
+.star:hover {
+  color: #DA1467; /* Color al pasar el mouse sobre las estrellas */
+}
+
+.calificacion-title {
+  color: #DA1467;/* Usa el mismo color que para los otros títulos */
+  margin-bottom: 0.5rem; /* Añade un espacio entre el título y las estrellas */
+}
