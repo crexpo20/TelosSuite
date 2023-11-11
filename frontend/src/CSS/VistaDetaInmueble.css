@@ -286,31 +286,30 @@
     cursor: pointer;
   }
 
-  /* Estilos para los comentarios */
   .comentario1, .comentario2 {
     display: flex;
-    flex-direction: column; /* Hace que el contenido esté uno encima del otro */
-    align-items: flex-start; /* Alinea el contenido a la izquierda */
+    flex-direction: column; 
+    align-items: flex-start; 
     margin-bottom: 20px;
-    padding: 10px; /* Espacio interno para los comentarios */
+    padding: 10px; 
     margin-right: 10%;
   }
   
   .usuario-info1, .usuario-info2 {
-    display: flex; /* Muestra la foto y el nombre en la misma fila */
-    align-items: center; /* Centra verticalmente el contenido de usuario-info */
+    display: flex; 
+    align-items: center; 
   }
   
   .foto-usuario1, .foto-usuario2 {
     width: 60px;
     height: 60px;
-    border-radius: 50%; /* Para hacer la imagen redonda */
+    border-radius: 50%; 
     margin-right: 20px;
     margin-bottom: 20px;
   }
   
 
-  h9 {
+  h3 {
     font-family: 'JejuMyeongjo';
     font-size: 25px;
     font-weight: bold;
@@ -325,7 +324,6 @@
     text-align: justify;
   }
 
-  /* Estilos para el GridComentarios */
   .GridReseñas {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -335,4 +333,16 @@
     margin-right: 100px;
   }
 
-  /* Otros estilos específicos según tus preferencias */
+  .GridMapa{
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 100px;
+    margin-right: 100px;
+  }
+
+  .MapaGoogle {
+    width: 100%; /* Ajusta el ancho según tus necesidades */
+    height: 400px; /* Ajusta la altura según tus necesidades */
+  }

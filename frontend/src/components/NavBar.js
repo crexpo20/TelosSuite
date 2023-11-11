@@ -147,7 +147,7 @@ function Navbar() {
             <ul id="listaCat">
             <li id="cat">
                   <Link to="/home">
-                    <div class="icon">
+                    <div className="icon">
                       <i id="logo-nav">
                         <PiHouseLine />
                       </i>
@@ -157,7 +157,7 @@ function Navbar() {
                 </li>
                 <li id="cat">
                   <Link to="/busqueda">
-                    <div class="icon">
+                    <div className="icon">
                       <i id="logo-nav">
                         <PiHouseLine />
                       </i>
@@ -167,7 +167,7 @@ function Navbar() {
                 </li>
                 <li id="cat">
                   <Link to="/Casa">
-                    <div class="icon">
+                    <div className="icon">
                       <i id="logo-nav">
                         <RiHomeLine />
                       </i>
@@ -177,7 +177,7 @@ function Navbar() {
                 </li>
                 <li id="cat">
                   <Link to="/Departamento">
-                    <div class="icon">
+                    <div className="icon">
                       <i id="logo-nav">
                         <PiSwimmingPool />
                       </i>
@@ -187,7 +187,7 @@ function Navbar() {
                 </li>
                 <li id="cat">
                   <Link to="/Cabaña">
-                    <div class="icon">
+                    <div className="icon">
                       <i id="logo-nav">
                         <MdCabin />
                       </i>
@@ -197,7 +197,7 @@ function Navbar() {
                 </li>
               <li id="cat">
                     <Link to="/Habitacion">
-                      <div class="icon">
+                      <div className="icon">
                         <i id="logo-nav">
                           <FaMountainCity />
                         </i>
