@@ -62,12 +62,16 @@ class AppRouter extends Component{
           <Route path='Cabaña' element={<Cabaña />} />
           <Route path='Habitacion' element={<Habitacion />} />
           <Route path='*' element={<Navigate TO ="/"/>}/> 
-          <Route path='vistaInm' element={<VistaDetalladaInm />} />
+         
           <Route path='Reserva' element={<ReservaInm />} />
           <Route path='Pago' element={<PagoBanco />} />
 
           
       </Route>
+
+      <Route path= "/vistaInm" element={<NavbarReg/>}>
+      <Route index element={<VistaDetalladaInm />} />
+       </Route>
       <Route path= "/cliente" element={<NavbarCli />}>
             <Route index element={<EspaciosModAnf />} />
             <Route path= "/cliente/:espaciosID" element ={<ActualizarInm  />}/>

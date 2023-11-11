@@ -4,7 +4,7 @@
     top:0;
     left: 5%;
     padding-right: 5%;
-    margin-top: 12%;
+    margin-top: 0;
     margin-left: 30px;
     padding: 1px 0;
     border-radius: 10px;
@@ -15,7 +15,7 @@
     z-index: 0;
 
   }
-
+ 
   .GridImagenes {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;

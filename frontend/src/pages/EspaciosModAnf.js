@@ -78,8 +78,7 @@ class EspaciosModAnf extends Component {
                         <img className="inmueble_fot" src={sitio.imagen1} alt="Inmueble 1" />
                       </div>
                       <div>
-                        {/* Agrega aquí las imágenes adicionales para cada slide */}
-                        <img className="inmueble_fot" src={sitio.imagen2} alt="Inmueble 2" />
+                       <img className="inmueble_fot" src={sitio.imagen2} alt="Inmueble 2" />
                       </div>
                       <div>
                         <img className="inmueble_fot" src={sitio.imagen3} alt="Inmueble 1" />
@@ -90,10 +89,9 @@ class EspaciosModAnf extends Component {
                       <div>
                         <img className="inmueble_fot" src={sitio.imagen5} alt="Inmueble 1" />
                       </div>
-                      {/* Agrega más bloques <div> con imágenes adicionales */}
-                    </Slider>
+                  </Slider>
 
-                    <h3 className="inmueble_name">{sitio.tituloanuncio}</h3>
+                    <h3 className="inmueble_name">{sitio.tipopropiedad}</h3>
                     <div className="inmueble_info">
                       <p className="inmDet">{sitio.ciudad}</p>
                       <p className="inmCamas">{sitio.camas}</p>

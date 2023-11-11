@@ -97,7 +97,7 @@ class VistaDetalladaInm extends Component {
     ];
     return (
       <>
-        <body>
+        <body id='vista'>
           <h1 className='tituloVista'>INKA PACHA Cabaña con dos camas y baño privado</h1>
           <div className='GridImagenes'>
             <div className='Columna1'>

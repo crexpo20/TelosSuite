@@ -99,7 +99,6 @@ class RegisterInmue extends Component {
       formData[field] = value;
   
       if (field === "tituloanuncio") {
-        // Contar los caracteres del título y actualizar el estado
         this.setState({ titleCharacterCount: value.length });
       }
   
@@ -114,8 +113,7 @@ class RegisterInmue extends Component {
       formData[field] = value;
   
       if (field === "normas") {
-        // Contar los caracteres del título y actualizar el estado
-        this.setState({ titleCharacterCount: value.length });
+       this.setState({ titleCharacterCount: value.length });
       }
   
       return { formData };
@@ -292,7 +290,6 @@ class RegisterInmue extends Component {
       const respuestaJson = await postProducto( "http://127.0.0.1:8000/api/postinmuebles", lugar);
 
       console.log("Response:------> " + respuestaJson.status);
-      // Mostrar el objeto por consola
       console.log('Datos de registro:', lugar);
       if (this.state.currentSlide < 20) {
         this.setState(
@@ -314,8 +311,7 @@ class RegisterInmue extends Component {
         cancel: 'Cancelar',
         confirm: {
           text: 'Confirmar',
-          className: 'btn-confirmar-reg', // Clase CSS personalizada para el botón de confirmación
-        },
+          className: 'btn-confirmar-reg', },
       },
       dangerMode: true,
       customClass: {
@@ -327,8 +323,7 @@ class RegisterInmue extends Component {
    
                  
       } else {
-        // Maneja la lógica si el usuario cancela la acción
-        console.log('Acción cancelada');
+         console.log('Acción cancelada');
       }
     });
   };
@@ -725,7 +720,7 @@ class RegisterInmue extends Component {
             {currentSlide === 8 && (
               <div className="property-price">
                 <div id='titulo'>
-                    <h3>Es momento de poner un precio a tu inmueble:</h3>
+                    <h3>Ingresa el precio por noche:</h3>
                 </div>
                <div id='cuerpo'>
                 <div id='cuerpo-der'>

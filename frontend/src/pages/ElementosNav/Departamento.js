@@ -46,13 +46,14 @@ getProductos=async()=>{
         <body>
           <div className="verinm">
             {this.state.inmueble.map((sitio, index) => {
-              if(sitio.tipopropiedad === "Departamento" &&
-                 sitio.niños === parseInt(localStorage.getItem("niños")) &&
-                 sitio.mascotas === parseInt(localStorage.getItem("mascotas")) &&
-                 sitio.capacidad >= parseInt(localStorage.getItem("huespedes")) &&
-                 sitio.ciudad === localStorage.getItem("destino")
-              ){
+              if(sitio.tipopropiedad === "Departamento"  &&
+                 
+              ( sitio.ciudad === localStorage.getItem("destino"))
+                ){
+                  console.log(localStorage.getItem("destino"))
+                  console.log(sitio.ciudad)
                     return (
+                      
                         <div className="InmueblesHost" key={sitio.id}>
                            <Slider {...carouselSettings}>
                       <div>
