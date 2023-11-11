@@ -1,4 +1,3 @@
-// Navbar.js
 
 import React, { useState, useEffect } from 'react';
 import { Link, Outlet, useNavigate,NavLink } from 'react-router-dom';
@@ -156,38 +155,19 @@ function Navbar() {
                   </Link>
                 </li>
                 <li id="cat">
-<<<<<<< HEAD
 
                 <NavLink to="/busqueda"  activeClassName="active">
                 <div class="icon">
-=======
-                  <Link to="/busqueda">
-                    <div className="icon">
->>>>>>> 4099d098c59a6a3a495fa4713485aff69ed8ddea
                       <i id="logo-nav">
                         <PiHouseLine />
                       </i>
                     </div>
                     Tu busqueda
                 </NavLink>
-                
-                 
-
-
-
-
-
-
-                  
                 </li>
                 <li id="cat">
-<<<<<<< HEAD
                   <NavLink to="/Casa"  activeClassName="active">
                     <div class="icon">
-=======
-                  <Link to="/Casa">
-                    <div className="icon">
->>>>>>> 4099d098c59a6a3a495fa4713485aff69ed8ddea
                       <i id="logo-nav">
                         <RiHomeLine />
                       </i>
@@ -196,13 +176,8 @@ function Navbar() {
                   </NavLink>
                 </li>
                 <li id="cat">
-<<<<<<< HEAD
                   <NavLink to="/Departamento"  activeClassName="active">
                     <div class="icon">
-=======
-                  <Link to="/Departamento">
-                    <div className="icon">
->>>>>>> 4099d098c59a6a3a495fa4713485aff69ed8ddea
                       <i id="logo-nav">
                         <PiSwimmingPool />
                       </i>
@@ -211,13 +186,8 @@ function Navbar() {
                   </NavLink>
                 </li>
                 <li id="cat">
-<<<<<<< HEAD
                   <NavLink to="/Cabaña"  activeClassName="active">
                     <div class="icon">
-=======
-                  <Link to="/Cabaña">
-                    <div className="icon">
->>>>>>> 4099d098c59a6a3a495fa4713485aff69ed8ddea
                       <i id="logo-nav">
                         <MdCabin />
                       </i>
@@ -226,13 +196,8 @@ function Navbar() {
                   </NavLink>
                 </li>
               <li id="cat">
-<<<<<<< HEAD
                     <NavLink to="/Habitacion"  activeClassName="active">
                       <div class="icon">
-=======
-                    <Link to="/Habitacion">
-                      <div className="icon">
->>>>>>> 4099d098c59a6a3a495fa4713485aff69ed8ddea
                         <i id="logo-nav">
                           <FaMountainCity />
                         </i>
