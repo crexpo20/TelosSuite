@@ -17,6 +17,8 @@ import Mapa from '../pages/Mapa.js';
 import credentials from '../pages/credentials.js';
 
 class VistaDetalladaInm extends Component {
+ 
+
 
   //Controlamos el carrusel de Imagenes con su descripcion
   state = {

@@ -1022,7 +1022,7 @@ class RegisterInmue extends Component {
 
 
 
-{currentSlide === 15 && (
+{currentSlide === 0 && (
   <div className="property-ubi">
     <div id='titulo'>
       <h3>Ingresa la ubicación 1</h3>
@@ -1071,7 +1071,7 @@ class RegisterInmue extends Component {
               <IoIosArrowDropleftCircle/>
             </button>
           )}
-          {currentSlide === 0 && this.state.formData.tipopropiedad !== "" && (
+          {currentSlide === 15 && this.state.formData.tipopropiedad !== "" && (
             <button className="next" onClick={this.handleNextSlide}>
               < IoIosArrowDroprightCircle />
             </button>
