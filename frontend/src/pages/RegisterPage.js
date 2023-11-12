@@ -141,13 +141,11 @@ class RegisterPage extends Component{
     e.preventDefault();
 
     if (this.validateForm()) {
-      // Si la validación es exitosa, realiza la acción de envío, por ejemplo, enviando datos al servidor.
       console.log('Datos de registro:', this.state);
     }
   };
   onSubmit = async () => {
     if (this.validateForm()) {
-      // Crear un objeto con los datos del formulario
       const usuario = {
         username: this.state.username,
         nombre: this.state.firstName,
@@ -233,9 +231,8 @@ class RegisterPage extends Component{
 
   render(){
     const { pass, showPassword } = this.state;
-    //Controla la redireccion del modal despues de Aceptar el registro y continuar
     if (this.state.redirectToHome) {
-      return <link to="/cliente" />;
+      return <link to="/" />;
     }
       
       return(
@@ -382,7 +379,7 @@ class RegisterPage extends Component{
               <br></br>
               <br></br>
                 <div class="BotonAcept" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                 <Link to="/cliente" class='BotonAceptarR'  style={{ backgroundColor: '#e80980', fontSize: '18px' , border: 'black',color: 'white', borderRadius: '10px', width: '200px' }}>Aceptar</Link>
+                 <Link to="/home" class='BotonAceptarR'  style={{ backgroundColor: '#e80980', fontSize: '18px' , border: 'black',color: 'white', borderRadius: '10px', width: '200px' }}>Aceptar</Link>
                   </div>
             </div>
           </div>

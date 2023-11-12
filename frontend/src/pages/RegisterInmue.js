@@ -9,6 +9,8 @@ import { Link, Outlet,useNavigate  } from 'react-router-dom';
 import {default as Subir} from './servicio-img';
 import Swal from 'sweetalert';
 import { withRouter } from 'react-router-dom';
+import MapaRegistro from '../pages/MapaRegistro.js';
+import credentials from '../pages/credentials.js';
 
 class RegisterInmue extends Component {
   constructor(props) {
@@ -99,7 +101,6 @@ class RegisterInmue extends Component {
       formData[field] = value;
   
       if (field === "tituloanuncio") {
-        // Contar los caracteres del título y actualizar el estado
         this.setState({ titleCharacterCount: value.length });
       }
   
@@ -114,8 +115,7 @@ class RegisterInmue extends Component {
       formData[field] = value;
   
       if (field === "normas") {
-        // Contar los caracteres del título y actualizar el estado
-        this.setState({ titleCharacterCount: value.length });
+       this.setState({ titleCharacterCount: value.length });
       }
   
       return { formData };
@@ -292,7 +292,6 @@ class RegisterInmue extends Component {
       const respuestaJson = await postProducto( "http://127.0.0.1:8000/api/postinmuebles", lugar);
 
       console.log("Response:------> " + respuestaJson.status);
-      // Mostrar el objeto por consola
       console.log('Datos de registro:', lugar);
       if (this.state.currentSlide < 20) {
         this.setState(
@@ -314,8 +313,7 @@ class RegisterInmue extends Component {
         cancel: 'Cancelar',
         confirm: {
           text: 'Confirmar',
-          className: 'btn-confirmar-reg', // Clase CSS personalizada para el botón de confirmación
-        },
+          className: 'btn-confirmar-reg', },
       },
       dangerMode: true,
       customClass: {
@@ -327,8 +325,7 @@ class RegisterInmue extends Component {
    
                  
       } else {
-        // Maneja la lógica si el usuario cancela la acción
-        console.log('Acción cancelada');
+         console.log('Acción cancelada');
       }
     });
   };
@@ -337,6 +334,8 @@ class RegisterInmue extends Component {
   render() {
     const currentSlide = this.state.currentSlide;
     const { formData, propertyTypes, options,privacy, cities} = this.state;
+
+    const mapURL = `https://maps.googleapis.com/maps/api/js?v=3.exp&key=${credentials.mapsKey}`;
 
     return (
      <>
@@ -725,7 +724,7 @@ class RegisterInmue extends Component {
             {currentSlide === 8 && (
               <div className="property-price">
                 <div id='titulo'>
-                    <h3>Es momento de poner un precio a tu inmueble:</h3>
+                    <h3>Ingresa el precio por noche:</h3>
                 </div>
                <div id='cuerpo'>
                 <div id='cuerpo-der'>
@@ -1023,10 +1022,22 @@ class RegisterInmue extends Component {
 
 
 
-{currentSlide === 15 && (
-  <div className="property-images">
+{currentSlide === 0 && (
+  <div className="property-ubi">
     <div id='titulo'>
-      <h3>Ingresa la ubicaion 1</h3>
+      <h3>Ingresa la ubicación 1</h3>
+      <div className='MapaRegisInm'>
+                <MapaRegistro 
+                  googleMapURL={mapURL}
+                  containerElement={<div style={{ height: '150%' }}></div>}
+                  mapElement={<div style={{ height: '100%' }}></div>}
+                  loadingElement={<p>Cargando..</p>}
+                  lat="-17.3852993"
+                  lng="-66.2010302"
+                  radio={0}
+                />
+
+              </div>
     </div>
   </div>
 )}
@@ -1060,7 +1071,7 @@ class RegisterInmue extends Component {
               <IoIosArrowDropleftCircle/>
             </button>
           )}
-          {currentSlide === 0 && this.state.formData.tipopropiedad !== "" && (
+          {currentSlide === 15 && this.state.formData.tipopropiedad !== "" && (
             <button className="next" onClick={this.handleNextSlide}>
               < IoIosArrowDroprightCircle />
             </button>

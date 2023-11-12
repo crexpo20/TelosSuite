@@ -36,4 +36,8 @@ class Inmueble extends Model
     public function Servicio(){
         return $this->hasMany(Servicio::class,'idinmueble');
     }
+
+    public function favorito(){
+        return $this->hasMany(favorito::class,'idfav');
+    }
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Outlet } from 'react-router-dom';
+import {  Link, Outlet } from 'react-router-dom';
 import iconoEliminar from '../iconos/iconoEliminar.png';
 import axios from 'axios';
 import Slider from 'react-slick';
@@ -78,8 +78,7 @@ class EspaciosModAnf extends Component {
                         <img className="inmueble_fot" src={sitio.imagen1} alt="Inmueble 1" />
                       </div>
                       <div>
-                        {/* Agrega aquí las imágenes adicionales para cada slide */}
-                        <img className="inmueble_fot" src={sitio.imagen2} alt="Inmueble 2" />
+                       <img className="inmueble_fot" src={sitio.imagen2} alt="Inmueble 2" />
                       </div>
                       <div>
                         <img className="inmueble_fot" src={sitio.imagen3} alt="Inmueble 1" />
@@ -90,15 +89,24 @@ class EspaciosModAnf extends Component {
                       <div>
                         <img className="inmueble_fot" src={sitio.imagen5} alt="Inmueble 1" />
                       </div>
-                      {/* Agrega más bloques <div> con imágenes adicionales */}
-                    </Slider>
-
-                    <h3 className="inmueble_name">{sitio.tituloanuncio}</h3>
+                  </Slider>
+                     
+                    <h3 className="inmueble_name">{sitio.tipopropiedad}</h3>
                     <div className="inmueble_info">
-                      <p className="inmDet">{sitio.ciudad}</p>
+                      <p className="inmDet">{sitio.idinmueble}</p>
                       <p className="inmCamas">{sitio.camas}</p>
                       <p className="inmPrecio">{sitio.precio}</p>
                     </div>
+
+                    <div class='BotonesEditEli'>
+                                <div class='BotonEditar'>
+                                    <Link to={`/cliente/${sitio.idinmueble}`}>editar</Link>
+                                </div>
+                                <button className="eliminar-btn" onClick={() => this.handleEliminarClick(sitio)}>
+                                  <img src={iconoEliminar} alt="Eliminar" />
+                                </button>
+                            </div>
+
                     <div className="BotonesEditEli">
                       <button className="eliminar-btn" onClick={() => this.handleEliminarClick(sitio)}>
                         <img src={iconoEliminar} alt="Eliminar" />

@@ -31,6 +31,7 @@ import Cabaña from '../pages/ElementosNav/Cabaña';
 import Departamento from '../pages/ElementosNav/Departamento';
 import ReservaInm from '../pages/ReservaInm';
 import PagoBanco from '../pages/PagoBanco';
+import ConfirmacionPago from '../pages/ConfirmacionPago';
 
 
 class AppRouter extends Component{
@@ -62,15 +63,20 @@ class AppRouter extends Component{
           <Route path='Cabaña' element={<Cabaña />} />
           <Route path='Habitacion' element={<Habitacion />} />
           <Route path='*' element={<Navigate TO ="/"/>}/> 
-          <Route path='vistaInm' element={<VistaDetalladaInm />} />
+         
           <Route path='Reserva' element={<ReservaInm />} />
           <Route path='Pago' element={<PagoBanco />} />
+          <Route path='Confirmar' element={<ConfirmacionPago />} />
 
           
       </Route>
+
+      <Route path= "/vistaInm" element={<NavbarReg/>}>
+      <Route index element={<VistaDetalladaInm />} />
+       </Route>
       <Route path= "/cliente" element={<NavbarCli />}>
             <Route index element={<EspaciosModAnf />} />
-            <Route path= "/cliente/:espaciosID" element ={<ActualizarInm  />}/>
+            <Route path= "/cliente/:espaciosID" element ={<VistaDetalladaInm  />}/>
             <Route path='inm' element={<ActualizarInm />} />
             <Route path="/cliente/registerinmue" element={<RegisterInmue />} />
             <Route path='dashboard' element={<DashboardPage />} />

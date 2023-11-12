@@ -16,4 +16,7 @@ class Usuario extends Model
     public function Inmueble(){
         return $this->hasMany(Inmueble::class,'idusuario');
     }
+    public function favorito(){
+        return $this->hasMany(favorito::class,'idfav');
+    }
 }

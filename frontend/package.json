@@ -9,6 +9,7 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@greatsumini/react-facebook-login": "^3.3.3",
     "@leecheuk/react-google-login": "^5.4.1",
+    "@react-google-maps/api": "^2.19.2",
     "@react-spring/web": "^9.7.3",
     "@strapi/provider-upload-cloudinary": "^4.15.0",
     "@testing-library/jest-dom": "^5.17.0",

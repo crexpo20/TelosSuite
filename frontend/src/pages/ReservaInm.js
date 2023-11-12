@@ -33,7 +33,6 @@ class ReservaInm extends Component{
     render(){
       return(
         <>
-         <body>
             <div className='Grid1'>
                 <Link to="/vistaInm" className='BotonAnterior'>
                 <IoIosArrowDropleftCircle size={30} />
@@ -81,7 +80,6 @@ class ReservaInm extends Component{
                 </div>
             </div>
             
-         </body>
          <Outlet />
          {this.state.showFechaModal && (
             <div className="modalReserva">

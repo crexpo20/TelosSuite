@@ -89,7 +89,8 @@ const ModalMenuBody = ({props}) => {
     function cerrarSesion() {
         // Establecer la variable localStorage
         localStorage.setItem("init", "0");
-        localStorage.setItem("anfitrion",0)
+        localStorage.setItem("anfitrion",0);
+        localStorage.setItem("userID",0)
         // Recargar la página
         window.location.reload();
     }

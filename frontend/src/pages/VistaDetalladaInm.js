@@ -13,8 +13,14 @@ import piscina from '../iconos/piscina.png';
 import '../CSS/VistaDetaInmueble.css';
 import Fechas from '../components/fechas';
 import CuantosBoton from '../components/cuantos/botoncuantos';
-class VistaDetalladaInm extends Component {
+import Mapa from '../pages/Mapa.js';
+import credentials from '../pages/credentials.js';
 
+class VistaDetalladaInm extends Component {
+ 
+
+
+  //Controlamos el carrusel de Imagenes con su descripcion
   state = {
     currentImageIndex: 0,
     imageCarouselOpen: false,
@@ -60,6 +66,7 @@ class VistaDetalladaInm extends Component {
     const isAtFirstImage = currentImageIndex === 0;
     const isAtLastImage = currentImageIndex === images.length - 1;
 
+    //Const de los comentarios
     const comentariosColum1 = [
       {
         fotoUsuario1: 'https://picsum.photos/280/280',
@@ -95,10 +102,15 @@ class VistaDetalladaInm extends Component {
         comentario2: 'Pasamos un tiempo maravilloso aquí. El anfitrión fue amable y servicial. Definitivamente volveremos.',
       },
     ];
+
+    //url de la API para mostrar la ubicacion que registro el host
+    const mapURL = `https://maps.googleapis.com/maps/api/js?v=3.exp&key=${credentials.mapsKey}`;
+
     return (
       <>
-        <body>
+        <body id='vista'>
           <h1 className='tituloVista'>INKA PACHA Cabaña con dos camas y baño privado</h1>
+          {/* GRID de las imagenes */}
           <div className='GridImagenes'>
             <div className='Columna1'>
                 <img src="https://picsum.photos/280/280" alt='Imagen 1' />
@@ -115,20 +127,22 @@ class VistaDetalladaInm extends Component {
               </div>
             </div>
         </div>
+        {/* GRID de la informacion, se divide en dos columnas, En la COLUMNA1 se encuentra la informacion y los servicios.
+        En la COLUMNA2 se encuentra la informacion del precio y el boton de la reserva*/}
         <div className='GridInformacion'>
             <div className='Colum1'>
-                <h className='title1'>Casa de huéspedes - Anfitrión: Martin</h>
-                <h className='title2'>3 huéspedes - 1 habitación - 2 camas - 1 baño privado</h>
+                <h2 className='title1'>Casa de huéspedes - Anfitrión: Martin</h2>
+                <p className='title2'>3 huéspedes - 1 habitación - 2 camas - 1 baño privado</p>
                 <br></br>
                 <div className="divisor-plomo"></div>
                 <br></br>
                 <div className='informacionAdicional'>
-                <h className='title3'>Relájate en esta escapada única y tranquila. Somos una casa de Campo de la comunidad Yumani. Esta habitacion viene con baño privado y una vista increible al lago. Nuestro estilo es de origen Aymara, con objetos y pinturas de inspiración indígena ancestral. Disponemos de Servicio de Restaurante. Atendido por Martín y Justina, quienes te darán las mejores indicaciones para explorar la Isla sagrada.</h>
+                <p className='title3'>Relájate en esta escapada única y tranquila. Somos una casa de Campo de la comunidad Yumani. Esta habitacion viene con baño privado y una vista increible al lago. Nuestro estilo es de origen Aymara, con objetos y pinturas de inspiración indígena ancestral. Disponemos de Servicio de Restaurante. Atendido por Martín y Justina, quienes te darán las mejores indicaciones para explorar la Isla sagrada.</p>
                 </div>
                 <br></br>
                 <div className="divisor-plomo"></div>
                 <br></br>
-                <h className='title1'>Lo que este lugar ofrece</h>
+                <h2 className='title1'>Lo que este lugar ofrece</h2>
                 <br></br>
                 <div className='gridVistaServicios'>
                   <div className='columServ1'>
@@ -164,7 +178,7 @@ class VistaDetalladaInm extends Component {
             </div>
             <div className='Colum2'>
               <div className="InformacionReserva">
-                <h className='title1'>90 Bs. noche </h>
+                <h2 className='title1'>90 Bs. noche </h2>
                 <br></br>
                 <li id="prim" className='FechaReserva'><Fechas /></li>
                 <br></br>
@@ -181,10 +195,11 @@ class VistaDetalladaInm extends Component {
 
             </div>
         </div>
+        {/* GRID de los comentarios */}
         <div className='GridComentarios'>
             <div className="divisor-plomo"></div>
             <br></br>
-            <h className='title1'>Reseñas </h>
+            <h2 className='title1'>Reseñas </h2>
         </div>
         <div className='GridReseñas'>
             <div className='ColumCom1'>
@@ -192,7 +207,7 @@ class VistaDetalladaInm extends Component {
                   <div key={index} className='comentario1'>
                     <div className="usuario-info1">
                       <img src={comentario1.fotoUsuario1} alt='Usuario1' className='foto-usuario1' />
-                      <h9>{comentario1.nombreUsuario1}</h9>
+                      <h3>{comentario1.nombreUsuario1}</h3>
                     </div>
                     <p>{comentario1.comentario1}</p>
                   </div>
@@ -203,14 +218,32 @@ class VistaDetalladaInm extends Component {
                       <div key={index} className='comentario2'>
                         <div className="usuario-info2">
                           <img src={comentario2.fotoUsuario2} alt='Usuario2' className='foto-usuario2' />
-                          <h9>{comentario2.nombreUsuario2}</h9>
+                          <h3>{comentario2.nombreUsuario2}</h3>
                         </div>
                         <p>{comentario2.comentario2}</p>
                       </div>
                     ))}
             </div>
         </div>
-        </body>
+        {/* GRID del mapa */}
+        <div className='GridMapa'>
+              <div className="divisor-plomo"></div>
+              <br></br>
+              <h2 className='title1'>A dónde irás </h2>
+              <h2 className='title2'>Cochabamba, Departamento de Cochabamba, Bolivia</h2>
+              <div className='MapaGoogle'>
+                <Mapa 
+                  googleMapURL={mapURL}
+                  containerElement={<div style={{ height: '150%' }}></div>}
+                  mapElement={<div style={{ height: '100%' }}></div>}
+                  loadingElement={<p>Cargando..</p>}
+                  lat="-17.3852993"
+                  lng="-66.2010302"
+                  radio={0}
+                />
+
+              </div>
+            </div>
         <Outlet />
         {this.state.imageCarouselOpen && (
           <div className="modalImagenes">
@@ -234,7 +267,9 @@ class VistaDetalladaInm extends Component {
               )}
             </div>
           </div>
+          
         )}
+        </body>
       </>
     );
   }
