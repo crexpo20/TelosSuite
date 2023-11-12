@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Outlet } from 'react-router-dom';
+import {  Link, Outlet } from 'react-router-dom';
 import iconoEliminar from '../iconos/iconoEliminar.png';
 import axios from 'axios';
 import Slider from 'react-slick';
@@ -90,13 +90,23 @@ class EspaciosModAnf extends Component {
                         <img className="inmueble_fot" src={sitio.imagen5} alt="Inmueble 1" />
                       </div>
                   </Slider>
-
+                     
                     <h3 className="inmueble_name">{sitio.tipopropiedad}</h3>
                     <div className="inmueble_info">
-                      <p className="inmDet">{sitio.ciudad}</p>
+                      <p className="inmDet">{sitio.idinmueble}</p>
                       <p className="inmCamas">{sitio.camas}</p>
                       <p className="inmPrecio">{sitio.precio}</p>
                     </div>
+
+                    <div class='BotonesEditEli'>
+                                <div class='BotonEditar'>
+                                    <Link to={`/cliente/${sitio.idinmueble}`}>editar</Link>
+                                </div>
+                                <button className="eliminar-btn" onClick={() => this.handleEliminarClick(sitio)}>
+                                  <img src={iconoEliminar} alt="Eliminar" />
+                                </button>
+                            </div>
+
                     <div className="BotonesEditEli">
                       <button className="eliminar-btn" onClick={() => this.handleEliminarClick(sitio)}>
                         <img src={iconoEliminar} alt="Eliminar" />
