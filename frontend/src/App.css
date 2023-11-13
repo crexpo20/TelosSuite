@@ -544,7 +544,7 @@ h4{
 }
 
 #head-der2 a{
-  background-color: #000;
+  
   white-space: nowrap;
   width: 100%;
 }
@@ -579,7 +579,6 @@ h4{
   justify-items: left;
 }
 #navAbajo{
-  background-color: #000;
   margin-top: 0.5%;
   display: flex;
 }

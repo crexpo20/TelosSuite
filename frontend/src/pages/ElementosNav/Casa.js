@@ -7,25 +7,24 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import '../../CSS/slick.css'
 
-class Casa extends Component {
+class Casa extends Component { 
   constructor(props){
     super(props);
     this.state={
-      inmueble:[]
+      inmueble:[] // array vacio aqui se guarda lo que se recupera con la api 
     }
     this.getProductos = this.getProductos.bind(this);
     
 }
  
-componentDidMount(){
+componentDidMount(){      
   this.getProductos();
- 
 }
 
 getProductos=async()=>{
-  await axios.get('http://127.0.0.1:8000/api/getinmuebles')
+  await axios.get('http://127.0.0.1:8000/api/getinmuebles/')
   .then(res=>{
-      this.setState({inmueble: res.data});
+      this.setState({inmueble: res.data}); //nombre de array: LO QUE SALE POR CONSOLA
       console.log(this.state.inmueble)
   }).catch((error)=>{
       console.log(error);
@@ -46,7 +45,9 @@ getProductos=async()=>{
       <>
         <body>
           <div className="verinm">
-            {this.state.inmueble.map((sitio, index) => {
+            {this.state.inmueble.map((sitio, index) => {    // NOMBREDETUARREGLO.map((sitio, index) => {
+                //                                              aqui tu codigo
+           //                                                  })
               if(sitio.tipopropiedad === "Casa" &&
                  sitio.ciudad === localStorage.getItem("destino") 
               ){
@@ -69,12 +70,14 @@ getProductos=async()=>{
                         <img className="inmueble_fot" src={sitio.imagen5} alt="Inmueble 1" />
                       </div>
                   </Slider>
-                          <h3 className="inmueble_name">{sitio.tipopropiedad}</h3>
-                          <div className="inmueble_info">
-                            <p className="inmDet">{sitio.ciudad}</p>
-                            <p className="inmCamas">{sitio.tituloanuncio}</p>
-                            <p className="inmPrecio">{sitio.capacidad}</p>
-                          </div>
+                  <h3 className="inmueble_name">{sitio.tipopropiedad} en {sitio.ciudad}</h3>
+                    <div className="inmueble_info">
+                      <p className="inmDet">{sitio.titulo}</p>
+                      <p className="inmCamas"> <b>Precio por noche:</b> bs. {sitio.precio}</p>
+                      <p className="inmPrecio"><b>Capacidad:</b>  {sitio.capacidad} persona(s)</p>
+                      <p className="inmPrecio"><b>Normas:</b> {sitio.normas}</p>
+                    </div>
+                     
                         </div>
                       );
                 }

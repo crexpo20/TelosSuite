@@ -302,6 +302,9 @@ class RegisterInmue extends Component {
       }
     
   };
+  terminar = () =>{
+    window.location.href = '/cliente';
+  }
 
   abrirModalSweetAlert = () => {
     const { history } = this.props;
@@ -1022,7 +1025,7 @@ class RegisterInmue extends Component {
 
 
 
-{currentSlide === 0 && (
+{currentSlide === 15 && (
   <div className="property-ubi">
     <div id='titulo'>
       <h3>Ingresa la ubicación 1</h3>
@@ -1041,13 +1044,7 @@ class RegisterInmue extends Component {
     </div>
   </div>
 )}
-{currentSlide === 16 && (
-  <div className="property-images">
-    <div id='titulo'>
-    <h3>Ingresa la ubicaion 2</h3>
-    </div>
-  </div>
-)}
+
 
             {currentSlide === 17 && (
               <div className="property-done">
@@ -1066,12 +1063,12 @@ class RegisterInmue extends Component {
           </div>
         </div>
         <div className="button-container">
-          {currentSlide > 0 && currentSlide < 17 &&(
+          {currentSlide > 0 && currentSlide < 16 &&(
             <button className="prev" onClick={this.handlePrevSlide}>
               <IoIosArrowDropleftCircle/>
             </button>
           )}
-          {currentSlide === 15 && this.state.formData.tipopropiedad !== "" && (
+          {currentSlide === 0 && this.state.formData.tipopropiedad !== "" && (
             <button className="next" onClick={this.handleNextSlide}>
               < IoIosArrowDroprightCircle />
             </button>
@@ -1205,7 +1202,7 @@ this.state.formData.descripcion !== "" &&
          
           
            {currentSlide === 17 && (
-             <button className="fin" type="submit" onClick={this.onSubmit}>
+             <button className="fin" type="submit" onClick={this.terminar}>
               Finalizar
             </button>
           )}

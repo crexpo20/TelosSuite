@@ -68,12 +68,14 @@ getProductos=async()=>{
                         <img className="inmueble_fot" src={sitio.imagen5} alt="Inmueble 1" />
                       </div>
                   </Slider>
-                          <h3 className="inmueble_name">{sitio.tipopropiedad}</h3>
-                          <div className="inmueble_info">
-                            <p className="inmDet">{sitio.ciudad}</p>
-                            <p className="inmCamas">{sitio.tituloanuncio}</p>
-                            <p className="inmPrecio">{sitio.capacidad}</p>
-                          </div>
+                  <h3 className="inmueble_name">{sitio.tipopropiedad} en {sitio.ciudad}</h3>
+                    <div className="inmueble_info">
+                      <p className="inmDet">{sitio.titulo}</p>
+                      <p className="inmCamas"> <b>Precio por noche:</b> bs. {sitio.precio}</p>
+                      <p className="inmPrecio"><b>Capacidad:</b>  {sitio.capacidad} persona(s)</p>
+                      <p className="inmPrecio"><b>Normas:</b> {sitio.normas}</p>
+                    </div>
+                     
                         </div>
                       );
                 }

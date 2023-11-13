@@ -70,7 +70,7 @@ class EspaciosModAnf extends Component {
         <body>
           <div className="verinm">
             {this.state.inmueble.map((sitio) => {
-              if (sitio.idusuario === parseInt(localStorage.getItem('userID'))) {
+               if (sitio.idusuario === parseInt(localStorage.getItem('userID'))) {
                 return (
                   <div className="InmueblesHost" key={sitio.id}>
                     <Slider {...carouselSettings}>
@@ -93,25 +93,21 @@ class EspaciosModAnf extends Component {
                      
                     <h3 className="inmueble_name">{sitio.tipopropiedad}</h3>
                     <div className="inmueble_info">
-                      <p className="inmDet">{sitio.idinmueble}</p>
-                      <p className="inmCamas">{sitio.camas}</p>
-                      <p className="inmPrecio">{sitio.precio}</p>
+                      <p className="inmDet">{sitio.titulo}</p>
+                      <p className="inmCamas"> <b>Precio por noche:</b> bs. {sitio.precio}</p>
+                      <p className="inmPrecio"><b>Capacidad:</b>  {sitio.capacidad} persona(s)</p>
+                      <p className="inmPrecio"><b>Normas:</b> {sitio.normas}</p>
                     </div>
-
+                     
                     <div class='BotonesEditEli'>
                                 <div class='BotonEditar'>
                                     <Link to={`/cliente/${sitio.idinmueble}`}>editar</Link>
+                                    
                                 </div>
-                                <button className="eliminar-btn" onClick={() => this.handleEliminarClick(sitio)}>
-                                  <img src={iconoEliminar} alt="Eliminar" />
-                                </button>
+                                
                             </div>
 
-                    <div className="BotonesEditEli">
-                      <button className="eliminar-btn" onClick={() => this.handleEliminarClick(sitio)}>
-                        <img src={iconoEliminar} alt="Eliminar" />
-                      </button>
-                    </div>
+                    
                   </div>
                 );
               }
