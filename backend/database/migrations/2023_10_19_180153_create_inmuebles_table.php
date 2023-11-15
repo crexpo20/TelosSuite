@@ -52,6 +52,8 @@ return new class extends Migration
             $table->string('descripcion4');
             $table->string('imagen5');
             $table->string('descripcion5');
+            $table->string('latitud');
+            $table->string('longitud');
             $table->timestamps();
         });
     }

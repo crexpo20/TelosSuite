@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Reserva;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class reservaController extends Controller
 {
@@ -34,6 +35,11 @@ class reservaController extends Controller
         return $reserva;
     }
 
+    public function fechas(string $ini , string $fin )
+    {
+        return DB::table('reserva')->where('fechaini', $ini)->get();
+        
+    }
     
 
     /**
