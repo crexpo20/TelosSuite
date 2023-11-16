@@ -83,3 +83,7 @@
     background: transparent;
     color: inherit;
   }
+
+  .BotonMasDetalles{
+    text-align: right;
+  }

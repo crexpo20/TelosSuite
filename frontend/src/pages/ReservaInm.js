@@ -1,18 +1,45 @@
 import React, {Component} from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useParams } from 'react-router-dom';
+import axios from "axios";
 import '../CSS/ReservaInmueble.css';
 import {IoIosArrowDropleftCircle } from 'react-icons/io';
 import Fechas from '../components/fechas';
 import CuantosBoton from '../components/cuantos/botoncuantos';
-class ReservaInm extends Component{
 
+function withParams(Component){
+    return props => <Component{...props} params={useParams()} />;
+  }
+class ReservaInm extends Component{
     constructor(props) {
         super(props);
-        this.state = {
+        this.detalle = {
+          inmueble: {},
+          anfitrion: {},
           showFechaModal: false,
           showHuespedModal: false,
         };
+        
+        this.getInmueble = this.getProductos.bind(this);
       }
+    
+      componentDidMount() {
+        //let {id}=this.props.params;
+        console.log(this.props.params.espaciosID)
+        const id = this.props.params.espaciosID
+        this.getProductos();
+      }
+    
+      getProductos = async () => {
+        try {
+          const response = await axios.get(`http://127.0.0.1:8000/api/getinmuebles/${this.props.params.espaciosID}`);
+          console.log(response.data)
+          console.log(response.data.imagen1)
+          const anfitriondata = await axios.get(`http://127.0.0.1:8000/api/getusuario/${response.data.idusuario}`);
+          this.setState({ inmueble: response.data, anfitrion: anfitriondata.data });
+        } catch (error) {
+          console.log(error);
+        }
+      };
     
       openFechaModal = () => {
         this.setState({ showFechaModal: true });
@@ -119,4 +146,4 @@ class ReservaInm extends Component{
       );
     }
   }
-  export default ReservaInm;
+  export default withParams(ReservaInm);

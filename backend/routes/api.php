@@ -32,7 +32,7 @@ Route::put('/puthuesped/{idhuesped}', [huespedController::class,'update']);
 //RUTAS PARA INGRESAR, MODIFICAR, ELIMINAR INMUEBLE DESDE FORMULAR
 
 Route::get('/getinmuebles',[inmuebleController::class,'index']);
-Route::get('/getinmuebles{idusuario}', [usuarioController::class,'show']);
+Route::get('/getinmuebles/{idusuario}', [inmuebleController::class,'show']);
 Route::post('/postinmuebles',[inmuebleController::class,'store']);
 Route::delete('/delinmuebles/{id}',[inmuebleController::class,'destroy']);
 Route::put('/putinmuebles/{id}',  [inmuebleController::class,'update']);
