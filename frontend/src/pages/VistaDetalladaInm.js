@@ -224,7 +224,7 @@ class VistaDetalladaInm extends Component {
                 <li><CuantosBoton /></li>
                 <br></br>
                 <div>
-                  <Link to={`/Reserva/${this.props.params.espaciosID}`}>
+                  <Link to='/Reserva'>
                       <button className="reserva-button">
                       Reserva
                       </button>
