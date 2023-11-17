@@ -40,14 +40,53 @@ getProductos=async()=>{
       arrows:true
       
     };
+
+    const minPrice = parseInt(localStorage.getItem('precioMinimo'), 10) || 0;
+    const maxPrice = parseInt(localStorage.getItem('precioMaximo'), 10) || Infinity;
+    const tipoInmueblePrivado = localStorage.getItem('privado') === '1';
+    const tipoInmuebleCompartido = localStorage.getItem('compartido') === '1';
+    const habitacionesSeleccionadas = localStorage.getItem('habitaciones') !== 'Cualquiera' ? parseInt(localStorage.getItem('habitaciones'), 10) : null;
+    const camasSeleccionadas = localStorage.getItem('camas') !== 'Cualquiera' ? parseInt(localStorage.getItem('camas'), 10) : null;
+    const bañosSeleccionados = localStorage.getItem('baños') !== 'Cualquiera' ? parseInt(localStorage.getItem('baños'), 10) : null;
+    const filtroWifi = parseInt(localStorage.getItem('wifi'), 10);
+    const filtroParqueo = parseInt(localStorage.getItem('parqueo'), 10);
+    const filtroCocina = parseInt(localStorage.getItem('cocina'), 10);
+    const filtroRefrigerador = parseInt(localStorage.getItem('refrigerador'), 10);
+    const filtroLavadora = parseInt(localStorage.getItem('lavadora'), 10);
+    const filtroPiscina = parseInt(localStorage.getItem('piscina'), 10);
+
     return (
       <>
         <body>
           <div className="verinm">
             {this.state.inmueble.map((sitio, index) => {
+              const precioSitio = parseInt(sitio.precio, 10);
+              const esPrivado = parseInt(sitio.privado, 10) === 1;
+          const esCompartido = parseInt(sitio.compartido, 10) === 1;
+              const habitacionesSitio = parseInt(sitio.habitaciones, 10);
+              const camasSitio = parseInt(sitio.camas, 10);
+              const bañosSitio = parseInt(sitio.baños, 10);
+              const cumpleCondicionesServicios = 
+                (filtroWifi === 0 || sitio.wifi === filtroWifi) ||
+                (filtroParqueo === 0 || sitio.parqueo === filtroParqueo) ||
+                (filtroCocina === 0 || sitio.cocina === filtroCocina) ||
+                (filtroRefrigerador === 0 || sitio.refrigerador === filtroRefrigerador) ||
+                (filtroLavadora === 0 || sitio.lavadora === filtroLavadora) ||
+                (filtroPiscina === 0 || sitio.piscina === filtroPiscina);
+
               if(sitio.tipopropiedad === "Cabaña" &&
-                sitio.ciudad === localStorage.getItem("destino")
-              ){
+                sitio.ciudad === localStorage.getItem("destino")&&
+                precioSitio >= minPrice &&
+                precioSitio <= maxPrice &&
+                ((!tipoInmueblePrivado && !tipoInmuebleCompartido) || // No se seleccionó filtro de tipo
+             (tipoInmueblePrivado && esPrivado) ||
+             (tipoInmuebleCompartido && esCompartido))&&
+             (habitacionesSeleccionadas === null || habitacionesSitio >= habitacionesSeleccionadas) &&
+             (camasSeleccionadas === null || camasSitio >= camasSeleccionadas) &&
+             (bañosSeleccionados === null || bañosSitio >= bañosSeleccionados)&
+                cumpleCondicionesServicios
+            ) {
+              
                     return (
                         <div className="InmueblesHost" key={sitio.id}>
                            <Slider {...carouselSettings}>

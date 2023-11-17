@@ -1,141 +1,164 @@
 import React, { Component } from 'react';
-import { Link, Outlet } from 'react-router-dom';
-import { sitios } from '../sitios';
+import { Outlet, Link } from 'react-router-dom';
+import axios from 'axios';
+import ModalInicio from '../components/inicioSesion/inicio';
 import '../CSS/cards.css';
-import { inmuebles } from '../components/inmuebles';
 import iconocorazon1 from '../iconos/corazon1.png';
 import iconocorazon2 from '../iconos/corazon2.png';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import '../CSS/slick.css'
 
-import axios from "axios";
-import ModalInicio from '../components/inicioSesion/inicio';
 class HomePage extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.state={
-      inmueble:[],
+    this.state = {
+      inmueble: [],
       favorites: [],
       showLoginModal: false,
-    }
-    this.getProductos = this.getProductos.bind(this);
-    
-}
+    };
+  }
 
-/*añadir favoritos*/
-toggleFavorite = (sitio) => {
-  if(parseInt(localStorage.getItem("init")) === 1){
-    const { favorites } = this.state;
-    const sitioId = sitio.idinmueble;
-  
-    if (sitio.favorito === 0) {
-      const updatedFavorites = favorites.filter((id) => id !== sitioId);
-      this.setState({ favorites: updatedFavorites }, () => {
-        console.log('Favoritos actualizados:', this.state.favorites);
-      }
-      );
-      console.log("no está")
+  componentDidMount() {
+    const userID = localStorage.getItem('userID');
+    if (parseInt(localStorage.getItem('init')) === 1) {
+      this.getProductos();
+      this.getFavorites(userID);
     } else {
-      this.setState(
-        { favorites: [...favorites, sitioId] },
-        () => {
-          console.log('Favoritos actualizados:', this.state.favorites);
+      console.log('Inicia sesión');
+      this.setState({ showLoginModal: true });
+    }
+  }
+
+  getProductos = async () => {
+    try {
+      const response = await axios.get('http://127.0.0.1:8000/api/getinmuebles');
+      this.setState({ inmueble: response.data });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  getFavorites = async (userID) => {
+    try {
+      const response = await axios.get(`http://127.0.0.1:8000/api/getfavoritos/${userID}`);
+      this.setState({ favorites: response.data });
+    } catch (error) {
+      console.error('Error al obtener favoritos:', error);
+    }
+  };
+
+  toggleFavorite = async (sitio) => {
+    const userID = localStorage.getItem('userID');
+    const sitioId = sitio.idinmueble;
+
+    if (parseInt(localStorage.getItem('init')) === 1) {
+      try {
+        let response;
+        if (sitioId) {
+          const isFavorite = this.state.favorites.find(fav => fav.idinmueble === sitioId);
+          if (isFavorite) {
+            response = await axios.delete(`http://127.0.0.1:8000/api/delfavoritos/${userID}/${sitioId}`);
+            if (response.status === 200) {
+              const updatedFavorites = this.state.favorites.filter(fav => fav.idinmueble !== sitioId);
+              this.setState({ favorites: updatedFavorites });
+            } else {
+              console.error('Error al eliminar favorito en el servidor');
+            }
+          } else {
+            response = await axios.post('http://127.0.0.1:8000/api/postfavorito', {
+              idinmueble: sitioId,
+              idusuario: userID,
+            });
+            if (response.status === 200) {
+              const newFavorite = {
+                idinmueble: sitioId,
+                
+              };
+              this.setState(prevState => ({ favorites: [...prevState.favorites, newFavorite] }));
+            } else {
+              console.error('Error al agregar favorito en el servidor');
+            }
+          }
+        } else {
+          console.error('sitioId is missing or empty');
         }
-      );
-      console.log("ya está")
-  }
-  
-  }else{
-    console.log(
-      "immicia sesion"
-    )
-    this.setState({ showLoginModal: true });
-  
-  }
-};
-
-getFavoritos() {
-  return this.state.favorites;
-}
-
-
-
-componentDidMount(){
-  this.getProductos();
- 
-}
-
-getProductos=async()=>{
-  await axios.get('http://127.0.0.1:8000/api/getinmuebles')
-  .then(res=>{
-      this.setState({inmueble: res.data});
-      console.log(this.state.inmueble)
-  }).catch((error)=>{
-      console.log(error);
-  });
-}
-
+      } catch (error) {
+        console.error('Error al procesar la solicitud:', error);
+      }
+    } else {
+      console.log('Inicia sesión');
+      this.setState({ showLoginModal: true });
+    }
+  };
 
   render() {
-    const { favorites } = this.state;
-    const { showLoginModal } = this.state;
-
-    const inmueblesFavoritos = this.state.inmueble.filter((sitio) =>
-    favorites.includes(sitio.idinmueble)
-    );
+    const { favorites, showLoginModal, inmueble } = this.state;
+    const carouselSettings = {
+      
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      arrows:true
+      
+    };
     return (
       <>
         <body>
           <div className="verinm">
-            {this.state.inmueble.map((sitio, index) => {
-
-            const isFavorite = favorites.includes(sitio.idinmueble);
-
+            {inmueble.map((sitio) => {
+              const isFavorite = favorites.some(fav => fav.idinmueble === sitio.idinmueble);
               return (
-                <div className="InmueblesHost" key={sitio.id}>
-                  <img
-                    className="inmueble_fot"
-                    src="https://picsum.photos/280/280"
-                    alt="Inmueble"
-                  />
+                <div className="InmueblesHost" key={sitio.idinmueble}>
+                  <Slider {...carouselSettings}>
+                      <div>
+                        <img className="inmueble_fot" src={sitio.imagen1} alt="Inmueble 1" />
+                      </div>
+                      <div>
+                       <img className="inmueble_fot" src={sitio.imagen2} alt="Inmueble 2" />
+                      </div>
+                      <div>
+                        <img className="inmueble_fot" src={sitio.imagen3} alt="Inmueble 1" />
+                      </div>
+                      <div>
+                        <img className="inmueble_fot" src={sitio.imagen4} alt="Inmueble 1" />
+                      </div>
+                      <div>
+                        <img className="inmueble_fot" src={sitio.imagen5} alt="Inmueble 1" />
+                      </div>
+                  </Slider>
                   <h3 className="inmueble_name">{sitio.tituloanuncio}</h3>
                   <div className="inmueble_info">
-                    <p className="inmDet">{sitio.ciudad}</p> 
+                    <p className="inmDet">{sitio.ciudad}</p>
                     <p className="inmCamas">{sitio.camas}</p>
                     <p className="inmPrecio">{sitio.precio}</p>
                   </div>
-
                   <button
-                             onClick={() => this.toggleFavorite(sitio)}
-                             
-                             className={isFavorite ? 'favorite-button active' : 'favorite-button'}
-                           >
-                         <img
-                            src={isFavorite ? iconocorazon2 : iconocorazon1}
-                            alt={isFavorite ? 'Quitar de Favoritos' : 'Agregar a Favoritos'}
-                        
-                      />
-                    </button>
-                    <favoritos favorites={this.state.inmueblesFavoritos} />
-
+                    onClick={() => this.toggleFavorite(sitio)}
+                    className={isFavorite ? 'favorite-button active' : 'favorite-button'}
+                  >
+                    <img
+                      src={isFavorite ? iconocorazon2 : iconocorazon1}
+                      alt={isFavorite ? 'Quitar de Favoritos' : 'Agregar a Favoritos'}
+                    />
+                  </button>
+                  <div className='BotonMasDetalles'>
+                      <Link to={`/cliente/${sitio.idinmueble}`}>Ver más</Link>
+                    </div>
                 </div>
-              )
-              return null;
+              );
             })}
           </div>
           {showLoginModal && (
-  <ModalInicio isOpen={showLoginModal} onClose={() => this.setState({ showLoginModal: false })}>
-    <ModalInicio.Header> </ModalInicio.Header>
-    <ModalInicio.Body />
-    <ModalInicio.Footer />
-  </ModalInicio>
-)}     
-<div className="favorites-list">
-            <h2>Favoritos:</h2>
-            <ul>
-              {inmueblesFavoritos.map((sitio) => (
-                <li key={sitio.idinmueble}>{sitio.tituloanuncio}</li>
-              ))}
-            </ul>
-          </div>
+            <ModalInicio isOpen={showLoginModal} onClose={() => this.setState({ showLoginModal: false })}>
+              <ModalInicio.Header> </ModalInicio.Header>
+              <ModalInicio.Body />
+              <ModalInicio.Footer />
+            </ModalInicio>
+          )}
+
+          
         </body>
         <Outlet />
       </>

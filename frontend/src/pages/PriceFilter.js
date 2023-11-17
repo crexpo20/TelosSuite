@@ -1,6 +1,9 @@
 import { AiOutlineCloseCircle } from 'react-icons/ai';
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../CSS/PriceFilters.css';
+
+
 
 function PriceFilter(props) {
   const [minPrice, setMinPrice] = useState(localStorage.getItem('precioMinimo') || '');
@@ -16,9 +19,15 @@ function PriceFilter(props) {
     refrigerador: parseInt(localStorage.getItem('refrigerador') || 0),
     lavadora: parseInt(localStorage.getItem('lavadora') || 0),
     piscina: parseInt(localStorage.getItem('piscina') || 0),
+    
   });
   const [rating, setRating] = useState(parseInt(localStorage.getItem('rating') || 0));
   const [hoverAt, setHoverAt] = useState(null);
+  const navigate = useNavigate();
+  const [tipoInmueble, setTipoInmueble] = useState({
+    privado: localStorage.getItem('privado') === '1',
+    compartido: localStorage.getItem('compartido') === '1',
+  });
 
  
 
@@ -58,8 +67,12 @@ const handleServiceChange = (serviceKey, newValue) => {
 };
 
 const handleTipoInmuebleChange = (tipo) => {
-  const currentValue = localStorage.getItem(tipo) === '1' ? '0' : '1';
-  localStorage.setItem(tipo, currentValue);
+  // Actualiza el estado y el localStorage
+  setTipoInmueble(prevState => {
+    const newValue = !prevState[tipo];
+    localStorage.setItem(tipo, newValue ? '1' : '0');
+    return { ...prevState, [tipo]: newValue };
+  });
 };
 
 // ...
@@ -71,9 +84,18 @@ const handleTipoInmuebleChange = (tipo) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    window.dispatchEvent(new CustomEvent('priceFilterChanged'));
+  
+    // Asegurarse de que los filtros no seleccionados se establezcan en "Cualquiera"
+    localStorage.setItem('habitaciones', selectedRoom || 'Cualquiera');
+    localStorage.setItem('camas', selectedBed || 'Cualquiera');
+    localStorage.setItem('baños', selectedBath || 'Cualquiera');
+    // ... y así para los demás filtros
+  
+    navigate('/Busqueda'); // Navega a la página de búsqueda
     setShowFilter(false);
   };
+  
+  
   useEffect(() => {
     const handleStorageChange = () => {
       // Actualizar los estados basados en los valores actuales de localStorage.
@@ -93,9 +115,28 @@ const handleTipoInmuebleChange = (tipo) => {
     };
   }, []);
 
+  
   // ... el resto de tu componente ...
  
-
+  useEffect(() => {
+    // Establecer valores por defecto en localStorage si no existen
+    if (!localStorage.getItem('precioMinimo')) {
+      localStorage.setItem('precioMinimo', '');
+    }
+    if (!localStorage.getItem('precioMaximo')) {
+      localStorage.setItem('precioMaximo', '');
+    }
+    if (!localStorage.getItem('habitaciones')) {
+      localStorage.setItem('habitaciones', 'Cualquiera');
+    }
+    // ... y así para los demás filtros
+  
+    // Actualizar los estados basados en los valores actuales de localStorage.
+    // Esta parte ya está en tu código
+    // ...
+  
+  }, []);
+  
 
   return (
     showFilter && (
@@ -139,7 +180,7 @@ const handleTipoInmuebleChange = (tipo) => {
           <h2>Habitaciones y camas</h2>
           <label>Habitaciones</label>
           <div className="selector-group">
-            {['Cualquiera', '1', '2', '3', '4', '5', '6', '7', '8+'].map((room) => (
+            {['Cualquiera', '1', '2', '3', '4', '5', '6', '7', '8'].map((room) => (
                  <button
                  key={room}
                  className={`selector-button ${selectedRoom === room ? 'selected' : ''}`}
@@ -152,7 +193,7 @@ const handleTipoInmuebleChange = (tipo) => {
           
           <label>Camas</label>
           <div className="selector-group">
-            {['Cualquiera', '1', '2', '3', '4', '5', '6', '7', '8+'].map((bed) => (
+            {['Cualquiera', '1', '2', '3', '4', '5', '6', '7', '8'].map((bed) => (
               <button
                 key={bed}
                 className={`selector-button ${selectedBed === bed ? 'selected' : ''}`}
@@ -165,7 +206,7 @@ const handleTipoInmuebleChange = (tipo) => {
   
           <label>Baños</label>
           <div className="selector-group">
-            {['Cualquiera', '1', '2', '3', '4', '5', '6', '7', '8+'].map((bath) => (
+            {['Cualquiera', '1', '2', '3', '4', '5', '6', '7', '8'].map((bath) => (
               <button
                 key={bath}
                 className={`selector-button ${selectedBath === bath ? 'selected' : ''}`}
@@ -199,9 +240,9 @@ const handleTipoInmuebleChange = (tipo) => {
   <label className="tipo-inmueble-label">
     <input
       type="checkbox"
-      checked={localStorage.getItem('privado') === '1'} // Comprueba si el tipo de inmueble privado está seleccionado
-      onChange={() => handleTipoInmuebleChange('privado')}
-    />
+        checked={tipoInmueble.privado}
+        onChange={() => handleTipoInmuebleChange('privado')}
+      />
     Privado
   </label>
   <label className="tipo-inmueble-label">

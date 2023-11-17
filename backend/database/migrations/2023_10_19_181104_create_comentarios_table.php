@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id('idcomentario');
             $table->foreignId('idinmueble')->references('idinmueble')->on('inmueble');
             $table->foreignId('idusuario')->references('idusuario')->on('usuario');
-            $table->integer('descripcion');
+            $table->String('descripcion');
             $table->integer('puntuacion');
             $table->timestamps();
         });
