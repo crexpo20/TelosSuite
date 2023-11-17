@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import '../CSS/favorito.css';
 
 class Favorito extends Component {
@@ -55,24 +56,35 @@ class Favorito extends Component {
               </tr>
             </thead>
             <tbody>
-              {favorites.map(favorite => (
-                <tr key={favorite.idinmueble}>
-                  {inmuebleDetails[favorite.idinmueble] && (
-                    <>
-                      <td>{inmuebleDetails[favorite.idinmueble].tituloanuncio}</td>
-                      <td>
-                        <img
-                          className="inmueble_fot"
-                          src="https://picsum.photos/280/280"
-                          alt={inmuebleDetails[favorite.idinmueble].tituloanuncio}
-                          style={{ width: '200px', height: '100px' }}
-                        />
-                      </td>
-                      <td>{inmuebleDetails[favorite.idinmueble].ciudad}</td>
-                    </>
-                  )}
-                </tr>
-              ))}
+            {favorites.map(favorite => (
+  <tr key={favorite.idinmueble}>
+    {inmuebleDetails[favorite.idinmueble] && (
+      <>
+        <td>
+          <Link to={`/cliente/${favorite.idinmueble}`} style={{ display: 'block' }}>
+            {inmuebleDetails[favorite.idinmueble].tituloanuncio}
+          </Link>
+        </td>
+        <td>
+          <Link to={`/cliente/${favorite.idinmueble}`} style={{ display: 'block' }}>
+            <img
+              className="inmueble_fot"
+              src="https://picsum.photos/280/280"
+              alt={inmuebleDetails[favorite.idinmueble].tituloanuncio}
+              style={{ width: '200px', height: '100px' }}
+            />
+          </Link>
+        </td>
+        <td>
+          <Link to={`/cliente/${favorite.idinmueble}`} style={{ display: 'block' }}>
+            {inmuebleDetails[favorite.idinmueble].ciudad}
+          </Link>
+        </td>
+      </>
+    )}
+  </tr>
+))}
+
             </tbody>
           </table>
         ) : (
@@ -82,6 +94,5 @@ class Favorito extends Component {
     );
   }
 }
-
 
 export default Favorito;
