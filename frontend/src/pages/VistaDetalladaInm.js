@@ -29,12 +29,18 @@ class VistaDetalladaInm extends Component {
       inmueble: {},
       anfitrion: {}
     };
-    
+
+    this.state = {
+      currentImageIndex: 0,
+      imageCarouselOpen: false,
+      images: [],
+      imageDescriptions: [],
+    };
+
     this.getInmuebles = this.getInmuebles.bind(this);
   }
 
   componentDidMount() {
-    //let {id}=this.props.params;
     console.log(this.props.params.espaciosID)
     const id = this.props.params.espaciosID
     this.getInmuebles();
@@ -43,10 +49,26 @@ class VistaDetalladaInm extends Component {
   getInmuebles = async () => {
     try {
       const response = await axios.get(`http://127.0.0.1:8000/api/getinmuebles/${this.props.params.espaciosID}`);
-      console.log(response.data)
-      console.log(response.data.imagen1)
       const anfitriondata = await axios.get(`http://127.0.0.1:8000/api/getusuario/${response.data.idusuario}`);
-      this.setState({ inmueble: response.data, anfitrion: anfitriondata.data });
+  
+      this.setState({
+        inmueble: response.data,
+        anfitrion: anfitriondata.data,
+        images: [
+          response.data.imagen1,
+          response.data.imagen2,
+          response.data.imagen3,
+          response.data.imagen4,
+          response.data.imagen5,
+        ],
+        imageDescriptions: [
+          response.data.descripcion1,
+          response.data.descripcion2,
+          response.data.descripcion3,
+          response.data.descripcion4,
+          response.data.descripcion5,
+        ],
+      });
     } catch (error) {
       console.log(error);
     }
@@ -97,9 +119,13 @@ class VistaDetalladaInm extends Component {
 
  
   render() {
-    const { currentImageIndex, images } = this.state;
-    const isAtFirstImage = currentImageIndex === 0;
-    const isAtLastImage = currentImageIndex === images.length - 1;
+    const { currentImageIndex, images, imageDescriptions } = this.state;
+  const isAtFirstImage = currentImageIndex === 0;
+  const isAtLastImage = currentImageIndex === images.length - 1;
+
+  if (!images || !images.length) {
+    return <p>Cargando...</p>; // Agrega un indicador de carga o maneja el caso en el que las imágenes aún no estén disponibles.
+  }
 
     
 
