@@ -70,6 +70,8 @@ Route::post('/postpago', [pagoController::class, 'store']);
 Route::delete('/delpago/{id}',[pagoController::class,'destroy']);
 Route::put('/putpago/{id}', [pagoController::class,'update']);
 
-//Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-  //  return $request->user();
-//});
+//rutas para comentario
+Route::get('/getcomentario',[comentarioController::class,'index']);
+Route::post('/postcomentario', [comentarioController::class, 'store']);
+Route::delete('/delcomentario/{id}',[comentarioController::class,'destroy']);
+Route::put('/putcomentario/{id}', [comentarioController::class,'update']);
