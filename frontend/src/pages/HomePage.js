@@ -115,6 +115,9 @@ getProductos=async()=>{
                       />
                     </button>
                     <favoritos favorites={this.state.inmueblesFavoritos} />
+                    <div className='BotonMasDetalles'>
+                      <Link to={`/cliente/${sitio.idinmueble}`}>Ver más</Link>
+                    </div>
 
                 </div>
               )
