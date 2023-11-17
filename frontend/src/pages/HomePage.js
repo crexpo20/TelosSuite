@@ -135,6 +135,7 @@ class HomePage extends Component {
                       <p className="inmPrecio"><b>Capacidad:</b>  {sitio.capacidad} persona(s)</p>
                       <p className="inmPrecio"><b>Normas:</b> {sitio.normas}</p>
                     </div>
+                    
                      
                   <button
                     onClick={() => this.toggleFavorite(sitio)}

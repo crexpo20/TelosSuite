@@ -200,6 +200,9 @@ toggleFavorite = async (sitio) => {
                       alt={isFavorite ? 'Quitar de Favoritos' : 'Agregar a Favoritos'}
                     />
                   </button>
+                  <div className='BotonMasDetalles'>
+                      <Link to={`/cliente/${sitio.idinmueble}`}>Ver más</Link>
+                    </div>
                      
                         </div>
                       );
