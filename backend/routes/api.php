@@ -10,6 +10,7 @@ use App\Http\Controllers\pagoController;
 use App\Http\Controllers\reservaController;
 use App\Http\Controllers\favoritoController;
 use App\Http\Controllers\servicioController;
+use App\Http\Controllers\comentarioController;
 
 
 //RUTAS PARA INGRESAR, MODIFICAR, ELIMINAR usuario DESDE FORMULARIO
