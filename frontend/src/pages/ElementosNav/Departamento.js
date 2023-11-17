@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import '../../CSS/cards.css';
+import ModalInicio from '../../components/inicioSesion/inicio';
 import axios from "axios";
 import Slider from 'react-slick';
+import iconocorazon1 from '../../iconos/corazon1.png';
+import iconocorazon2 from '../../iconos/corazon2.png';
 import 'slick-carousel/slick/slick.css';
 import '../../CSS/slick.css'
 class Departamento extends Component {
@@ -10,16 +13,75 @@ class Departamento extends Component {
     super(props);
     this.state={
       inmueble:[],
-      contador:0
-    }
-    this.getProductos = this.getProductos.bind(this);
+      contador:0,
+      favorites: [],
+      showLoginModal: false,
+    };
     
 }
  
-componentDidMount(){
-  this.getProductos();
- 
+componentDidMount() {
+  const userID = localStorage.getItem('userID');
+  if (parseInt(localStorage.getItem('init')) === 1) {
+    this.getProductos();
+    this.getFavorites(userID);
+  } else {
+    console.log('Inicia sesión');
+    this.setState({ showLoginModal: true });
+  }
 }
+getFavorites = async (userID) => {
+  try {
+    const response = await axios.get(`http://127.0.0.1:8000/api/getfavoritos/${userID}`);
+    this.setState({ favorites: response.data });
+  } catch (error) {
+    console.error('Error al obtener favoritos:', error);
+  }
+};
+toggleFavorite = async (sitio) => {
+  const userID = localStorage.getItem('userID');
+  const sitioId = sitio.idinmueble;
+
+  if (parseInt(localStorage.getItem('init')) === 1) {
+    try {
+      let response;
+      if (sitioId) {
+        const isFavorite = this.state.favorites.find(fav => fav.idinmueble === sitioId);
+        if (isFavorite) {
+          response = await axios.delete(`http://127.0.0.1:8000/api/delfavoritos/${userID}/${sitioId}`);
+          if (response.status === 200) {
+            const updatedFavorites = this.state.favorites.filter(fav => fav.idinmueble !== sitioId);
+            this.setState({ favorites: updatedFavorites });
+          } else {
+            console.error('Error al eliminar favorito en el servidor');
+          }
+        } else {
+          response = await axios.post('http://127.0.0.1:8000/api/postfavorito', {
+            idinmueble: sitioId,
+            idusuario: userID,
+          });
+          if (response.status === 200) {
+            const newFavorite = {
+              idinmueble: sitioId,
+              
+            };
+            this.setState(prevState => ({ favorites: [...prevState.favorites, newFavorite] }));
+          } else {
+            console.error('Error al agregar favorito en el servidor');
+          }
+        }
+      } else {
+        console.error('sitioId is missing or empty');
+      }
+    } catch (error) {
+      console.error('Error al procesar la solicitud:', error);
+    }
+  } else {
+    console.log('Inicia sesión');
+    this.setState({ showLoginModal: true });
+  }
+};
+
 
 getProductos=async()=>{
   await axios.get('http://127.0.0.1:8000/api/getinmuebles')
@@ -32,6 +94,8 @@ getProductos=async()=>{
 }
 
   render() {
+    const { favorites, showLoginModal, inmueble } = this.state;
+   
     const carouselSettings = {
       
       infinite: true,
@@ -76,6 +140,9 @@ getProductos=async()=>{
 
               if(sitio.tipopropiedad === "Departamento"  &&
                  ( sitio.ciudad === localStorage.getItem("destino"))&&
+                 sitio.niños === parseInt(localStorage.getItem("niños")) &&
+                 sitio.mascotas === parseInt(localStorage.getItem("mascotas")) &&
+                 sitio.capacidad === parseInt(localStorage.getItem("huespedes")) &&
                  precioSitio >= minPrice &&
                  precioSitio <= maxPrice
                  &&
@@ -86,7 +153,8 @@ getProductos=async()=>{
             (camasSeleccionadas === null || camasSitio >= camasSeleccionadas) &&
             (bañosSeleccionados === null || bañosSitio >= bañosSeleccionados)&&
                  cumpleCondicionesServicios) {
-
+                  const isFavorite = favorites.some(fav => fav.idinmueble === sitio.idinmueble);
+            
                   console.log(localStorage.getItem("destino"))
                   console.log(sitio.ciudad)
                     return (
@@ -116,7 +184,18 @@ getProductos=async()=>{
                       <p className="inmPrecio"><b>Capacidad:</b>  {sitio.capacidad} persona(s)</p>
                       <p className="inmPrecio"><b>Normas:</b> {sitio.normas}</p>
                     </div>
-                     
+                    <button
+                    onClick={() => this.toggleFavorite(sitio)}
+                    className={isFavorite ? 'favorite-button active' : 'favorite-button'}
+                  >
+                    <img
+                      src={isFavorite ? iconocorazon2 : iconocorazon1}
+                      alt={isFavorite ? 'Quitar de Favoritos' : 'Agregar a Favoritos'}
+                    />
+                  </button>
+                  <div className='BotonMasDetalles'>
+                      <Link to={`/cliente/${sitio.idinmueble}`}>Ver más</Link>
+                    </div>
                         </div>
                       );
                 }
@@ -125,6 +204,13 @@ getProductos=async()=>{
               return null;
             })}
           </div>
+          {showLoginModal && (
+            <ModalInicio isOpen={showLoginModal} onClose={() => this.setState({ showLoginModal: false })}>
+              <ModalInicio.Header> </ModalInicio.Header>
+              <ModalInicio.Body />
+              <ModalInicio.Footer />
+            </ModalInicio>
+          )}
         </body>
         <Outlet />
       </>
