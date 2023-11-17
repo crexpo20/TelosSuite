@@ -273,7 +273,9 @@ class RegisterInmue extends Component {
        imagen4:this.state.formData.imagen4,
        descripcion4:this.state.formData.descripcion4,
        imagen5:this.state.formData.imagen5,
-       descripcion5:this.state.formData.descripcion5
+       descripcion5:this.state.formData.descripcion5,
+       latitud:"0",
+       longitud:"0",
      };
       const postProducto = async (url, lugar) => {
         const response = await fetch(url, {

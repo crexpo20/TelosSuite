@@ -4,8 +4,8 @@ import iconoEliminar from '../iconos/iconoEliminar.png';
 import axios from 'axios';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
-
 import '../CSS/slick.css'
+
 class EspaciosModAnf extends Component {
   constructor(props) {
     super(props);
@@ -61,7 +61,8 @@ class EspaciosModAnf extends Component {
       speed: 500,
       slidesToShow: 1,
       slidesToScroll: 1,
-      arrows:true
+      arrows:true,
+      
       
     };
 
