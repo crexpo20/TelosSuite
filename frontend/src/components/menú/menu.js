@@ -83,6 +83,9 @@ const ModalMenuHeader = ({ children }) => {
     );
   };
 const ModalMenuBody = ({props}) => {
+   function redirige1(){
+    <Link to='favorito'></Link>
+   }
    function redirige(){
     <Link to="/cliente"></Link>
    }
@@ -113,6 +116,15 @@ const ModalMenuBody = ({props}) => {
                             
                            </li>
 
+                          
+
+                            <li id="menu-item" >
+                            <Link to='favorito'>
+                            <button  onClick={redirige1}id='close-button' >
+                            Lista Favoritos </button>
+                            </Link>
+                            
+                           </li>
 
                             
                             <li id="menu-item">

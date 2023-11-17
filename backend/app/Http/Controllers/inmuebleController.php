@@ -94,4 +94,18 @@ class inmuebleController extends Controller
         return response()->json(['mensaje' => 'inmueble eliminada'], 200);
 
     }
+
+    public function getInmuebleDetails($inmuebleID)
+{
+    // Lógica para obtener los detalles del inmueble con el ID proporcionado
+    $inmueble = Inmueble::find($inmuebleID);
+
+    if ($inmueble) {
+        // Si se encuentra el inmueble, devuelve los detalles en formato JSON
+        return response()->json($inmueble);
+    } else {
+        // Si no se encuentra el inmueble, devuelve una respuesta con estado 404
+        return response()->json(['error' => 'Inmueble no encontrado'], 404);
+    }
+}
 }

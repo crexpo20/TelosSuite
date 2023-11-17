@@ -32,6 +32,7 @@ import Departamento from '../pages/ElementosNav/Departamento';
 import ReservaInm from '../pages/ReservaInm';
 import PagoBanco from '../pages/PagoBanco';
 import ConfirmacionPago from '../pages/ConfirmacionPago';
+import Favorito from '../pages/Favorito';
 
 
 class AppRouter extends Component{
@@ -63,7 +64,7 @@ class AppRouter extends Component{
           <Route path='Cabaña' element={<Cabaña />} />
           <Route path='Habitacion' element={<Habitacion />} />
           <Route path='*' element={<Navigate TO ="/"/>}/> 
-         
+          <Route path='favorito' element={<Favorito />} />
           <Route path='Reserva' element={<ReservaInm />} />
           <Route path='Pago' element={<PagoBanco />} />
           <Route path='Confirmar' element={<ConfirmacionPago />} />

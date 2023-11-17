@@ -33,6 +33,7 @@ Route::put('/puthuesped/{idhuesped}', [huespedController::class,'update']);
 
 Route::get('/getinmuebles',[inmuebleController::class,'index']);
 Route::get('/getinmuebles/{idusuario}', [inmuebleController::class,'show']);
+Route::get('/getinmueble/{inmuebleID}', [inmuebleController::class,'getInmuebleDetails']);
 Route::post('/postinmuebles',[inmuebleController::class,'store']);
 Route::delete('/delinmuebles/{id}',[inmuebleController::class,'destroy']);
 Route::put('/putinmuebles/{id}',  [inmuebleController::class,'update']);
@@ -53,10 +54,11 @@ Route::put('/putreserva/{id}', [reservaController::class,'update']);
 
 //RUTAS PARA AGREGAR FAVORITO
 
-Route::get('/getfavorito',[favoritoController::class,'index']);
+Route::get('getfavoritos/{userID}',[favoritoController::class,'index']);
 Route::post('/postfavorito', [favoritoController::class,'store']);
-Route::delete('/delfavorito/{id}',[favoritoController::class,'destroy']);
+Route::delete('/delfavoritos/{userID}/{sitioID}', [favoritoController::class, 'destroy']);
 Route::put('/putfavorito/{id}', [favoritoController::class,'update']);
+
 
 //RUTAS PARA AGREGAR SERVICIO   
 Route::get('/getservicio',[servicioController::class,'index']);
