@@ -54,6 +54,7 @@ return new class extends Migration
             $table->string('descripcion5');
             $table->string('latitud');
             $table->string('longitud');
+            $table->integer('pausado');
             $table->timestamps();
         });
     }

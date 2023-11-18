@@ -11,6 +11,7 @@ use App\Http\Controllers\reservaController;
 use App\Http\Controllers\favoritoController;
 use App\Http\Controllers\servicioController;
 use App\Http\Controllers\comentarioController;
+use App\Http\Controllers\reseñaController;
 
 
 //RUTAS PARA INGRESAR, MODIFICAR, ELIMINAR usuario DESDE FORMULARIO
@@ -78,3 +79,9 @@ Route::get('/getcomentario',[comentarioController::class,'index']);
 Route::post('/postcomentario', [comentarioController::class, 'store']);
 Route::delete('/delcomentario/{id}',[comentarioController::class,'destroy']);
 Route::put('/putcomentario/{id}', [comentarioController::class,'update']);
+
+//rutas para reseña
+Route::get('/getreseña',[reseñaController::class,'index']);
+Route::post('/postreseña', [reseñaController::class, 'store']);
+Route::delete('/delreseña/{id}',[reseñaController::class,'destroy']);
+Route::put('/putreseña/{id}', [reseñaController::class,'update']);
