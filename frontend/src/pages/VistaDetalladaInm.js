@@ -251,7 +251,7 @@ class VistaDetalladaInm extends Component {
               <div className="divisor-plomo"></div>
               <br></br>
               <h2 className='title1'>A dónde irás </h2>
-              <h2 className='title2'>{this.state?.inmueble?.ubicacion}</h2>
+              <h2 className='title2'>{this.state?.inmueble?.ciudad} , Bolivia</h2>
               <div className='MapaGoogle'>
                 <Mapa 
                   googleMapURL={mapURL}

@@ -68,6 +68,8 @@ class RegisterInmue extends Component {
         descripcion4:"",
         imagen5:"",
         descripcion5:"",
+        latitud:"",
+        longitud:""
       },
       
       propertyTypes: [
@@ -109,7 +111,17 @@ class RegisterInmue extends Component {
     }
   };
 
-  updateMarker = (newMarker) => this.marker = newMarker
+  //updateMarker = (newMarker) => this.marker = newMarker
+  updateMarker = (newMarker) => {
+    console.log("Nuevo Marcador:", newMarker);
+    this.setState((prevState) => ({
+      formData: {
+        ...prevState.formData,
+        latitud: newMarker.lat.toString(), 
+        longitud: newMarker.lng.toString(), 
+      },
+    }));
+  };
 
   handleTitulo = (field, value) => {
     this.setState((prevState) => {
@@ -290,8 +302,8 @@ class RegisterInmue extends Component {
        descripcion4:this.state.formData.descripcion4,
        imagen5:this.state.formData.imagen5,
        descripcion5:this.state.formData.descripcion5,
-       latitud:"0",
-       longitud:"0",
+       latitud: this.state.formData.latitud.toString(), 
+       longitud: this.state.formData.longitud.toString(), 
      };
       const postProducto = async (url, lugar) => {
         const response = await fetch(url, {
@@ -1213,14 +1225,13 @@ this.state.formData.descripcion !== "" &&
              < IoIosArrowDroprightCircle />
            </button>
          )}
-         {currentSlide ===  15 &&
-         this.state.formData.imagen1 !== "" &&
-         this.state.formData.descripcion1 !== "" &&
+         {currentSlide === 15 && 
+         this.state.formData.latitud !== "" && this.state.formData.longitud !== "" && 
          (
-           <button className="next" onClick={this.handleNextSlide}>
-             < IoIosArrowDroprightCircle />
-           </button>
-         )}
+          <button className="next" onClick={this.handleNextSlide}>
+            <IoIosArrowDroprightCircle />
+          </button>
+          )}
          
          {currentSlide ===  16 &&
          this.state.formData.imagen1 !== "" &&
