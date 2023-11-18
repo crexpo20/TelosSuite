@@ -55,7 +55,8 @@ class VistaDetalladaInm extends Component {
         const userComment = await axios.get(`http://127.0.0.1:8000/api/getusuario/${comentariosFilrados[i].idusuario}`);
         comentarios.push({
           descripcion: comentariosFilrados[i].descripcion,
-          nombre: userComment.data.nombre
+          nombre: userComment.data.nombre,
+          apellido: userComment.data.apellido
         });
       }
       console.log('comments:: ', comentarios)
@@ -163,7 +164,7 @@ class VistaDetalladaInm extends Component {
         En la COLUMNA2 se encuentra la informacion del precio y el boton de la reserva*/}
         <div className='GridInformacion'>
             <div className='Colum1'>
-                <h2 className='title1'>{this.state?.inmueble?.tipopropiedad} {' '} {this.state?.inmueble?.privado==1 ? <div> <h2 className='title1'> Privado </h2></div> :null}  {this.state?.inmueble?.compartido==1 ? <div><h2 className='title1'>Compartido</h2></div>:null} {"-"} Anfitrión: {this.state?.anfitrion?.nombre} {this.state?.anfitrion?.apellido}</h2>
+                <h2 className='title1'>{this.state?.inmueble?.tipopropiedad} {' '} {this.state?.inmueble?.privado==1 ? <div> <h2 className='title1'> - Privada </h2></div> :null}  {this.state?.inmueble?.compartido==1 ? <div><h2 className='title1'> - Compartida</h2></div>:null} {"-"} Anfitrión: {this.state?.anfitrion?.nombre} {this.state?.anfitrion?.apellido}</h2>
                 <p className='title2'>{this.state?.inmueble?.capacidad} huéspedes - {this.state?.inmueble?.habitaciones} habitaciones - {this.state?.inmueble?.camas} camas - {this.state?.inmueble?.baños} baños</p>
                 <br></br>
                 <div className="divisor-plomo"></div>
@@ -237,7 +238,7 @@ class VistaDetalladaInm extends Component {
             {this.state.comentarios.map(comentario => (
               <div className='comentario1'>
               <div className="usuario-info1">
-                <h3>{comentario.nombre}</h3>
+                <h3>{comentario.nombre} {comentario.apellido}</h3>
               </div>
               <p>{comentario.descripcion}</p>
             </div>

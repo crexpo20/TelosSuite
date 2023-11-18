@@ -25,7 +25,7 @@ const MapaRegistro = ({ lat, lng, updateMarker}) => {
       //El mapa se carga
     const onLoad = React.useCallback(function callback(map) {
         //Controlamos el zoom del mapa
-        map.setZoom(15); 
+        map.setZoom(12); 
         setMap(map);
       }, []);
     
