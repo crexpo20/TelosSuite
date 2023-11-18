@@ -20,15 +20,11 @@ class Cabaña extends Component {
  
 componentDidMount() {
   const userID = localStorage.getItem('userID');
-  if (parseInt(localStorage.getItem('init')) === 1) {
+  
     this.getProductos();
     this.getFavorites(userID);
-  } else {
-    console.log('Inicia sesión');
-    this.setState({ showLoginModal: true });
-  }
-}
 
+}
 
 getFavorites = async (userID) => {
   try {
@@ -195,7 +191,7 @@ getProductos=async()=>{
                   <div className='BotonMasDetalles'>
                       <Link to={`/cliente/${sitio.idinmueble}`}>Ver más</Link>
                     </div>
-                        </div>
+                 </div>
                       );
                 }
                

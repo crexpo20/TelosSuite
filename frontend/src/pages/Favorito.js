@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import '../CSS/favorito.css';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import '../CSS/slick.css'
 
 class Favorito extends Component {
   constructor(props) {
@@ -29,6 +32,7 @@ class Favorito extends Component {
                 [favorite.idinmueble]: res.data
               };
               this.setState({ inmuebleDetails: updatedDetails });
+              console.log(this.state.inmuebleDetails);
             })
             .catch(err => {
               console.error('Error al obtener detalles del inmueble:', err);
@@ -42,7 +46,15 @@ class Favorito extends Component {
 
   render() {
     const { favorites, inmuebleDetails } = this.state;
-
+    const carouselSettings = {
+      
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      arrows:true
+      
+    };
     return (
       <div>
         <h6> Lista Favoritos</h6>
@@ -67,12 +79,28 @@ class Favorito extends Component {
         </td>
         <td>
           <Link to={`/cliente/${favorite.idinmueble}`} style={{ display: 'block' }}>
-            <img
-              className="inmueble_fot"
-              src="https://picsum.photos/280/280"
-              alt={inmuebleDetails[favorite.idinmueble].tituloanuncio}
-              style={{ width: '200px', height: '100px' }}
-            />
+            
+            <div style={{ width: '200px', height: '100px' }}>
+            <Slider {...carouselSettings}>
+                      <div>
+                        <img style={{ width: '210px', height: '130px' , padding: "17px"}} src={inmuebleDetails[favorite.idinmueble].imagen1} alt="Inmueble 1" />
+                      </div>
+                      <div>
+                       <img style={{ width: '210px', height: '130px', padding: "17px" }} src={inmuebleDetails[favorite.idinmueble].imagen2} alt="Inmueble 2" />
+                      </div>
+                      <div>
+                        <img style={{ width:'210px', height: '130px', padding: "17px"}} src={inmuebleDetails[favorite.idinmueble].imagen3} alt="Inmueble 1" />
+                      </div>
+                      <div>
+                        <img style={{ width: '210px', height: '130px', padding: "17px" }} src={inmuebleDetails[favorite.idinmueble].imagen4} alt="Inmueble 1" />
+                      </div>
+                      <div>
+                       <img style={{ width: '210px', height: '130px', padding: "17px" }} src={inmuebleDetails[favorite.idinmueble].imagen5} alt="Inmueble 1" />
+                      </div>
+                  </Slider> 
+            </div>
+           
+              
           </Link>
         </td>
         <td>

@@ -21,13 +21,10 @@ class Casa extends Component {
  
 componentDidMount() {
   const userID = localStorage.getItem('userID');
-  if (parseInt(localStorage.getItem('init')) === 1) {
+  
     this.getProductos();
     this.getFavorites(userID);
-  } else {
-    console.log('Inicia sesión');
-    this.setState({ showLoginModal: true });
-  }
+
 }
 
 getProductos=async()=>{

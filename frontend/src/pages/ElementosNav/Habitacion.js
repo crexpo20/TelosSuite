@@ -22,15 +22,11 @@ class Habitacion extends Component {
  
 componentDidMount() {
   const userID = localStorage.getItem('userID');
-  if (parseInt(localStorage.getItem('init')) === 1) {
+  
     this.getProductos();
     this.getFavorites(userID);
-  } else {
-    console.log('Inicia sesión');
-    this.setState({ showLoginModal: true });
-  }
-}
 
+}
 getFavorites = async (userID) => {
   try {
     const response = await axios.get(`http://127.0.0.1:8000/api/getfavoritos/${userID}`);
@@ -193,6 +189,9 @@ toggleFavorite = async (sitio) => {
                       alt={isFavorite ? 'Quitar de Favoritos' : 'Agregar a Favoritos'}
                     />
                   </button>
+                  <div className='BotonMasDetalles'>
+                      <Link to={`/cliente/${sitio.idinmueble}`}>Ver más</Link>
+                    </div>
                      
                         </div>
                       );
