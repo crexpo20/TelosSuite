@@ -69,7 +69,8 @@ class RegisterInmue extends Component {
         imagen5:"",
         descripcion5:"",
         latitud:"",
-        longitud:""
+        longitud:"",
+        pausado:0
       },
       markerLocation: {
         latitud: "",
@@ -327,6 +328,7 @@ class RegisterInmue extends Component {
        descripcion5:this.state.formData.descripcion5,
        latitud: this.state.formData.latitud.toString(), 
        longitud: this.state.formData.longitud.toString(), 
+       pausado:0,
      };
       const postProducto = async (url, lugar) => {
         const response = await fetch(url, {
@@ -357,7 +359,7 @@ class RegisterInmue extends Component {
   };
   terminar = () =>{
     console.log('context:: ', this.marker);
-   // window.location.href = '/cliente';
+    window.location.href = '/cliente';
   }
 
   abrirModalSweetAlert = () => {
