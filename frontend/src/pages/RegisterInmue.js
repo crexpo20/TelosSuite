@@ -24,7 +24,7 @@ const coordenadasDepartamentos = {
   Pando: { lat: '-11.0196', lng: '-68.7778' },
 };
 
-let marker = {};
+//let marker = {};
 
 class RegisterInmue extends Component {
   constructor(props) {
@@ -71,6 +71,10 @@ class RegisterInmue extends Component {
         latitud:"",
         longitud:""
       },
+      markerLocation: {
+        latitud: "",
+        longitud: ""
+      },
       
       propertyTypes: [
         { type: 'Casa', icon: <BsHouse /> },
@@ -114,14 +118,33 @@ class RegisterInmue extends Component {
   //updateMarker = (newMarker) => this.marker = newMarker
   updateMarker = (newMarker) => {
     console.log("Nuevo Marcador:", newMarker);
-    this.setState((prevState) => ({
-      formData: {
-        ...prevState.formData,
-        latitud: newMarker.lat.toString(), 
-        longitud: newMarker.lng.toString(), 
-      },
-    }));
+    const { formData, markerLocation } = this.state;
+
+    // Si no hay latitud y longitud asociadas con el departamento, usa la ubicación del marcador
+    if (formData.latitud === "" && formData.longitud === "") {
+      this.setState({
+        formData: {
+          ...formData,
+          latitud: newMarker.lat.toString(),
+          longitud: newMarker.lng.toString(),
+        },
+        markerLocation: {
+          latitud: newMarker.lat.toString(),
+          longitud: newMarker.lng.toString(),
+        },
+      });
+    } else {
+      // Latitud y longitud ya establecidas, no actualizamos con la ubicación del marcador
+      this.setState({
+        markerLocation: {
+          latitud: newMarker.lat.toString(),
+          longitud: newMarker.lng.toString(),
+        },
+      });
+    }
   };
+  
+
 
   handleTitulo = (field, value) => {
     this.setState((prevState) => {
@@ -1069,16 +1092,13 @@ class RegisterInmue extends Component {
     <div id='titulo'>
       <h3>Ingresa la ubicación en {this.state.formData.ciudad}</h3>
       <div className='MapaRegisInm'>
-        {/* Imprime las coordenadas antes de pasarlas al mapa */}
-        {console.log("Lat:", this.getInitialLatForCity(this.state.formData.ciudad))}
-        {console.log("Lng:", this.getInitialLngForCity(this.state.formData.ciudad))}
         <MapaRegistro 
           googleMapURL={mapURL}
           containerElement={<div style={{ height: '150%' }}></div>}
           mapElement={<div style={{ height: '100%' }}></div>}
           loadingElement={<p>Cargando..</p>}
-          lat={this.getInitialLatForCity(this.state.formData.ciudad)}
-          lng={this.getInitialLngForCity(this.state.formData.ciudad)}
+          lat={this.state.formData.latitud ? this.state.formData.latitud :this.getInitialLatForCity(this.state.formData.ciudad)}
+          lng={this.state.formData.longitud ? this.state.formData.longitud :this.getInitialLngForCity(this.state.formData.ciudad)}
           radio={0}
           updateMarker={this.updateMarker}
         />
@@ -1231,6 +1251,7 @@ this.state.formData.descripcion !== "" &&
           <button className="next" onClick={this.handleNextSlide}>
             <IoIosArrowDroprightCircle />
           </button>
+          
           )}
          
          {currentSlide ===  16 &&

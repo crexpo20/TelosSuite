@@ -87,6 +87,18 @@ class AppRouter extends Component{
             <Route path='*' element={<Navigate TO ="/"/>}/> 
       </Route>
 
+      <Route path= "/user" element={<Navbar />}>
+            <Route index element={<EspaciosModAnf />} />
+            <Route path= "/user/:espaciosID" element ={<VistaDetalladaInm  />}/>
+            
+            <Route path='inm' element={<ActualizarInm />} />
+            <Route path="/user/registerinmue" element={<RegisterInmue />} />
+            <Route path='dashboard' element={<DashboardPage />} />
+            <Route path='hh' element={<Habilitar />} />
+            
+            <Route path='*' element={<Navigate TO ="/"/>}/> 
+      </Route>
+      
       <Route path= "/registro" element={<RegisterInmue/>}>
            
 

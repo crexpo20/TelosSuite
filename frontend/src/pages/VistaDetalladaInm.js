@@ -145,17 +145,17 @@ class VistaDetalladaInm extends Component {
           {/* GRID de las imagenes */}
           <div className='GridImagenes'>
             <div className='Columna1'>
-                <img src={this.state?.inmueble?.imagen1} alt='Imagen 1' />
+                <img src={this.state?.inmueble?.imagen1} alt='Imagen 1' style={{ width: '100%', height: '96%' }}/>
             </div>
             <div className='Columna2'>
-                <img src={this.state?.inmueble?.imagen2} alt='Imagen 2-1' />
+                <img src={this.state?.inmueble?.imagen2} alt='Imagen 2-1' style={{ width: '100%', height: '46%' }}/>
                 <div style={{ position: 'relative' }}></div>
-                <img src={this.state?.inmueble?.imagen3} alt='Imagen 2-2' />
+                <img src={this.state?.inmueble?.imagen3} alt='Imagen 2-2' style={{ width: '100%', height: '46%' }}/>
             </div>
             <div className='Columna3'>
-                <img src={this.state?.inmueble?.imagen4} alt='Imagen 3-1' />
+                <img src={this.state?.inmueble?.imagen4} alt='Imagen 3-1' style={{ width: '100%', height: '46%' }}/>
                 <div style={{ position: 'relative' }}>
-                <img src={this.state?.inmueble?.imagen5} alt='Imagen 3-2' />
+                <img src={this.state?.inmueble?.imagen5} alt='Imagen 3-2' style={{ width: '100%', height: '46%' }}/>
                 <button onClick={this.openImageCarousel} className="overlay-button">Mostrar detalles</button>
               </div>
             </div>
