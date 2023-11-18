@@ -32,7 +32,7 @@ const Mapa = ({ lat, lng}) => {
   return  isLoaded ? (
     <GoogleMap
       mapContainerStyle={containerStyle}
-      center={{lat: -17.3852993, lng: -66.2010302}}
+      center={center}
       defaultZoom={1} // Puedes ajustar el nivel de zoom según tus necesidades
       onLoad={onLoad}
       onUnmount={onUnmount}
