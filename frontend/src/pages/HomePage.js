@@ -131,8 +131,10 @@ class HomePage extends Component {
                       <p className="inmCamas"> <b>Precio por noche:</b> bs. {sitio.precio}</p>
                       <p className="inmPrecio"><b>Capacidad:</b>  {sitio.capacidad} persona(s)</p>
                       <p className="inmPrecio"><b>Normas:</b> {sitio.normas}</p>
+                      <div className='BotonMasDetalles'>
+                      <Link to={`/cliente/${sitio.idinmueble}`}>Ver más</Link>
                     </div>
-                    
+                    </div>
                      
                   <button
                     onClick={() => this.toggleFavorite(sitio)}
@@ -143,9 +145,7 @@ class HomePage extends Component {
                       alt={isFavorite ? 'Quitar de Favoritos' : 'Agregar a Favoritos'}
                     />
                   </button>
-                  <div className='BotonMasDetalles'>
-                      <Link to={`/cliente/${sitio.idinmueble}`}>Ver más</Link>
-                    </div>
+                 
                 </div>
               );
             })}

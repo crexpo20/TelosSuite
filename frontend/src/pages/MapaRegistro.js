@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { GoogleMap, useJsApiLoader, Marker} from '@react-google-maps/api';
 
 //Declaramos el componente de la funcion mapa que recibe la latitud y longitud de la ubicación
-const MapaRegistro = ({ lat, lng}) => {
+const MapaRegistro = ({ lat, lng, updateMarker}) => {
     console.log(lat)
     console.log(lng)
     //inicializamos los estados de map y marker
@@ -12,10 +12,12 @@ const MapaRegistro = ({ lat, lng}) => {
     //Maneja el marker cuando hacemos click en el mapa
     const onMapClick = (e) => {
         setMarker(() => { 
-            return  {
-                lat: e.latLng.lat(),
-                lng: e.latLng.lng()
-            }
+           const markerData = {
+            lat: e.latLng.lat(),
+            lng: e.latLng.lng()
+           }
+           updateMarker(markerData)
+           return  markerData
           }
         );
       };
@@ -23,7 +25,7 @@ const MapaRegistro = ({ lat, lng}) => {
       //El mapa se carga
     const onLoad = React.useCallback(function callback(map) {
         //Controlamos el zoom del mapa
-        map.setZoom(15); 
+        map.setZoom(12); 
         setMap(map);
       }, []);
     
@@ -54,7 +56,8 @@ const MapaRegistro = ({ lat, lng}) => {
   return  isLoaded ? (
     <GoogleMap
       mapContainerStyle={containerStyle}
-      center={{lat: -17.3852993, lng: -66.2010302}}
+      
+      center={center}
       onLoad={onLoad}
       onUnmount={onUnmount}
       onClick={onMapClick}
