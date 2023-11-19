@@ -57,7 +57,7 @@ class ReservaInm extends Component{
       return(
         <>
             <div className='Grid1'>
-                <Link to="/vistaInm" className='BotonAnterior'>
+                <Link to={`/vistaInm/${this.state?.inmueble?.idinmueble}`} className='BotonAnterior'>
                 <IoIosArrowDropleftCircle size={30} />
                 </Link>
                 <h1 className='TituloReserva'>Confirma y paga</h1>

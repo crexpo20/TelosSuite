@@ -99,6 +99,11 @@ class AppRouter extends Component{
             <Route path='*' element={<Navigate TO ="/"/>}/> 
       </Route>
 
+      <Route path= "/vistaInm" element={<Navbar />}>
+            <Route index element={<EspaciosModAnf />} />
+            <Route path= "/vistaInm/:espaciosID" element ={<VistaDetalladaInm  />}/>
+      </Route>
+
       <Route path= "/Reserva" element={<Navbar />}>
             <Route index element={<EspaciosModAnf />} />
             <Route path= "/Reserva/:espaciosID" element ={<ReservaInm  />}/>

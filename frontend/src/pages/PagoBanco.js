@@ -42,7 +42,7 @@ class PagoBanco extends Component {
                 <Link to={`/Confirmar/${this.state?.inmueble?.idinmueble}`}>
                   <button>Confirmar</button>
                 </Link>
-                <Link to='/Reserva'>
+                <Link to={`/Reserva/${this.state?.inmueble?.idinmueble}`}>
                   <button>Cancelar</button>
                 </Link>
               </div>
