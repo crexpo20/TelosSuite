@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id('idreserva');
             $table->foreignId('idinmueble')->references('idinmueble')->on('inmueble');
             $table->foreignId('idusuario')->references('idusuario')->on('usuario');
-            $table->interger('idanfitrion');
+            $table->integer('idanfitrion');
             $table->integer('fechaini');
             $table->integer('fechafin');
             $table->integer('huespedes');
