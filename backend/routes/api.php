@@ -53,6 +53,11 @@ Route::get('/getreserva',[reservaController::class,'index']);
 Route::post('/postreserva', [reservaController::class,'store']);
 Route::delete('/delreserva/{id}',[reservaController::class,'destroy']);
 Route::put('/putreserva/{id}', [reservaController::class,'update']);
+Route::get('/getreanfitrion/{idanfitrion}',[reservaController::class,'anfitrion']);
+Route::get('/getreusuario/{idusuario}',[reservaController::class,'usuario']);
+Route::get('/getreinmueble/{idinmueble}',[reservaController::class,'inmueble']);
+
+
 
 //RUTAS PARA AGREGAR FAVORITO
 

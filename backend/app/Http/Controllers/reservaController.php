@@ -69,4 +69,24 @@ class reservaController extends Controller
         return response()->json(['mensaje' => 'reserva eliminada'], 200);
 
     }
+
+    public function usuario(string $usuario)
+    {
+
+        return DB::table('reserva')->where('idusuario', $usuario)->get();
+        
+    }
+
+    public function inmueble(string $inmueble)
+    {
+
+        return DB::table('reserva')->where('idinmueble', $inmueble)->get();
+        
+    }
+    public function anfitrion(string $anfitrion)
+    {
+
+        return DB::table('reserva')->where('idanfitrion', $anfitrion)->get();
+        
+    }
 }
