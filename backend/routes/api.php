@@ -12,6 +12,8 @@ use App\Http\Controllers\favoritoController;
 use App\Http\Controllers\servicioController;
 use App\Http\Controllers\comentarioController;
 use App\Http\Controllers\reseñaController;
+use App\Http\Controllers\solicitudController;
+use App\Http\Controllers\notificacionController;
 
 
 //RUTAS PARA INGRESAR, MODIFICAR, ELIMINAR usuario DESDE FORMULARIO
@@ -90,3 +92,19 @@ Route::get('/getreseña',[reseñaController::class,'index']);
 Route::post('/postreseña', [reseñaController::class, 'store']);
 Route::delete('/delreseña/{id}',[reseñaController::class,'destroy']);
 Route::put('/putreseña/{id}', [reseñaController::class,'update']);
+
+//rutas para solicitud
+Route::get('/getsolicitud',[solicitudController::class,'index']);
+Route::post('/postsolicitud', [solicitudController::class,'store']);
+Route::delete('/delsolicitud/{id}',[solicitudController::class,'destroy']);
+Route::put('/putsolicitud/{id}', [solicitudController::class,'update']);
+Route::get('/getsoanfitrion/{idanfitrion}',[solicitudController::class,'anfitrion']);
+Route::get('/getsousuario/{idusuario}',[solicitudController::class,'usuario']);
+Route::get('/getsoinmueble/{idreserva}',[solicitudController::class,'reserva']);
+
+//rutas para notificacion
+Route::get('/getnotificacion',[notificacionController::class,'index']);
+Route::post('/postnotificacion', [notificacionController::class,'store']);
+Route::delete('/delnotificacion/{id}',[notificacionController::class,'destroy']);
+Route::put('/putnotificacion/{id}', [notificacionController::class,'update']);
+Route::get('/getnousuario/{idusuario}',[notificacionController::class,'usuario']);
