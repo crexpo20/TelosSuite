@@ -14,10 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('reserva', function (Blueprint $table) {
-            $table->id('id');
+            $table->id('idreserva');
             $table->foreignId('idinmueble')->references('idinmueble')->on('inmueble');
             $table->foreignId('idusuario')->references('idusuario')->on('usuario');
-            $table->string('idreserva');
+            $table->string('id');
             $table->integer('idanfitrion');
             $table->integer('fechaini');
             $table->integer('fechafin');
