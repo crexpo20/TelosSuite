@@ -22,7 +22,6 @@ return new class extends Migration
             $table->integer('limpieza');
             $table->integer('exactitud');
             $table->integer('comunicacion');
-            $table->integer('precio');
             $table->timestamps();
         });
     }
