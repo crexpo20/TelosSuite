@@ -18,6 +18,9 @@ return new class extends Migration
             $table->foreignId('idinmueble')->references('idinmueble')->on('inmueble');
             $table->foreignId('idusuario')->references('idusuario')->on('usuario');
             $table->foreignId('idreserva')->references('idreserva')->on('reserva');
+            $table->string('estado');
+            $table->integer('idanfitrion');
+
             $table->timestamps();
         });
     }

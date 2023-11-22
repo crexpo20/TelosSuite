@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('idreserva')->references('idreserva')->on('reserva');
             $table->foreignId('idusuario')->references('idusuario')->on('usuario');
             $table->string('contenido');
+            $table->integer('idsolicitud');
             $table->timestamps();
         });
     }

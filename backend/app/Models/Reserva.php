@@ -10,7 +10,7 @@ class Reserva extends Model
     use HasFactory;
     protected $table = 'reserva';
     protected $primaryKey = 'id';
-    protected $fillable = ['idinmueble','idusuario','idreserva','idanfitrion','fechaini','fechafin','politicacancelacion','montototal'];
+    protected $fillable = ['idinmueble','idusuario','idreserva','idanfitrion','fechaini','fechafin','politicacancelacion','montototal','estado'];
     public $timestamps = false;
 
     public function Inmueble(){
