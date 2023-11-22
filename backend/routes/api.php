@@ -58,6 +58,7 @@ Route::put('/putreserva/{id}', [reservaController::class,'update']);
 Route::get('/getreanfitrion/{idanfitrion}',[reservaController::class,'anfitrion']);
 Route::get('/getreusuario/{idusuario}',[reservaController::class,'usuario']);
 Route::get('/getreinmueble/{idinmueble}',[reservaController::class,'inmueble']);
+Route::get('/getidreserva/{idreserva}',[reservaController::class,'id']);
 
 
 
