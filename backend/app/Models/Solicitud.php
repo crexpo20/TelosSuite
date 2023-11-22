@@ -10,7 +10,7 @@ class Solicitud extends Model
     use HasFactory;
     protected $table = 'solicitud';
     protected $primaryKey = 'idsolicitud';
-    protected $fillable = ['idinmueble','idusuario','idreserva'];
+    protected $fillable = ['idinmueble','idusuario','idreserva','estado','idanfitrion'];
     public $timestamps = false;
 
     public function Inmueble(){

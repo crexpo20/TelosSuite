@@ -13,11 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('notificacion', function (Blueprint $table) {
-            $table->string('idnotificacion')->id;
-            $table->foreignId('idreserva')->references('idreserva')->on('reserva');
+        Schema::create('reserva', function (Blueprint $table) {
+            $table->id('idreserva');
+            $table->foreignId('idinmueble')->references('idinmueble')->on('inmueble');
             $table->foreignId('idusuario')->references('idusuario')->on('usuario');
-            $table->string('contenido');
+            $table->string('id');
+            $table->integer('idanfitrion');
+            $table->integer('fechaini');
+            $table->integer('fechafin');
+            $table->integer('huespedes');
+            $table->string('politicacancelacion');
+            $table->integer('montototal')
+            $table->string('estado');
             $table->timestamps();
         });
     }

@@ -13,16 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('reserva', function (Blueprint $table) {
-            $table->string('idreserva')->id;
-            $table->foreignId('idinmueble')->references('idinmueble')->on('inmueble');
+        Schema::create('notificacion', function (Blueprint $table) {
+            $table->string('idnotificacion')->id;
+            $table->foreignId('idreserva')->references('idreserva')->on('reserva');
             $table->foreignId('idusuario')->references('idusuario')->on('usuario');
-            $table->integer('idanfitrion');
-            $table->integer('fechaini');
-            $table->integer('fechafin');
-            $table->integer('huespedes');
-            $table->string('politicacancelacion');
-            $table->integer('montototal');
+            $table->string('contenido');
+            $table->integer('idsolicitud');
+            $table->integer('estado');
             $table->timestamps();
         });
     }
@@ -34,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reserva');
+        Schema::dropIfExists('notificacion');
     }
 };

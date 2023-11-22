@@ -19,6 +19,9 @@ return new class extends Migration
             $table->foreignId('idusuario')->references('idusuario')->on('usuario');
             $table->String('descripcion');
             $table->integer('puntuacion');
+            $table->integer('limpieza');
+            $table->integer('exactitud');
+            $table->integer('comunicacion');
             $table->timestamps();
         });
     }

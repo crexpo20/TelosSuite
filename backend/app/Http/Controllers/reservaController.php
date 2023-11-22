@@ -89,4 +89,11 @@ class reservaController extends Controller
         return DB::table('reserva')->where('idanfitrion', $anfitrion)->get();
         
     }
+
+    public function id(string $idreserva)
+    {
+
+        return DB::table('reserva')->where('reserva', $idreserva)->get();
+        
+    }
 }
