@@ -125,7 +125,20 @@ const ModalMenuBody = ({props}) => {
                             </Link>
                             
                            </li>
-
+                           <li id="menu-item" >
+                            <Link to='favorito'>
+                            <button  onClick={redirige1}id='close-button' >
+                            Solicitudes</button>
+                            </Link>
+                            
+                           </li>
+                           <li id="menu-item" >
+                            <Link to='favorito'>
+                            <button  onClick={redirige1}id='close-button' >
+                            Reservas </button>
+                            </Link>
+                            
+                           </li>
                             
                             <li id="menu-item">
                             <button id='close-button' onClick={cerrarSesion}>Cerrar sesion</button>
