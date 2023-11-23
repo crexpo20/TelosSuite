@@ -15,6 +15,8 @@ import Fechas from '../components/fechas';
 import CuantosBoton from '../components/cuantos/botoncuantos';
 import Mapa from '../pages/Mapa.js';
 import credentials from '../pages/credentials.js';
+import ComentariosModal from './ComentariosModal';
+
 
 function withParams(Component){
   return props => <Component{...props} params={useParams()} />;
@@ -33,11 +35,15 @@ class VistaDetalladaInm extends Component {
       imageCarouselOpen: false,
       images: [],
       imageDescriptions: [],
+      showModal: false,
     };
 
     this.getInmuebles = this.getInmuebles.bind(this);
+    this.toggleModal = this.toggleModal.bind(this); 
   }
-
+  toggleModal() {
+    this.setState(prevState => ({ showModal: !prevState.showModal }));
+  }
   componentDidMount() {
     console.log(this.props.params.espaciosID)
     const id = this.props.params.espaciosID
@@ -138,11 +144,19 @@ class VistaDetalladaInm extends Component {
     //url de la API para mostrar la ubicacion que registro el host
     const mapURL = `https://maps.googleapis.com/maps/api/js?v=3.exp&key=${credentials.mapsKey}`;
 
+    
+
     return (
       <>
         <body id='vista'>
           <h1 className='tituloVista'>{this.state?.inmueble?.tituloanuncio}</h1>
           {/* GRID de las imagenes */}
+          <button onClick={this.toggleModal} className="boton-ver-resenas">Ver Reseñas</button>
+      <ComentariosModal 
+        comentarios={this.state.comentarios}
+        showModal={this.state.showModal}
+        toggleModal={this.toggleModal}
+      />
           <div className='GridImagenes'>
             <div className='Columna1'>
                 <img src={this.state?.inmueble?.imagen1} alt='Imagen 1' style={{ width: '100%', height: '96%' }}/>

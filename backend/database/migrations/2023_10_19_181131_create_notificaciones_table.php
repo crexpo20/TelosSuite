@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('idusuario')->references('idusuario')->on('usuario');
             $table->string('contenido');
             $table->integer('idsolicitud');
+            $table->integer('estado');
             $table->timestamps();
         });
     }
