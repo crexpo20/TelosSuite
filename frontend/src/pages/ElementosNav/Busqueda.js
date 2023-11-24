@@ -199,7 +199,7 @@ toggleFavorite = async (sitio) => {
                   </button>
           
                   <div className='BotonMasDetalles'>
-                      <Link to={`/cliente/${sitio.idinmueble}`}>Ver más</Link>
+                      <Link to={`/vistaInm/${sitio.idinmueble}`}>Ver más</Link>
                     </div>
                      
                         </div>
