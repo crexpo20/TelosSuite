@@ -19,8 +19,8 @@ return new class extends Migration
             $table->foreignId('idusuario')->references('idusuario')->on('usuario');
             $table->string('id');
             $table->integer('idanfitrion');
-            $table->integer('fechaini');
-            $table->integer('fechafin');
+            $table->string('fechaini');
+            $table->string('fechafin');
             $table->integer('huespedes');
             $table->string('politicacancelacion');
             $table->integer('montototal');

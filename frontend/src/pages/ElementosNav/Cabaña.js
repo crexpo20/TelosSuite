@@ -148,7 +148,7 @@ getProductos=async()=>{
                 ((!tipoInmueblePrivado && !tipoInmuebleCompartido) || // No se seleccionó filtro de tipo
              (tipoInmueblePrivado && esPrivado) ||
              (tipoInmuebleCompartido && esCompartido))&&
-             (habitacionesSeleccionadas === null || habitacionesSitio >= habitacionesSeleccionadas) &&
+             (habitacionesSeleccionadas === null || habitacionesSitio <= habitacionesSeleccionadas) &&
              (camasSeleccionadas === null || camasSitio >= camasSeleccionadas) &&
              (bañosSeleccionados === null || bañosSitio >= bañosSeleccionados)&
                 cumpleCondicionesServicios
