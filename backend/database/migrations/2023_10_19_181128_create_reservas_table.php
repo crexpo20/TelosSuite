@@ -23,7 +23,7 @@ return new class extends Migration
             $table->integer('fechafin');
             $table->integer('huespedes');
             $table->string('politicacancelacion');
-            $table->integer('montototal')
+            $table->integer('montototal');
             $table->string('estado');
             $table->timestamps();
         });
