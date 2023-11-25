@@ -468,8 +468,11 @@ h4{
 }
 #buscador #prim{
   border-right: 1px solid #000;
-  
-  }
+  padding-top: 5px;
+ }
+ #buscador #prima{
+  padding-top: 5px;
+ }
 #buscador #fecha{
   border-right: 1px solid #000;
 
@@ -538,14 +541,31 @@ h4{
     padding-right: 2%;
 
 }
+#btnp{
+  padding-top: 10px;
+}
 #head-der3{
   display: inline-block;
   width: 50%;
 }
+#primabtn{
+  background: #DA1467;
+  font-family: 'JejuMyeongjo';
+  color: #fff;
+  border-radius: 50px;
+  border: 1px solid #ccc;
+}
 #head-der2{
   display: inline-block;
   white-space: nowrap;
+  padding-left: 20%;
+  padding-top: 5px;
   width: 50%;
+  color: #000;
+}
+#head-der2 a{
+  
+  color: #000;
 }
 #hab{
   white-space: normal;

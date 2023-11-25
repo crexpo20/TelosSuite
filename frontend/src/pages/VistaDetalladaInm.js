@@ -75,7 +75,7 @@ class VistaDetalladaInm extends Component {
              await Swal.fire({
               icon: 'warning',
               title: '¡Atención!',
-              text: 'Hoy es un día de reserva. ¡Asegúrate de planificar bien tu estancia!',
+              text: 'Este inmueble tiene una reserva entre las fechas que seleccionaste, porfavor elige otro rango de fechas.',
             });
   
             fechaEnRango = true;
