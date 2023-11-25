@@ -10,7 +10,7 @@ class Notificacion extends Model
     use HasFactory;
     protected $table = 'notificacion';
     protected $primaryKey = 'idnotificacion';
-    protected $fillable = ['idusuario','idreserva','contenido','idsolicitud'];
+    protected $fillable = ['idusuario','idreserva','contenido','idsolicitud','estado'];
     public $timestamps = false;
 
     public function Huesped(){

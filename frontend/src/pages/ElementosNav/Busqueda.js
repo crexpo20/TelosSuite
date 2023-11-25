@@ -26,18 +26,48 @@ class Busqueda extends Component {
       
         this.getProductos();
         this.getFavorites(userID);
+        
     
     }
 
-getProductos=async()=>{
-  await axios.get('http://127.0.0.1:8000/api/getinmuebles')
-  .then(res=>{
-      this.setState({inmueble: res.data});
-      console.log(this.state.inmueble)
-  }).catch((error)=>{
-      console.log(error);
-  });
-}
+    getProductos = async () => {
+      const { fechaini, fechafin } = localStorage;
+      const startDate = new Date(fechaini);
+      const endDate = new Date(fechafin);
+    
+      try {
+        const inmueblesResponse = await axios.get('http://127.0.0.1:8000/api/getinmuebles');
+        const reservasResponse = await axios.get('http://127.0.0.1:8000/api/getreserva');
+    
+        const inmuebles = inmueblesResponse.data;
+        const reservas = reservasResponse.data;
+    
+        const inmueblesDisponibles = inmuebles.filter((inmueble) => {
+          // Comprobar si hay reservas para el inmueble
+          const reservasInmueble = reservas.filter((reserva) => reserva.idinmueble === inmueble.idinmueble);
+    
+          // Comprobar si alguna reserva coincide con las fechas seleccionadas
+          const tieneReserva = reservasInmueble.some((reserva) => {
+            const reservaStartDate = new Date(reserva.fechaini);
+            const reservaEndDate = new Date(reserva.fechafin);
+    
+            return (
+              (startDate >= reservaStartDate && startDate <= reservaEndDate) ||
+              (endDate >= reservaStartDate && endDate <= reservaEndDate) ||
+              (startDate <= reservaStartDate && endDate >= reservaEndDate)
+            );
+          });
+    
+          return !tieneReserva;
+        });
+    
+        this.setState({ inmueble: inmueblesDisponibles });
+        console.log(inmueblesDisponibles);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+    
 
 getFavorites = async (userID) => {
   try {
@@ -135,22 +165,20 @@ toggleFavorite = async (sitio) => {
             const camasSitio = parseInt(sitio.camas, 10);
             const bañosSitio = parseInt(sitio.baños, 10)
             const cumpleCondicionesServicios = 
-        (!algunFiltroActivado) || 
-        (filtroWifi && sitio.wifi) ||
-        (filtroParqueo && sitio.parqueo) ||
-        (filtroCocina && sitio.cocina) ||
-        (filtroRefrigerador && sitio.refrigerador) ||
-        (filtroLavadora && sitio.lavadora) ||
-        (filtroPiscina && sitio.piscina);
-            
-
-            if (sitio.ciudad === localStorage.getItem("destino") &&
+                  (!algunFiltroActivado) || 
+                  (filtroWifi && sitio.wifi) ||
+                  (filtroParqueo && sitio.parqueo) ||
+                  (filtroCocina && sitio.cocina) ||
+                  (filtroRefrigerador && sitio.refrigerador) ||
+                  (filtroLavadora && sitio.lavadora) ||
+                  (filtroPiscina && sitio.piscina);
+           if (sitio.ciudad === localStorage.getItem("destino") &&
                sitio.niños === parseInt(localStorage.getItem("niños")) &&
                sitio.mascotas === parseInt(localStorage.getItem("mascotas")) &&
                sitio.capacidad === parseInt(localStorage.getItem("huespedes")) &&
                 precioSitio >= minPrice &&
                 precioSitio <= maxPrice &&
-                ((!tipoInmueblePrivado && !tipoInmuebleCompartido) || // No se seleccionó filtro de tipo
+                ((!tipoInmueblePrivado && !tipoInmuebleCompartido) ||
                  (tipoInmueblePrivado && esPrivado) ||
                  (tipoInmuebleCompartido && esCompartido)) &&
                  (habitacionesSeleccionadas === null || habitacionesSitio <= habitacionesSeleccionadas) &&
@@ -158,6 +186,7 @@ toggleFavorite = async (sitio) => {
                  (bañosSeleccionados === null || bañosSitio >= bañosSeleccionados)&&
                    
                   cumpleCondicionesServicios
+                
               
 ) {
   const isFavorite = favorites.some(fav => fav.idinmueble === sitio.idinmueble);
@@ -199,7 +228,7 @@ toggleFavorite = async (sitio) => {
                   </button>
           
                   <div className='BotonMasDetalles'>
-                      <Link to={`/cliente/${sitio.idinmueble}`}>Ver más</Link>
+                      <Link to={`/vistaInm/${sitio.idinmueble}`}>Ver más</Link>
                     </div>
                      
                         </div>
