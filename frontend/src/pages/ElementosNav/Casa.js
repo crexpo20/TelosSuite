@@ -27,16 +27,43 @@ componentDidMount() {
 
 }
 
-getProductos=async()=>{
-  await axios.get('http://127.0.0.1:8000/api/getinmuebles/')
-  .then(res=>{
-      this.setState({inmueble: res.data}); //nombre de array: LO QUE SALE POR CONSOLA
-      console.log(this.state.inmueble)
-  }).catch((error)=>{
-      console.log(error);
-  });
-}
 
+
+getProductos = async () => {
+  const { fechaini, fechafin } = localStorage;
+  const startDate = new Date(fechaini);
+  const endDate = new Date(fechafin);
+
+  try {
+    const inmueblesResponse = await axios.get('http://127.0.0.1:8000/api/getinmuebles');
+    const reservasResponse = await axios.get('http://127.0.0.1:8000/api/getreserva');
+
+    const inmuebles = inmueblesResponse.data;
+    const reservas = reservasResponse.data;
+
+    const inmueblesDisponibles = inmuebles.filter((inmueble) => {
+      const reservasInmueble = reservas.filter((reserva) => reserva.idinmueble === inmueble.idinmueble);
+
+      const tieneReserva = reservasInmueble.some((reserva) => {
+        const reservaStartDate = new Date(reserva.fechaini);
+        const reservaEndDate = new Date(reserva.fechafin);
+
+        return (
+          (startDate >= reservaStartDate && startDate <= reservaEndDate) ||
+          (endDate >= reservaStartDate && endDate <= reservaEndDate) ||
+          (startDate <= reservaStartDate && endDate >= reservaEndDate)
+        );
+      });
+
+      return !tieneReserva;
+    });
+
+    this.setState({ inmueble: inmueblesDisponibles });
+    console.log(inmueblesDisponibles);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+};
 getFavorites = async (userID) => {
   try {
     const response = await axios.get(`http://127.0.0.1:8000/api/getfavoritos/${userID}`);
