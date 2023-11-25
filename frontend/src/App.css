@@ -435,7 +435,7 @@ h4{
   display: flex;
   color: #d2086d;
   border-radius: 30px;
-  background-color: #ffffff;border: 1px solid #ccc;
+  background-color: #fff;border: 1px solid #ccc;
  
 }
 #reg{
@@ -470,6 +470,10 @@ h4{
   border-right: 1px solid #000;
   
   }
+#buscador #fecha{
+  border-right: 1px solid #000;
+
+    }
 /*letras logo*/
 #TelosSuite{
   font-family: 'JejuMyeongjo';
@@ -514,9 +518,7 @@ h4{
   padding-bottom:5px;
   
   display: flex;
-  height: 40%;
-  border-bottom: 5px solid rgba(219, 24, 24, 0.09);
-}
+  height: 45%;}
 #head-izq{
   width: 33%;
   padding-left: 5%;
@@ -585,7 +587,6 @@ h4{
   justify-items: left;
 }
 #navAbajo{
-  margin-top: 0.5%;
   display: flex;
 }
 #nav{

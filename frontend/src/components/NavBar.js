@@ -88,7 +88,7 @@ function Navbar() {
             <li id="prim">
               <LugarBoton />
             </li>
-            <li id="prim">
+            <li id='fecha'>
               <Fechas />
             </li>
             <li>
