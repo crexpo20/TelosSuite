@@ -10,7 +10,7 @@ class Inmueble extends Model
     use HasFactory;
     protected $table = 'inmueble';
     protected $primaryKey = 'idinmueble';
-    protected $fillable = ['tipopropiedad','idusuario','tituloanuncio','descripcion','ubicacion','precio','capacidad','habitaciones','baños','camas','niños','normas','mascotas','qr','ciudad','wifi','parqueo','cocina','refrigerador','lavaropa','piscina','privado','compartido','estado','contacto','favorito','imagen1','descripcion1','imagen2','descripcion2','imagen3','descripcion3','imagen4','descripcion4','imagen5','descripcion5','longitud','latitud','pausado'];
+    protected $fillable = ['tipopropiedad','idusuario','tituloanuncio','descripcion','ubicacion','precio','capacidad','habitaciones','baños','camas','niños','normas','mascotas','qr','ciudad','wifi','parqueo','cocina','refrigerador','lavaropa','piscina','privado','compartido','estado','contacto','favorito','imagen1','descripcion1','imagen2','descripcion2','imagen3','descripcion3','imagen4','descripcion4','imagen5','descripcion5','longitud','latitud','pausado','fechainicio', 'fechafin'];
     public $timestamps = false;
 
     public function Usuario(){
