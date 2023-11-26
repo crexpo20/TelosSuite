@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('notificacion', function (Blueprint $table) {
-            $table->string('idnotificacion')->id;
+            $table->id('idnotificacion')->id;
             $table->foreignId('idreserva')->references('idreserva')->on('reserva');
             $table->foreignId('idusuario')->references('idusuario')->on('usuario');
             $table->string('contenido');
