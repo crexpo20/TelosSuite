@@ -11,6 +11,57 @@ class Solicitudes extends Component {
       inmuebleDetalles: {},
     };
   }
+
+  handleAceptarRechazar = (idreserva,idinmueble,idusuario,id,idanfitrion,fechaini,fechafin,huespedes,politicacancelacion,montototal, estado) => {
+    const url = `http://127.0.0.1:8000/api/putreserva/${idreserva}`;
+
+    // Datos que se enviarán en la solicitud
+    const datosReserva = {
+      idreserva: idreserva,
+      idinmueble : idinmueble,
+      idusuario : idusuario,
+      id : id,
+      idanfitrion : idanfitrion,
+      fechaini :  fechaini ,
+      fechafin :  fechafin,
+      huespedes : huespedes,
+      politicacancelacion :  politicacancelacion,
+      montototal : montototal,
+      estado :  estado ,
+     
+
+      // Puedes agregar más propiedades según tu necesidad
+    };
+
+    // Configuración de la solicitud
+    const opciones = {
+      method: 'PUT',  // Puedes cambiarlo a 'POST' si es necesario
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(datosReserva),
+    };
+
+    // Realizar la solicitud
+    fetch(url, opciones)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Error en la solicitud');
+        }
+        return response.json();
+      })
+      .then(data => {
+        // Manejar la respuesta exitosa
+        console.log('Respuesta exitosa:', data);
+        // Puedes realizar acciones adicionales después de una respuesta exitosa
+      })
+      .catch(error => {
+        // Manejar errores
+        console.error('Error en la solicitud:', error);
+        // Puedes realizar acciones adicionales en caso de error
+      });
+  };
+
   
 
   componentDidMount() {
@@ -122,8 +173,8 @@ class Solicitudes extends Component {
                             {
                               reservaU.estado === "pendiente" &&
                              <td>
-                              <button onClick={() => this.handleAceptarRechazar(reservaU.idinmueble, "aceptado")}>Aceptar</button>
-                              <button onClick={() => this.handleAceptarRechazar(reservaU.idinmueble, "rechazado")}>Rechazar</button>
+                              <button onClick={() => this.handleAceptarRechazar(reservaU.idreserva, reservaU.idinmueble, reservaU.id,reservaU.fechaini,reservaU.fechafin,reservaU.huespedes,reservaU.politicacancelacion,reservaU.montototal, "aceptado")}>Aceptar</button>
+                              <button onClick={() => this.handleAceptarRechazar(reservaU.idreserva, reservaU.idinmueble, reservaU.id,reservaU.fechaini,reservaU.fechafin,reservaU.huespedes,reservaU.politicacancelacion,reservaU.montototal, "aceptado")}>Rechazar</button>
                             
                       </td>
                             }
