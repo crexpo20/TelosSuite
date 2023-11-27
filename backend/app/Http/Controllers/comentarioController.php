@@ -6,6 +6,13 @@ use Illuminate\Http\Request;
 
 class comentarioController extends Controller
 {
+    public function getComentariosPorInmueble($idinmueble)
+{
+    // Asegúrate de que 'idinmueble' sea el nombre correcto de la columna en tu base de datos
+    $comentarios = Comentario::where('idinmueble', $idinmueble)->get();
+
+    return response()->json($comentarios);
+}
     public function index()
     {
          // Obtener todos los productos de la base de datos

@@ -55,13 +55,15 @@ class VistaDetalladaInm extends Component {
   getReserva = async () => {
     try {
       const responses = await axios.get(`http://127.0.0.1:8000/api/getreinmueble/${this.props.params.espaciosID}`);
+      const responses2 = await axios.get(`http://127.0.0.1:8000/api/getinmueble/${this.props.params.espaciosID}`);
       console.log(responses.data);
-  
+      console.log(responses2.data);
      const fechaini = new Date(localStorage.getItem("fechaini"));
       const fechafin = new Date(localStorage.getItem("fechafin"));
       console.log(localStorage.getItem("fechaini"))
   
        let fechaEnRango = false;
+       let fechaEnPausa = false;
   
        if (responses.data.length > 0) {
         for (const reserva of responses.data) {
@@ -86,8 +88,31 @@ class VistaDetalladaInm extends Component {
           }
         }
       }
+      if (responses2.data.length > 0) {
+        for (const reserva2 of responses2.data) {
+          const fechaInicioReserva = new Date(reserva2.fechainicio);
+          const fechaFinReserva = new Date(reserva2.fechafin);
+          const estado = reserva2.estado
   
-       if (!fechaEnRango) {
+           if (
+                  ((fechaini >= fechaInicioReserva && fechafin <= fechaFinReserva) ||
+                  (fechaini <= fechaInicioReserva && fechafin >= fechaFinReserva)) 
+                  
+                ) {
+                  await Swal.fire({
+                    icon: 'warning',
+                    title: '¡Atención!',
+                    text: 'Este inmueble no se encuentra disponible en el rango de fechas que escogiste, porfavor ingresa un nuevo rango.',
+                  });
+  
+            fechaEnPausa = true;    
+  
+             break;
+          }
+        }
+      }
+  
+       if (!fechaEnRango && !fechaEnPausa) {
         window.location.href = `/Reserva/${this.state?.inmueble?.idinmueble}`;
       } 
       
@@ -200,11 +225,13 @@ class VistaDetalladaInm extends Component {
           <h1 className='tituloVista'>{this.state?.inmueble?.tituloanuncio}</h1>
           {/* GRID de las imagenes */}
           <button onClick={this.toggleModal} className="boton-ver-resenas">Ver Reseñas</button>
-      <ComentariosModal 
-        comentarios={this.state.comentarios}
-        showModal={this.state.showModal}
-        toggleModal={this.toggleModal}
-      />
+          <ComentariosModal 
+  comentarios={this.state.comentarios}
+  showModal={this.state.showModal}
+  toggleModal={this.toggleModal}
+  inmuebleId={this.props.params.espaciosID} // Asegúrate de que este sea el ID correcto
+/>
+
           <div className='GridImagenes'>
             <div className='Columna1'>
                 <img src={this.state?.inmueble?.imagen1} alt='Imagen 1' style={{ width: '100%', height: '96%' }}/>
