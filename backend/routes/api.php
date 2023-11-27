@@ -14,6 +14,7 @@ use App\Http\Controllers\comentarioController;
 use App\Http\Controllers\reseñaController;
 use App\Http\Controllers\solicitudController;
 use App\Http\Controllers\notificacionController;
+use App\Http\Controllers\pausadoController;
 
 
 //RUTAS PARA INGRESAR, MODIFICAR, ELIMINAR usuario DESDE FORMULARIO
@@ -109,3 +110,10 @@ Route::post('/postnotificacion', [notificacionController::class,'store']);
 Route::delete('/delnotificacion/{id}',[notificacionController::class,'destroy']);
 Route::put('/putnotificacion/{id}', [notificacionController::class,'update']);
 Route::get('/getnousuario/{idusuario}',[notificacionController::class,'usuario']);
+
+//rutas para pausado
+Route::get('/getpausado',[pausadoController::class,'index']);
+Route::post('/postpausado', [pausadoController::class,'store']);
+Route::delete('/delpausado/{id}',[pausadoController::class,'destroy']);
+Route::put('/putpausado/{id}', [pausadoController::class,'update']);
+Route::get('/getpainmueble/{idinmueble}',[pausadoController::class,'inmueble']);
