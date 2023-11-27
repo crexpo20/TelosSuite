@@ -5,6 +5,7 @@ import '../CSS/ReservaInmueble.css';
 import {IoIosArrowDropleftCircle } from 'react-icons/io';
 import Fechas from '../components/fechas';
 import CuantosBoton from '../components/cuantos/botoncuantos';
+import { inmuebles } from '../components/inmuebles';
 
 function withParams(Component) {
     return (props) => <Component {...props} params={useParams()} />;
@@ -60,8 +61,41 @@ class ReservaInm extends Component{
       closeHuespedModal = () => {
         this.setState({ showHuespedModal: false });
       };
-      openConfirmacionModal = () => {
+      openConfirmacionModal = async (e) => {
+        e.preventDefault();
         this.setState({ showConfirmacionModal: true });
+        const reserva = {
+          idinmueble: this.state.inmueble.idinmueble,
+           idusuario :parseInt(localStorage.getItem("userID")),   
+           id :  "sindefinit",
+           idanfitrion : this.state.inmueble.idusuario,
+           fechaini : localStorage.getItem("fechaini"),
+           fechafin : localStorage.getItem("fechafin"),
+          huespedes :2,
+          politicacancelacion : "nohay",
+          montototal :this.calcularTotal(),
+          estado : "pendiente",
+        }
+        const postReserva = async (url, reserva) => {
+          const response = await fetch(url, {
+                        
+            method: 'POST',
+            body: JSON.stringify(reserva),
+            headers: {
+                  'Content-Type': 'application/json',
+            }
+            
+            
+          });
+          return response;
+          
+        }
+        const respuestaJson = await postReserva( "http://127.0.0.1:8000/api/postreserva", reserva);
+
+        console.log("Response:------> " + respuestaJson.status);
+        console.log('Datos de registro:', reserva);
+      
+          
       };
     
       closeConfirmacionModal = () => {
