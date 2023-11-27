@@ -59,7 +59,8 @@ class reservaController extends Controller
         $reserva->huespedes = $request->input('huespedes');
         $reserva->politicacancelacion = $request->input('politicacancelacion');
         $reserva->montototal = $request->input('montototal');
-        $reserva->estado = $request->input('estado');        
+        $reserva->estado = $request->input('estado');       
+        $reserva->comentado = $request->input('comentado');    
         // Guardar los cambios en la base de datos
         $reserva->save();
     
