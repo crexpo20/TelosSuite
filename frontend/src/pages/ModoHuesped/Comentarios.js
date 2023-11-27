@@ -13,17 +13,20 @@ function Comentarios({ isOpen, onClose, idInmueble, idUsuario, reservaId }) {
   const [hoverAt, setHoverAt] = useState(null);
 
   const handleMouseEnter = (category, index) => {
-    setHoverAt({ ...hoverAt, [category]: index + 1 });
+    // Actualiza el estado de forma inmutable
+    setHoverAt((prevHoverAt) => ({ ...prevHoverAt, [category]: index + 1 }));
   };
-
+  
   const handleMouseLeave = () => {
+    // Restablece el estado de hoverAt
     setHoverAt(null);
   };
-
+  
   const handleClick = (category, index) => {
-    setRating({ ...rating, [category]: index + 1 });
+    setRating((prevRating) => ({ ...prevRating, [category]: index + 1 }));
   };
-
+  
+  
   const handleSubmit = async () => {
     // Calculate the average rating
     const promedio = Math.round((rating.limpieza + rating.exactitud + rating.comunicacion) / 3);

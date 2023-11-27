@@ -225,11 +225,13 @@ class VistaDetalladaInm extends Component {
           <h1 className='tituloVista'>{this.state?.inmueble?.tituloanuncio}</h1>
           {/* GRID de las imagenes */}
           <button onClick={this.toggleModal} className="boton-ver-resenas">Ver Reseñas</button>
-      <ComentariosModal 
-        comentarios={this.state.comentarios}
-        showModal={this.state.showModal}
-        toggleModal={this.toggleModal}
-      />
+          <ComentariosModal 
+  comentarios={this.state.comentarios}
+  showModal={this.state.showModal}
+  toggleModal={this.toggleModal}
+  inmuebleId={this.props.params.espaciosID} // Asegúrate de que este sea el ID correcto
+/>
+
           <div className='GridImagenes'>
             <div className='Columna1'>
                 <img src={this.state?.inmueble?.imagen1} alt='Imagen 1' style={{ width: '100%', height: '96%' }}/>
