@@ -55,7 +55,7 @@ class ListaReserva extends Component {
 
   getProductos = async () => {
     try {
-      const response = await axios.get(`http://127.0.0.1:8000/api/getreanfitrion/${this.state.idusuario}`);
+      const response = await axios.get(`http://127.0.0.1:8000/api/getreusuario/${this.state.idusuario}`);
      
       this.setState({ inmueble: response.data });
       this.organizarReservas();
