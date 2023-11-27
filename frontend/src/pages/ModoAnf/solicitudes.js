@@ -11,6 +11,7 @@ class Solicitudes extends Component {
       inmuebleDetalles: {},
     };
   }
+  
 
   componentDidMount() {
     const idusuario = localStorage.getItem('idusuario');
@@ -117,12 +118,31 @@ class Solicitudes extends Component {
                           {reservaU.fechafin}
                         </p>
                       </td>
-                      <td>
-          
-                            <button onClick={() => this.handleAceptarRechazar(reservaU.idinmueble, "aceptar")}>Aceptar</button>
-                            <button onClick={() => this.handleAceptarRechazar(reservaU.idinmueble, "rechazar")}>Rechazar</button>
-                          
+                      
+                            {
+                              reservaU.estado === "pendiente" &&
+                             <td>
+                              <button onClick={() => this.handleAceptarRechazar(reservaU.idinmueble, "aceptado")}>Aceptar</button>
+                              <button onClick={() => this.handleAceptarRechazar(reservaU.idinmueble, "rechazado")}>Rechazar</button>
+                            
                       </td>
+                            }
+                             {
+                              reservaU.estado === "aceptado" &&
+                             <td>
+                              <p>Aceptado</p>      
+                      </td>
+                            }
+                            {
+                              reservaU.estado === "rechazado" &&
+                             <td>
+                              <p>Rechazado</p>      
+                      </td>
+                            }
+                            
+                            
+                          
+                      
                     </>
                   )}
                 </tr>
