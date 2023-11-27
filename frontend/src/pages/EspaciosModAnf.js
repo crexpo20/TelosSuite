@@ -95,14 +95,18 @@ class EspaciosModAnf extends Component {
                     <h3 className="inmueble_name">{sitio.tipopropiedad}</h3>
                     <div className="inmueble_info">
                       <p className="inmDet">{sitio.titulo}</p>
+                      <p className="inmCamas"> <b>ID DEL INMUEBLE: {sitio.idinmueble}</b></p>
+                      
                       <p className="inmCamas"> <b>Precio por noche:</b> bs. {sitio.precio}</p>
                       <p className="inmPrecio"><b>Capacidad:</b>  {sitio.capacidad} persona(s)</p>
                       <p className="inmPrecio"><b>Normas:</b> {sitio.normas}</p>
+                      
+                     
                     </div>
                      
                     <div class='BotonesEditEli'>
                                 <div class='BotonEditar'>
-                                    <Link to={`/cliente/${sitio.idinmueble}`}>editar</Link>
+                                    <Link to={`/cliente/${sitio.idinmueble}`}>Ver estado</Link>
                                     
                                 </div>
                                 

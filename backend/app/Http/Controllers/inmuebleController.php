@@ -68,6 +68,23 @@ class inmuebleController extends Controller
          $inmueble->compartido = $request->input('compartido');
          $inmueble->estado = $request->input('estado');
          $inmueble->contacto = $request->input('contacto');   
+         $inmueble->favorito = $request->input('favorito');  
+         $inmueble->imagen1 = $request->input('imagen1');  
+         $inmueble->descripcion1 =$request->input('descripcion1');  
+         $inmueble->imagen2 = $request->input('imagen2');  
+         $inmueble->descripcion2 =$request->input('descripcion2');  
+         $inmueble->imagen3 = $request->input('imagen3');  
+         $inmueble->descripcion3 =$request->input('descripcion3');  
+         $inmueble->imagen4 = $request->input('imagen4');  
+         $inmueble->descripcion4 =$request->input('descripcion4');  
+         $inmueble->imagen5 = $request->input('imagen5');  
+         $inmueble->descripcion5 =$request->input('descripcion5');  
+         $inmueble->latitud = $request->input('latitud');  
+         $inmueble->longitud= $request->input('longitud');  
+         $inmueble->pausado= $request->input('pausado');  
+         $inmueble->fechainicio= $request->input('fechainicio');  
+         $inmueble->fechafin= $request->input('fechafin');  
+
          // Guardar los cambios en la base de datos
          $inmueble->save();
      

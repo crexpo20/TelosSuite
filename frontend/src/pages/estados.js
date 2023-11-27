@@ -1,0 +1,192 @@
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import Modal from 'react-modal';
+import { DatePicker, Space } from 'antd';
+
+
+const Estados = () => {
+  const { inmuebleID } = useParams();
+  const { RangePicker } = DatePicker;
+
+  const [detallesInmueble, setDetallesInmueble] = useState(null);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [fechas, setFechas] = useState([localStorage.getItem("fechaini"), localStorage.getItem("fechafin")]);
+
+  const getDetallesInmueble = async () => {
+    try {
+      const response = await axios.get(`http://127.0.0.1:8000/api/getinmueble/${inmuebleID}`);
+      setDetallesInmueble(response.data);
+    } catch (error) {
+      console.error('Error al obtener detalles del inmueble:', error);
+    }
+  };
+
+  useEffect(() => {
+    getDetallesInmueble();
+  }, [inmuebleID]);
+
+  const openModal = () => {
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
+
+  const handleDateChange = (dates, dateStrings) => {
+    // dates es un array con las fechas seleccionadas
+    // dateStrings es un array con las fechas en formato de cadena
+    setFechas(dateStrings);
+  };
+  const cambiarEstado = async () => {
+    // Imprimir las fechas seleccionadas en la consola
+    console.log('Fecha ini:', fechas[0]);
+    console.log('Fecha fin:', fechas[1]);
+    const inmuebleResponse = await axios.get(`http://127.0.0.1:8000/api/getinmueble/${inmuebleID}`);
+    const detallesInmueble = inmuebleResponse.data;
+
+    const url = `http://127.0.0.1:8000/api/putinmuebles/${inmuebleID}`;
+
+    // Datos que se enviarán en la solicitud
+    const datosReserva = {
+        idinmueble: parseInt(inmuebleID),
+      idusuario: detallesInmueble.idusuario,
+      tipopropiedad: detallesInmueble.tipopropiedad,
+      tituloanuncio: detallesInmueble.tituloanuncio,
+      descripcion: detallesInmueble.descripcion,
+      ubicacion: detallesInmueble.ubicacion,
+      precio: detallesInmueble.precio,
+      capacidad: detallesInmueble.capacidad,
+      habitaciones: detallesInmueble.habitaciones,
+      baños: detallesInmueble.baños,
+      camas: detallesInmueble.camas,
+      niños: detallesInmueble.niños,
+      normas: detallesInmueble.normas,
+      mascotas: detallesInmueble.mascotas,
+      qr: detallesInmueble.qr,
+      ciudad: detallesInmueble.ciudad,
+      wifi: detallesInmueble.wifi,
+      parqueo: detallesInmueble.parqueo,
+      cocina: detallesInmueble.cocina,
+      refrigerador: detallesInmueble.refrigerador,
+      lavaropa: detallesInmueble.lavaropa,
+      piscina: detallesInmueble.piscina,
+      privado: detallesInmueble.privado,
+      compartido: detallesInmueble.compartido,
+      estado: detallesInmueble.estado,
+      contacto: detallesInmueble.contacto,
+      favorito: detallesInmueble.favorito,
+      imagen1: detallesInmueble.imagen1,
+      descripcion1: detallesInmueble.descripcion1,
+      imagen2: detallesInmueble.imagen2,
+      descripcion2: detallesInmueble.descripcion2,
+      imagen3: detallesInmueble.imagen3,
+      descripcion3: detallesInmueble.descripcion3,
+      imagen4: detallesInmueble.imagen4,
+      descripcion4: detallesInmueble.descripcion4,
+      imagen5: detallesInmueble.imagen5,
+      descripcion5: detallesInmueble.descripcion5,
+      latitud: detallesInmueble.latitud,
+      longitud: detallesInmueble.longitud,
+      pausado: 1,
+      fechainicio: fechas[0], // Utilizar la fecha de inicio seleccionada
+      fechafin: fechas[1], // Utilizar la fecha de fin seleccionada
+      created_at: detallesInmueble.created_at,
+      updated_at: detallesInmueble.updated_at,
+
+      // Puedes agregar más propiedades según tu necesidad
+    };
+
+    
+    const postNegocio = async (url, newNego) => {
+      const response = await fetch(url, {
+        method: 'PUT',
+        body: JSON.stringify(newNego),
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
+        },
+      });
+    
+      // Agregar un retraso de 1 segundo entre las solicitudes
+      await new Promise(resolve => setTimeout(resolve, 1000));
+    
+      return response;
+    };
+    
+    const respuestaJson = postNegocio(url, datosReserva);
+
+    console.log("Response:------> " + (await respuestaJson).status);
+    console.log(datosReserva)
+
+
+
+    
+
+    // Aquí puedes enviar una solicitud para cambiar el estado
+    // Puedes usar detallesInmueble.id para obtener el ID del inmueble
+    // y fechas para obtener las fechas seleccionadas
+    console.log('Estado cambiado');
+    closeModal();
+  };
+
+  const esFechaEnRango = () => {
+    const fechaInicio = new Date(detallesInmueble.fechainicio);
+    const fechaFin = new Date(detallesInmueble.fechafin);
+    const fechaHoy = new Date();
+
+    return fechaHoy >= fechaInicio && fechaHoy <= fechaFin;
+  };
+
+  return (
+    <div>
+    <h2>ID del inmueble: {inmuebleID}</h2>
+    {detallesInmueble && (
+      <>
+        {esFechaEnRango() ? (
+          <p>Estado del inmueble: <b>PAUSADO</b></p>
+        ) : (
+          <p>Estado del inmueble: <b>ACTIVO</b></p>
+        )}
+        <button onClick={openModal}>Cambiar Estado</button>
+      </>
+    )}
+
+
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        contentLabel="Cambiar Estado Modal"
+      > 
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+
+        <h2>Elije un rango de fechas para pausar el inmueble</h2>
+        <Space direction="vertical" size={12}>
+          <RangePicker
+            placeholder={fechas}
+            style={{ border: 'none', color: 'black' }}
+            onChange={handleDateChange}
+          />
+          <button onClick={cambiarEstado}>Guardar pausa</button>
+          <button onClick={closeModal}>Cerrar</button>
+        </Space>
+      </Modal>
+    </div>
+  );
+};
+
+export default Estados;
