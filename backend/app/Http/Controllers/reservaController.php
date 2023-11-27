@@ -47,7 +47,24 @@ class reservaController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $reserva = reserva::findorfail($id);
+        // Actualizar los datos del reserva con los datos del formulario
+        $reserva->idreserva = $request->input('idreserva');
+        $reserva->idinmueble = $request->input('idinmueble');
+        $reserva->idusuario = $request->input('idusuario');
+        $reserva->id = $request->input('id');
+        $reserva->idanfitrion = $request->input('idanfitrion');
+        $reserva->fechaini = $request->input('fechaini');
+        $reserva->fechafin = $request->input('fechafin');
+        $reserva->huespedes = $request->input('huespedes');
+        $reserva->politicacancelacion = $request->input('politicacancelacion');
+        $reserva->montototal = $request->input('montototal');
+        $reserva->estado = $request->input('estado');        
+        // Guardar los cambios en la base de datos
+        $reserva->save();
     
+        // Retornar una respuesta de éxito
+        return response()->json(['mensaje' => 'reserva actualizado con éxito'], 200);
     }
 
     /**
