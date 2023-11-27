@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('politicacancelacion');
             $table->integer('montototal');
             $table->string('estado');
+            $table->int('comentado');
             $table->timestamps();
         });
     }
