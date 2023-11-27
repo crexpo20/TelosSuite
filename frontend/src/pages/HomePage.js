@@ -22,7 +22,9 @@ class HomePage extends Component {
   componentDidMount() {
     const userID = localStorage.getItem('userID');
     
-     
+      this.getProductos();
+      this.getFavorites(userID);
+   
   }
 
   getProductos = async () => {
