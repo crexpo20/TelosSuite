@@ -87,6 +87,8 @@ Route::get('/getcomentario',[comentarioController::class,'index']);
 Route::post('/postcomentario', [comentarioController::class, 'store']);
 Route::delete('/delcomentario/{id}',[comentarioController::class,'destroy']);
 Route::put('/putcomentario/{id}', [comentarioController::class,'update']);
+Route::get('/getcomentarios/{idinmueble}', [comentarioController::class, 'getComentariosPorInmueble']);
+
 
 //rutas para reseña
 Route::get('/getreseña',[reseñaController::class,'index']);
