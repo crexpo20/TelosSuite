@@ -3,7 +3,7 @@ import './Comentarios.css';
 import axios from 'axios';
 
 
-function Comentarios({ isOpen, onClose, idInmueble, idUsuario, reservaId }) {
+function Comentarios({ isOpen, onClose, idInmueble}) {
   const [comentario, setComentario] = useState('');
   const [rating, setRating] = useState({
     limpieza: 0,
@@ -13,47 +13,61 @@ function Comentarios({ isOpen, onClose, idInmueble, idUsuario, reservaId }) {
   const [hoverAt, setHoverAt] = useState(null);
 
   const handleMouseEnter = (category, index) => {
-    // Actualiza el estado de forma inmutable
+    
     setHoverAt((prevHoverAt) => ({ ...prevHoverAt, [category]: index + 1 }));
   };
   
   const handleMouseLeave = () => {
-    // Restablece el estado de hoverAt
+    
     setHoverAt(null);
   };
   
   const handleClick = (category, index) => {
-    setRating((prevRating) => ({ ...prevRating, [category]: index + 1 }));
+    setRating((prevRating) => ({
+      ...prevRating,
+      [category]: parseInt(index + 1) // Asegúrate de que sea un entero
+    }));
   };
   
   
+  
   const handleSubmit = async () => {
-    // Calculate the average rating
-    const promedio = Math.round((rating.limpieza + rating.exactitud + rating.comunicacion) / 3);
+    const promedio = Math.round(
+      (parseInt(rating.limpieza) + parseInt(rating.exactitud) + parseInt(rating.comunicacion)) / 3
+    );
+
   
     const comentarioData = {
       idinmueble: idInmueble,
-      idusuario: idUsuario,
+      idusuario: parseInt(localStorage.getItem("userID")), // Convertido a entero
       descripcion: comentario,
-      limpieza: rating.limpieza,
-      exactitud: rating.exactitud,
-      comunicacion: rating.comunicacion,
-      puntuacion: promedio,
+      limpieza: parseInt(rating.limpieza), // Convertido a entero
+      exactitud: parseInt(rating.exactitud), // Convertido a entero
+      comunicacion: parseInt(rating.comunicacion), // Convertido a entero
+      puntuacion: promedio, // Ya es un entero debido al Math.round()
     };
 
-    // Log the data to be sent
-  console.log('Data to be sent:', comentarioData);
+    try {
+      const response = await fetch("http://127.0.0.1:8000/api/postcomentario", {
+        method: 'POST',
+        body: JSON.stringify(comentarioData),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
 
-  try {
-    const response = await axios.post('/api/postcomentario', comentarioData);
-    console.log('Comment successfully sent:', response.data);
-  } catch (error) {
-    // Log detailed error information
-    console.error('Error sending the comment:', error.response ? error.response.data : error);
-  }
-
-  onClose(); // Close the modal
-};
+      // Verifica si la respuesta es exitosa
+      if (response.ok) {
+        const responseBody = await response.json();
+        console.log('Comentario enviado exitosamente:', responseBody);
+        onClose(); // Cierra el modal si todo fue exitoso
+      } else {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+    } catch (error) {
+      console.error('Error al enviar el comentario:', error);
+    }
+  };
 
   if (!isOpen) return null;
 
@@ -69,17 +83,17 @@ function Comentarios({ isOpen, onClose, idInmueble, idUsuario, reservaId }) {
             {['limpieza', 'comunicacion', 'exactitud'].map(category => (
               <div key={category} className="calificacion-categoria">
                 <div className="calificacion-titulo">{category.charAt(0).toUpperCase() + category.slice(1)}</div> {/* Capitaliza la primera letra */}
-                <div className="star-rating">
-                  {[...Array(5)].map((_, index) => (
-                    <span
-                      key={index}
-                      className={`star ${index < (hoverAt?.[category] || rating[category]) ? "selected" : ""}`}
-                      onMouseEnter={() => handleMouseEnter(category, index)}
-                      onMouseLeave={handleMouseLeave}
-                      onClick={() => handleClick(category, index)}
-                    >
-                      &#9733;
-                    </span>
+                <div className="rating-container">
+        {[...Array(5)].map((_, index) => (
+          <span
+            key={index}
+            className={`rating-star ${index < (hoverAt?.[category] || rating[category]) ? "selected" : ""}`}
+            onMouseEnter={() => handleMouseEnter(category, index)}
+            onMouseLeave={handleMouseLeave}
+            onClick={() => handleClick(category, index)}
+          >
+            &#9733;
+          </span>
                   ))}
                 </div>
               </div>

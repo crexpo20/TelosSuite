@@ -50,7 +50,9 @@ class ListaReserva extends Component {
   
 
   componentDidMount() {
+    
     this.getProductos();
+
   }
 
   getProductos = async () => {
@@ -143,8 +145,8 @@ class ListaReserva extends Component {
             isOpen={this.state.isModalOpen}
             onClose={this.closeModal}
             idInmueble={this.state.idInmueble} 
-            idUsuario={this.state.idusuario} 
-            reservaId={this.state.selectedReservaId}
+            
+          
           />
         )}
         </body>
