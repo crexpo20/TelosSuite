@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Modal from 'react-modal';
 import { DatePicker, Space } from 'antd';
-
+import '../CSS/estado.css'
 
 const Estados = () => {
   const { inmuebleID } = useParams();
@@ -140,8 +140,11 @@ const Estados = () => {
   };
 
   return (
-    <div>
-    <h2>ID del inmueble: {inmuebleID}</h2>
+    <div className="detailsContainer">
+    <h4>ID del inmueble: {inmuebleID}</h4>
+    {detallesInmueble && (
+      <h4>Nombre del Inmueble: {detallesInmueble.tituloanuncio}</h4>
+    )}
     {detallesInmueble && (
       <>
         {esFechaEnRango() ? (
@@ -155,36 +158,32 @@ const Estados = () => {
 
 
       <Modal
+      className="ModalContent"
+      overlayClassName="ModalOverlay"
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         contentLabel="Cambiar Estado Modal"
       > 
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
+   
+  <div className="ModalTitle">
+    <h2>Elije un rango de fechas</h2>
+    <h2>para pausar el inmueble</h2>
+  </div>
+  <div className="DatePickerContainer">
+    <Space direction="vertical" size={12}>
+      <RangePicker
+        placeholder={fechas}
+        style={{ border: 'none', color: 'black' }}
+        onChange={handleDateChange}
+      />
+      <div className="ButtonContainer">
+        <button className="SaveButton" onClick={cambiarEstado}>Guardar pausa</button>
+        <button className="CancelButton" onClick={closeModal}>Cerrar</button>
+      </div>
+    </Space>
+  </div>
+</Modal>
 
-        <h2>Elije un rango de fechas para pausar el inmueble</h2>
-        <Space direction="vertical" size={12}>
-          <RangePicker
-            placeholder={fechas}
-            style={{ border: 'none', color: 'black' }}
-            onChange={handleDateChange}
-          />
-          <button onClick={cambiarEstado}>Guardar pausa</button>
-          <button onClick={closeModal}>Cerrar</button>
-        </Space>
-      </Modal>
     </div>
   );
 };

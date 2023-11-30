@@ -125,4 +125,35 @@ class inmuebleController extends Controller
         return response()->json(['error' => 'Inmueble no encontrado'], 404);
     }
 }
+public function getInmueblePausado($inmuebleID)
+{
+    try {
+        $inmueble = Inmueble::where('id', $inmuebleID)
+            ->where('pausado', 0)
+            ->first();
+
+        if ($inmueble) {
+            return response()->json($inmueble);
+        } else {
+            return response()->json(['error' => 'Inmueble no encontrado o está pausado'], 404);
+        }
+    } catch (\Exception $e) {
+        return response()->json(['error' => 'Error interno del servidor', 'message' => $e->getMessage()], 500);
+    }
+}
+
+
+
+
+   public function getInmueblesByEstado($pausado)
+{
+    try {
+        // Filtrar los inmuebles por estado 0
+        $inmuebles = Inmueble::where('pausado', 0)->get();
+
+        return response()->json($inmuebles);
+    } catch (\Exception $e) {
+        return response()->json(['message' => 'Error al obtener inmuebles por estado', 'error' => $e->getMessage()], 500);
+    }
+}
 }

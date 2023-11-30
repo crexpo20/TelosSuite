@@ -39,10 +39,11 @@ Route::put('/puthuesped/{idhuesped}', [huespedController::class,'update']);
 Route::get('/getinmuebles',[inmuebleController::class,'index']);
 Route::get('/getinmuebles/{idusuario}', [inmuebleController::class,'show']);
 Route::get('/getinmueble/{inmuebleID}', [inmuebleController::class,'getInmuebleDetails']);
+Route::get('/getinmueblePausado/{inmuebleID}', [inmuebleController::class,'getInmueblePausado']);
 Route::post('/postinmuebles',[inmuebleController::class,'store']);
 Route::delete('/delinmuebles/{id}',[inmuebleController::class,'destroy']);
 Route::put('/putinmuebles/{id}',  [inmuebleController::class,'update']);
-
+Route::get('/inmueblesByEstado/{pausado}', [InmuebleController::class, 'getInmueblesByEstado']);
 
 //RUTAS PARA INGRESAR, MODIFICAR, ELIMINAR  IMAGEN DESDE FORMULAR
 Route::get('/getimagen',[imagenController::class,'index']);
