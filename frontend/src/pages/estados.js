@@ -4,6 +4,8 @@ import axios from 'axios';
 import Modal from 'react-modal';
 import { DatePicker, Space } from 'antd';
 import '../CSS/estado.css'
+import moment from 'moment';
+import 'moment/locale/es'; 
 
 const Estados = () => {
   const { inmuebleID } = useParams();
@@ -130,6 +132,12 @@ const Estados = () => {
     console.log('Estado cambiado');
     closeModal();
   };
+  const disabledDate = current => {
+ 
+    const fechaActual = moment().startOf('day');
+  
+    return current && current < fechaActual;
+  };
 
   const esFechaEnRango = () => {
     const fechaInicio = new Date(detallesInmueble.fechainicio);
@@ -171,10 +179,11 @@ const Estados = () => {
   </div>
   <div className="DatePickerContainer">
     <Space direction="vertical" size={12}>
-      <RangePicker
-        placeholder={fechas}
-        style={{ border: 'none', color: 'black' }}
-        onChange={handleDateChange}
+    <RangePicker
+      placeholder={fechas}
+      style={{ border: 'none', color: 'black' }}
+      onChange={handleDateChange}
+      disabledDate={disabledDate}
       />
       <div className="ButtonContainer">
         <button className="SaveButton" onClick={cambiarEstado}>Guardar pausa</button>

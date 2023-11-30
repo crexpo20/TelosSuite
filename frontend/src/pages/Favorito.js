@@ -24,7 +24,7 @@ class Favorito extends Component {
 
         // Obtener detalles de cada inmueble favorito
         response.data.forEach(favorite => {
-          axios.get(`http://127.0.0.1:8000/api/getinmueble/${favorite.idinmueble}`)
+          axios.get(`http://127.0.0.1:8000/api/getInmueblePausado/${favorite.idinmueble}`)
             .then(res => {
               const { inmuebleDetails } = this.state;
               const updatedDetails = {

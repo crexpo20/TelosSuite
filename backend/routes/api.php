@@ -39,7 +39,7 @@ Route::put('/puthuesped/{idhuesped}', [huespedController::class,'update']);
 Route::get('/getinmuebles',[inmuebleController::class,'index']);
 Route::get('/getinmuebles/{idusuario}', [inmuebleController::class,'show']);
 Route::get('/getinmueble/{inmuebleID}', [inmuebleController::class,'getInmuebleDetails']);
-Route::get('/getinmueblePausado/{inmuebleID}', [inmuebleController::class,'getInmueblePausado']);
+Route::get('/getInmueblePausado/{inmuebleID}', [inmuebleController::class,'getInmueblePausado']);
 Route::post('/postinmuebles',[inmuebleController::class,'store']);
 Route::delete('/delinmuebles/{id}',[inmuebleController::class,'destroy']);
 Route::put('/putinmuebles/{id}',  [inmuebleController::class,'update']);
