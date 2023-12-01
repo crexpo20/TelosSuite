@@ -30,13 +30,13 @@ class Busqueda extends Component {
     
     }
 
-    getProductos = async () => {
+    getProductos = async (pausado) => {
       const { fechaini, fechafin } = localStorage;
       const startDate = new Date(fechaini);
       const endDate = new Date(fechafin);
     
       try {
-        const inmueblesResponse = await axios.get('http://127.0.0.1:8000/api/getinmuebles');
+        const inmueblesResponse = await axios.get(`http://127.0.0.1:8000/api/inmueblesByEstado/${pausado}`);
         const reservasResponse = await axios.get('http://127.0.0.1:8000/api/getreserva');
     
         const inmuebles = inmueblesResponse.data;

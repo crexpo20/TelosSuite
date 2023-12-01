@@ -100,7 +100,7 @@ class EspaciosModAnf extends Component {
                       <p className="inmCamas"> <b>Precio por noche:</b> bs. {sitio.precio}</p>
                       <p className="inmPrecio"><b>Capacidad:</b>  {sitio.capacidad} persona(s)</p>
                       <p className="inmPrecio"><b>Normas:</b> {sitio.normas}</p>
-                      
+                      <p className="inmPrecio"><b>Estado:</b> {sitio.pausado === 0 ? 'Publicado' : sitio.pausado === 1 ? 'Pausado' : 'Otro estado'}</p>
                      
                     </div>
                      

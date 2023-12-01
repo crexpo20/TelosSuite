@@ -96,3 +96,29 @@ textarea {
   border-radius: 5px;
   height: 100px; /* Ajusta según necesites */
 }
+/* Estilo base para las estrellas de calificación */
+.rating-star {
+  cursor: pointer;
+  font-size: 25px; /* Tamaño de la estrella */
+  color: #ccc; /* Color por defecto de las estrellas no seleccionadas */
+  transition: color 0.2s, transform 0.2s ease-in-out; /* Transiciones suaves para color y transformación */
+}
+
+/* Estilo cuando la estrella de calificación está seleccionada o se pasa el mouse sobre ella */
+.rating-star.selected,
+.rating-star:hover {
+  color: #ffdd00; /* Color de estrellas seleccionadas, amarillo por ejemplo */
+  transform: scale(1.1); /* Hace la estrella un poco más grande cuando el mouse pasa por encima */
+}
+
+/* Contenedor para las estrellas de calificación */
+.rating-container {
+  display: flex;
+  flex-direction: row; /* Coloca las estrellas en fila */
+  justify-content: flex-start; /* Alinea las estrellas al inicio del contenedor */
+}
+
+/* Asegúrate de que las estrellas de calificación no estén demasiado juntas */
+.rating-star:not(:last-child) {
+  margin-right: 5px; /* Espacio a la derecha de cada estrella, excepto la última */
+}

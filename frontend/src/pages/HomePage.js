@@ -22,7 +22,8 @@ class HomePage extends Component {
   componentDidMount() {
     const userID = localStorage.getItem('userID');
     
-      this.getProductos();
+    
+      this.getInmueblesByEstado();
       this.getFavorites(userID);
    
   }
@@ -30,6 +31,16 @@ class HomePage extends Component {
   getProductos = async () => {
     try {
       const response = await axios.get('http://127.0.0.1:8000/api/getinmuebles');
+      this.setState({ inmueble: response.data });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  getInmueblesByEstado = async (pausado) => {
+    try {
+      const response = await axios.get(`http://127.0.0.1:8000/api/inmueblesByEstado/${pausado}`);
+      // Actualizar el estado del componente con los inmuebles filtrados por estado
       this.setState({ inmueble: response.data });
     } catch (error) {
       console.error(error);
