@@ -95,7 +95,7 @@ const ModalMenuBody = ({props}) => {
         localStorage.setItem("anfitrion",0);
         localStorage.setItem("userID",0)
         // Recargar la página
-        window.location.reload();
+        window.location.href = '/home';
     }
     const [userData, setUserData] = useState({});
 

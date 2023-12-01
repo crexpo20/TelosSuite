@@ -88,15 +88,10 @@ class VistaDetalladaInm extends Component {
           }
         }
       }
-      if (responses2.data.length > 0) {
-        for (const reserva2 of responses2.data) {
-          const fechaInicioReserva = new Date(reserva2.fechainicio);
-          const fechaFinReserva = new Date(reserva2.fechafin);
-          const estado = reserva2.estado
-  
-           if (
-                  ((fechaini >= fechaInicioReserva && fechafin <= fechaFinReserva) ||
-                  (fechaini <= fechaInicioReserva && fechafin >= fechaFinReserva)) 
+     
+        if (
+          ((fechaini >= new Date(responses2.data.fechainicio) && fechafin <= new Date(responses2.data.fechafin)) ||
+          (fechaini <= new Date(responses2.data.fechainicio) && fechafin >= new Date(responses2.data.fechafin))) 
                   
                 ) {
                   await Swal.fire({
@@ -107,10 +102,10 @@ class VistaDetalladaInm extends Component {
   
             fechaEnPausa = true;    
   
-             break;
+            
           }
-        }
-      }
+        
+      
   
        if (!fechaEnRango && !fechaEnPausa) {
         window.location.href = `/Reserva/${this.state?.inmueble?.idinmueble}`;
@@ -304,16 +299,7 @@ class VistaDetalladaInm extends Component {
                 <li id="prim" className='FechaReserva'><Fechas /></li>
                 <br></br>
                 <div id="huesped-lista">
-          <a id="huesped-a"> Cantidad de personas: </a>
-          <input
-            type="number"
-            placeholder={localStorage.getItem("huespedes")}
-            id="tentacles"
-            name="tentacles"
-            min="1"
-            max="100"
-           
-          />
+         
         </div>
                 <br></br>
                 <div>

@@ -28,6 +28,7 @@ class Solicitudes extends Component {
       politicacancelacion :  politicacancelacion,
       montototal : montototal,
       estado :  estado ,
+      comentado:0,
       created_at: null,
       updated_at: null,
      
@@ -47,7 +48,7 @@ class Solicitudes extends Component {
       });
     
       // Agregar un retraso de 1 segundo entre las solicitudes
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      await new Promise(resolve => setTimeout(resolve, 2000));
     
       return response;
     };
@@ -57,7 +58,7 @@ class Solicitudes extends Component {
     console.log("Response:------> " + respuestaJson);
     console.log(datosReserva)
 
-
+   
 
     
 
