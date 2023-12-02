@@ -86,24 +86,23 @@ const endDate = new Date(sitio.fechafin);
   
     return fechaHoy >= fechaInicioReserva && fechaHoy <= fechaFinReserva;
   };
-  tieneReserva =  async (idinmueble) => {
+  tieneReserva = async (idinmueble) => {
     const responses = await axios.get(`http://127.0.0.1:8000/api/getreinmueble/${idinmueble}`);
-    if(responses.data.length > 0){
-      for(const reserva of responses.data){
-        const fechaHoy = new Date();
-
-        const fechaInicioReserva = new Date(reserva.fechaini);
-          const fechaFinReserva = new Date(reserva.fechafin);
-          const estado = reserva.estado
-          return(
-            (fechaHoy >= fechaInicioReserva && fechaHoy <= fechaFinReserva)
-            
-          && estado === "aceptado")
-          
+  
+    for (const reserva of responses.data) {
+      const fechaHoy = new Date();
+      const fechaInicioReserva = new Date(reserva.fechaini);
+      const fechaFinReserva = new Date(reserva.fechafin);
+      const estado = reserva.estado;
+  
+      if (fechaHoy >= fechaInicioReserva && fechaHoy <= fechaFinReserva && estado === "aceptado") {
+        return false;  // Retorna true si alguna reserva cumple con las condiciones
       }
     }
-  }
-
+  
+    return false;  // Retorna false si no se encontró ninguna reserva que cumpla con las condiciones
+  };
+  
   render() {
     // Configuración del carrusel
     const carouselSettings = {
@@ -157,11 +156,11 @@ const endDate = new Date(sitio.fechafin);
                               <p>Estado del inmueble: <b>PAUSADO</b></p>
                         }
                         {!this.esFechaEnRango(sitio.fechainicio, sitio.fechafin) && 
-                         !this.tieneReserva(sitio.idinmueble) &&
+                         this.tieneReserva(sitio.idinmueble) &&
                               <p>Estado del inmueble: <b>Publicado</b></p>
                         }
                         {
-                         this.tieneReserva(sitio.idinmueble) &&
+                         !this.tieneReserva(sitio.idinmueble) &&
                               <p>Estado del inmueble: <b>Alquilado</b></p>
                         }
 
