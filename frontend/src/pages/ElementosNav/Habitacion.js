@@ -43,7 +43,7 @@ getProductos = async (pausado) => {
   const endDate = new Date(fechafin);
 
   try {
-    const inmueblesResponse = await axios.get(`http://127.0.0.1:8000/api/inmueblesByEstado/${pausado}`);
+    const inmueblesResponse = await axios.get('http://127.0.0.1:8000/api/getinmuebles');
     const reservasResponse = await axios.get('http://127.0.0.1:8000/api/getreserva');
 
     const inmuebles = inmueblesResponse.data;
@@ -57,9 +57,11 @@ getProductos = async (pausado) => {
         const reservaEndDate = new Date(reserva.fechafin);
 
         return (
-          (startDate >= reservaStartDate && startDate <= reservaEndDate) ||
+         ( (startDate >= reservaStartDate && startDate <= reservaEndDate) ||
           (endDate >= reservaStartDate && endDate <= reservaEndDate) ||
-          (startDate <= reservaStartDate && endDate >= reservaEndDate)
+          (startDate <= reservaStartDate && endDate >= reservaEndDate)) 
+
+         && reserva.estado ==="aceptado" 
         );
       });
 
@@ -72,6 +74,8 @@ getProductos = async (pausado) => {
     console.error('Error fetching data:', error);
   }
 };
+
+
 
 toggleFavorite = async (sitio) => {
   const userID = localStorage.getItem('userID');

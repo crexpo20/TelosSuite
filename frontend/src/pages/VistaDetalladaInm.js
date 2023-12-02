@@ -72,10 +72,15 @@ class VistaDetalladaInm extends Component {
           const estado = reserva.estado
   
            if (
-                  ((fechaini >= fechaInicioReserva && fechafin <= fechaFinReserva) ||
-                  (fechaini <= fechaInicioReserva && fechafin >= fechaFinReserva)) && 
+                  ((fechaini >= fechaInicioReserva && fechaini <= fechaFinReserva) ||
+                  (fechafin <= fechaInicioReserva && fechafin >= fechaFinReserva) ||
+                  (fechaini <= fechaInicioReserva && fechafin >= fechaFinReserva) 
+                  )   && 
                   estado === "aceptado"
-                ) {
+                  ) 
+
+                
+                 {
                   await Swal.fire({
                     icon: 'warning',
                     title: '¡Atención!',

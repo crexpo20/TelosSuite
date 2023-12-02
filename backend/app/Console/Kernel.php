@@ -29,4 +29,24 @@ class Kernel extends ConsoleKernel
 
         require base_path('routes/console.php');
     }
+
+    /**
+     * Get the groups of middleware for the application.
+     *
+     * @return array
+     */
+    protected function middlewareGroups()
+    {
+        return [
+            'web' => [
+                // ... (otros middlewares)
+            ],
+
+            'api' => [
+                'throttle:api',
+                // ... (otros middlewares)
+            ],
+        ];
+    }
 }
+

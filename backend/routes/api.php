@@ -18,6 +18,7 @@ use App\Http\Controllers\pausadoController;
 
 
 //RUTAS PARA INGRESAR, MODIFICAR, ELIMINAR usuario DESDE FORMULARIO
+Route::middleware(['throttle:10000000000000,1'])->group(function () {
 Route::get('/getusuario', [usuarioController::class,'index']);
 Route::get('/getusuario/{idusuario}', [usuarioController::class,'show']);
 Route::get('/getusername/{username}', [usuarioController::class,'username']);
@@ -120,3 +121,6 @@ Route::post('/postpausado', [pausadoController::class,'store']);
 Route::delete('/delpausado/{id}',[pausadoController::class,'destroy']);
 Route::put('/putpausado/{id}', [pausadoController::class,'update']);
 Route::get('/getpainmueble/{idinmueble}',[pausadoController::class,'inmueble']);
+
+
+});

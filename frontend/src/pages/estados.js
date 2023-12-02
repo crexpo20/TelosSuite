@@ -43,8 +43,13 @@ const Estados = () => {
   };
   const cambiarEstado = async () => {
     // Imprimir las fechas seleccionadas en la consola
+    const reservasResponse = await axios.get(`http://127.0.0.1:8000/api/getreinmueble/${inmuebleID}`);
+    const reservas = reservasResponse.data;
+    const fechaInicioSeleccionada = new Date(fechas[0]);
+    const fechaFinSeleccionada = new Date(fechas[1]);
     console.log('Fecha ini:', fechas[0]);
     console.log('Fecha fin:', fechas[1]);
+
     const inmuebleResponse = await axios.get(`http://127.0.0.1:8000/api/getinmueble/${inmuebleID}`);
     const detallesInmueble = inmuebleResponse.data;
 
@@ -101,6 +106,26 @@ const Estados = () => {
     };
 
     
+    const reservaCoincidente = reservas.find((reserva) => {
+      const fechaInicioReserva = new Date(reserva.fechaini);
+      const fechaFinReserva = new Date(reserva.fechafin);
+  
+      return (
+       ( (fechaInicioSeleccionada >= fechaInicioReserva && fechaInicioSeleccionada <= fechaFinReserva) ||
+        (fechaFinSeleccionada >= fechaInicioReserva && fechaFinSeleccionada <= fechaFinReserva) ||
+        (fechaInicioReserva >= fechaInicioSeleccionada && fechaInicioReserva <= fechaFinSeleccionada) ||
+        (fechaFinReserva >= fechaInicioSeleccionada && fechaFinReserva <= fechaFinSeleccionada) ) 
+        && reserva.estado === "aceptado"
+      );
+    });
+
+  if (reservaCoincidente) {
+    // Mostrar un modal que indique que las fechas coinciden con una reserva
+    console.log(reservaCoincidente);
+    console.log('Las fechas coinciden con una reserva. Mostrar modal.');
+    return;
+  }else{
+    console.log(reservaCoincidente);
     const postNegocio = async (url, newNego) => {
       const response = await fetch(url, {
         method: 'PUT',
@@ -132,6 +157,7 @@ const Estados = () => {
     console.log('Estado cambiado');
     closeModal();
   };
+  }
   const disabledDate = current => {
  
     const fechaActual = moment().startOf('day');
