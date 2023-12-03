@@ -215,6 +215,7 @@ toggleFavorite = async (sitio) => {
                   </Slider>
                   <h3 className="inmueble_name">{sitio.tipopropiedad} en {sitio.ciudad}</h3>
                     <div className="inmueble_info">
+                    <p className="inmDet"> ID: {sitio.idinmueble}</p>
                       <p className="inmDet">{sitio.titulo}</p>
                       {
                         sitio.compartido === 1 &&

@@ -104,7 +104,7 @@ class Reservas extends Component {
               {this.state.reservasPasadas.map(reserva => (
               <div className='cont'>
               <div className='reserva' key={reserva.idreserva}>
-              <p>ID {reserva.idusuario}</p>
+            
 
                   <p>ID Inmueble: {reserva.idinmueble}</p><p> Fecha Fin: {reserva.fechafin}</p>
                   {this.renderCalificarButton(reserva)}

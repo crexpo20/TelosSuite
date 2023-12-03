@@ -106,7 +106,7 @@ class ListaReserva extends Component {
               {this.state.reservasPasadas.map(reserva => (
           <div className='cont' key={reserva.idreserva}>
             <div className='reserva' onClick={() => this.handleReservaClick(reserva.idinmueble)}>
-             <p>{reserva.idreserva}</p>
+            
               <p>ID Inmueble: {reserva.idinmueble}</p><p> Fecha Fin: {reserva.fechafin}</p>
               
               {this.renderCalificarButton(reserva)}
