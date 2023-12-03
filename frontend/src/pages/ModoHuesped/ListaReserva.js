@@ -105,7 +105,7 @@ class ListaReserva extends Component {
               {this.state.reservasPasadas.map(reserva => (
           <div className='cont' key={reserva.idreserva}>
             <div className='reserva' onClick={() => this.handleReservaClick(reserva.idinmueble)}>
-              <p>ID Inmueble: {reserva.idinmueble}, Fecha Fin: {reserva.fechafin}</p>
+              <p>ID Inmueble: {reserva.idinmueble}</p><p> Fecha Fin: {reserva.fechafin}</p>
               
               {this.renderCalificarButton(reserva)}
              
@@ -120,7 +120,7 @@ class ListaReserva extends Component {
               {this.state.reservasEnCurso.map(reserva => (
                 <div className='cont'>
                 <div className='reserva' key={reserva.idreserva}>
-                     <p>ID Inmueble: {reserva.idinmueble}, Fecha Fin: {reserva.fechafin}</p>
+                     <p>ID Inmueble: {reserva.idinmueble}</p><p> Fecha Fin: {reserva.fechafin}</p>
                 </div>
                 </div>
               ))}
@@ -130,7 +130,7 @@ class ListaReserva extends Component {
               {this.state.reservasProximas.map(reserva => (
                   <div className='cont'>
                 <div className='reserva' key={reserva.idreserva}>
-                  <p>ID Inmueble: {reserva.idinmueble}, Fecha Inicio: {reserva.fechaini}</p>
+                  <p>ID Inmueble: {reserva.idinmueble}</p><p>Fecha Inicio: {reserva.fechaini}</p>
                 </div>
                  </div>
               ))}
