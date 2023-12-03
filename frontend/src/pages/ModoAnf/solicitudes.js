@@ -204,7 +204,7 @@ class Solicitudes extends Component {
             </tbody>
           </table>
         ) : (
-          <p>No hay solicitudes</p>
+          <p>CARGANDO SOLICITUDES...</p>
         )}
       </div>
     );
