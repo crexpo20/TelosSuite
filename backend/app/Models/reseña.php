@@ -10,7 +10,7 @@ class reseña extends Model
     use HasFactory;
     protected $table = 'reseña';
     protected $primaryKey = 'idreseña';
-    protected $fillable = ['idinmueble','idusuario','idanfitrion','descripcion','puntuacion'];
+    protected $fillable = ['idinmueble','idusuario','idanfitrion','descripcion','puntuacion','puntualidad','comunicacion'];
     public $timestamps = false;
 
     public function Inmueble(){
