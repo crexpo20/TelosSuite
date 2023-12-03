@@ -19,6 +19,8 @@ return new class extends Migration
             $table->integer('idanfitrion');
             $table->String('descripcion');
             $table->integer('puntuacion');
+            $table->integer('puntualidad');
+            $table->integer('comunicacion');
             $table->timestamps();
         });
     }
