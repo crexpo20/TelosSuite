@@ -152,41 +152,7 @@ class Reservas extends Component {
 >
   Calificar
 </span>
-          {/* Modal */}
-          <Modal
-            isOpen={this.state.showModal}
-            onRequestClose={this.handleCloseModal}
-            contentLabel="Calificar Reserva"
-          >
-            <h2>Calificar Reserva</h2>
-            <form onSubmit={this.handleFormSubmit}>
-              <label>
-                Descripción:
-                <textarea
-                  name="descripcion"
-                  value={this.state.descripcion}
-                  onChange={this.handleInputChange}
-                />
-              </label>
-              <label>
-                Puntuación:
-                <StarRating
-                  onChange={(value) => this.setState({ puntuacion: value })}
-                  value={this.state.puntuacion}
-                />
-              </label>
-              <button type="submit">Enviar Reseña</button>
-            </form>
-          </Modal>
-          {this.state.isModalOpen && (
-          <Comentarios
-            isOpen={this.state.isModalOpen}
-            onClose={this.closeModal}
-            idInmueble={this.state.idInmueble} 
-            
-          
-          />
-        )}
+       
         </div>
       );
     } else {
