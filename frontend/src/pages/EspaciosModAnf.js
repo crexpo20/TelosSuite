@@ -33,7 +33,8 @@ class EspaciosModAnf extends Component {
     try {
       const response = await axios.get('http://127.0.0.1:8000/api/getinmuebles');
       this.setState({ inmueble: response.data });
-     
+      const responses = await axios.get('http://127.0.0.1:8000/api/getreserva');
+      this.setState({ reserva: responses.data });
     } catch (error) {
       console.log(error);
     }
@@ -86,22 +87,20 @@ const endDate = new Date(sitio.fechafin);
   
     return fechaHoy >= fechaInicioReserva && fechaHoy <= fechaFinReserva;
   };
-  tieneReserva = async (idinmueble) => {
-    const responses = await axios.get(`http://127.0.0.1:8000/api/getreinmueble/${idinmueble}`);
+  tieneReserva(idInmueble, reservas) {
+    const fechaHoy = new Date();
+    const formatoFechaHoy = fechaHoy.toISOString().split('T')[0]; // Obtén la fecha actual en formato 'YYYY-MM-DD'
   
-    for (const reserva of responses.data) {
-      const fechaHoy = new Date();
-      const fechaInicioReserva = new Date(reserva.fechaini);
-      const fechaFinReserva = new Date(reserva.fechafin);
-      const estado = reserva.estado;
+    // Filtra las reservas para el idInmueble y el día de hoy
+    const reservasHoy = reservas.filter(reserva => 
+      reserva.idinmueble === idInmueble &&
+      formatoFechaHoy >= reserva.fechaini &&
+      formatoFechaHoy <= reserva.fechafin
+    );
   
-      if (fechaHoy >= fechaInicioReserva && fechaHoy <= fechaFinReserva && estado === "aceptado") {
-        return false;  // Retorna true si alguna reserva cumple con las condiciones
-      }
-    }
-  
-    return false;  // Retorna false si no se encontró ninguna reserva que cumpla con las condiciones
-  };
+    // Devuelve true si hay al menos una reserva hoy, de lo contrario, false
+    return reservasHoy.length > 0;
+  }
   
   render() {
     // Configuración del carrusel
@@ -151,16 +150,16 @@ const endDate = new Date(sitio.fechafin);
                       <p className="inmCamas"> <b>Precio por noche:</b> bs. {sitio.precio}</p>
                       <p className="inmPrecio"><b>Capacidad:</b>  {sitio.capacidad} persona(s)</p>
                       <p className="inmPrecio"><b>Normas:</b> {sitio.normas}</p>
-                      
+                         
                         {this.esFechaEnRango(sitio.fechainicio, sitio.fechafin) && 
-                              <p className="inmPrecio">Estado del inmueble: <b>PAUSADO</b></p>
+                              <p className="inmPrecio">Estado del inmueble: <b>Pausado</b></p>
                         }
                         {!this.esFechaEnRango(sitio.fechainicio, sitio.fechafin) && 
-                         this.tieneReserva(sitio.idinmueble) &&
+                         !this.tieneReserva(sitio.idinmueble, this.state.reserva) &&
                               <p className="inmPrecio">Estado del inmueble: <b>Publicado</b></p>
                         }
                         {
-                         !this.tieneReserva(sitio.idinmueble) &&
+                         this.tieneReserva(sitio.idinmueble, this.state.reserva) &&
                               <p className="inmPrecio">Estado del inmueble: <b>Alquilado</b></p>
                         }
 
