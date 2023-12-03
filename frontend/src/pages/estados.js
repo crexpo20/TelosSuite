@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import axios from 'axios';
 import Modal from 'react-modal';
 import { DatePicker, Space } from 'antd';
@@ -123,6 +124,11 @@ const Estados = () => {
     // Mostrar un modal que indique que las fechas coinciden con una reserva
     console.log(reservaCoincidente);
     console.log('Las fechas coinciden con una reserva. Mostrar modal.');
+    await Swal.fire({
+      icon: 'warning',
+      title: '¡Atención!',
+      text: 'Este inmueble tiene una reserva entre las fechas que seleccionaste, porfavor elige otro rango de fechas.',
+    });
     return;
   }else{
     console.log(reservaCoincidente);
@@ -156,6 +162,11 @@ const Estados = () => {
     // y fechas para obtener las fechas seleccionadas
     console.log('Estado cambiado');
     closeModal();
+    await Swal.fire({
+      icon: 'success',
+      title: '¡Hecho!',
+      text: 'Este inmueble no se podrá reservar del ' + fechas[0] + ' al ' + fechas[1]+ '.',
+    });
   };
   }
   const disabledDate = current => {

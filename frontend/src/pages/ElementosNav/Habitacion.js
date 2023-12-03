@@ -153,6 +153,10 @@ toggleFavorite = async (sitio) => {
         <body>
           <div className="verinm">
             {this.state.inmueble.map((sitio, index) => {
+              const fechaIni = new Date(localStorage.getItem("fechaini"));
+              const fechaFin = new Date(localStorage.getItem("fechafin"));
+              const fechainicio = new Date(sitio.fechainicio);
+              const fechafin = new Date(sitio.fechafin)
                const precioSitio = parseInt(sitio.precio, 10);
                const esPrivado = parseInt(sitio.privado, 10) === 1;
               const esCompartido = parseInt(sitio.compartido, 10) === 1; 
@@ -167,6 +171,10 @@ toggleFavorite = async (sitio) => {
               (filtroRefrigerador && sitio.refrigerador) ||
               (filtroLavadora && sitio.lavadora) ||
               (filtroPiscina && sitio.piscina);
+              const estaPausado = (fechaIni>= fechainicio && fechaIni <= fechafin) ||
+              (fechaFin >= fechainicio && fechaFin <= fechafin) ||
+              (fechaIni <= fechainicio && fechaFin >= fechafin)
+              console.log(estaPausado);
               if(sitio.tipopropiedad === "Habitación" &&
                 
                  sitio.ciudad === localStorage.getItem("destino") &&
@@ -180,7 +188,8 @@ toggleFavorite = async (sitio) => {
              (tipoInmuebleCompartido && esCompartido))&&
              (habitacionesSeleccionadas === null || habitacionesSitio <= habitacionesSeleccionadas) &&
              (camasSeleccionadas === null || camasSitio >= camasSeleccionadas) &&
-             (bañosSeleccionados === null || bañosSitio >= bañosSeleccionados)&
+             (bañosSeleccionados === null || bañosSitio >= bañosSeleccionados)&&
+             (!estaPausado) &&
                  cumpleCondicionesServicios
              ) {
               const isFavorite = favorites.some(fav => fav.idinmueble === sitio.idinmueble);

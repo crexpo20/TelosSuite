@@ -153,15 +153,15 @@ const endDate = new Date(sitio.fechafin);
                       <p className="inmPrecio"><b>Normas:</b> {sitio.normas}</p>
                       
                         {this.esFechaEnRango(sitio.fechainicio, sitio.fechafin) && 
-                              <p>Estado del inmueble: <b>PAUSADO</b></p>
+                              <p className="inmPrecio">Estado del inmueble: <b>PAUSADO</b></p>
                         }
                         {!this.esFechaEnRango(sitio.fechainicio, sitio.fechafin) && 
                          this.tieneReserva(sitio.idinmueble) &&
-                              <p>Estado del inmueble: <b>Publicado</b></p>
+                              <p className="inmPrecio">Estado del inmueble: <b>Publicado</b></p>
                         }
                         {
                          !this.tieneReserva(sitio.idinmueble) &&
-                              <p>Estado del inmueble: <b>Alquilado</b></p>
+                              <p className="inmPrecio">Estado del inmueble: <b>Alquilado</b></p>
                         }
 
                       
