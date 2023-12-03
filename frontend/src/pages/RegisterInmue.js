@@ -1151,7 +1151,7 @@ class RegisterInmue extends Component {
           </div>
         </div>
         <div className="button-container">
-          {currentSlide > 0 && currentSlide < 16 &&(
+          {currentSlide > 0 && currentSlide < 17 &&(
             <button className="prev" onClick={this.handlePrevSlide}>
               <IoIosArrowDropleftCircle/>
             </button>

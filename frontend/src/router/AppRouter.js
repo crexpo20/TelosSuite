@@ -132,7 +132,7 @@ class AppRouter extends Component{
       </Route>
       <Route path= "/perfilUA" element={<NavbarCli />}>
             <Route index element={<EspaciosModAnf />} />
-            <Route path='/perfilUA/:espaciosID' element={<PerfilHuesped/>} /> 
+            <Route path='/perfilUA/:id' element={<PerfilHuesped/>} /> 
       </Route>
 
       

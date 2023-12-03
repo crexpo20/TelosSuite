@@ -58,9 +58,8 @@ class Solicitudes extends Component {
     console.log("Response:------> " + respuestaJson);
     console.log(datosReserva)
 
-   
-
     
+
 
 
   };
@@ -152,23 +151,23 @@ class Solicitudes extends Component {
                   {inmuebleDetalles[reservaU.idinmueble] && (
                     <>
                       <td>
-                        <Link to={`/vistaInm/${reservaU.idinmueble}`} style={{ display: 'block' }}>
+                        <Link to={`/vistaInm/${reservaU.idinmueble}`} style={{ display: 'block', width: '200px'  }}>
                           <p style={{ color: 'black' }}>{inmuebleDetalles[reservaU.idinmueble].tituloanuncio}</p>
                         </Link>
                       </td>
                       <td>
-                          <p style={{ color: 'black' }}>{reservaU.nombreHuesped}</p>
+                          <p style={{ color: 'black' , width: '200px' }}>{reservaU.nombreHuesped}</p>
                           <Link to={`/perfilUA/${reservaU.idusuario}`} style={{ display: 'block' }}>
                             <button>Ver Perfil</button>
                           </Link>
                       </td>
                       <td>
-                        <p style={{ display: 'block' }}>
+                        <p style={{ color: 'black', width: '140px' }}>
                           {reservaU.fechaini}
                         </p>
                       </td>
                       <td>
-                        <p style={{ display: 'block' }}>
+                        <p style={{ color: 'black', width: '140px' }}>
                           {reservaU.fechafin}
                         </p>
                       </td>

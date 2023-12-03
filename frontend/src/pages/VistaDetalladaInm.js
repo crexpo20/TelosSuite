@@ -321,7 +321,7 @@ class VistaDetalladaInm extends Component {
         <div className='GridComentarios'>
             <div className="divisor-plomo"></div>
             <br></br>
-            <h2 className='title1'>Reseñas </h2>
+            <h2 className='title1'>Comentarios</h2>
         </div>
         <div className='GridReseñas'>
             <div className='ColumCom1'>
