@@ -4,6 +4,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
+import {RiHomeSmileLine} from "react-icons/ri";
+
 // Nuevo componente funcional que utiliza useParams
 const PerfilHuespedFuncional = () => {
   const { id } = useParams(); // Obtenemos el parámetro de la URL
@@ -24,6 +26,22 @@ const PerfilHuespedFuncional = () => {
     return "Usuario no encontrado";
   };
 
+  const generarEstrellas = (puntuacion) => {
+    const estrellasPintadas = Math.round(puntuacion); // Redondeamos la puntuación al número entero más cercano
+    const estrellasVacias = 5 - estrellasPintadas;
+  
+    const estrellas = [];
+  
+    for (let i = 0; i < estrellasPintadas; i++) {
+      estrellas.push(<span key={i} style={{ color: '#ffdd00' }}>&#9733;</span>); // Estrella pintada en amarillo
+    }
+  
+    for (let i = 0; i < estrellasVacias; i++) {
+      estrellas.push(<span key={i + estrellasPintadas} style={{ color: 'gray' }}>&#9734;</span>); // Estrella vacía en gris claro
+    }
+  
+    return estrellas;
+  };
   useEffect(() => {
     axios.get(`http://127.0.0.1:8000/api/getusuario/${id}`)
       .then(response => {
@@ -52,20 +70,63 @@ const PerfilHuespedFuncional = () => {
 
 
   return (
-    <div>
-      <h6>Perfil de {nombreUsuario} {apellidoUsuario}</h6>
+    <>
+    <header>
+            <div id='head'>
+               <div id='head-izq'>
+               <div id = "logoT">
+                  <i id='logoP'><RiHomeSmileLine/></i>
+                  </div>
+                    
+                  <div id = 'logoL'>
+                  <a id="TelosSuite">TelosSuite</a>
+                  </div>
+                </div>
+                    
+          
+               <div id='navAbajo'>
+               <a id="TelosSuites">Perfil de usuario solicitante</a>
 
-     
+               </div>
+
+               <div id='head-der'>
+                </div>
+
+            </div>
+              <div id='navAbajo'>
+              <div id='navRegs'>
+              <div id="reg"> {nombreUsuario} {apellidoUsuario}</div>
+                  </div>
+                  
+                      <div  id='opt-nav'>
+                        <button id="btn-volver" >Volver</button>
+                      </div>
+                  
+             </div>
+           
+        </header>
+    <body>
+    <div>
+      
+      <div>
+       
+        
+
+      </div>
+
+    
       <div>
       {reseñas.map((reseña,index) => {
        if(reseña.idusuario === parseInt(id)){
+        
       return(
       
          <div>
-         
+         <div>
+         </div>
          <p>Anfitrión: {nombre(reseña.idanfitrion)}</p>
          <p>Comentario: {reseña.descripcion}</p>
-         <p>Puntuación: {reseña.puntuacion}</p>
+         <p>Puntuación: {generarEstrellas(reseña.puntuacion)}</p>
          <br></br>
          <br></br>
          <br></br>
@@ -78,6 +139,8 @@ const PerfilHuespedFuncional = () => {
       </div>
      
     </div>
+    </body>
+    </>
   );
 };
 

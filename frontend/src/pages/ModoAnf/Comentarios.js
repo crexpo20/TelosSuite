@@ -6,9 +6,9 @@ import axios from 'axios';
 function Comentarios({ isOpen, onClose, idInmueble}) {
   const [comentario, setComentario] = useState('');
   const [rating, setRating] = useState({
-    calificacion: 0,
-    comunicacion: 0,
-    exactitud: 0,
+    limpieza: 0,
+    puntualidad: 0,
+    comunicación: 0,
   });
   const [hoverAt, setHoverAt] = useState(null);
 
@@ -41,7 +41,7 @@ function Comentarios({ isOpen, onClose, idInmueble}) {
       idusuario: idInmueble,
       idanfitrion: parseInt(localStorage.getItem("userID")), // Convertido a entero
       descripcion: comentario,
-      puntuacion: parseInt(rating.calificacion), // Convertido a entero
+      puntuacion: parseInt(rating.limpieza), // Convertido a entero
      
     };
 
@@ -78,7 +78,7 @@ function Comentarios({ isOpen, onClose, idInmueble}) {
         </div>
         <div className="modal-body">
           <div className="ratings-container">
-            {['calificacion'].map(category => (
+            {['Limpieza','puntualidad','comunicación', ].map(category => (
               <div key={category} className="calificacion-categoria">
                 <div className="calificacion-titulo">{category.charAt(0).toUpperCase() + category.slice(1)}</div> {/* Capitaliza la primera letra */}
                 <div className="rating-container">

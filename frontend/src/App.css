@@ -485,7 +485,14 @@ h4{
   padding-top: 10px;
   color: rgba(13, 10, 11, 0.85);
   }
-
+  #TelosSuites{
+    font-family: 'JejuMyeongjo';
+    
+    font-size: 30px;
+    padding-top: 10px;
+    padding-left: 50px;
+    color: rgba(13, 10, 11, 0.85);
+    }
   
   #pie .active{
     background-color: #b6004c;

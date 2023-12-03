@@ -126,10 +126,7 @@ class AppRouter extends Component{
             <Route index element={<EspaciosModAnf />} />
             <Route path='/modUsuario/:espaciosID' element={<ReservasUsuario/>} /> 
       </Route>
-      <Route path= "/perfilU" element={<Navbar />}>
-            <Route index element={<EspaciosModAnf />} />
-            <Route path='/perfilU/:espaciosID' element={<PerfilHuesped/>} /> 
-      </Route>
+      
       <Route path= "/perfilUA" element={<NavbarCli />}>
             <Route index element={<EspaciosModAnf />} />
             <Route path='/perfilUA/:id' element={<PerfilHuesped/>} /> 
@@ -143,8 +140,9 @@ class AppRouter extends Component{
              
             <Route path='*' element={<Navigate TO ="/"/>}/> 
       </Route>
-
-
+      <Route path= "/perfilU/:espaciosID" element={<PerfilHuesped />}>
+      </Route>
+ 
       <Route>
       <Route path='register' element={<RegisterPage />} />
       </Route>
