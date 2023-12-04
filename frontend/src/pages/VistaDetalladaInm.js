@@ -95,7 +95,8 @@ class VistaDetalladaInm extends Component {
       }
      
         if (
-          ((fechaini >= new Date(responses2.data.fechainicio) && fechafin <= new Date(responses2.data.fechafin)) ||
+          ((fechaini >= new Date(responses2.data.fechainicio) && fechaini <= new Date(responses2.data.fechafin)) ||
+          (fechafin >= new Date(responses2.data.fechainicio) && fechafin <= new Date(responses2.data.fechafin)) ||
           (fechaini <= new Date(responses2.data.fechainicio) && fechafin >= new Date(responses2.data.fechafin))) 
                   
                 ) {
