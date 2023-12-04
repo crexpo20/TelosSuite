@@ -348,7 +348,7 @@ class VistaDetalladaInm extends Component {
              
             </div>
         </div>
-        {/* GRID del mapa */}
+       
         <div className='GridMapa'>
               <div className="divisor-plomo"></div>
               <br></br>
@@ -362,7 +362,7 @@ class VistaDetalladaInm extends Component {
                   loadingElement={<p>Cargando..</p>}
                   lat={this.state?.inmueble?.latitud}
                   lng={this.state?.inmueble?.longitud}
-                  radio={0}
+                  radio={1000}
                 />
 
               </div>

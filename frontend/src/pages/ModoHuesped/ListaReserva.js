@@ -69,22 +69,26 @@ class ListaReserva extends Component {
 
   organizarReservas() {
     const fechaHoy = new Date();
-    
+    fechaHoy.setHours(0, 0, 0, 0);
     const reservasPasadas = this.state.inmueble.filter(reserva => {
       const fechaFinReserva = new Date(reserva.fechafin);
       const estado = reserva.estado;
+      fechaFinReserva.setHours(0, 0, 0, 0);
       return fechaFinReserva < fechaHoy && estado === "aceptado";
     });
 
     const reservasEnCurso = this.state.inmueble.filter(reserva => {
       const fechaFinReserva = new Date(reserva.fechafin);
       const fechaInicioReserva = new Date(reserva.fechaini);
+      fechaFinReserva.setHours(0, 0, 0, 0);
+      fechaInicioReserva.setHours(0, 0, 0, 0);
       const estado = reserva.estado;
       return ( fechaHoy <= fechaFinReserva   && fechaHoy >= fechaInicioReserva && estado === "aceptado" );
     });
 
     const reservasProximas = this.state.inmueble.filter(reserva => {
       const fechaInicioReserva = new Date(reserva.fechaini);
+      fechaInicioReserva.setHours(0, 0, 0, 0);
       const estado = reserva.estado;
       return fechaInicioReserva > fechaHoy  && estado === "aceptado";
     });
