@@ -175,10 +175,10 @@ class ListaReserva extends Component {
             : `Días restantes para calificar: ${diasRestantes}`}
         </p>
         <span
-          onClick={(event) => this.handleCalificarClick(reserva.idreserva, reserva.idusuario, event)}
+          onClick={(event) => this.handleCalificarClick(reserva.idreserva, reserva.idinmueble, event)}
           className="calificar-text"
         >
-          Calificar
+          Calificar inmueble
         </span>
       </div>
     );

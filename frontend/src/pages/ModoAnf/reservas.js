@@ -176,7 +176,7 @@ class Reservas extends Component {
             onClick={(event) => this.handleCalificarClick(reserva.idreserva, reserva.idusuario, event)}
             className="calificar-text"
           >
-            Calificar
+            Calificar huesped
           </span>
         </div>
       );
