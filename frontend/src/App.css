@@ -562,6 +562,27 @@ h4{
   border-radius: 50px;
   border: 1px solid #ccc;
 }
+#com{
+  width: 55%;
+}
+#tit1{
+  padding-left: 60px;
+  
+}
+#tit2{
+  padding-right: 110px;
+  padding-top: 50px;
+  
+}
+#primabtnn{
+
+  font-size: larger;
+  background: #DA1467;
+  font-family: 'JejuMyeongjo';
+  color: #fff;
+  border-radius: 50px;
+  border: 1px solid #ccc;
+}
 #head-der2{
   display: inline-block;
   white-space: nowrap;

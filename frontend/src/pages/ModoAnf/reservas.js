@@ -154,25 +154,28 @@ class Reservas extends Component {
     const fechaFinReserva = new Date(reserva.fechafin);
     const fechaHoy = new Date();
     const diasDiferencia = Math.floor((fechaHoy - fechaFinReserva) / (1000 * 60 * 60 * 24)) + 1;
-
-    if (diasDiferencia <= 8 && diasDiferencia >= 0) {
-      const diasRestantes = 8 - diasDiferencia;
+  
+    if (diasDiferencia <= 9 && diasDiferencia > 0) {
+      const diasRestantes = 9 - diasDiferencia;
+  
       return (
         <div>
-          <p>Días restantes para calificar: {diasRestantes}</p>
-          <span 
-  onClick={(event) => this.handleCalificarClick(reserva.idreserva, reserva.idusuario, event)}
-  className="calificar-text"
->
-  Calificar
-</span>
-       
+          <p>
+            {diasRestantes === 0
+              ? "Último día para comentar"
+              : `Días restantes para calificar: ${diasRestantes}`}
+          </p>
+          <span
+            onClick={(event) => this.handleCalificarClick(reserva.idreserva, reserva.idusuario, event)}
+            className="calificar-text"
+          >
+            Calificar
+          </span>
         </div>
       );
-    } else {
-      return <p></p>;
     }
   }
+  
   // ... (tu código existente)
 }
 

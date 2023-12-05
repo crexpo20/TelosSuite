@@ -61,7 +61,7 @@ const ComentariosModal = ({ showModal, toggleModal, inmuebleId }) => {
           {comentariosConNombres.length > 0 ? (
             comentariosConNombres.map((comentario, index) => (
               <div key={index} className="comentario-item">
-                <p><strong>{comentario.nombreUsuario}:</strong> {comentario.descripcion}</p>
+                <p style={{ wordWrap: 'break-word', whiteSpace: 'pre-line' }}><strong>{comentario.nombreUsuario}:</strong> {comentario.descripcion}</p>
                 <div>
                   {['limpieza', 'comunicacion', 'exactitud'].map(categoria => (
                     <div key={categoria} className="calificacion-categoria">

@@ -222,9 +222,17 @@ class VistaDetalladaInm extends Component {
     return (
       <>
         <body id='vista'>
-          <h1 className='tituloVista'>{this.state?.inmueble?.tituloanuncio}</h1>
-          {/* GRID de las imagenes */}
-          <button onClick={this.toggleModal} className="boton-ver-resenas">Ver Reseñas</button>
+          <div id='tit' style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div id = 'tit1'>
+               <h1 className='tituloVista'>{this.state?.inmueble?.tituloanuncio}</h1>
+          </div>
+          
+          
+          <div id = 'tit2'>
+          <button onClick={this.toggleModal} id='primabtnn'>Ver Reseñas</button>
+          </div>
+          </div>
+          
           <ComentariosModal 
   comentarios={this.state.comentarios}
   showModal={this.state.showModal}
@@ -330,8 +338,11 @@ class VistaDetalladaInm extends Component {
               <div className="usuario-info1">
                 <h3>{comentario.nombre} {comentario.apellido}</h3>
               </div>
-              <p>{comentario.descripcion}</p>
-            </div>
+              <div id='com'>
+              <p id='coment' style={{ wordWrap: 'break-word', whiteSpace: 'pre-line' }}>{comentario.descripcion}</p>
+          
+              </div>
+                </div>
             ))}
              
             </div>

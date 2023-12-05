@@ -29,7 +29,12 @@ function Comentarios({ isOpen, onClose, idInmueble}) {
     }));
   };
   
-  
+  const handleComentarioChange = (e) => {
+    const inputValue = e.target.value;
+    if (inputValue.length <= 200) {
+      setComentario(inputValue);
+    }
+  };
   
   const handleSubmit = async () => {
     const promedio = Math.round(
@@ -42,7 +47,9 @@ function Comentarios({ isOpen, onClose, idInmueble}) {
       idanfitrion: parseInt(localStorage.getItem("userID")), // Convertido a entero
       descripcion: comentario,
       puntuacion: parseInt(rating.limpieza), // Convertido a entero
-     
+      puntualidad:parseInt(rating.puntualidad),
+      comunicacion:parseInt(rating.comunicación),
+      
     };
 
     try {
@@ -69,6 +76,8 @@ function Comentarios({ isOpen, onClose, idInmueble}) {
 
   if (!isOpen) return null;
 
+  
+
   return (
     <div className="modal-background">
       <div className="modal-container">
@@ -78,7 +87,7 @@ function Comentarios({ isOpen, onClose, idInmueble}) {
         </div>
         <div className="modal-body">
           <div className="ratings-container">
-            {['Limpieza','puntualidad','comunicación', ].map(category => (
+            {['limpieza','puntualidad','comunicación', ].map(category => (
               <div key={category} className="calificacion-categoria">
                 <div className="calificacion-titulo">{category.charAt(0).toUpperCase() + category.slice(1)}</div> {/* Capitaliza la primera letra */}
                 <div className="rating-container">
@@ -102,8 +111,11 @@ function Comentarios({ isOpen, onClose, idInmueble}) {
             <textarea 
               placeholder="Escribe tu comentario aquí..."
               value={comentario}
-              onChange={(e) => setComentario(e.target.value)}
+              onChange={handleComentarioChange}
             />
+            <div className="character-counter">
+              {comentario.length}/200
+            </div>
           </div>
           </div>
         <div className="modal-footer">

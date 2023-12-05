@@ -22,6 +22,13 @@ function Comentarios({ isOpen, onClose, idInmueble}) {
     setHoverAt(null);
   };
   
+  const handleComentarioChange = (e) => {
+    const inputValue = e.target.value;
+    if (inputValue.length <= 200) {
+      setComentario(inputValue);
+    }
+  };
+  
   const handleClick = (category, index) => {
     setRating((prevRating) => ({
       ...prevRating,
@@ -104,8 +111,11 @@ function Comentarios({ isOpen, onClose, idInmueble}) {
             <textarea 
               placeholder="Escribe tu comentario aquí..."
               value={comentario}
-              onChange={(e) => setComentario(e.target.value)}
+              onChange={handleComentarioChange}
             />
+            <div className="character-counter">
+              {comentario.length}/200
+            </div>
           </div>
           </div>
         <div className="modal-footer">

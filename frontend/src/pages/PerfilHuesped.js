@@ -33,7 +33,7 @@ const PerfilHuespedFuncional = () => {
     const estrellas = [];
   
     for (let i = 0; i < estrellasPintadas; i++) {
-      estrellas.push(<span key={i} style={{ color: '#ffdd00' }}>&#9733;</span>); // Estrella pintada en amarillo
+      estrellas.push(<span key={i} style={{ color: '#b6004c' }}>&#9733;</span>); // Estrella pintada en amarillo
     }
   
     for (let i = 0; i < estrellasVacias; i++) {
@@ -42,6 +42,10 @@ const PerfilHuespedFuncional = () => {
   
     return estrellas;
   };
+
+  function retroceder() {
+    window.history.back();
+  }
   useEffect(() => {
     axios.get(`http://127.0.0.1:8000/api/getusuario/${id}`)
       .then(response => {
@@ -85,7 +89,7 @@ const PerfilHuespedFuncional = () => {
                     
           
                <div id='navAbajo'>
-               <a id="TelosSuites">Perfil de usuario solicitante</a>
+               <a id="TelosSuites">Perfil de usuario solicitantes</a>
 
                </div>
 
@@ -99,7 +103,7 @@ const PerfilHuespedFuncional = () => {
                   </div>
                   
                       <div  id='opt-nav'>
-                        <button id="btn-volver" >Volver</button>
+                        <button id="btn-volver" onClick={retroceder} >Volver</button>
                       </div>
                   
              </div>
@@ -121,15 +125,18 @@ const PerfilHuespedFuncional = () => {
         
       return(
       
-         <div>
-         <div>
-         </div>
-         <p>Anfitrión: {nombre(reseña.idanfitrion)}</p>
-         <p>Comentario: {reseña.descripcion}</p>
-         <p>Puntuación: {generarEstrellas(reseña.puntuacion)}</p>
+         <div id='rese'  style={{ borderTop: '1px solid #ccc', borderBottom: '1px solid #ccc', paddingLeft: '50px', paddingLeft: '50px'}}>
+       
+       <br></br>
+         <br></br>
+         <p>{nombre(reseña.idanfitrion)} dice sobre este usuario: </p>
+         <p style={{ wordWrap: 'break-word', whiteSpace: 'pre-line' }}>{reseña.descripcion}</p>
+         <p>Limpieza: {generarEstrellas(reseña.puntuacion)}</p>
+         <p>Puntualidad: {generarEstrellas(reseña.puntualidad)}</p>
+         <p>Cominicacion: {generarEstrellas(reseña.comunicacion)}</p>
          <br></br>
          <br></br>
-         <br></br>
+        
        </div>
       )
      
